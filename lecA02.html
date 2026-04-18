@@ -73,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <meta name="robots" content="noindex, nofollow">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -216,8 +245,56 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#学習目標" id="toc-学習目標" class="nav-link active" data-scroll-target="#学習目標"><span class="header-section-number">2.1</span> 学習目標</a></li>
+  <li><a href="#人的資本とは" id="toc-人的資本とは" class="nav-link" data-scroll-target="#人的資本とは"><span class="header-section-number">2.2</span> 人的資本とは</a>
+  <ul class="collapse">
+  <li><a href="#コブダグラス型生産関数" id="toc-コブダグラス型生産関数" class="nav-link" data-scroll-target="#コブダグラス型生産関数">コブ＝ダグラス型生産関数</a></li>
+  <li><a href="#拡張型コブダグラス生産関数" id="toc-拡張型コブダグラス生産関数" class="nav-link" data-scroll-target="#拡張型コブダグラス生産関数">拡張型コブ＝ダグラス生産関数</a></li>
+  <li><a href="#人的資本理論の基本的な考え方" id="toc-人的資本理論の基本的な考え方" class="nav-link" data-scroll-target="#人的資本理論の基本的な考え方">人的資本理論の基本的な考え方</a></li>
+  </ul></li>
+  <li><a href="#人的資本発展の背景" id="toc-人的資本発展の背景" class="nav-link" data-scroll-target="#人的資本発展の背景"><span class="header-section-number">2.3</span> 人的資本発展の背景</a></li>
+  <li><a href="#人的資本の性質" id="toc-人的資本の性質" class="nav-link" data-scroll-target="#人的資本の性質"><span class="header-section-number">2.4</span> 人的資本の性質</a>
+  <ul class="collapse">
+  <li><a href="#教育投資の収穫逓減性" id="toc-教育投資の収穫逓減性" class="nav-link" data-scroll-target="#教育投資の収穫逓減性">教育投資の収穫逓減性</a></li>
+  <li><a href="#人的資本の異質性と不確実性" id="toc-人的資本の異質性と不確実性" class="nav-link" data-scroll-target="#人的資本の異質性と不確実性">人的資本の異質性と不確実性</a></li>
+  </ul></li>
+  <li><a href="#企業から見た人的資本" id="toc-企業から見た人的資本" class="nav-link" data-scroll-target="#企業から見た人的資本"><span class="header-section-number">2.5</span> 企業から見た人的資本</a>
+  <ul class="collapse">
+  <li><a href="#人的資本への投資と収益" id="toc-人的資本への投資と収益" class="nav-link" data-scroll-target="#人的資本への投資と収益">人的資本への投資と収益</a></li>
+  <li><a href="#企業特殊的人的資本と雇用の関係" id="toc-企業特殊的人的資本と雇用の関係" class="nav-link" data-scroll-target="#企業特殊的人的資本と雇用の関係">企業特殊的人的資本と雇用の関係</a></li>
+  <li><a href="#労使間における人的資本の投資費用分担" id="toc-労使間における人的資本の投資費用分担" class="nav-link" data-scroll-target="#労使間における人的資本の投資費用分担">労使間における人的資本の投資費用分担</a></li>
+  <li><a href="#人的資本の性質まとめ" id="toc-人的資本の性質まとめ" class="nav-link" data-scroll-target="#人的資本の性質まとめ">人的資本の性質まとめ</a></li>
+  </ul></li>
+  <li><a href="#ミンサー型賃金関数" id="toc-ミンサー型賃金関数" class="nav-link" data-scroll-target="#ミンサー型賃金関数"><span class="header-section-number">2.6</span> ミンサー型賃金関数</a>
+  <ul class="collapse">
+  <li><a href="#賃金と教育" id="toc-賃金と教育" class="nav-link" data-scroll-target="#賃金と教育">賃金と教育</a></li>
+  <li><a href="#経験の導入" id="toc-経験の導入" class="nav-link" data-scroll-target="#経験の導入">経験の導入</a></li>
+  <li><a href="#収穫逓減の導入" id="toc-収穫逓減の導入" class="nav-link" data-scroll-target="#収穫逓減の導入">収穫逓減の導入</a></li>
+  <li><a href="#まとめ" id="toc-まとめ" class="nav-link" data-scroll-target="#まとめ">まとめ</a></li>
+  </ul></li>
+  <li><a href="#エクセルでの演習" id="toc-エクセルでの演習" class="nav-link" data-scroll-target="#エクセルでの演習"><span class="header-section-number">2.7</span> エクセルでの演習</a>
+  <ul class="collapse">
+  <li><a href="#分析結果" id="toc-分析結果" class="nav-link" data-scroll-target="#分析結果">分析結果</a></li>
+  </ul></li>
+  <li><a href="#限界と注意点" id="toc-限界と注意点" class="nav-link" data-scroll-target="#限界と注意点"><span class="header-section-number">2.8</span> 限界と注意点</a>
+  <ul class="collapse">
+  <li><a href="#教育の収益率の一定性線形性の仮定" id="toc-教育の収益率の一定性線形性の仮定" class="nav-link" data-scroll-target="#教育の収益率の一定性線形性の仮定">教育の収益率の一定性（線形性の仮定）</a></li>
+  <li><a href="#観測されない異質性と能力バイアス" id="toc-観測されない異質性と能力バイアス" class="nav-link" data-scroll-target="#観測されない異質性と能力バイアス">観測されない異質性と能力バイアス</a></li>
+  <li><a href="#自己選択セレクションの問題" id="toc-自己選択セレクションの問題" class="nav-link" data-scroll-target="#自己選択セレクションの問題">自己選択（セレクション）の問題</a></li>
+  </ul></li>
+  <li><a href="#実証研究外観" id="toc-実証研究外観" class="nav-link" data-scroll-target="#実証研究外観"><span class="header-section-number">2.9</span> 実証研究外観</a>
+  <ul class="collapse">
+  <li><a href="#日本の実証研究" id="toc-日本の実証研究" class="nav-link" data-scroll-target="#日本の実証研究">日本の実証研究</a></li>
+  <li><a href="#海外の実証研究" id="toc-海外の実証研究" class="nav-link" data-scroll-target="#海外の実証研究">海外の実証研究</a></li>
+  <li><a href="#まとめ-1" id="toc-まとめ-1" class="nav-link" data-scroll-target="#まとめ-1">まとめ</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -241,144 +318,979 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!--
+<section id="学習目標" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="学習目標"><span class="header-section-number">2.1</span> 学習目標</h2>
+<ul>
+<li>人的資本とは何かを説明できる<br>
+</li>
+<li>人的資本理論の基本的な考え方を理解する<br>
+</li>
+<li>ミンサー型賃金関数の考え方を理解する<br>
+</li>
+<li>関連実証分析について理解する</li>
+</ul>
+<p>（人的資本理論の検証モデルである内部収益率法は次週扱います。）</p>
+<div style="margin-top: 3.0em;">
 
-## 授業の目的および到達目標
+</div>
+</section>
+<section id="人的資本とは" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="人的資本とは"><span class="header-section-number">2.2</span> 人的資本とは</h2>
+<p>経済学における「資本（capital）」とは、将来の生産や利益を生み出すために用いられる資源のことを指します。</p>
+<p>代表的なものとしては、以下のような資本が挙げられます。</p>
+<ul>
+<li>物的資本（physical capital）：機械、設備、建物など<br>
+</li>
+<li>金融資本（financial capital）：資金、株式、債券など</li>
+</ul>
+<p>これらの資本は、企業の生産活動や国全体の経済成長において重要な役割を果たします。<br>
+たとえば、機械や設備が増えれば、より多くの財やサービスを生産できるようになります。</p>
+<section id="コブダグラス型生産関数" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="コブダグラス型生産関数">コブ＝ダグラス型生産関数</h3>
+<p>マクロ経済学で習う数式に、コブ＝ダグラス型生産関数があります。</p>
+<p><span class="math display">\[
+Y = K^{\alpha} L^{1-\alpha}
+\]</span></p>
+<p>この式は、資本と労働がどのように生産に貢献するかを示しています。</p>
+<ul>
+<li><span class="math inline">\(\alpha\)</span>：資本の重要度（所得に占める資本の取り分）<br>
+</li>
+<li><span class="math inline">\(1 - \alpha\)</span>：労働の重要度（所得に占める労働の取り分）</li>
+</ul>
+<p>ここで、このモデルでは、労働（L）は「量」としてしか扱われていません。</p>
+<p>つまり、</p>
+<ul>
+<li>同じ人数の労働者であれば、誰が働いても同じ生産になる（＝労働者の違いは無視される）</li>
+</ul>
+<p>という仮定になっています。</p>
+<p>労働は単に「人数」や「労働時間」として扱われています。</p>
+</section>
+<section id="拡張型コブダグラス生産関数" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="拡張型コブダグラス生産関数">拡張型コブ＝ダグラス生産関数</h3>
+<p>そこで、労働者の質（人的資本）を考慮したモデルが用いられます：</p>
+<p><span class="math display">\[
+Y = A K^{\alpha} (H L)^{1-\alpha}
+\]</span></p>
+<p>各変数の意味</p>
+<ul>
+<li><span class="math inline">\(Y\)</span>：生産量（GDP）<br>
+</li>
+<li><span class="math inline">\(A\)</span>：全要素生産性（技術水準や制度など、資本と労働では説明できない要因）<br>
+</li>
+<li><span class="math inline">\(K\)</span>：資本ストック<br>
+</li>
+<li><span class="math inline">\(L\)</span>：労働投入量（人数や労働時間）<br>
+</li>
+<li><span class="math inline">\(H\)</span>：労働者の質（人的資本）<br>
+</li>
+<li><span class="math inline">\(HL\)</span>：有効労働量（質で調整された労働）<br>
+</li>
+<li><span class="math inline">\(\alpha\)</span>：資本の所得弾力性（通常0.3〜0.4程度）</li>
+</ul>
+<p>この式は、次のことを表しています。</p>
+<p><strong>労働は「量」だけでなく「質」によっても生産に影響する</strong></p>
+<p>現実には、</p>
+<ul>
+<li>高度な教育を受けた人<br>
+</li>
+<li>熟練した技能を持つ人</li>
+</ul>
+<p>の方が、より多くの生産を生み出します。</p>
+<p>ここで重要なのは、教育は、<span class="math inline">\(H\)</span>（人的資本）を高めることで、経済全体の生産性に影響を与えるという点です。</p>
+</section>
+<section id="人的資本理論の基本的な考え方" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="人的資本理論の基本的な考え方">人的資本理論の基本的な考え方</h3>
+<p>人的資本理論では、教育や訓練を「消費」ではなく、将来の収入を増やすための「投資」として捉えます。</p>
+<p>たとえば、</p>
+<ul>
+<li>大学進学には授業料や時間といったコストがかかる<br>
+</li>
+<li>しかし、その結果として将来の賃金が上昇する可能性がある</li>
+</ul>
+<p>このとき、教育は「将来のリターンを生む投資」と考えられます。</p>
+<p><strong>直感的なイメージ</strong></p>
+<p>人的資本理論をシンプルに表すと、次のようになります：</p>
+<p>教育・訓練 → 人的資本の蓄積 → 生産性の上昇 → 賃金の上昇</p>
+<div style="margin-top: 3.0em;">
 
-本講義は、経済学の基礎的な考え方や分析手法を用いて、教育に係る諸問題、これまでに実施されてきた教育政策、教育の役割や効果について考察を深めることを目的とする。
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>人的資本（human capital）としては、どのような資本が考えられるでしょうか？</p>
+<p><strong>個人ワーク（3分）</strong></p>
+<ul>
+<li>人的資本と考えられるものを可能な限り挙げる</li>
+</ul>
+<p><strong>ペアワーク（3分）</strong></p>
+<ul>
+<li>お互いの答えを共有<br>
+</li>
+<li>違いを議論<br>
+</li>
+</ul>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>全体共有</strong></p>
+<p><a href="https://app.sli.do/event/bZhUv69DzT5W4BWTHb3Pkr">Slido</a>にキーワードを投稿してください。</p>
+<div id="fig-A02-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A02-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A02/A02-1.png" id="fig-A02-1" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A02-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;2.1
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<details>
+<summary>
+人的資本
+</summary>
+<p><strong>基本的な人的資本</strong><br>
+* 知識（例：数学・語学・専門知識）<br>
+* 技能（例：プログラミング、接客スキル、プレゼン能力）<br>
+* 経験（例：職務経験、OJT、インターン）<br>
+* 健康（例：身体的・精神的な健康）</p>
+<p><strong>認知能力・非認知能力</strong><br>
+* 論理的思考力<br>
+* 問題解決能力<br>
+* コミュニケーション能力<br>
+* 協調性（チームワーク）<br>
+* 忍耐力・継続力（グリット）<br>
+* 自己管理能力（時間管理、感情コントロール）</p>
+<p><strong>教育・資格関連</strong><br>
+* 学歴（大学・大学院など）<br>
+* 資格（簿記、TOEIC、教員免許など）<br>
+* 専門的トレーニング（職業訓練、研修）</p>
+<p><strong>労働市場で評価される能力</strong><br>
+* ITリテラシー<br>
+* データ分析能力<br>
+* 語学運用能力（実務レベル）<br>
+* リーダーシップ<br>
+* マネジメント能力</p>
+<strong>やや広い意味での人的資本（議論の余地あり）</strong><br>
+* 健康習慣（運動、睡眠）<br>
+* 人脈（ネットワーク）<br>
+* 家庭環境で身についた習慣<br>
+* 文化資本（読書習慣、教養など）
+</details>
+<p><span class="marker">では、「人脈」は人的資本でしょうか？ それとも別の資本でしょうか？</span></p>
+<details>
+<summary>
+人脈
+</summary>
+社会関係資本（social capital）という別の概念があります。
+</details>
+</section>
+</section>
+<section id="人的資本発展の背景" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="人的資本発展の背景"><span class="header-section-number">2.3</span> 人的資本発展の背景</h2>
+<p>人的資本理論は、1960年代に突然登場したわけではなく、経済学の歴史の中で徐々に形作られてきた考え方です。その背景には、「教育や技能は経済にとってどのような意味を持つのか」という問いがありました。</p>
+<p>まず、その起源は18世紀に遡ります。アダム・スミスは『国富論』（1776年）において、教育や訓練を受けた労働者を「高価な機械」に例えました。これは、教育には費用がかかるものの、それによって将来の収益が生まれるという考え方を示したものです。ここにはすでに、教育を「投資」として捉える発想の原型が見られます。</p>
+<p>その後、20世紀初頭になると、アーサー・セシル・ピグーが教育の社会的な役割に注目しました。ピグーは、教育が個人の所得を高めるだけでなく、社会全体の厚生を向上させる可能性があることを指摘しました。これは、教育には外部性（第三者への影響）があるという考え方につながります。</p>
+<p>さらに1950年代になると、開発経済学の分野で人的資本の重要性が意識されるようになります。アーサー・ルイスは、発展途上国の経済成長を分析する中で、単に労働者の数が増えるだけでは経済成長を十分に説明できないことを示しました。当時の経済モデルでは、労働は「人数」として扱われており、教育や技能の違いは考慮されていませんでした。しかし現実には、同じ人数であっても、教育水準や技能の違いによって生産性は大きく異なります。この点が、従来の理論の限界として認識されるようになりました。</p>
+<p>こうした問題意識を背景として、1960年代に人的資本理論が確立されます。セオドア・シュルツは、教育や訓練、健康への投資が経済成長の重要な要因であると主張しました。これにより、従来は見落とされていた「人への投資」が、経済分析の中心的なテーマとして位置づけられるようになります。</p>
+<p>続いて、ゲーリー・ベッカーは、教育を明確に「投資」として理論化しました。教育には授業料や時間といったコストがかかる一方で、将来の賃金上昇というリターンが得られると考え、個人が合理的に教育選択を行うという枠組みを提示しました。これにより、教育は消費ではなく、将来の利益を生む経済行動として分析されるようになりました。</p>
+<p>さらに、ジェイコブ・ミンサーは、教育と賃金の関係を実証的に分析しました。ミンサー型賃金関数と呼ばれるモデルを用いて、教育年数や職業経験が賃金にどのように影響するかを定量的に示し、人的資本理論に実証的な裏付けを与えました。</p>
+<p>以上の流れをまとめると、従来の経済学では労働は単に「量（人数）」として扱われていましたが、現実には労働者の「質（教育や技能）」が生産性や賃金に大きな影響を与えています。このギャップを埋めるために導入されたのが人的資本という概念であり、それを体系的に説明したのが人的資本理論です。</p>
+<p>したがって、人的資本理論は、「労働の質」を経済学の分析に取り込むことで、教育と経済の関係をより深く理解するための枠組みであると言えます。</p>
+</section>
+<section id="人的資本の性質" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="人的資本の性質"><span class="header-section-number">2.4</span> 人的資本の性質</h2>
+<p>人的資本は、物的資本とは異なるいくつかの重要な性質を持っています。<br>
+ここでは、教育投資の特徴や人的資本の不確実性について整理します。</p>
+<section id="教育投資の収穫逓減性" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="教育投資の収穫逓減性">教育投資の収穫逓減性</h3>
+<p>人的資本への投資は、一般に<strong>収穫逓減（diminishing returns）</strong>の性質を持つと考えられています。</p>
+<p>これは、教育や訓練を追加的に受けるほど、その効果（賃金上昇や生産性向上）が次第に小さくなるという考え方です。</p>
+<p>たとえば、</p>
+<ul>
+<li>義務教育を修了することで、基礎的な読み書き・計算能力が大きく向上する<br>
+</li>
+<li>しかし、その後にさらに教育年数を1年延ばしても、同じだけ大きな効果が得られるとは限らない</li>
+</ul>
+<p>このように、教育投資の初期段階では効果が大きく、次第に効果が小さくなると考えられます。</p>
+<p>この性質は、次のような意思決定にも関係します。</p>
+<ul>
+<li>どの段階まで教育を受けるべきか<br>
+</li>
+<li>追加的な教育投資は合理的か</li>
+</ul>
+<p>これらは次週学ぶ「内部収益率」と密接に関係します</p>
+</section>
+<section id="人的資本の異質性と不確実性" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="人的資本の異質性と不確実性">人的資本の異質性と不確実性</h3>
+<p>人的資本には、個人ごとに大きな違い（異質性）があり、さらに将来の成果には不確実性が伴います。</p>
+<p><strong>異質性</strong></p>
+<ul>
+<li>人によって得意分野や能力が異なる<br>
+</li>
+<li>同じ教育を受けても、成果（スキル・賃金）は異なる</li>
+</ul>
+<p><strong>不確実性</strong></p>
+<ul>
+<li>どの教育が自分にとって最適かは、事前には完全には分からない<br>
+</li>
+<li>ある分野に進学しても、自分に向いていない可能性がある<br>
+</li>
+<li>将来どのスキルが求められるかは変化する</li>
+</ul>
+<p>このため、</p>
+<ul>
+<li>初等・中等教育では幅広い共通科目を学び<br>
+</li>
+<li>その後、徐々に専門分野を選択していく</li>
+</ul>
+<p>という教育制度が採用されています。</p>
+<p>教育は「試行錯誤のプロセス」でもあります。</p>
+</section>
+</section>
+<section id="企業から見た人的資本" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="企業から見た人的資本"><span class="header-section-number">2.5</span> 企業から見た人的資本</h2>
+<p>これまで個人の視点から人的資本を見てきましたが、<br>
+ここでは企業の視点から考えます。</p>
+<p>人的資本は、その性質によって大きく2つに分類されます：</p>
+<ul>
+<li><p>一般的人的資本（general human capital）<br>
+→ どの企業でも通用する技能（例：語学、ITスキル）</p></li>
+<li><p>企業特殊的人的資本（specific human capital）<br>
+→ 特定の企業でのみ役立つ技能（例：社内システム、独自の業務プロセス）</p></li>
+</ul>
+<section id="人的資本への投資と収益" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="人的資本への投資と収益">人的資本への投資と収益</h3>
+<p>人的資本への投資は、「誰が費用を負担するか」という問題と密接に関係します。</p>
+<p><strong>一般的人的資本の場合</strong></p>
+<ul>
+<li>労働者が転職すると、他の企業でもその技能が活用できる<br>
+</li>
+<li>企業は投資しても回収できない可能性が高い</li>
+</ul>
+<p>→ <strong>個人が教育費用を負担する傾向</strong>があります。</p>
+<p>（例：大学進学、資格取得）</p>
+<p><strong>企業特殊的人的資本の場合</strong></p>
+<ul>
+<li>他の企業では役に立たない<br>
+</li>
+<li>転職すると価値が失われる</li>
+</ul>
+<p>→ <strong>企業が投資費用を負担しやすい傾向</strong>があります。</p>
+<p>（例：社内研修、OJT）</p>
+</section>
+<section id="企業特殊的人的資本と雇用の関係" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="企業特殊的人的資本と雇用の関係">企業特殊的人的資本と雇用の関係</h3>
+<p>企業特殊的人的資本は、雇用関係にも大きな影響を与えます。</p>
+<p>企業側の視点：</p>
+<ul>
+<li>投資した人的資本を回収するため<br>
+→ 長期雇用を望む</li>
+</ul>
+<p>労働者の視点：</p>
+<ul>
+<li>他社では価値が低い<br>
+→ 転職しにくい</li>
+</ul>
+<p>その結果：</p>
+<p><strong>長期雇用関係（日本型雇用など）が成立しやすい</strong></p>
+</section>
+<section id="労使間における人的資本の投資費用分担" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="労使間における人的資本の投資費用分担">労使間における人的資本の投資費用分担</h3>
+<p>現実には、人的資本への投資費用は、企業と労働者の間で分担されることが多いです。</p>
+<ul>
+<li>企業が研修費用を負担する代わりに、低い初任給を設定する<br>
+</li>
+<li>労働者が自己負担で資格を取得する</li>
+</ul>
+<p>このように、<strong>人的資本投資の費用と収益は、労使間でどのように分担されるかが重要な問題</strong> となります。</p>
+</section>
+<section id="人的資本の性質まとめ" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="人的資本の性質まとめ">人的資本の性質まとめ</h3>
+<ul>
+<li>教育投資には収穫逓減性がある<br>
+</li>
+<li>人的資本には異質性と不確実性がある<br>
+</li>
+<li>人的資本は「一般」と「企業特殊」に分類される<br>
+</li>
+<li>投資費用の負担は、その性質によって異なる</li>
+</ul>
+<div style="margin-top: 3.0em;">
 
-さらに、教育行政に係るデータを読み解き、その分析方法や因果的な考え方についても解説する。その際、日本のデータを基にこれまで行われてきた研究を紹介し、日本の教育政策について経済学的な見方を習得できるようにする。
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>あなた自身の「人的資本」を整理してみましょう。</p>
+<ol type="1">
+<li>あなたが現在持っている人的資本を書き出してください<br>
+</li>
+<li>それらを次の2つに分類してください</li>
+</ol>
+<ul>
+<li>一般的人的資本（どの企業でも役立つ）<br>
+</li>
+<li>企業特殊的人的資本（特定の環境でのみ役立つ）</li>
+</ul>
+<ol start="3" type="1">
+<li>今後、どの人的資本に投資したいですか？<br>
+理由も考えてください。</li>
+</ol>
+<p><strong>個人ワーク（5分）</strong></p>
+<ul>
+<li>できるだけ具体的に書く<br>
+（例：「英語」ではなく「TOEIC 700点」など）</li>
+</ul>
+<p><strong>ペアワーク（5分）</strong></p>
+<ul>
+<li>お互いのポートフォリオを比較<br>
+</li>
+<li>「なぜそれに投資したいのか」を議論</li>
+</ul>
+<details>
+<summary>
+人的資本の例（ヒント）
+</summary>
+<ul>
+<li>知識
+<ul>
+<li>専門分野（経済学、経営学など）<br>
+</li>
+<li>語学（英語、中国語など）<br>
+</li>
+<li>資格（簿記、ITパスポートなど）</li>
+</ul></li>
+<li>技能
+<ul>
+<li>ITスキル（Excel、プログラミング、データ分析）<br>
+</li>
+<li>プレゼンテーション能力<br>
+</li>
+<li>コミュニケーション能力</li>
+</ul></li>
+<li>経験
+<ul>
+<li>アルバイト（接客、マネジメント経験など）<br>
+</li>
+<li>インターンシップ<br>
+</li>
+<li>留学・海外経験</li>
+</ul></li>
+<li>非認知能力
+<ul>
+<li>粘り強さ（グリット）<br>
+</li>
+<li>協調性<br>
+</li>
+<li>主体性・リーダーシップ</li>
+</ul></li>
+<li>健康
+<ul>
+<li>体力<br>
+</li>
+<li>メンタルの安定</li>
+</ul></li>
+</ul>
+</details>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>全体共有</strong></p>
+<p>自分が投資した人的資本を、その理由と共に<a href="https://app.sli.do/event/bZhUv69DzT5W4BWTHb3Pkr">Slido</a>に投稿してください。</p>
+<div id="fig-A02-2" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A02-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A02/A02-2.png" id="fig-A02-2" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A02-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;2.2
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top: 3.0em;">
 
-本講義を通して、教育経済学の基本的な考え方を理解し、それを用いて日本で行われている教育政策について自分の言葉で平易に説明できるようになることを到達目標とする。
+</div>
+</section>
+</section>
+<section id="ミンサー型賃金関数" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="ミンサー型賃金関数"><span class="header-section-number">2.6</span> ミンサー型賃金関数</h2>
+<p>人的資本の蓄積が賃金に与える影響を計量的に分析する枠組みとして、ミンサー型の賃金関数があります。</p>
+<section id="賃金と教育" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="賃金と教育">賃金と教育</h3>
+<p>今、単純化のために次のように考えます。</p>
+<ul>
+<li>人はある年齢まで教育を受ける<br>
+</li>
+<li>教育によって知識・技能（＝人的資本）を獲得する<br>
+</li>
+<li>その能力に応じて賃金が決まる</li>
+</ul>
+<p>まず、教育によって得られる能力が教育年数に比例すると仮定します。<br>
+また、賃金はその能力に比例して決まると考えると、次のような関係が想定されます。</p>
+<p><span class="math display">\[
+w = \beta_0 + \beta_1 S
+\]</span></p>
+<p>ここで、</p>
+<ul>
+<li><span class="math inline">\(w\)</span>：賃金<br>
+</li>
+<li><span class="math inline">\(S\)</span>：教育年数（Schooling）</li>
+</ul>
+<p>つまり、このようなイメージです。<span class="marker">以下はあくまでもイメージ図です</span>。</p>
+<div style="margin-top: 3.0em;">
 
-## 授業計画
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lecA02_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>さらに、教育の効果は「加法的」ではなく「比例的（率）」に効くと考えると、対数を取った次の形が自然です：</p>
+<p><span class="math display">\[
+\ln w = \beta_0 + \beta_1 S
+\]</span></p>
+<p>教育年数が1年増えると、賃金が一定割合（％）で増加することを意味します。</p>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>なぜ対数を取るのか？
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>対数を取る理由は主に2つあります：</p>
+<ol type="1">
+<li><strong>解釈が容易になる</strong>
+<ul>
+<li><span class="math inline">\(\beta_1\)</span> は「教育1年あたりの賃金の％変化」を意味する</li>
+</ul></li>
+<li><strong>現実に近い仮定になる</strong>
+<ul>
+<li>賃金は「差」ではなく「割合」で増えることが多い</li>
+</ul></li>
+</ol>
+<p>（例：年収200万円 → 210万円 と<br>
+　　　年収1000万円 → 1010万円 は意味が異なる）</p>
+<div style="margin-top: 2.0em;">
 
-### 講義前半：基礎理論と世代間連鎖 {.unnumbered}
-* 第1回：概要説明
-* 第2回：教育投資の基礎理論（1）
-    * 人的資本理論を紹介し、教育の効果、需要の目的を経済学的に考える。
-* 第3回：教育投資の基礎理論（2）
-    * 人的資本理論をベースとして、教育投資の収益率の計測方法を学ぶ。
-* 第4回：教育投資の基礎理論（3）
-    * 学歴による賃金格差を説明するその他の理論・考え方の紹介。
-* 第5回：教育投資の基礎理論（4）
-    * 教育投資の基礎理論のまとめ。
-* 第6回：教育と世代間移転（1）
-    * 日本における世代間連鎖の現状、大衆教育社会、世代間連鎖モデルの紹介。
-* 第7回：中間レポート発表・討論
+</div>
+</div>
+</div>
+<div style="margin-top: 2.5em;">
 
-### 講義後半：実証分析と政策評価 {.unnumbered}
-* 第8回：教育の効果に係る経済学的実証分析
-* 第9回：教育政策の経済学的評価（1）
-* 第10回：教育政策の経済学的評価（2）
-* 第11回：教育政策の経済学的評価（3）
-* 第12回：教育政策実証分析紹介
-* 第13回：期末レポートについて
+</div>
+</section>
+<section id="経験の導入" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="経験の導入">経験の導入</h3>
+<p>しかしながら、実社会においては、教育だけでなく<strong>労働市場での経験</strong>を通じて能力が高まることが一般的です。</p>
+<p>したがって、賃金は経験にも依存すると考えられます：</p>
+<p><span class="math display">\[
+\ln w = \beta_0 + \beta_1 S + \beta_2 X
+\]</span></p>
+<p>ここで、</p>
+<ul>
+<li><span class="math inline">\(X\)</span>：労働市場経験（Experience）</li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="収穫逓減の導入" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="収穫逓減の導入">収穫逓減の導入</h3>
+<p>さらに、経験の効果は常に一定ではありません。</p>
+<ul>
+<li>若い頃：急速にスキルが向上 → 賃金も大きく上昇<br>
+</li>
+<li>中高年：成長は緩やか → 賃金の上昇も鈍化</li>
+</ul>
+<p>つまり、経験の効果は<strong>逓減する</strong>と考えられます。</p>
+<p>これを表現するために、経験の二乗項を導入します：</p>
+<p><span class="math display">\[
+\ln w = \beta_0 + \beta_1 S + \beta_2 X + \beta_3 X^2
+\]</span></p>
+<p>ここで通常、</p>
+<ul>
+<li><span class="math inline">\(\beta_2 &gt; 0\)</span><br>
+</li>
+<li><span class="math inline">\(\beta_3 &lt; 0\)</span></li>
+</ul>
+<p>となり、賃金は経験に対して<strong>逆U字型</strong>の関係を持ちます。</p>
+<p>つまり、このようなイメージです。<span class="marker">以下はあくまでもイメージ図です</span>。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="lecA02_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="まとめ" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="まとめ">まとめ</h3>
+<p>以上をまとめると、賃金は次のように表されます：</p>
+<p><span class="math display">\[
+\ln w = \beta_0 + \beta_1 S + \beta_2 X + \beta_3 X^2 + \varepsilon
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\varepsilon\)</span>：観測されない要因（能力、家庭環境など）</li>
+</ul>
+<p>この形の関数が<strong>ミンサー型賃金関数</strong>と呼ばれます。</p>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>実証分析での拡張
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>実際の研究では、この基本形に加えて様々な変数が追加されます。</p>
+<ul>
+<li>性別<br>
+</li>
+<li>学歴ダミー（大学卒かどうかなど）<br>
+</li>
+<li>職業・産業<br>
+</li>
+<li>地域</li>
+</ul>
+<p>ただし基本的な発想は同じで、「教育と経験が賃金にどう影響するか」を推定します。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="エクセルでの演習" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="エクセルでの演習"><span class="header-section-number">2.7</span> エクセルでの演習</h2>
+<p>デモンストレーションで使用するファイルを、こちらからダウンロードしてください。</p>
+<p><a href="files/A02/mincer_practice.xlsx">ミンサー型賃金関数デモデータ（Excel）</a></p>
+<section id="分析結果" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="分析結果">分析結果</h3>
+<p>エクセルを用いた回帰分析の結果、以下の推定式が得られました。</p>
+<p><span class="math display">\[
+\ln w = 5.113 + 0.073 S + 0.027 X - 0.0004 X^2
+\]</span></p>
+<p>（※ <span class="math inline">\(w\)</span>: 賃金, <span class="math inline">\(S\)</span>: 教育年数, <span class="math inline">\(X\)</span>: 経験年数）</p>
+<p><strong>各係数の解釈</strong></p>
+<p>実証分析から得られた各数値は、以下のような経済学的な意味を持っています。</p>
+<ul>
+<li>教育年数の係数 (<span class="math inline">\(0.073\)</span>)
+<ul>
+<li>教育年数が1年増えるごとに、賃金が約7.3%上昇することを意味します。<br>
+</li>
+<li>これが人的資本理論で重視される「教育の収益率」です。</li>
+</ul></li>
+</ul>
+<div style="margin-top: 1.5em;">
+
+</div>
+<ul>
+<li>経験年数の係数 (<span class="math inline">\(0.027\)</span>)
+<ul>
+<li>キャリアの初期段階において、経験が1年増えるごとに賃金が約2.7%上昇する傾向を示しています。</li>
+</ul></li>
+</ul>
+<div style="margin-top: 1.5em;">
+
+</div>
+<ul>
+<li>経験年数二乗の係数 (<span class="math inline">\(-0.0004\)</span>)
+<ul>
+<li>この値がマイナスであることが非常に重要です。<br>
+</li>
+<li>経験年数が増えるほど賃金の伸び率が鈍化し、最終的に賃金カーブが「逆U字型」を描くことを数学的に裏付けています。</li>
+</ul></li>
+</ul>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>予測
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>この式に想定する人の値をを代入すれば、その人の賃金を予測することができます。<br>
+例えば、大学卒業（<span class="math inline">\(S=16\)</span>）して10年働いた（<span class="math inline">\(X=10\)</span>）ときの賃金 <span class="math inline">\(\ln w\)</span> は、以下のように計算できます。</p>
+<p><span class="math display">\[
+\begin{aligned}
+\ln w &amp;= 5.113 + 0.07 \times 16 + 0.027 \times 10 - 0.0004 \times 10^2 \\
+&amp;= 6.511
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[e^{6.511} \times 10 \approx 672.5 \text{ 万円}\]</span></p>
+</div>
+</div>
+<div style="margin-top: 3.0em;">
+
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>ここまで、ミンサー型賃金関数について学んできましたが、ミンサー型賃金関数も万能ではありません。どのような問題点があるか、考えてみましょう。</p>
+<p><strong>個人ワーク（3分）</strong></p>
+<ul>
+<li>ミンサー型賃金関数の問題点を考える</li>
+</ul>
+<p><strong>ペアワーク（3分）</strong></p>
+<ul>
+<li>お互いの答えを共有<br>
+</li>
+<li>違いを議論<br>
+</li>
+</ul>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>全体共有</strong></p>
+<p><a href="https://app.sli.do/event/bZhUv69DzT5W4BWTHb3Pkr">Slido</a>にミンサー型賃金関数の問題点を投稿してください。</p>
+<div id="fig-A02-3" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A02-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A02/A02-3.png" id="fig-A02-3" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A02-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;2.3
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="限界と注意点" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="限界と注意点"><span class="header-section-number">2.8</span> 限界と注意点</h2>
+<p>ミンサー型賃金関数は非常に強力なツールですが、その解釈にはいくつかの重要な注意点があります。実証分析を行う際には、以下の問題点を考慮する必要があります。</p>
+<section id="教育の収益率の一定性線形性の仮定" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="教育の収益率の一定性線形性の仮定">教育の収益率の一定性（線形性の仮定）</h3>
+<p>基本モデルでは、人的資本の収益率が人的資本の水準に関わらず <span class="math inline">\(\beta_1\)</span> で固定されています。<br>
+また、対数線形モデルでは、教育年数が1年増えるごとに賃金が一定割合（％）で増加すると仮定しています。</p>
+<ul>
+<li>問題点<br>
+小学校での1年間と、大学での1年間が、賃金に与える「率」の効果として同じように扱われています。</li>
+<li>現実<br>
+教育段階（初等・中等・高等教育）によって収益率が異なる可能性や、特定の学位（大学卒業など）を取得すること自体に大きな意味がある場合などは、この単純なモデルでは捉えきれません。</li>
+</ul>
+<p>※ 実証分析では、学歴ダミー変数を用いたり、教育年数の非線形性を考慮するなどの拡張が行われることが一般的です。</p>
+</section>
+<section id="観測されない異質性と能力バイアス" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="観測されない異質性と能力バイアス">観測されない異質性と能力バイアス</h3>
+<p>教育の収益率が、必ずしも「教育そのものの純粋な効果」を推定できていない可能性があります。</p>
+<ul>
+<li>問題点<br>
+教育年数が長い人は、もともと学習能力が高かったり、家庭・社会環境に恵まれていたりする傾向があります。</li>
+<li>懸念<br>
+そのような人々は、仮に高い教育を受けなかったとしても、その能力や背景によって高い賃金を得ていたかもしれません。この「もともとの能力（能力バイアス）」の影響を排除しない限り、教育の効果を過大評価してしまう恐れがあります。</li>
+</ul>
+<p>※ 一般に、能力が高い人ほど教育年数も長く、賃金も高くなる傾向があるため、このバイアスは教育の収益率を上方に歪める可能性があります。</p>
+</section>
+<section id="自己選択セレクションの問題" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="自己選択セレクションの問題">自己選択（セレクション）の問題</h3>
+<p>進学の意思決定は、個人の合理的な判断に基づく「自己選択（Self-selection）」の結果です。</p>
+<ul>
+<li>問題点
+<ul>
+<li>高卒で働き始めた人は、「大学に行くよりも今働く方が有利だ」と判断した可能性があります。</li>
+<li>大学に進学した人は、「大学に行く方が将来的に有利だ」と確信があるからこそ投資を行っています。</li>
+</ul></li>
+<li>結論<br>
+このように、各自が自分にとって有利な道を選んだ結果として得られたデータ（サンプル）で推計を行うと、教育の効果が実際よりも上振れして推定される「セレクション・バイアス」が生じる可能性があります。</li>
+</ul>
+<p>※ セレクションの問題は、個人が自身の期待収益に基づいて教育選択を行うことから生じます。そのため、「教育が賃金を高めた」のか、「賃金が高くなる人が教育を選んだ」のかを区別することが難しくなります。</p>
+<p>※ これらの問題に対処するために、近年の研究では、操作変数法（IV）や自然実験、ランダム化比較試験（RCT）などの因果推論手法が用いられています。</p>
+</section>
+</section>
+<section id="実証研究外観" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="実証研究外観"><span class="header-section-number">2.9</span> 実証研究外観</h2>
+<p>人的資本理論やミンサー型賃金関数は、世界中で膨大な実証研究によって検証されてきました。<br>
+ここでは、日本と海外の代表的な研究成果を紹介します。</p>
+<section id="日本の実証研究" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="日本の実証研究">日本の実証研究</h3>
+<p>日本の場合、ほとんど人が高校までは卒業することから、分析の対象は高校以上になることがほとんどです。</p>
+<p>1990年代以降、様々なデータセットを用いた分析が行われ、日本の私的教育投資収益率は概ね 7%から11% の範囲に収まるとされています。以下の表は、「概説教育経済学（松塚ゆかり・日本評論社）」からの抜粋です。</p>
+<table class="table-hover caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 25%">
+<col style="width: 20%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">分析者（年）</th>
+<th style="text-align: left;">対象期間</th>
+<th style="text-align: left;">対象・区分</th>
+<th style="text-align: left;">収益率（主な結果）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">田中 (1994)</td>
+<td style="text-align: left;">1966–1989年</td>
+<td style="text-align: left;">男子（大卒）</td>
+<td style="text-align: left;">9%から7%へ減少傾向</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">荒井 (1995)</td>
+<td style="text-align: left;">1965–1985年</td>
+<td style="text-align: left;">男子（大卒）</td>
+<td style="text-align: left;">8.65%から6.58%へ減少傾向</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Arai (1998)</td>
+<td style="text-align: left;">1974–1993年</td>
+<td style="text-align: left;">大学（男子）</td>
+<td style="text-align: left;">9.91%から8.83%へ減少</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">短大（女子）</td>
+<td style="text-align: left;">11.44%から8.53%へ減少</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">島 (2008)</td>
+<td style="text-align: left;">1975–2003年</td>
+<td style="text-align: left;">男子</td>
+<td style="text-align: left;">1990年代後半から増加（6.5%〜8.0%）</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">女子</td>
+<td style="text-align: left;">1990年代前半から増加（9.5%〜11.5%）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">岩村 (1996)</td>
+<td style="text-align: left;">1992年</td>
+<td style="text-align: left;">男子</td>
+<td style="text-align: left;">社会科学系：7.79%〜10.49%<br>理工学系：8.07%〜8.99%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">経済企画庁 (1998)</td>
+<td style="text-align: left;">1994年</td>
+<td style="text-align: left;">国立大学</td>
+<td style="text-align: left;">6.8%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">私立大学</td>
+<td style="text-align: left;">5.9%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">島 (2017)</td>
+<td style="text-align: left;">1999年</td>
+<td style="text-align: left;">国立大学（平均）</td>
+<td style="text-align: left;">8.6%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">私立大学（平均）</td>
+<td style="text-align: left;">6.5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">難関私立（偏差値55以上）</td>
+<td style="text-align: left;">8.7%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">低偏差値校（45以下）</td>
+<td style="text-align: left;">5.0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ono (2004)</td>
+<td style="text-align: left;">1995年</td>
+<td style="text-align: left;">大学1年間</td>
+<td style="text-align: left;">8.7%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">矢野・島 (2000)</td>
+<td style="text-align: left;">1965年 / 1995年</td>
+<td style="text-align: left;">平均収益率（初等〜高等）</td>
+<td style="text-align: left;">10.2%（1965年）→ 8.5%（1995年）</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">濱中 (2009)</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">専修学校（女子）</td>
+<td style="text-align: left;">有資格職に就く場合、大学卒業者よりも教育効果が高いケースがあることを解明</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 3.0em;">
+
+</div>
+<p><strong>文献リスト</strong></p>
+<ul>
+<li>Arai, K. (1998) “The Economics of Education: An Analysis of College-Going Behavior,” <em>Journal of the Japanese and International Economies</em></li>
+<li>荒井 一博 (1995) 『教育の経済学―大学進学行動の分析』 有斐閣</li>
+<li>岩村 美智恵 (1996) 「高等教育の私的収益率―教育経済学の展開」『教育社会学研究』 第58集</li>
+<li>経済企画庁経済研究所 (編) (1998)** 『エコノミストによる教育改革への提言―「教育経済研究会」報告書』 大蔵省印刷局</li>
+<li>島 一則 (2008) 「大学進学の経済的効果についての実証分析」塚原修一編『高等教育の現代的変容と多面的展開』</li>
+<li>島 一則 (2017) 「国立・私立大学別の教育投資収益率の計測」『大学経営政策研究』 第7号</li>
+<li>田中 宏 (1994) 「戦後日本の大学教育需要の時系列分析―内部収益率理論の再考察」『経済経営論叢』 第28巻4号</li>
+<li>濱中 淳子 (2009) 「専修学校卒業者の就業実態―職業教育に期待できる効果の範囲を探る」『日本労働研究雑誌』 No.&nbsp;588</li>
+<li>矢野 眞和・島 一則 (2000) 「学歴社会の未来像―所得からみた教育と職業」近藤博之編『日本の階層システム 3 戦後日本の教育社会』 東京大学出版会</li>
+<li>Ono, H. (2004) “Does Examination Hell Pay Off? A Cost-Benefit Analysis of ‘Ronin’ and College Education in Japan,” <em>Economics of Education Review</em></li>
+</ul>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+<section id="海外の実証研究" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="海外の実証研究">海外の実証研究</h3>
+<p>人的資本理論の妥当性を検証するため、Patrinos and Psacharopoulos (2026) は世界54カ国、145の研究から得られた191の推計値を統合し、最新の知見を報告しています。</p>
+<p>世界全体で見ると、教育投資の収益率は一貫して高い水準にあります。</p>
+<table class="table-hover caption-top table">
+<colgroup>
+<col style="width: 44%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">国の所得グループ</th>
+<th style="text-align: center;">OLS推計（相関）</th>
+<th style="text-align: center;">IV推計（因果）</th>
+<th style="text-align: center;">推計数 (N)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">高所得国 (HIC)</td>
+<td style="text-align: center;">6.6%</td>
+<td style="text-align: center;">8.4%</td>
+<td style="text-align: center;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">中所得・低所得国 (LDC)</td>
+<td style="text-align: center;">8.1%</td>
+<td style="text-align: center;">12.5%</td>
+<td style="text-align: center;">29</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">低所得国 (LIC)</td>
+<td style="text-align: center;">10.3%</td>
+<td style="text-align: center;">11.7%</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">全世界平均</td>
+<td style="text-align: center;">7.1%</td>
+<td style="text-align: center;">9.8%</td>
+<td style="text-align: center;">54</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 3.0em;">
+
+</div>
+<p><strong>文献リスト</strong></p>
+<p>Patrinos, H. A., &amp; Psacharopoulos, G. (2026) “Causal returns to education,” <em>International Journal of Educational Development</em>, 122, 103565.</p>
+</section>
+<section id="まとめ-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="まとめ-1">まとめ</h3>
+<p>実証研究から得られる重要な結論は以下の通りです：</p>
+<ul>
+<li>教育は賃金を上昇させる傾向がある（ほぼ一貫した結果）<br>
+</li>
+<li>教育の収益率は国や制度によって異なる<br>
+</li>
+<li>因果推論を用いた研究でも、教育の効果は概ね確認されている<br>
+</li>
+<li>ただし、その大きさはバイアスや制度によって変化する</li>
+</ul>
+<p>したがって、</p>
+<p><strong>人的資本理論は実証的にも強く支持されているが、その解釈には慎重さが必要</strong></p>
+<p>と言えます。</p>
 
 
-## 教育分野における政府の関与
-出典：小塩隆士（2002）『教育の経済分析』序章「教育の経済学的特徴」より抜粋
-
-### なぜ政府は教育に介入するのか？ {.unnumbered}
-教育はそれを受ける個人だけでなく、社会全体に利益をもたらす性質を持っている。
-* 外部性（externalities）、外部経済効果（external economy）
-個人が教育需要の大きさを決める場合、自分にとって必要な効用だけを考慮するため、社会全体にとって最適な水準よりも過少になる可能性がある。このため、政府が費用を肩代わりして供給を支える。
-
-### 公共財としての教育 {.unnumbered}
-公共財の定義：
-1. 非競合性：誰かが消費しても他の人の消費を減らさない（例：公園、道路）
-2. 排除不可能性：誰かの利用を拒否できない（例：国防、警察）
-
-教育の性質：
-非競合性は概ね満たされるが、排除不可能性は完全には満たされない。
-* 準公共財（quasi public goods）
-純粋な私的財とは異なるため、価格のみでその価値を評価することは難しい。
-
-### 価値財としての教育 {.unnumbered}
-価値財とは、政府が消費者主権に介入し、消費者の行動を矯正することで社会的に利益があると考える財やサービスのこと。
-* 消費者の情報不足や誤解により自ら最適な選択ができない場合、政府が介入して提供する。
-* 日本国憲法第26条：教育を受ける権利の保障と、保護者の教育を受けさせる義務。
-これらを踏まえ、教育は価値財であると考えられる。
-
-### 教育は公平性追求の手段か？ {.unnumbered}
-教育機会の欠如は格差に直結するため、政府が提供すべきという考えがある。
-* 機会の平等と結果の平等
-しかし、同じ教育を受けても個人の能力差により教育効果が異なり、かえって所得格差が広がる可能性もある。個人の潜在能力を事前に把握することは困難なため、公平性のみで教育供給を完全に正当化することは難しい。
-
-### 政府関与の多面性 {.unnumbered}
-経済学的な理屈（外部性や公共財）だけでは、政府が直接供給すべきという結論には直結しない。民間（私立学校など）による供給という選択肢もある。
-ただし、教育には以下の側面があることを忘れてはならない。
-* 政治的側面（統治）
-* 文化的な側面（文化の伝承）
-* 市民社会の維持
-
-
-
-## 家計から見た教育
-出典：小塩隆士（2002）『教育の経済分析』
-
-### 投資としての側面 {.unnumbered}
-教育は将来の収益を期待する投資活動である。
-* 教育の不確実性：消費者がリスクを嫌う（危険回避的）であれば需要は弱まるが、逆に過大な期待を抱く場合もある。
-* 自己冷却的な側面：教育を受ける過程で自身の能力が判明し、期待が現実的になっていく。
-
-### 消費財としての側面 {.unnumbered}
-教育そのものを楽しむ、あるいは満足を得る行為。
-* 本人の満足：知的好奇心の充足。
-* 親の満足：子どもを塾やブランド校に通わせることによる自己満足、あるいはステータスの誇示（誇示的消費）。
-
-### 教育需要の主体と目的の整理 {.unnumbered}
-
-| 主体 \ 目的 | 投資 | 消費 |
-| :--- | :--- | :--- |
-| 本人（子ども） | (1) 本人の投資としての教育 | (2) 本人の消費としての教育 |
-| 親 | (3) 親の投資としての教育 | (4) 親の消費としての教育 |
-
-(1) 本人の投資：国家資格取得のための専門学校、奨学金での進学など。人的資本論の想定。
-(2) 本人の消費：趣味の習い事など。外部性は乏しく、政府介入の根拠は弱い。
-(3) 親の投資：将来の豊かな生活のため。金銭的見返りがない場合は「所得移転」に近い。
-(4) 親の消費：親の効用（満足感）のため。ブランド校通学など。政府が支援する根拠は薄れる。
-
-教育需要はこれらが重層構造になっており、ライフステージによって変化する。
-
-
-
-## 教育需要について
-
-これまでの議論を聞いて、自分の場合には教育需要のパターン(1)から(4)の中でどの要素が最も強いか、その理由は何かを考えなさい。
-（プライベートな内容を避けたい場合は、架空の人物を設定して論理的に説明すること。）
-
-
-
-## 人的資本論
-
-### 人的資本（Human Capital）の定義 {.unnumbered}
-労働者に備わっている知識、技能、教養、ノウハウの総称。教育を、労働生産性を高めるための投資として捉える。
-
-
-
-### 教育需要の決定要因 {.unnumbered}
-費用と便益を比較して進学を決定する。
-* 費用：授業料、教材費、機会費用（放棄所得：進学せずに働いていたら得られたはずの賃金）
-* 便益：将来得られる賃金の上昇分（例：高卒と大卒の賃金差）
-
-
-
-### 教育需要が有限である理由 {.unnumbered}
-1. 流動性制約：自由に借入ができない、あるいは手元資金の不足により投資が制限される状況。
-2. 収穫逓減性：投資を増やすほど、追加投入に対する成果の増加率が低下していく現象。
-
-### 人的資本の異質性と不確実性 {.unnumbered}
-子ども一人ひとりに適した人的資本の内容は事前にはわからず、収益率も異なる。
-* 初等・中等教育では共通科目を学び、徐々に自身の向き不向きを把握して専門を選択していく。
-
-### 企業から見た人的資本 {.unnumbered}
-* 一般的人的資本：どの企業でも通用する技能。企業は投資費用を回収できない（転職されるため）ので、個人が負担する。
-* 企業特殊的人的資本：特定の企業でしか役立たない技能。
-
--->
-
-
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
