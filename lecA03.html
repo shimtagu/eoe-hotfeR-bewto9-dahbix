@@ -73,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <meta name="robots" content="noindex, nofollow">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -216,8 +245,33 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#学習目標" id="toc-学習目標" class="nav-link active" data-scroll-target="#学習目標"><span class="header-section-number">3.1</span> 学習目標</a></li>
+  <li><a href="#大学進学の判断" id="toc-大学進学の判断" class="nav-link" data-scroll-target="#大学進学の判断"><span class="header-section-number">3.2</span> 大学進学の判断</a></li>
+  <li><a href="#収益率の計算方法" id="toc-収益率の計算方法" class="nav-link" data-scroll-target="#収益率の計算方法"><span class="header-section-number">3.3</span> 収益率の計算方法</a>
+  <ul class="collapse">
+  <li><a href="#現在価値の考え方" id="toc-現在価値の考え方" class="nav-link" data-scroll-target="#現在価値の考え方">現在価値の考え方</a></li>
+  <li><a href="#複利の考え方" id="toc-複利の考え方" class="nav-link" data-scroll-target="#複利の考え方">複利の考え方</a></li>
+  <li><a href="#正味現在価値法" id="toc-正味現在価値法" class="nav-link" data-scroll-target="#正味現在価値法">正味現在価値法</a></li>
+  <li><a href="#npvによる変化予測" id="toc-npvによる変化予測" class="nav-link" data-scroll-target="#npvによる変化予測">NPVによる変化予測</a></li>
+  </ul></li>
+  <li><a href="#内部収益率" id="toc-内部収益率" class="nav-link" data-scroll-target="#内部収益率"><span class="header-section-number">3.4</span> 内部収益率</a>
+  <ul class="collapse">
+  <li><a href="#現実とのズレ" id="toc-現実とのズレ" class="nav-link" data-scroll-target="#現実とのズレ">現実とのズレ</a></li>
+  <li><a href="#日本国内の分析結果" id="toc-日本国内の分析結果" class="nav-link" data-scroll-target="#日本国内の分析結果">日本国内の分析結果</a></li>
+  <li><a href="#関連動画クリックすると音が出ます" id="toc-関連動画クリックすると音が出ます" class="nav-link" data-scroll-target="#関連動画クリックすると音が出ます">関連動画（クリックすると音が出ます）</a></li>
+  </ul></li>
+  <li><a href="#演習課題宿題" id="toc-演習課題宿題" class="nav-link" data-scroll-target="#演習課題宿題"><span class="header-section-number">3.5</span> 演習課題（宿題）</a>
+  <ul class="collapse">
+  <li><a href="#仮定" id="toc-仮定" class="nav-link" data-scroll-target="#仮定">仮定</a></li>
+  <li><a href="#問題" id="toc-問題" class="nav-link" data-scroll-target="#問題">問題</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -241,107 +295,721 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<!-- 
+以下の時間配分で実施
+
+30分（〜11：45）
+・
+
+30分（〜12：15）
+・（Activity 2）
+
+30分（〜12：45）
+・
+（Activity 3）
+
+5分（〜12：50）
+・
+
+10分（〜13：00）
+・確認テスト
+-->
+<section id="学習目標" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="学習目標"><span class="header-section-number">3.1</span> 学習目標</h2>
+<ul>
+<li>人的資本理論をベースとして、教育投資の収益率の計測方法を理解する。<br>
+</li>
+<li>現在価値、大学進学の基本的な考え方を理解する。<br>
+</li>
+<li>内部収益率に関する実際の計算問題演習に取り組む。</li>
+</ul>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+<section id="大学進学の判断" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="大学進学の判断"><span class="header-section-number">3.2</span> 大学進学の判断</h2>
+<p>教育経済学では、教育を需要するかどうか、人はその費用と便益を考慮して決定すると考えます。</p>
+<p>これを大学進学の判断を例に考えてみましょう。</p>
+<p>まず、大学に行かなかった場合の生涯賃金を以下のように単純に考えます。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div id="fig-A03-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="80%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A03-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A03/A03-1.png" id="fig-A03-1" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A03-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;3.1
+</figcaption>
+</figure>
+</div>
+<p>人は18歳で働き始め、60歳で定年を迎えるまで、42年間働きます。また、経験を積むにつれて生産性が向上するため、賃金も年齢と共に上がります。</p>
+<p>次に、大学に進学した場合の賃金を考えます。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div id="fig-A03-2" class="quarto-float quarto-figure quarto-figure-center anchored" width="80%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A03-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A03/A03-2.png" id="fig-A03-2" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A03-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;3.2
+</figcaption>
+</figure>
+</div>
+<p>大学卒業後、22歳で働き始め、60歳で定年を迎えるまで、38年間働きます。また、ここでは、大学で学んだことで高い生産性が得られ、初年度から高校卒業者よりも高い賃金が得られるとします。そしてさらに、経験を積むにつれて伸びる生産性についても、高校卒業者よりも大きいとします。</p>
+<div style="margin-top: 3.0em;">
+
+</div>
+<p><strong>ブレスト</strong>：ここまでの話を聞いて、大学に進学した場合の費用と便益について、どのように計算したら良いか考えてみましょう。</p>
+<p><strong>個人ワーク（3分）</strong></p>
+<ul>
+<li>ワークシートの裏に、大学進学の費用と便益の計算方法について、その考え方を書き、どのような場合には大学に進学し、どのような場合には進学しないか考えてください。</li>
+</ul>
+<p><strong>ペアワーク（3分）</strong></p>
+<ul>
+<li>お互いの答えを共有し、違いを確認してください。</li>
+</ul>
+<div style="margin-top: 3.0em;">
+
+</div>
+<p>それでは、みんなで考えましょう。</p>
+<ul>
+<li><p>費用：授業料、教材費</p>
+<details>
+<summary>
+</summary>
+<p>機会費用（放棄所得）<br>
+進学せずに働いていたら得られたはずの賃金</p>
+</details></li>
+<li><p>便益：将来に渡り得られる賃金の上昇分（高卒と大卒の賃金差）</p></li>
+<li><p>単純に、便益 − 費用 を考え、進学するかどうか判断する。</p></li>
+</ul>
+<div style="margin-top: 3.0em;">
+
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>具体的に計算してみよう。</p>
+<p><strong>個人ワーク（5分）</strong></p>
+<p>以下の場合について、大学に進学すべきか、しない方が良いか、考えてください。</p>
+<ul>
+<li><p>高卒の賃金：20万円/月<br>
+18歳から60歳まで42年間元気に働ける</p></li>
+<li><p>大卒の賃金：25万円/月<br>
+22歳から60歳まで38年間元気に働ける</p></li>
+<li><p>大学の学費：100万円/年</p></li>
+</ul>
+<p>賃金はボーナスなし、昇給なしと仮定し、さらに時間による費用の割引率も考えない場合、大学に進学することは合理的であると考えられますか？</p>
+<p><strong>ペアワーク（5分）</strong></p>
+<ul>
+<li>お互いの答えを共有<br>
+</li>
+<li>違いを議論<br>
+</li>
+</ul>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>全体共有</strong></p>
+<p><a href="https://app.sli.do/event/eP5uZUb3q4vwwkEQpnMzz7">Slido</a>に投票してください。</p>
+<div id="fig-QR-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-QR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A03/QR-1.png" id="fig-QR-1" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-QR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;3.3
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<details>
+<summary>
+解答
+</summary>
+<ul>
+<li><p>高卒の生涯賃金</p>
+<ul>
+<li>20万円×12か月×42年間＝10,080万円</li>
+</ul></li>
+<li><p>大卒の生涯賃金</p>
+<ul>
+<li><p>25万円/月×12か月×38年間－100万円×4年間＝11,000万円</p>
+<p>ここから、機会費用（20万円×12か月×4年間=960万円）を引くと</p>
+<p>10,040万円</p></li>
+</ul></li>
+</ul>
+つまり、今回の場合では、大学に進学しない方が合理的となる。
+</details>
+<p><strong>大学に進学すると直接経費がかかる</strong></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div id="fig-A03-3" class="quarto-float quarto-figure quarto-figure-center anchored" width="80%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A03-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A03/A03-3.png" id="fig-A03-3" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A03-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;3.4
+</figcaption>
+</figure>
+</div>
+<p><strong>大学に進学すると機会費用がかかる</strong></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div id="fig-A03-4" class="quarto-float quarto-figure quarto-figure-center anchored" width="80%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A03-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A03/A03-4.png" id="fig-A03-4" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A03-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;3.5
+</figcaption>
+</figure>
+</div>
+<p><strong>大学進学の合理的判断</strong></p>
+<p>生涯賃金 − 直接費用 − 機会費用 が高校卒業卒の生涯賃金と比べて判断する。<br>
+（もちろん、金銭面が全てではない。）</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div id="fig-A03-5" class="quarto-float quarto-figure quarto-figure-center anchored" width="80%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A03-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A03/A03-5.png" id="fig-A03-5" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A03-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;3.6
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="収益率の計算方法" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="収益率の計算方法"><span class="header-section-number">3.3</span> 収益率の計算方法</h2>
+<p>ここまでは基本的な考え方を理解するために、仮定を単純化して考えてきました。ここからは、もう少し現実的な仮定をおいていきます。</p>
+<section id="現在価値の考え方" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="現在価値の考え方">現在価値の考え方</h3>
+<p>経済学では、今現在のお金の価値と、将来のお金の価値は異なると考えます。</p>
+<p>「今100万円を受け取るか、一年後に利子をつけて受け取るか。」どちらがいいですか？</p>
+<p>仮に利子が5%だとすれば、一年後には105万円受け取れます。</p>
+<p>ここで逆に、一年後に5%の利子が付いて100万円になっている金額を考えてみましょう。</p>
+<p>一年後の100万円を 1.05 で割り95.23万円（100万円÷1.05）です。</p>
+<p>つまり、一年後の100万円は現在の価値に直すと95.23万円（100万円÷1.05）となります。</p>
+<p><span class="marker">大学に進学するために今必要な学費や機会費用が、将来得られる賃金プレミアムと見合うかを判断するには、すべての値を「現在価値」に換算して比較する必要があります。</span></p>
+</section>
+<section id="複利の考え方" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="複利の考え方">複利の考え方</h3>
+<p>利子にもまた利子がつくことを「複利」と呼びます。</p>
+<ul>
+<li><p>100万円を金利5%で2年間預ける場合</p>
+<ul>
+<li><p>1年後：105万円</p></li>
+<li><p>2年後：105万円×1.05 = 110.25万円<br>
+（1年目の利子5万円にも利子がつきます）<br>
+つまり、100万円 × 1.05 × 1.05 を計算している。</p></li>
+</ul></li>
+</ul>
+<p>ちなみに、利子を元金に組み入れない場合を「単利」といいます。</p>
+</section>
+<section id="正味現在価値法" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="正味現在価値法">正味現在価値法</h3>
+<p>将来得られる利益を現在価値に割り引いた合計から、投資費用の現在価値（Present Value Cost）を差し引いた値を正味現在価値（NPV：Net Present Value）といいます。この NPV がプラスであれば投資の合理性があると考えます。</p>
+<p>以下は大学進学を判断する際の考え方です。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p><strong>便益の現在価値</strong></p>
+<p><span class="math display">\[
+\begin{aligned}
+PVB &amp;= \frac{B_{22}}{(1+r)^4} + \frac{B_{23}}{(1+r)^5} + \frac{B_{24}}{(1+r)^6} + \dots + \frac{B_{60}}{(1+r)^{42}} \\[2.0em]
+&amp;= \sum_{t=22}^{t=60} \frac{B_t}{(1+r)^{t-18}}
+\end{aligned}
+\]</span></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p><strong>費用の現在価値</strong></p>
+<p><span class="math display">\[
+\begin{aligned}
+PVC &amp;= C_{18} + \frac{C_{19}}{(1+r)} + \frac{C_{20}}{(1+r)^2} + \frac{C_{21}}{(1+r)^3} \\[2.0em]
+&amp;= \sum_{t=18}^{t=21} \frac{C_t}{(1+r)^{t-18}}
+\end{aligned}
+\]</span></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p>注）</p>
+<ul>
+<li><p><span class="math inline">\(C\)</span> には直接費用と機会費用が含まれます。</p></li>
+<li><p><span class="math inline">\(B\)</span> は大卒賃金と高卒賃金の差を表します。</p></li>
+</ul>
+<div style="margin-top: 3.0em;">
+
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>教育のタイミングについて考えてみよう。</p>
+<p><strong>個人ワーク（5分）</strong></p>
+<p>教育は若い時に受けた方が良い（合理的である）と主張する人がいます。この人がそのように主張する理由を2つ以上考えてみましょう。</p>
+<p><strong>ペアワーク（3分）</strong></p>
+<ul>
+<li>お互いの答えを共有<br>
+</li>
+<li>違いを議論<br>
+</li>
+</ul>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>全体共有</strong></p>
+<p><a href="https://app.sli.do/event/eP5uZUb3q4vwwkEQpnMzz7">Slido</a></p>
+<div id="fig-QR-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-QR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A03/QR-1.png" id="fig-QR-1" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-QR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;3.7
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<details>
+<summary>
+教育のタイミング
+</summary>
+<p>教育は若い時に受けた方が良い（合理的である）と主張される理由</p>
+<ul>
+<li><p>受けた教育からの収益（return）を受け取る期間が長くなるため。</p></li>
+<li><p>歳をとると次第に賃金も上がり、その賃金を諦めてまで教育を受けるための費用（機会費用）が増えてしまうため。<br>
+</p></li>
+</ul>
+</details>
+<div style="margin-top: 3.0em;">
+
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>コメンテーターの意見は正しいか?</p>
+<p><strong>個人ワーク（5分）</strong></p>
+<p>「不況で大卒者の賃金が減ったから大学に行く合理性は減った」とテレビでコメントしている方がいました。この意見について賛成ですか？反対ですか？</p>
+<p><strong>ペアワーク（3分）</strong></p>
+<ul>
+<li>お互いの答えを共有<br>
+</li>
+<li>違いを議論<br>
+</li>
+</ul>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>全体共有</strong></p>
+<p><a href="https://app.sli.do/event/eP5uZUb3q4vwwkEQpnMzz7">Slido</a></p>
+<div id="fig-QR-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-QR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A03/QR-1.png" id="fig-QR-1" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-QR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;3.8
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<details>
+<summary>
+大学教育の賃金プレミアム
+</summary>
+<p>必ずしも正しくないといえます。</p>
+<ul>
+<li>大卒者の賃金が減れば、高卒者の賃金も同様に減っていると考えられ、必ずしも大卒と高卒の賃金格差（大卒プレミアム）がなくなったわけではない。</li>
+</ul>
+</details></section>
+<section id="npvによる変化予測" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="npvによる変化予測">NPVによる変化予測</h3>
+<ul>
+<li><p>直接経費の増加<br>
+学費が上がればNPVは下がり、大学進学率は低下する。</p></li>
+<li><p>間接経費の増加<br>
+年齢が上がり機会費用（諦める賃金）が増えるとNPVは下がる。</p></li>
+<li><p>大卒賃金プレミアムの変化<br>
+社会の変化で大卒者の需要が高まり賃金差が開けば、進学率は上昇する。</p></li>
+</ul>
+</section>
+</section>
+<section id="内部収益率" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="内部収益率"><span class="header-section-number">3.4</span> 内部収益率</h2>
+<p>投資の正味現在価値（NPV）がちょうどゼロになるような割引率のことを内部収益率（IRR：Internal Rate of Return）といいます。</p>
+<p>つまり、便益 − 費用＝０が成り立つ <span class="math inline">\(r\)</span> のことをいいます。</p>
+<p>以下を満たす <span class="math inline">\(r\)</span> が大学進学の内部収益率となります。</p>
+<div style="margin-top: 3.0em;">
+
+</div>
+<p><span class="math display">\[
+\sum_{t=18}^{t=21} \frac{C_t}{(1+r)^{t-18}} = \sum_{t=22}^{t=60} \frac{B_t}{(1+r)^{t-18}}
+\]</span></p>
+<div style="margin-top: 3.0em;">
+
+</div>
+<p>内部収益率が高いほど大学進学の経済的合理性が高いといえます。</p>
+<p>例えば、株式投資の収益率が、大学進学の内部収益率よりも高い場合、大学に進学するよりも株式に投資した方が良いと（合理的には）考えることもできます。</p>
+<p>つまり、「大学という投資の“利回り”」を考え、「この利回りが市場金利より高いなら投資する（大学に進学する）」ということになります。</p>
+<p>もちろん、大学進学の価値は金銭面だけではありませんが、、、。</p>
+<section id="現実とのズレ" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="現実とのズレ">現実とのズレ</h3>
+<p>ここまでは綺麗な仮定をおき、単純化した議論を進めてきましたが、もちろん、現実社会には様々なことが起こります。自分が説明したい現象をさらにモデルに組み込むような取り組みも行われます。</p>
+<ul>
+<li>リスク（就職失敗）<br>
+</li>
+<li>学力差<br>
+</li>
+<li>学部差</li>
+</ul>
+</section>
+<section id="日本国内の分析結果" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="日本国内の分析結果">日本国内の分析結果</h3>
+<p><a href="./lecA02.html#sec-empirical_irr">内部収益率の実証研究結果</a></p>
+<p>投資としての教育は高い効果が期待できると考えられています。</p>
+<ul>
+<li><p>男子の高等教育収益率：6%から9%程度</p></li>
+<li><p>女子の高等教育収益率：8%から9%程度</p></li>
+<li><p>生涯賃金（60歳まで正社員を続けた場合）</p>
+<ul>
+<li><p>男性：大卒 約2.9億円 / 高卒 約2.6億円</p></li>
+<li><p>女性：大卒 約2.4億円 / 高卒 約1.9億円</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="関連動画クリックすると音が出ます" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="関連動画クリックすると音が出ます">関連動画（クリックすると音が出ます）</h3>
+<p><a href="https://www.youtube.com/watch?v=bOXIWc4ZlDI">大卒 / 高卒　平均賃金による総収入と高卒の就活事情データで徹底比較</a></p>
+</section>
+</section>
+<section id="演習課題宿題" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="演習課題宿題"><span class="header-section-number">3.5</span> 演習課題（宿題）</h2>
+<p><strong>ハムスターの教育投資</strong></p>
+<p>ハムスターの平均寿命は４年間です。このハムスターが労働市場で働くと仮定して教育投資に関する演習を行います。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div id="fig-A03-6" class="quarto-float quarto-figure quarto-figure-center anchored" width="40%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A03-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A03/A03-6.png" id="fig-A03-6" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A03-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;3.9
+</figcaption>
+</figure>
+</div>
+<section id="仮定" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="仮定">仮定</h3>
+<ol type="1">
+<li><p>ハムスターの寿命は４年間と仮定します。</p></li>
+<li><p>生まれてからの最初の１年間は基本的なことを学ぶ期間です。人間で言えば高校終了段階です。ここで、残り３年間をどのように過ごすか考えます。</p></li>
+<li><p>ハムスターは回し車が得意なので、回し車に発電機をつけて発電し、それを売る（売電する）仕事に就くことができます。</p></li>
+<li><p>1年目には25,000円稼ぐことができ、次の年から賃金は25,000円ずつ10万円まで増えます。<br>
+2年目：50,000円、3年目：75,000円、4年目：100,000円</p></li>
+<li><p>他方、一生（残りの3年）をカラカラ回し車を回しながら生きるのは嫌だと考えるハムスターには指導者になるキャリアも用意されています。２年間の回し車専門学校に通えば、回し車の指導者になることができます。</p></li>
+<li><p>学費は初年度50,000円、2年目は教育実習代が含まれ75,000円支払う必要があります。それでも、回し車の指導者になれば、年間300,000円稼ぐことが見込まれています。賃金はこの後、増減しません。</p></li>
+<li><p>現在の市場の利子率は8%と仮定します。</p></li>
+</ol>
+</section>
+<section id="問題" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="問題">問題</h3>
+<p><a href="files/A03/work_sheet_no3.xlsx">ヒント：エクセルファイル</a></p>
+<ol type="1">
+<li>【2点】</li>
+</ol>
+<ul>
+<li><p>ハムスターに想定される2つのキャリアパス（回し車 or 指導者）について、それぞれの現在価値を求め、ハムスターにとっての合理的な選択はどちらか説明してください。</p></li>
+<li><p>1年目（基礎教育期間）終了時点を基準として現在価値を計算してください。</p></li>
+<li><p>なお、給料はその年の仕事が終わった時に一度にもらうものとし、学費も１年間の勉強が終わった時に一度に支払うこととします。（つまり、最初から１年間分の割引率を適用してください。）</p></li>
+</ul>
+<ol start="2" type="1">
+<li>【2点】</li>
+</ol>
+<ul>
+<li><p>上記設定では、人生の1年目が終わった時点で選択をすることを想定していますが、生まれた瞬間にこの選択ができるとしたら、合理的な選択は変わりますか？（この場合でも、人生の1年目は基礎訓練期間であることは変わりません。）</p></li>
+<li><p>割引期間の違いに注目して考えてください。</p></li>
+</ul>
+<ol start="3" type="1">
+<li>【2点】</li>
+</ol>
+<ul>
+<li>ハムスターの平均寿命は4年なので、仕事ができる期間は最大３年間として考えましたが、仮に、追加で１年間働くことができるとすれば、上記の合理的選択は変わりますか？</li>
+</ul>
+<ol start="4" type="1">
+<li>【2点】</li>
+</ol>
+<ul>
+<li><p>仮に、指導者になる方が生涯賃金は多くなる場合があったとしても、必ずしも全てのハムスターは指導者にはなりません。</p></li>
+<li><p>考えられる理由を2つ挙げてください。</p></li>
+</ul>
 <!--
 
+## 模範解答：ハムスターの教育投資
+
+**前提**
+
+- 意思決定時点：1年目終了時（t = 0）
+- 割引率：8%（r = 0.08）
 
 
+### 問1：現在価値の比較{.unnumbered}
 
-### 教育需要の決定要因 {.unnumbered}
-費用と便益を比較して進学を決定する。
-* 費用：授業料、教材費、機会費用（放棄所得：進学せずに働いていたら得られたはずの賃金）
-* 便益：将来得られる賃金の上昇分（例：高卒と大卒の賃金差）
+**（1）回し車キャリア**
+
+| 年 (t) | 賃金 | 割引後 |
+|---|---|---|
+| 1 | 25,000 | 25,000 / 1.08 = 23,148 |
+| 2 | 50,000 | 50,000 / (1.08)^2 = 42,867 |
+| 3 | 75,000 | 75,000 / (1.08)^3 = 59,537 |
+
+<br>
+
+現在価値（PV）：
+
+$$
+PV = \frac{25,000}{1.08} + \frac{50,000}{(1.08)^2} + \frac{75,000}{(1.08)^3}
+$$
+
+$$
+PV \approx 23,148 + 42,867 + 59,537 = 125,553円
+$$
+
+<br>
+
+**（2）指導者キャリア**
+
+費用
+
+| 年 (t) | 内容 | 割引後 |
+|---|---|---|
+| 1 | -75,000 | -69,444 |
+| 2 | -125,000 | -107,167 |
+
+<br>
+
+便益
+
+| 年 (t) | 賃金 | 割引後 |
+|---|---|---|
+| 3 | 300,000 | 300,000 / (1.08)^3 = 238,150 |
+
+<br>
+
+現在価値（PV）：
+
+$$
+PV = -\frac{75,000}{1.08} - \frac{125,000}{(1.08)^2} + \frac{300,000}{(1.08)^3}
+$$
+
+$$
+PV \approx -69,444 - 107,167 + 238,150 = -4,477円
+$$
+
+<br>
+
+**（3）解答**
+
+- 回し車： 約 125,553円  
+- 指導者： 約 -4,477円  
+
+**回し車キャリアの方が合理的**
+
+<br>
 
 
-## 授業の目的および到達目標
+### 問2：生まれた瞬間に意思決定する場合{.unnumbered}
 
-本講義は、経済学の基礎的な考え方や分析手法を用いて、教育に係る諸問題、これまでに実施されてきた教育政策、教育の役割や効果について考察を深めることを目的とする。
+この場合、すべてのキャッシュフローを1期分多く割り引く必要がある。
 
-さらに、教育行政に係るデータを読み解き、その分析方法や因果的な考え方についても解説する。
+つまり、すべての現在価値は：
 
-その際、日本のデータを基にこれまで行われてきた研究を紹介し、日本の教育政策について経済学的な見方を習得できるようにする。
+$$
+PV_{new} = \frac{PV_{old}}{1.08}
+$$
 
-本講義を通して、教育経済学の基本的な考え方を理解し、それを用いて日本で行われている教育政策について自分の言葉で平易に説明できるようになることを到達目標とする。
+となる。
 
-## 授業計画
+両方の選択肢が同じ割合で割り引かれるため、**大小関係は変わらない**。
 
-### 講義前半：基礎理論と世代間連鎖 {.unnumbered}
-* 第1回：概要説明
-* 第2回：教育投資の基礎理論（1）
-* 第3回：教育投資の基礎理論（2）
-    * 人的資本理論をベースとして、教育投資の収益率の計測方法を学ぶ。
-* 第4回：教育投資の基礎理論（3）
-* 第5回：教育投資の基礎理論（4）
-* 第6回：教育と世代間移転（1）
-* 第7回：中間レポート発表・討論
+**解答**
 
-### 講義後半：実証分析と政策評価 {.unnumbered}
-* 第8回：教育の効果に係る経済学的実証分析
-* 第9回：教育政策の経済学的評価（1）
-* 第10回：教育政策の経済学的評価（2）
-* 第11回：教育政策の経済学的評価（3）
-* 第12回：教育政策実証分析紹介
-* 第13回：期末レポートについて
+合理的な選択は変わらない（回し車が有利）
 
-## 復習：大学進学の判断と教育の合理性
 
-### 課題3：教育のタイミング {.unnumbered}
-教育は若い時に受けた方が良い（合理的である）と主張される理由：
-1. 受けた教育からの収益（return）を受け取る期間が長くなるため。
-2. 歳をとると次第に賃金も上がり、その賃金を諦めてまで教育を受けるための費用（機会費用）が増えてしまうため。
+<br>
 
-### 課題4：大学教育の収益 {.unnumbered}
-「不況で大卒者の賃金が減ったから大学に行く合理性は減った」というコメンテーターの意見は正しいか：
-* 解答：必ずしも正しくない。大卒者の賃金が減れば、高卒者の賃金も同様に減っていると考えられ、必ずしも大卒と高卒の賃金格差（大卒プレミアム）がなくなったわけではない。
+### 問3：労働期間が1年延びる場合{.unnumbered}
 
-### 関連動画 {.unnumbered}
-[大卒 / 高卒] 平均賃金による総収入と高卒の就活事情データで徹底比較
-https://www.youtube.com/watch?v=bOXIWc4ZlDI
+**（1）回し車キャリア**
 
-## 収益率の計算方法
+追加：
 
-### 現在価値の考え方 {.unnumbered}
-今現在のお金の価値と、将来のお金の価値は異なる。
-* 例：利子が5%の場合、1年後の100万円は現在の価値に直すと約95.23万円（100万円 ÷ 1.05）。
-大学に進学するために今必要な学費や機会費用が、将来得られる賃金プレミアムと見合うかを判断するには、すべての値を「現在価値」に換算して比較する必要がある。
+| 年 (t) | 賃金 |
+|---|---|
+| 4 | 100,000 |
 
-### 複利の考え方 {.unnumbered}
-利子にもまた利子がつくことを「複利」と呼ぶ。
-* 100万円を金利5%で2年間預ける場合：
-    * 1年後：105万円
-    * 2年後：110.25万円（1年目の利子5万円にも利子がつく）
+<br>
 
-### 正味現在価値法（NPV：Net Present Value） {.unnumbered}
-将来得られる利益を現在価値に割り引いた合計から、投資費用を差し引いた値。NPVがプラスであれば投資の合理性がある。
+割引後：
 
-### NPVによる変化予測 {.unnumbered}
-* 直接経費の増加：学費が上がればNPVは下がり、大学進学率は低下する。
-* 間接経費の増加：年齢が上がり機会費用（諦める賃金）が増えるとNPVは下がる。
-* 大卒賃金プレミアムの変化：社会の変化で大卒者の需要が高まり賃金差が開けば、進学率は上昇する。
+$$
+\frac{100,000}{(1.08)^4} \approx 73,503円
+$$
 
-### 内部収益率（IRR：Internal Rate of Return） {.unnumbered}
-投資の正味現在価値（NPV）がちょうどゼロになるような割引率のこと。
+<br>
 
-## 推計結果と国際比較
+新しいPV：
 
-### 日本国内の分析結果 {.unnumbered}
-投資としての教育は高い効果が期待できる。
-* 男子の高等教育収益率：6%から9%程度
-* 女子の高等教育収益率：8%から9%程度
-* 生涯賃金（60歳まで正社員を続けた場合）：
-    * 男性：大卒 約2.9億円 / 高卒 約2.6億円
-    * 女性：大卒 約2.4億円 / 高卒 約1.9億円
+$$
+125,553 + 73,503 = 199,055円
+$$
 
-### 国際比較 {.unnumbered}
-OECD Education at a Glance 2024：世界各国の教育状況を記述した決定的なガイド。2024年版は教育における公平性や、学歴が労働市場に与える影響について焦点を当てている。
-https://www.oecd.org/en/publications/education-at-a-glance-2024_c00cad36-en.html
+<br>
 
-## 演習課題：ハムスターの教育投資
+**（2）指導者キャリア**
 
-###
+追加：
+
+| 年 (t) | 賃金 |
+|---|---|
+| 4 | 300,000 |
+
+<br>
+
+割引後：
+
+$$
+\frac{300,000}{(1.08)^4} \approx 220,509円
+$$
+
+<br>
+
+新しいPV：
+
+$$
+-4,477 + 220,509 = 216,032円
+$$
+
+<br>
+
+**（3）結論**
+
+- 回し車：199,055円  
+- 指導者：216,032円  
+
+**指導者キャリアが有利に変わる**
+
+<br>
+
+### 問4：なぜ全員が指導者にならないのか{.unnumbered}
+
+考えられる理由：
+
+1. 能力差（人的資本の異質性）  
+
+    - すべてのハムスターが教育を修了できるとは限らない。  
+    - また、指導者としての適性にも差がある。
+
+
+2. リスク（不確実性）  
+
+    - 卒業できない可能性  
+    - 指導者として十分な収入を得られない可能性  
+    - 期待収益が低下する  
+
+3. 流動性制約  
+
+    - 学費（50,000円・75,000円）を支払えないハムスターも存在する。  
+
+4. 非金銭的要因  
+
+    - 勉強が嫌い  
+    - 安定志向（確実に収入が得られる回し車を選好）
+
+**結論**
+
+教育投資は期待収益だけでなく、能力・リスク・制約・選好によっても左右される。  
+
+[解答：エクセルファイル](files/A03/work_sheet_no3_answer.xlsx)
 
 -->
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
