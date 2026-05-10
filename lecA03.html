@@ -270,6 +270,13 @@ window.Quarto = {
   <li><a href="#仮定" id="toc-仮定" class="nav-link" data-scroll-target="#仮定">仮定</a></li>
   <li><a href="#問題" id="toc-問題" class="nav-link" data-scroll-target="#問題">問題</a></li>
   </ul></li>
+  <li><a href="#解説ハムスターの教育投資" id="toc-解説ハムスターの教育投資" class="nav-link" data-scroll-target="#解説ハムスターの教育投資"><span class="header-section-number">3.6</span> 解説：ハムスターの教育投資</a>
+  <ul class="collapse">
+  <li><a href="#問1現在価値の比較" id="toc-問1現在価値の比較" class="nav-link" data-scroll-target="#問1現在価値の比較">問1：現在価値の比較</a></li>
+  <li><a href="#問2生まれた瞬間に意思決定する場合" id="toc-問2生まれた瞬間に意思決定する場合" class="nav-link" data-scroll-target="#問2生まれた瞬間に意思決定する場合">問2：生まれた瞬間に意思決定する場合</a></li>
+  <li><a href="#問3労働期間が1年延びる場合" id="toc-問3労働期間が1年延びる場合" class="nav-link" data-scroll-target="#問3労働期間が1年延びる場合">問3：労働期間が1年延びる場合</a></li>
+  <li><a href="#問4なぜ全員が指導者にならないのか" id="toc-問4なぜ全員が指導者にならないのか" class="nav-link" data-scroll-target="#問4なぜ全員が指導者にならないのか">問4：なぜ全員が指導者にならないのか</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -299,20 +306,22 @@ window.Quarto = {
 以下の時間配分で実施
 
 30分（〜11：45）
-・
+・大学進学の判断
+・（Activity 1）
 
-30分（〜12：15）
+45分（〜12：30）
+・収益率の計算方法
 ・（Activity 2）
+・（Activity 3）
 
-30分（〜12：45）
-・
-（Activity 3）
+10分（〜12：40）
+・内部収益率
 
-5分（〜12：50）
-・
+10分（〜12：50）
+・確認テスト
 
 10分（〜13：00）
-・確認テスト
+・演習課題（宿題）提示
 -->
 <section id="学習目標" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="学習目標"><span class="header-section-number">3.1</span> 学習目標</h2>
@@ -815,197 +824,222 @@ Tip
 <li><p>仮に、指導者になる方が生涯賃金は多くなる場合があったとしても、必ずしも全てのハムスターは指導者にはなりません。</p></li>
 <li><p>考えられる理由を2つ挙げてください。</p></li>
 </ul>
-<!--
-
-## 模範解答：ハムスターの教育投資
-
-**前提**
-
-- 意思決定時点：1年目終了時（t = 0）
-- 割引率：8%（r = 0.08）
-
-
-### 問1：現在価値の比較{.unnumbered}
-
-**（1）回し車キャリア**
-
-| 年 (t) | 賃金 | 割引後 |
-|---|---|---|
-| 1 | 25,000 | 25,000 / 1.08 = 23,148 |
-| 2 | 50,000 | 50,000 / (1.08)^2 = 42,867 |
-| 3 | 75,000 | 75,000 / (1.08)^3 = 59,537 |
-
-<br>
-
-現在価値（PV）：
-
-$$
+</section>
+</section>
+<section id="解説ハムスターの教育投資" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="解説ハムスターの教育投資"><span class="header-section-number">3.6</span> 解説：ハムスターの教育投資</h2>
+<p><strong>前提</strong></p>
+<ul>
+<li>意思決定時点：1年目終了時（t = 0）</li>
+<li>割引率：8%（r = 0.08）</li>
+</ul>
+<section id="問1現在価値の比較" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="問1現在価値の比較">問1：現在価値の比較</h3>
+<p><strong>（1）回し車キャリア</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>年 (t)</th>
+<th>賃金</th>
+<th>割引後</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>25,000</td>
+<td>25,000 / 1.08 = 23,148</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>50,000</td>
+<td>50,000 / (1.08)^2 = 42,867</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>75,000</td>
+<td>75,000 / (1.08)^3 = 59,537</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>現在価値（PV）：</p>
+<p><span class="math display">\[
 PV = \frac{25,000}{1.08} + \frac{50,000}{(1.08)^2} + \frac{75,000}{(1.08)^3}
-$$
-
-$$
+\]</span></p>
+<p><span class="math display">\[
 PV \approx 23,148 + 42,867 + 59,537 = 125,553円
-$$
-
-<br>
-
-**（2）指導者キャリア**
-
-費用
-
-| 年 (t) | 内容 | 割引後 |
-|---|---|---|
-| 1 | -75,000 | -69,444 |
-| 2 | -125,000 | -107,167 |
-
-<br>
-
-便益
-
-| 年 (t) | 賃金 | 割引後 |
-|---|---|---|
-| 3 | 300,000 | 300,000 / (1.08)^3 = 238,150 |
-
-<br>
-
-現在価値（PV）：
-
-$$
+\]</span></p>
+<p><br></p>
+<p><strong>（2）指導者キャリア</strong></p>
+<p>費用</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>年 (t)</th>
+<th>内容</th>
+<th>割引後</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>-75,000</td>
+<td>-69,444</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>-125,000</td>
+<td>-107,167</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>便益</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>年 (t)</th>
+<th>賃金</th>
+<th>割引後</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>3</td>
+<td>300,000</td>
+<td>300,000 / (1.08)^3 = 238,150</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>現在価値（PV）：</p>
+<p><span class="math display">\[
 PV = -\frac{75,000}{1.08} - \frac{125,000}{(1.08)^2} + \frac{300,000}{(1.08)^3}
-$$
-
-$$
+\]</span></p>
+<p><span class="math display">\[
 PV \approx -69,444 - 107,167 + 238,150 = -4,477円
-$$
-
-<br>
-
-**（3）解答**
-
-- 回し車： 約 125,553円  
-- 指導者： 約 -4,477円  
-
-**回し車キャリアの方が合理的**
-
-<br>
-
-
-### 問2：生まれた瞬間に意思決定する場合{.unnumbered}
-
-この場合、すべてのキャッシュフローを1期分多く割り引く必要がある。
-
-つまり、すべての現在価値は：
-
-$$
+\]</span></p>
+<p><br></p>
+<p><strong>（3）解答</strong></p>
+<ul>
+<li>回し車： 約 125,553円<br>
+</li>
+<li>指導者： 約 -4,477円</li>
+</ul>
+<p><strong>回し車キャリアの方が合理的</strong></p>
+<p><br></p>
+</section>
+<section id="問2生まれた瞬間に意思決定する場合" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="問2生まれた瞬間に意思決定する場合">問2：生まれた瞬間に意思決定する場合</h3>
+<p>この場合、すべてのキャッシュフローを1期分多く割り引く必要がある。</p>
+<p>つまり、すべての現在価値は：</p>
+<p><span class="math display">\[
 PV_{new} = \frac{PV_{old}}{1.08}
-$$
-
-となる。
-
-両方の選択肢が同じ割合で割り引かれるため、**大小関係は変わらない**。
-
-**解答**
-
-合理的な選択は変わらない（回し車が有利）
-
-
-<br>
-
-### 問3：労働期間が1年延びる場合{.unnumbered}
-
-**（1）回し車キャリア**
-
-追加：
-
-| 年 (t) | 賃金 |
-|---|---|
-| 4 | 100,000 |
-
-<br>
-
-割引後：
-
-$$
+\]</span></p>
+<p>となる。</p>
+<p>両方の選択肢が同じ割合で割り引かれるため、<strong>大小関係は変わらない</strong>。</p>
+<p><strong>解答</strong></p>
+<p>合理的な選択は変わらない（回し車が有利）</p>
+<p><br></p>
+</section>
+<section id="問3労働期間が1年延びる場合" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="問3労働期間が1年延びる場合">問3：労働期間が1年延びる場合</h3>
+<p><strong>（1）回し車キャリア</strong></p>
+<p>追加：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>年 (t)</th>
+<th>賃金</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4</td>
+<td>100,000</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>割引後：</p>
+<p><span class="math display">\[
 \frac{100,000}{(1.08)^4} \approx 73,503円
-$$
-
-<br>
-
-新しいPV：
-
-$$
+\]</span></p>
+<p><br></p>
+<p>新しいPV：</p>
+<p><span class="math display">\[
 125,553 + 73,503 = 199,055円
-$$
-
-<br>
-
-**（2）指導者キャリア**
-
-追加：
-
-| 年 (t) | 賃金 |
-|---|---|
-| 4 | 300,000 |
-
-<br>
-
-割引後：
-
-$$
+\]</span></p>
+<p><br></p>
+<p><strong>（2）指導者キャリア</strong></p>
+<p>追加：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>年 (t)</th>
+<th>賃金</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4</td>
+<td>300,000</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>割引後：</p>
+<p><span class="math display">\[
 \frac{300,000}{(1.08)^4} \approx 220,509円
-$$
-
-<br>
-
-新しいPV：
-
-$$
+\]</span></p>
+<p><br></p>
+<p>新しいPV：</p>
+<p><span class="math display">\[
 -4,477 + 220,509 = 216,032円
-$$
-
-<br>
-
-**（3）結論**
-
-- 回し車：199,055円  
-- 指導者：216,032円  
-
-**指導者キャリアが有利に変わる**
-
-<br>
-
-### 問4：なぜ全員が指導者にならないのか{.unnumbered}
-
-考えられる理由：
-
-1. 能力差（人的資本の異質性）  
-
-    - すべてのハムスターが教育を修了できるとは限らない。  
-    - また、指導者としての適性にも差がある。
-
-
-2. リスク（不確実性）  
-
-    - 卒業できない可能性  
-    - 指導者として十分な収入を得られない可能性  
-    - 期待収益が低下する  
-
-3. 流動性制約  
-
-    - 学費（50,000円・75,000円）を支払えないハムスターも存在する。  
-
-4. 非金銭的要因  
-
-    - 勉強が嫌い  
-    - 安定志向（確実に収入が得られる回し車を選好）
-
-**結論**
-
-教育投資は期待収益だけでなく、能力・リスク・制約・選好によっても左右される。  
-
-[解答：エクセルファイル](files/A03/work_sheet_no3_answer.xlsx)
-
--->
+\]</span></p>
+<p><br></p>
+<p><strong>（3）結論</strong></p>
+<ul>
+<li>回し車：199,055円<br>
+</li>
+<li>指導者：216,032円</li>
+</ul>
+<p><strong>指導者キャリアが有利に変わる</strong></p>
+<p><br></p>
+</section>
+<section id="問4なぜ全員が指導者にならないのか" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="問4なぜ全員が指導者にならないのか">問4：なぜ全員が指導者にならないのか</h3>
+<p>考えられる理由：</p>
+<ol type="1">
+<li><p>能力差（人的資本の異質性）</p>
+<ul>
+<li>すべてのハムスターが教育を修了できるとは限らない。<br>
+</li>
+<li>また、指導者としての適性にも差がある。</li>
+</ul></li>
+<li><p>リスク（不確実性）</p>
+<ul>
+<li>卒業できない可能性<br>
+</li>
+<li>指導者として十分な収入を得られない可能性<br>
+</li>
+<li>期待収益が低下する</li>
+</ul></li>
+<li><p>流動性制約</p>
+<ul>
+<li>学費（50,000円・75,000円）を支払えないハムスターも存在する。</li>
+</ul></li>
+<li><p>非金銭的要因</p>
+<ul>
+<li>勉強が嫌い<br>
+</li>
+<li>安定志向（確実に収入が得られる回し車を選好）</li>
+</ul></li>
+</ol>
+<p><strong>結論</strong></p>
+<p>教育投資は期待収益だけでなく、能力・リスク・制約・選好によっても左右される。</p>
+<p><a href="files/A03/work_sheet_no3_answer.xlsx">解答：エクセルファイル</a></p>
 
 
 </section>

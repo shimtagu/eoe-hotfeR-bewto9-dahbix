@@ -73,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <meta name="robots" content="noindex, nofollow">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -216,8 +245,35 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#学習目標" id="toc-学習目標" class="nav-link active" data-scroll-target="#学習目標"><span class="header-section-number">4.1</span> 学習目標</a></li>
+  <li><a href="#人的資本論への疑問と反論" id="toc-人的資本論への疑問と反論" class="nav-link" data-scroll-target="#人的資本論への疑問と反論"><span class="header-section-number">4.2</span> 人的資本論への疑問と反論</a>
+  <ul class="collapse">
+  <li><a href="#主な反論の視点" id="toc-主な反論の視点" class="nav-link" data-scroll-target="#主な反論の視点">主な反論の視点</a></li>
+  </ul></li>
+  <li><a href="#シグナリング理論" id="toc-シグナリング理論" class="nav-link" data-scroll-target="#シグナリング理論"><span class="header-section-number">4.3</span> シグナリング理論</a>
+  <ul class="collapse">
+  <li><a href="#理論の概要" id="toc-理論の概要" class="nav-link" data-scroll-target="#理論の概要">理論の概要</a></li>
+  <li><a href="#前提考え方" id="toc-前提考え方" class="nav-link" data-scroll-target="#前提考え方">前提・考え方</a></li>
+  <li><a href="#シグナリングのない世界" id="toc-シグナリングのない世界" class="nav-link" data-scroll-target="#シグナリングのない世界">シグナリングのない世界</a></li>
+  <li><a href="#企業目線" id="toc-企業目線" class="nav-link" data-scroll-target="#企業目線">企業目線</a></li>
+  <li><a href="#求職者学生目線" id="toc-求職者学生目線" class="nav-link" data-scroll-target="#求職者学生目線">求職者（学生）目線</a></li>
+  </ul></li>
+  <li><a href="#フィルタリングとしての大学教育" id="toc-フィルタリングとしての大学教育" class="nav-link" data-scroll-target="#フィルタリングとしての大学教育"><span class="header-section-number">4.4</span> フィルタリングとしての大学教育</a></li>
+  <li><a href="#異なる政策的な意味合い" id="toc-異なる政策的な意味合い" class="nav-link" data-scroll-target="#異なる政策的な意味合い"><span class="header-section-number">4.5</span> 異なる政策的な意味合い</a></li>
+  <li><a href="#学歴差別とシグナリング理論" id="toc-学歴差別とシグナリング理論" class="nav-link" data-scroll-target="#学歴差別とシグナリング理論"><span class="header-section-number">4.6</span> 学歴差別とシグナリング理論</a></li>
+  <li><a href="#留意事項" id="toc-留意事項" class="nav-link" data-scroll-target="#留意事項"><span class="header-section-number">4.7</span> 留意事項</a></li>
+  <li><a href="#本日の課題" id="toc-本日の課題" class="nav-link" data-scroll-target="#本日の課題"><span class="header-section-number">4.8</span> 本日の課題</a>
+  <ul class="collapse">
+  <li><a href="#課題1大学入試の撤廃" id="toc-課題1大学入試の撤廃" class="nav-link" data-scroll-target="#課題1大学入試の撤廃">課題1：大学入試の撤廃</a></li>
+  <li><a href="#課題2シグナルの妥当性" id="toc-課題2シグナルの妥当性" class="nav-link" data-scroll-target="#課題2シグナルの妥当性">課題2：シグナルの妥当性</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -241,107 +297,507 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!--
+<!-- 
+以下の時間配分で実施
 
-## 授業の目的および到達目標
+10分（〜11：25）
+・前回授業課題（ハムスターの投資）解説
 
-本講義は、経済学の基礎的な考え方や分析手法を用いて、教育に係る諸問題、これまでに実施されてきた教育政策、教育の役割や効果について考察を深めることを目的とする。
+10分（〜11：35）
+・人的資本論への疑問と反論
+・（Activity 1）
 
-さらに、教育行政に係るデータを読み解き、その分析方法や因果的な考え方についても解説する。
+20分（〜11：55）
+・シグナリング理論
 
-その際、日本のデータを基にこれまで行われてきた研究を紹介し、日本の教育政策について経済学的な見方を習得できるようにする。
+10分（〜12:05）
+・シグナリング理論だけが成り立つ社会（Activity 2）
 
-本講義を通して、教育経済学の基本的な考え方を理解し、それを用いて日本で行われている教育政策について自分の言葉で平易に説明できるようになることを到達目標とする。
+20分（〜12：25）
+・シグナリングその他内容解説
 
-## 授業計画
+10分（〜12：35）
+・日本の大学の場合（Activity 3）
 
-### 講義前半：基礎理論と世代間連鎖 {.unnumbered}
-* 第1回：概要説明
-* 第2回：教育投資の基礎理論（1）
-* 第3回：教育投資の基礎理論（2）
-* 第4回：教育投資の基礎理論（3）
-    * 学歴による賃金格差を説明するその他の理論・考え方の紹介。
-* 第5回：教育投資の基礎理論（4）
-* 第6回：教育と世代間移転（1）
-* 第7回：中間レポート発表・討論
+10分（〜12：45）
+・確認テスト
 
-### 講義後半：実証分析と政策評価 {.unnumbered}
-* 第8回：教育の効果に係る経済学的実証分析
-* 第9回：教育政策の経済学的評価（1）
-* 第10回：教育政策の経済学的評価（2）
-* 第11回：教育政策の経済学的評価（3）
-* 第12回：教育政策実証分析紹介
-* 第13回：期末レポートについて
-
-## 復習：収益率の計算と演習
-
-### 現在価値とNPVの考え方 {.unnumbered}
-* 高卒：19歳から60歳まで（41年間）就労。
-* 大卒：23歳から60歳まで（37年間）就労。
-* 費用：学費および機会費用（進学しなければ得られたはずの賃金）。
-今支払う費用と将来得られる賃金プレミアムを、現在価値に換算して比較する必要がある。
-
-### 演習課題：ハムスターの教育投資（解答） {.unnumbered}
-1. 合理的な選択：3年間のスパンでは「回し車」の現在価値（135,597）が「指導者」（66,461）を上回り、合理的となる。
-2. 生まれた瞬間に選択：割引期間が延びるため数値は下がるが、順位は変わらず「回し車」が有利。
-3. 寿命が1年延びる場合：収益回収期間が延びることで「指導者」（304,611）が「回し車」（214,980）を逆転し、進学が合理的となる。
-4. 全員が指導者にならない理由：
-    * 教育の不確実性（能力が向上するか不明）
-    * 流動性制約（手元資金の不足）
-    * 非金銭的動機（趣味や価値観の優先）
-
-## 人的資本論への疑問と反論
-
-教育が生産性を高め、それが賃金に反映されるという人的資本論に対し、以下のような疑問や反論が提示されている。
-
-### 主な反論の視点 {.unnumbered}
-* 教育と経済成長の因果関係：教育が成長をもたらしたのか、豊かになったから教育を消費できるようになったのか。
-* 個人の固定効果：高所得は大卒だからか、それとも元々能力（固定効果）が高い人が大学に行っただけなのか。
-* 学歴プレミアムの不整合：学位取得直前の中退と卒業では、学びの量はほぼ同じでも賃金に大きな差（羊皮紙効果）が出る。
-* 学歴インフレ：社会が真に必要とする以上の教育量が求められるようになっていないか。
-
-### 個人の固定効果とは {.unnumbered}
-能力、性格、家庭環境など、教育プログラムによらず個人に備わっている特性。これらを考慮して分析しなければ、純粋な教育の効果を測定することはできない（双子研究などによる検証が行われる）。
-
-## シグナリング理論
-
-### 理論の概要 {.unnumbered}
-M. Spence (1974) による、情報の非対称性に焦点を当てた理論。
-* 就職市場における情報の不完全性：企業は求職者の真の能力を完全には見抜けない。
-* シグナルとしての学歴：学歴や資格は、求職者が持つ高い能力を企業へ伝える「シグナル」として機能する。
-
-### 理論の前提とメカニズム {.unnumbered}
-1. 能力は本人のみが知っている（情報の非対称性）。
-2. 教育費用は個人の能力に依存する（能力が高い人ほど、卒業に必要な努力コストが低い）。
-3. 教育自体は個人の生産性を引き上げないと仮定する（極端なモデル化）。
-4. 企業は「大卒＝高生産性」と判断し、それに基づき賃金を決定する。
-
-求職者は、教育を受けることで得られる賃金増分が、卒業までのコストを上回る場合にのみ進学を選択する。能力の高い人はコストが低いため進学し、低い人はコストが重いため進学を避けることで、結果として学歴が能力の選別（スクリーニング）機能を持つ。
-
-## 人的資本理論とシグナリング理論の関係
-
-実際には両方の要素が重層的に存在している。
-* 教育による生産性の向上（人的資本理論）
-* 潜在的な能力の選別（シグナリング理論）
-
-どちらの側面が強いかによって、教育政策（奨学金制度など）が社会に与える影響や評価は変わってくる。
-
-## 本日の課題
-
-### 課題1：大学入試の撤廃 {.unnumbered}
-大学に誰でも入れるようになった場合（入試がなくなった場合）の変化について、以下の両方の観点から解答しなさい。
-* 人的資本理論の観点
-* シグナリング理論の観点
-
-### 課題2：シグナルの妥当性 {.unnumbered}
-次の特徴は、シグナリング理論における「シグナル」と考えられますか。理由をつけて説明しなさい。
-1. 面接にネクタイを締めてきた
-2. 身長
-3. 学生の頃に部活をやっていた
-
+15分（〜13：00）
+・レポート課題提示
 -->
+<section id="学習目標" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="学習目標"><span class="header-section-number">4.1</span> 学習目標</h2>
+<ul>
+<li>人的資本論への疑問と反論を理解する。<br>
+</li>
+<li>シグナリング理論を理解する。</li>
+</ul>
+<div style="margin-top: 3.0em;">
+
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>教育が生産性を高め、それが賃金に反映されるという人的資本論の考え方に対し、反論があるとすれば、どのような反論があるでしょうか。</p>
+<p><strong>個人ワーク（5分）</strong></p>
+<p>人的資本理論（教育 → 生産性向上 → 賃金）に対する反論を考える。</p>
+<p><strong>ペアワーク（5分）</strong></p>
+<ul>
+<li>お互いの答えを共有<br>
+</li>
+<li>違いを議論<br>
+</li>
+</ul>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>全体共有</strong></p>
+<p><a href="https://app.sli.do/event/eDQxajsSepjULpnbAmTesf">Slido</a>に投票してください。</p>
+<div id="fig-QR-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-QR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A04/QR-1.png" id="fig-QR-1" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-QR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;4.1
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="人的資本論への疑問と反論" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="人的資本論への疑問と反論"><span class="header-section-number">4.2</span> 人的資本論への疑問と反論</h2>
+<p>教育が生産性を高め、それが賃金に反映されるという人的資本論に対し、以下のような疑問や反論が提示されています。</p>
+<section id="主な反論の視点" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="主な反論の視点">主な反論の視点</h3>
+<ul>
+<li><p>教育の効果測定の可能性（そもそもの能力？）<br>
+生産性と所得は、生まれながらの能力によるものであり、能力の高い人間が高学位課程へと進み、結果、教育年限が長くなった。</p></li>
+<li><p>教育と賃金の不整合（人的資本が蓄積した？）<br>
+学位取得直前で退学した場合と学位を取得した場合、受けた教育は同じであれば所得は同等になるか。</p></li>
+<li><p>実質的な学びの質（教育に生産性向上効果は本当にあるか？）<br>
+大学での学びの質は初任給に反映されているか。</p></li>
+<li><p>学歴で説明できない生産性（教育を受けていない人は？）<br>
+教育を受けていなくても生産性の高い人はいる。職人は教育を受けていない。</p></li>
+<li><p>教育と経済成長の因果関係（経済成長が先？）<br>
+教育が経済成長をもたらすのか、社会・経済的に豊かになったから教育量が増えたのか。</p></li>
+<li><p>適切な教育量（学歴インフレ？）<br>
+それだけの量の教育は本当に必要なのか。学歴インフレが起きている。</p></li>
+</ul>
+</section>
+</section>
+<section id="シグナリング理論" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="シグナリング理論"><span class="header-section-number">4.3</span> シグナリング理論</h2>
+<section id="理論の概要" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="理論の概要">理論の概要</h3>
+<p>M. Spence (1973) による、情報の非対称性に焦点を当てた理論。</p>
+<ul>
+<li><p>就職市場<br>
+売り手：求職者（大学生）<br>
+買い手：企業</p></li>
+<li><p>人的資本理論では完全情報を前提として、企業が大学生の能力に関する情報を完全に持っていて賃金を決定する。</p></li>
+<li><p>シグナリング理論では情報の不完全性に焦点をあてる。</p>
+<p>買い手である企業は、求職者の能力を完全に見抜くことはできない。</p>
+<p>学歴や資格は求職者から企業への「シグナル」として機能する。</p>
+<p>「大卒」「大学の難易度」「大学教育の質」などがシグナルとして機能する。</p>
+<p>フィルタリング、スクリーニング、ソーティングなどと同じ概念。</p></li>
+</ul>
+</section>
+<section id="前提考え方" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="前提考え方">前提・考え方</h3>
+<ul>
+<li><p>能力は本人こそがよく知っており、求人する企業は分からない（情報の非対称性）。</p></li>
+<li><p>教育費用は、個人の能力により必要なコストが変わり、本人は教育に必要な費用を理解している。</p></li>
+<li><p>教育は個人の能力を引き上げない（かなり極端な仮定）。<br>
+教育を通して能力が開発されたのではなく、シグナルとして企業に自分の能力をアピールする。<br>
+突き詰めれば、大学進学の後、すぐに就職すれば良いという話。</p></li>
+<li><p>求職者（高校生）は、教育を受けることで（大学に行くことで）得られる便益がプラスになるように選択する。</p></li>
+<li><p>企業が求職者の能力（生産性）を判断する方法は教育以外他にない（高い教育水準の者（大卒者）には高い給与を支払い、低い教育水準の者（高卒者）には低い給与を支払う）。</p></li>
+</ul>
+</section>
+<section id="シグナリングのない世界" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="シグナリングのない世界">シグナリングのない世界</h3>
+<ol type="1">
+<li><p>能力の高い者の賃金を <span class="math inline">\(W_H\)</span>、限界生産性を <span class="math inline">\(MP_H\)</span>、能力の低い者の賃金を <span class="math inline">\(W_L\)</span>、限界生産性を <span class="math inline">\(MP_L\)</span> とします。</p></li>
+<li><p>企業が求職者の能力を理解している場合の賃金設定は、次のようになります。<br>
+<span class="math display">\[W_L = MP_L &lt; W_H = MP_H\]</span></p></li>
+</ol>
+<div style="margin-top: 2.0em;">
+
+</div>
+<ol start="3" type="1">
+<li>しかし、学歴（シグナリング）がないので、企業にとっては能力を見分ける手段がなく、全ての個人に対して平均の賃金を支払う他ありません。能力の高い者の割合を <span class="math inline">\(p\)</span> とします。<br>
+<span class="math display">\[W_A = (1 - p)MP_L + pMP_H\]</span></li>
+</ol>
+<div style="margin-top: 2.0em;">
+
+</div>
+<ol start="4" type="1">
+<li><p>能力の高い者は、この賃金（ <span class="math inline">\(W_A\)</span> ) では採用には応じません。</p></li>
+<li><p>能力の低い者だけが <span class="math inline">\(W_A\)</span> の賃金で採用されるようになります。</p></li>
+<li><p>能力の低い者は生産性が低いので企業は赤字になります。</p></li>
+<li><p>企業は賃金を <span class="math inline">\(W_L\)</span> に下げます。</p></li>
+<li><p>平均賃金（ <span class="math inline">\(W_A\)</span> ）で採用に応じなかった者は、高い能力を示したことになるので、<span class="math inline">\(W_H\)</span> の賃金で採用します。</p></li>
+</ol>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p>このように、求職者（学生）が自分の能力に応じた賃金に<span class="marker">正直に反応</span>すれば、均衡となります。</p>
+<p>しかし、能力の低い者の中にこの考え方を利用する者が出てきます。</p>
+<p>企業が <span class="math inline">\(W_H\)</span> の賃金を提示するまで採用に応じなければ、能力が高いことを示したこととなるからです。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<ol start="9" type="1">
+<li><p>すると、企業は <span class="math inline">\(W_H\)</span> まで全員の賃金を上げる必要性が生じます。</p></li>
+<li><p>企業は労働者の生産性よりも高い賃金を払っているので赤字になります。</p></li>
+<li><p>企業は賃金を下げます。</p></li>
+</ol>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p>結果的に、平均の賃金（ <span class="math inline">\(W_A\)</span> ）を支払う他なくなります（プーリング均衡）。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>プーリング均衡（一括均衡）
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>情報非対称性の下で、情報の多い側が自身の特性（優良・劣悪など）を隠し、皆が同じ行動や契約を選択する状況。</p></li>
+<li><p>市場参加者が優越を識別できないため、平均的な品質に基づいた価格や条件が提示される安定状態を指します。</p></li>
+<li><p>特徴と事例<br>
+シグナルが機能しない：優劣による行動差がなく、情報を識別できない 事例：保険市場で、リスク高低に関わらず全員が同じ保険料を支払う状況</p></li>
+</ul>
+</div>
+</div>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="企業目線" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="企業目線">企業目線</h3>
+<ul>
+<li><p>能力の高い者の賃金を <span class="math inline">\(W_H\)</span>、限界生産性を <span class="math inline">\(MP_H\)</span>、能力の低い者の賃金を <span class="math inline">\(W_L\)</span>、限界生産性を <span class="math inline">\(MP_L\)</span> とします。</p></li>
+<li><p>企業が求職者の能力を理解している場合の賃金設定は、次のようになります。<br>
+<span class="math display">\[W_L = MP_L &lt; W_H = MP_H\]</span></p></li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+<ul>
+<li>企業は求職者の能力が分からないため、同じ賃金（平均）を設定する他ないのですが<br>
+<span class="math display">\[W_A = (1 - p)MP_L + pMP_H\]</span></li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+<ul>
+<li>すると、能力の高い者を採用できないので、<span class="marker">教育（学歴）により</span>、<span class="math inline">\(W_L &lt; W_A &lt; W_H\)</span> となるように賃金を設定します。</li>
+</ul>
+</section>
+<section id="求職者学生目線" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="求職者学生目線">求職者（学生）目線</h3>
+<p>人的資本理論の時と同様に、求職者（学生）が大学に進学する条件をシグナリング理論の場合で考えてみましょう。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p>大卒と高卒の賃金が以下に以下のような違いがあるとします。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div id="fig-A04-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A04-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A04/A04-1.png" id="fig-A04-1" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A04-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;4.2
+</figcaption>
+</figure>
+</div>
+<p>求職者（学生）は自分の能力（高い・低い）を分かっていて、大学を卒業するための必要な費用も理解しているとします。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div id="fig-A04-2" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A04-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A04/A04-2.png" id="fig-A04-2" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A04-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;4.3
+</figcaption>
+</figure>
+</div>
+<p>これらを同じ図に表すと以下のようになります。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div id="fig-A04-3" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A04-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A04/A04-3.png" id="fig-A04-3" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A04-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;4.4
+</figcaption>
+</figure>
+</div>
+<p>ここで、自分の能力が高いと分かっている求職者（学生）は、<span class="math inline">\(W_H - C_H\)</span> が、<span class="math inline">\(W_L\)</span> よりも高ければ、大学に進学することにします。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p><span class="math display">\[W_L &lt; W_H - C_H\]</span></p>
+<div id="fig-A04-4" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A04-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A04/A04-4.png" id="fig-A04-4" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A04-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;4.5
+</figcaption>
+</figure>
+</div>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p>次に、自分の能力が低いと分かっている求職者（学生）は、<span class="math inline">\(W_H - C_L\)</span> が、<span class="math inline">\(W_L\)</span> よりも小さいと考え、大学に進学を諦めます。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p><span class="math display">\[W_L &gt; W_H - C_L\]</span></p>
+<div id="fig-A04-5" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A04-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A04/A04-5.png" id="fig-A04-5" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A04-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;4.6
+</figcaption>
+</figure>
+</div>
+<p><br></p>
+<p>つまり、能力の高い者は大学に進学し、能力の低いものは大学に進学しない状況は、次が満たされる場合に発生します。</p>
+<p><span class="math display">\[
+  \begin{aligned}
+  W_H - W_L &amp;&gt; C_H \\[1.0em]
+  W_H - W_L &amp;&lt; C_L
+  \end{aligned}
+  \]</span></p>
+<div style="margin-top: 3.0em;">
+
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>シグナリング理論だけが成り立つ社会を考えてみましょう。</p>
+<p><strong>個人ワーク（5分）</strong></p>
+<p>大学教育はどうなると考えますか？</p>
+<p><strong>ペアワーク（5分）</strong></p>
+<ul>
+<li>お互いの答えを共有<br>
+</li>
+<li>違いを議論<br>
+</li>
+</ul>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>全体共有</strong></p>
+<p><a href="https://app.sli.do/event/eDQxajsSepjULpnbAmTesf">Slido</a>に投票してください。</p>
+<div id="fig-QR-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-QR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A04/QR-1.png" id="fig-QR-1" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-QR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;4.7
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+</section>
+<section id="フィルタリングとしての大学教育" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="フィルタリングとしての大学教育"><span class="header-section-number">4.4</span> フィルタリングとしての大学教育</h2>
+<p>大学教育は2つの段階でシグナリングが発せられると考えられる。</p>
+<ol type="1">
+<li>入学（合格）<br>
+</li>
+<li>卒業</li>
+</ol>
+<p>このような大学（教育）の機能を「フィルタリング」と呼ぶこともある。</p>
+<ol type="1">
+<li><p>大学に入学した（できた）ことで、入学者の平均的な能力が高校卒業者全体の平均的な能力よりも高いことを社会に知らせている。</p></li>
+<li><p>大学を卒業した（できた）ことで、卒業者の平均的な能力が入学者全体の平均的な能力よりも高いことを社会に知らせている。</p></li>
+</ol>
+<p>つまり、大学が個人の能力をふるいにかけるように（フィルタリングするように）識別していると考える。</p>
+<p>実際の数値での計算ついては、小塩隆士「教育の経済分析」P.66-69 参照。</p>
+</section>
+<section id="異なる政策的な意味合い" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="異なる政策的な意味合い"><span class="header-section-number">4.5</span> 異なる政策的な意味合い</h2>
+<p>人的資本論とシグナリング理論では、政策的な意味合いが大きく異なります。</p>
+<p><strong>人的資本理論</strong></p>
+<ul>
+<li><p>教育によって経済全体の能力が高まると考えるため、政府が積極的に教育を支援することは容易に正当化されます。教育の外部経済効果を考慮すれば、なおさらです。</p></li>
+<li><p>教育資金を資本市場から十分に調達できない家計に対して政府が支援すべきだという政策提言（奨学金）も、この理論からは自然に導かれる。</p></li>
+</ul>
+<p><strong>シグナリング理論</strong></p>
+<ul>
+<li><p>教育は、もともと個人に備わっていた能力を浮き彫りにするだけであり、経済全体の能力向上に大きく貢献するわけではない。</p></li>
+<li><p>教育は能力をめぐる情報の非対称性・不完全性を縮減して適材適所を可能にするものの、コストもかかるし所得格差も拡大させる。</p></li>
+<li><p>したがって、シグナリング理論の立場からは、政府による教育への関与は人的資本論ほど強くは支持されない。もし教育のシグナリング機能が所得格差を拡大させるとすれば、政府はむしろ別途、所得再分配のための政策を講じる必要があるという結論になる。</p></li>
+</ul>
+</section>
+<section id="学歴差別とシグナリング理論" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="学歴差別とシグナリング理論"><span class="header-section-number">4.6</span> 学歴差別とシグナリング理論</h2>
+<p>シグナリング理論が当てはまるとしても、問題となるのは「縦の学歴」（高卒・大卒など）だけではなく「横の学歴」（どの大学を卒業したか）も重要です。</p>
+<p>現在の日本では高校進学率はほぼ100%、大学進学率も大幅に上昇しており、縦よりも横の学歴がシグナリング機能をより大きく発揮しているとも言えます。</p>
+<p>学歴差別への批判は、出身大学が受験学力のシグナルとして機能してきたこと自体は認めつつも、次の2点を問題にしています。</p>
+<ul>
+<li>大学受験学力と「真の能力」は必ずしも一致するとは言えない</li>
+<li>賃金や昇進は真の能力で決定されるべきであり、受験学力（＝出身大学）だけで決定されるべきではない</li>
+</ul>
+<p>こうした学歴主義への批判の中には、受験学力を低く評価し、「教養」や「学問」としての側面からより価値を評価すべきという声もあります。</p>
+<p>人の能力をどのように評価するかという難しい問です。</p>
+</section>
+<section id="留意事項" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="留意事項"><span class="header-section-number">4.7</span> 留意事項</h2>
+<ul>
+<li><p>教育を受けた結果、人的資本に変化がないという仮定は非現実的</p></li>
+<li><p>シグナリング理論の目的は教育の能力向上を否定しているわけではない</p></li>
+<li><p>シグナリング理論は、情報の非対称性が存在する場合に、教育がそれを軽減する機能を持っていることを示している。</p></li>
+<li><p>実際には両方の要素が重層的に存在している。</p>
+<ul>
+<li>教育による生産性の向上（人的資本理論）<br>
+</li>
+<li>潜在的な能力の選別（シグナリング理論）</li>
+</ul></li>
+<li><p>どちらの側面が強いかによって、教育政策（奨学金制度など）が社会に与える影響や評価は変わってくる。</p></li>
+<li><p>求職者（学生）が完全に自分の能力を理解しているという仮定も非現実的。実際には、教育を受けるにつれ、自分の能力を理解していくと考えた方が自然。</p></li>
+<li><p>流動性制約のために、能力があっても教育を受けられない場合がある。</p></li>
+<li><p>シグナリング機能がうまく発揮されれば、経済全体の生産性が高まるという期待もできる（適材適所）。</p></li>
+</ul>
+<div style="margin-top: 3.0em;">
+
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>日本の大学の場合、人的資本理論とシグナリング理論のどちらが強いと思いますか？</p>
+<p><strong>個人ワーク（5分）</strong></p>
+<p>日本の大学は、人的資本理論で説明される能力向上の要素、シグナリング機能で説明される潜在能力を示す機能のどちらが強いと思いますか？</p>
+<p><strong>ペアワーク（5分）</strong></p>
+<ul>
+<li>お互いの答えを共有<br>
+</li>
+<li>違いを議論<br>
+</li>
+</ul>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>全体共有</strong></p>
+<p><a href="https://app.sli.do/event/eDQxajsSepjULpnbAmTesf">Slido</a>に投票してください。</p>
+<div id="fig-QR-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-QR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A04/QR-1.png" id="fig-QR-1" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-QR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;4.8
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+<section id="本日の課題" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="本日の課題"><span class="header-section-number">4.8</span> 本日の課題</h2>
+<section id="課題1大学入試の撤廃" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="課題1大学入試の撤廃">課題1：大学入試の撤廃</h3>
+<p>大学に誰でも入れるようになった場合（入試がなくなった場合）の変化について、以下の両方の観点から解答しなさい。 * 人的資本理論の観点 * シグナリング理論の観点</p>
+</section>
+<section id="課題2シグナルの妥当性" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="課題2シグナルの妥当性">課題2：シグナルの妥当性</h3>
+<p>次の特徴は、シグナリング理論における「シグナル」と考えられますか。理由をつけて説明しなさい。 1. 面接にネクタイを締めてきた 2. 身長 3. 学生の頃に部活をやっていた</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
