@@ -73,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <meta name="robots" content="noindex, nofollow">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -216,8 +245,34 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#学習目標" id="toc-学習目標" class="nav-link active" data-scroll-target="#学習目標"><span class="header-section-number">5.1</span> 学習目標</a></li>
+  <li><a href="#教育費の負担" id="toc-教育費の負担" class="nav-link" data-scroll-target="#教育費の負担"><span class="header-section-number">5.2</span> 教育費の負担</a></li>
+  <li><a href="#家庭による教育支出" id="toc-家庭による教育支出" class="nav-link" data-scroll-target="#家庭による教育支出"><span class="header-section-number">5.3</span> 家庭による教育支出</a>
+  <ul class="collapse">
+  <li><a href="#教育需要の主体と目的の整理" id="toc-教育需要の主体と目的の整理" class="nav-link" data-scroll-target="#教育需要の主体と目的の整理">教育需要の主体と目的の整理</a></li>
+  <li><a href="#家庭による教育支出まとめ" id="toc-家庭による教育支出まとめ" class="nav-link" data-scroll-target="#家庭による教育支出まとめ">家庭による教育支出まとめ</a></li>
+  </ul></li>
+  <li><a href="#企業による教育支出" id="toc-企業による教育支出" class="nav-link" data-scroll-target="#企業による教育支出"><span class="header-section-number">5.4</span> 企業による教育支出</a></li>
+  <li><a href="#政府による教育支出" id="toc-政府による教育支出" class="nav-link" data-scroll-target="#政府による教育支出"><span class="header-section-number">5.5</span> 政府による教育支出</a>
+  <ul class="collapse">
+  <li><a href="#教育の外部性" id="toc-教育の外部性" class="nav-link" data-scroll-target="#教育の外部性">教育の外部性</a></li>
+  <li><a href="#外部性の実証" id="toc-外部性の実証" class="nav-link" data-scroll-target="#外部性の実証">外部性の実証</a></li>
+  <li><a href="#教育への公的関与の問題" id="toc-教育への公的関与の問題" class="nav-link" data-scroll-target="#教育への公的関与の問題">教育への公的関与の問題</a></li>
+  </ul></li>
+  <li><a href="#その他の性質" id="toc-その他の性質" class="nav-link" data-scroll-target="#その他の性質"><span class="header-section-number">5.6</span> その他の性質</a>
+  <ul class="collapse">
+  <li><a href="#公共財としての教育" id="toc-公共財としての教育" class="nav-link" data-scroll-target="#公共財としての教育">公共財としての教育</a></li>
+  <li><a href="#価値財としての教育" id="toc-価値財としての教育" class="nav-link" data-scroll-target="#価値財としての教育">価値財としての教育</a></li>
+  <li><a href="#教育は公平性追求の手段か" id="toc-教育は公平性追求の手段か" class="nav-link" data-scroll-target="#教育は公平性追求の手段か">教育は公平性追求の手段か？</a></li>
+  <li><a href="#政府関与の多面性" id="toc-政府関与の多面性" class="nav-link" data-scroll-target="#政府関与の多面性">政府関与の多面性</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -241,147 +296,718 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!--
+<!-- 
 
+・投資としての教育、消費としての教育（小塩3章）小塩の序章も使える。
+・上記投資としての教育に併せて教育費の負担構造と教育における政府の役割（松原6章、Martin P.345）
 
-## 教育分野における政府の関与
-出典：小塩隆士（2002）『教育の経済分析』序章「教育の経済学的特徴」より抜粋
+以下の時間配分で実施
 
-### なぜ政府は教育に介入するのか？ {.unnumbered}
-教育はそれを受ける個人だけでなく、社会全体に利益をもたらす性質を持っている。
-* 外部性（externalities）、外部経済効果（external economy）
-個人が教育需要の大きさを決める場合、自分にとって必要な効用だけを考慮するため、社会全体にとって最適な水準よりも過少になる可能性がある。このため、政府が費用を肩代わりして供給を支える。
+15分（〜11：30）
+・教育費の負担外観
+・Activity 1（それぞれのアクターがなぜ教育費用を負担するか？）
 
-### 公共財としての教育 {.unnumbered}
-公共財の定義：
-1. 非競合性：誰かが消費しても他の人の消費を減らさない（例：公園、道路）
-2. 排除不可能性：誰かの利用を拒否できない（例：国防、警察）
+20分（〜11：50）
+・家庭による教育支出
+・Activity 2（自分が大学で学ぶ理由）
 
-教育の性質：
-非競合性は概ね満たされるが、排除不可能性は完全には満たされない。
-* 準公共財（quasi public goods）
-純粋な私的財とは異なるため、価格のみでその価値を評価することは難しい。
+5分（〜11：55）
+・企業による教育支出
 
-### 価値財としての教育 {.unnumbered}
-価値財とは、政府が消費者主権に介入し、消費者の行動を矯正することで社会的に利益があると考える財やサービスのこと。
-* 消費者の情報不足や誤解により自ら最適な選択ができない場合、政府が介入して提供する。
-* 日本国憲法第26条：教育を受ける権利の保障と、保護者の教育を受けさせる義務。
-これらを踏まえ、教育は価値財であると考えられる。
+20分（〜12:15）
+・政府による教育支出
 
-### 教育は公平性追求の手段か？ {.unnumbered}
-教育機会の欠如は格差に直結するため、政府が提供すべきという考えがある。
-* 機会の平等と結果の平等
-しかし、同じ教育を受けても個人の能力差により教育効果が異なり、かえって所得格差が広がる可能性もある。個人の潜在能力を事前に把握することは困難なため、公平性のみで教育供給を完全に正当化することは難しい。
+15分（〜12：30）
+・ABEMA Prime 視聴
+・Activity 3（私立大学の削減に賛成？反対？）
 
-### 政府関与の多面性 {.unnumbered}
-経済学的な理屈（外部性や公共財）だけでは、政府が直接供給すべきという結論には直結しない。民間（私立学校など）による供給という選択肢もある。
-ただし、教育には以下の側面があることを忘れてはならない。
-* 政治的側面（統治）
-* 文化的な側面（文化の伝承）
-* 市民社会の維持
+10分（〜12：40）
+・その他の性質
 
-
-
-## 家計から見た教育
-出典：小塩隆士（2002）『教育の経済分析』
-
-### 投資としての側面 {.unnumbered}
-教育は将来の収益を期待する投資活動である。
-* 教育の不確実性：消費者がリスクを嫌う（危険回避的）であれば需要は弱まるが、逆に過大な期待を抱く場合もある。
-* 自己冷却的な側面：教育を受ける過程で自身の能力が判明し、期待が現実的になっていく。
-
-### 消費財としての側面 {.unnumbered}
-教育そのものを楽しむ、あるいは満足を得る行為。
-* 本人の満足：知的好奇心の充足。
-* 親の満足：子どもを塾やブランド校に通わせることによる自己満足、あるいはステータスの誇示（誇示的消費）。
-
-### 教育需要の主体と目的の整理 {.unnumbered}
-
-| 主体 \ 目的 | 投資 | 消費 |
-| :--- | :--- | :--- |
-| 本人（子ども） | (1) 本人の投資としての教育 | (2) 本人の消費としての教育 |
-| 親 | (3) 親の投資としての教育 | (4) 親の消費としての教育 |
-
-(1) 本人の投資：国家資格取得のための専門学校、奨学金での進学など。人的資本論の想定。
-(2) 本人の消費：趣味の習い事など。外部性は乏しく、政府介入の根拠は弱い。
-(3) 親の投資：将来の豊かな生活のため。金銭的見返りがない場合は「所得移転」に近い。
-(4) 親の消費：親の効用（満足感）のため。ブランド校通学など。政府が支援する根拠は薄れる。
-
-教育需要はこれらが重層構造になっており、ライフステージによって変化する。
-
-
-
-## 教育需要について
-
-これまでの議論を聞いて、自分の場合には教育需要のパターン(1)から(4)の中でどの要素が最も強いか、その理由は何かを考えなさい。
-（プライベートな内容を避けたい場合は、架空の人物を設定して論理的に説明すること。）
-
-
-
-
-
-
-## 授業の目的および到達目標
-
-本講義は、経済学の基礎的な考え方や分析手法を用いて、教育に係る諸問題、これまでに実施されてきた教育政策、教育の役割や効果について考察を深めることを目的とする。
-
-さらに、教育行政に係るデータを読み解き、その分析方法や因果的な考え方についても解説する。
-
-その際、日本のデータを基にこれまで行われてきた研究を紹介し、日本の教育政策について経済学的な見方を習得できるようにする。
-
-本講義を通して、教育経済学の基本的な考え方を理解し、それを用いて日本で行われている教育政策について自分の言葉で平易に説明できるようになることを到達目標とする。
-
-## 授業計画
-
-### 講義前半：基礎理論と世代間連鎖 {.unnumbered}
-* 第1回：概要説明
-* 第2回：教育投資の基礎理論（1）
-* 第3回：教育投資の基礎理論（2）
-* 第4回：教育投資の基礎理論（3）
-* 第5回：教育投資の基礎理論（4）
-    * 教育投資の基礎理論のまとめ。
-* 第6回：教育と世代間移転（1）
-* 第7回：中間レポート発表・討論
-
-### 講義後半：実証分析と政策評価 {.unnumbered}
-* 第8回：教育の効果に係る経済学的実証分析
-* 第9回：教育政策の経済学的評価（1）
-* 第10回：教育政策の経済学的評価（2）
-* 第11回：教育政策の経済学的評価（3）
-* 第12回：教育政策実証分析紹介
-* 第13回：期末レポートについて
-
-## 前回の課題の解答と解説
-
-### 課題1：大学入試の撤廃 {.unnumbered}
-大学入試がなくなると、予算的制約がなければ誰もが大学に入学できるようになる。
-* 人的資本理論の観点：大学進学により人的資本が蓄積され、個人の生産性が向上する。社会全体にも外部効果による便益をもたらす。
-* シグナリング理論の観点：これまで進学しなかった層も進学するため、大卒であることが「生産性の高さ」を示す情報の価値を失う。大学名や学位以外の新たなシグナルが必要になる。
-
-### 課題2：何がシグナルとなるか {.unnumbered}
-* ネクタイを締めて面接に来る：正のシグナル。社会人に必要なマナーを有していることを示す。
-* 身長：通常はシグナルとは考えられない（身体的特徴であり、生産性と直接結びつかないため）。
-* 部活動の経験：正のシグナル。一つのことに最後まで取り組む性格や忍耐力のシグナルとなり得る。
-
-## 教育投資の基礎理論のまとめ
-
-教育を「将来の収益のための投資」として捉える点は共通している。
-* 人的資本論：教育による「生産性の向上」が収益を生む。投資費用を収益がどれだけ上回るかに注目する。
-* シグナリング理論：教育課程の修了が「潜在能力の証明」となる。どの程度の費用（努力）をかけて自分の能力を他者に知らせるかに注目する。
-
-## 教育と労働市場のミスマッチ：教育過剰
-
-### 教育過剰（Overeducation）とは {.unnumbered}
-実際に達成した学歴（A）が、仕事で求められる学歴（R）よりも高い状態（A > R）を指す。
-* マッチング：A = R
-* 教育過小：A < R
-
-### 教育過剰が起こるメカニズム {.unnumbered}
-* 労働市場で大
-
+10分（〜12：50）
+・確認テスト
 -->
+<section id="学習目標" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="学習目標"><span class="header-section-number">5.1</span> 学習目標</h2>
+<ul>
+<li>これまで学習してきた投資としての教育に加え、消費としての教育に関する基本的な考え方を理解する。<br>
+</li>
+<li>教育費の負担構造とその負担理由を理解する。<br>
+</li>
+<li>家庭における教育支出を理解する。<br>
+</li>
+<li>教育における政府の役割を理解する。</li>
+</ul>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+<section id="教育費の負担" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="教育費の負担"><span class="header-section-number">5.2</span> 教育費の負担</h2>
+<p>教育費の負担構造を考えてみましょう。それぞれがなぜ教育費を負担するのか教育経済学の枠組みで考えます。そのうえで、負担者と負担の理由、妥当性について考えていきます。</p>
+<p><strong>教育費の負担者</strong></p>
+<ul>
+<li>本人（学生）<br>
+</li>
+<li>保護者（親）<br>
+</li>
+<li>政府（国・県・市区町村など）<br>
+</li>
+<li>企業・産業団体</li>
+</ul>
+<p><strong>負担構造</strong></p>
+<div id="fig-A05-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A05-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A05/A05-1.png" id="fig-A05-1" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A05-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;5.1
+</figcaption>
+</figure>
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>図 5.1 で示され教育費の負担構造について、それぞれのアルファベットが示す費用の流れについて、なぜその費用が負担されるのか（支出されるのか）、負担理由を考えてみましょう。</p>
+<p><strong>個人&amp;グループワーク（10分）</strong> - 図 5.1 にみられる教育費の負担構造について、その負担理由を考える。 - お互いの答えを共有し違いを議論する。</p>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>教育費の負担理由</strong></p>
+<table class="table-hover caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 60%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">負担者</th>
+<th style="text-align: left;">理由</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A・B<br> 本人・保護者 → 教育機関<br> 直接的な授業料の支払い</td>
+<td style="text-align: left;">投資としての教育支出<br> - 人的資本投資<br> - シグナリング投資<br> 消費としての教育</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C<br> 企業 → 本人・保護者<br> 企業による授業料の補填</td>
+<td style="text-align: left;">人的資本投資<br> インセンティブプログラム<br> 福利厚生</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">D<br> 企業 → 教育機関<br> 企業による教育機関の支援</td>
+<td style="text-align: left;">産学協同研究<br> 寄付（社会貢献・税控除）<br> 広報<br> ビジネス戦略</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">E<br> 政府 → 本人・保護者<br> 奨学金などの補助</td>
+<td style="text-align: left;">公平性の確保</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">F<br> 政府 → 教育機関<br> 政府による教育機関の補助</td>
+<td style="text-align: left;">公平性の確保<br> 学力向上・科学技術の発展<br> 雇用拡大・生産力向上<br> 外部効果</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="家庭による教育支出" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="家庭による教育支出"><span class="header-section-number">5.3</span> 家庭による教育支出</h2>
+<p>家庭（本人・保護者）による教育支出は、投資と消費としての2つの側面があります。</p>
+<p><strong>投資としての側面</strong></p>
+<p>これまで学んで来たように、教育は将来の収益を期待する投資活動と考えます。</p>
+<ul>
+<li>人的資本投資<br>
+教育を受けることで生産性が向上し、高い賃金を得る。</li>
+<li>シグナリング投資<br>
+教育を受けることで自分の能力を示し（生産性が高いと示し）、高い賃金を得る。</li>
+</ul>
+<p><strong>消費財としての側面</strong></p>
+<p>教育そのものを楽しむ、あるいは効用（満足度）を得る行為として考えます。</p>
+<section id="教育需要の主体と目的の整理" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="教育需要の主体と目的の整理">教育需要の主体と目的の整理</h3>
+<div id="fig-A05-2" class="quarto-float quarto-figure quarto-figure-center anchored" width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A05-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A05/A05-2.png" id="fig-A05-2" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A05-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;5.2
+</figcaption>
+</figure>
+</div>
+<p><strong>① 本人の投資としての教育</strong></p>
+<ul>
+<li>人的資本論、シグナリング理論が想定するタイプの教育<br>
+</li>
+<li>会社員がキャリアップを目指し資格を得るために各種の専門学校に通う<br>
+</li>
+<li>大学生が保護者から金銭的な支援を得ず、奨学金を借りて大学に通う</li>
+</ul>
+<p><strong>② 本人の消費としての教育</strong></p>
+<ul>
+<li>ミカンやリンゴを食べたり、演奏会を聞きに行ったりする行為と同様に経済学的には普通の消費行動<br>
+</li>
+<li>定年後の趣味、サラリーマンの趣味の習い事<br>
+</li>
+<li>外部経済効果はほとんどない<br>
+</li>
+<li>政府として大きな介入は考えられない（あるとすれば文化的な背景から）<br>
+</li>
+<li>本人の知的好奇心の充足</li>
+</ul>
+<p>教育にはこのような消費としての側面があるので、単純に教育の内部収益率と市場の利子率の大小により需要を判断出来ない。</p>
+<p><strong>③ 親による投資としての教育</strong></p>
+<ul>
+<li>子どもに良い教育を授けて、将来豊かな生活を送れるようにする<br>
+</li>
+<li>親が見返りを期待しているか？<br>
+</li>
+<li>親は自分の消費と将来子供から得られる見返りを考慮して子供の教育支出を決定する<br>
+</li>
+<li>日本の場合、ほとんどの親は見返りを求めていない<br>
+</li>
+<li>金銭的な見返りがないものを経済学的には投資とは言いにく。むしろ「所得移転」として捉えた方がよい<br>
+</li>
+<li>所得移転と考えた場合、教育以外の手段も考えられ、なぜ教育かという議論は起こる<br>
+</li>
+<li>さらに、所得移転とすれば政府は教育に課税をする必要がある？</li>
+</ul>
+<p><strong>④ 親の消費としての教育</strong></p>
+<ul>
+<li>子どもに教育を授けて、親が効用を得る<br>
+</li>
+<li>塾に通わせることでの親の満足<br>
+</li>
+<li>ブランド校、有名校に通わせることでの親の自己満足<br>
+</li>
+<li>誇示的消費としての側面<br>
+</li>
+<li>自分の財力やステータスを他者に示す目的で行われる消費行動<br>
+具体的には、高級品やブランド品を購入する、豪華な食事や旅行をするなど、他者が羨むような消費行動を指す<br>
+</li>
+<li>もはや政府が支援する根拠は大きく薄れる<br>
+</li>
+<li>親の満足：子どもを塾やブランド校に通わせることによる自己満足、あるいはステータスの誇示（誇示的消費）</li>
+</ul>
+<p><br></p>
+</section>
+<section id="家庭による教育支出まとめ" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="家庭による教育支出まとめ">家庭による教育支出まとめ</h3>
+<p>教育需要はこれらが重層構造になっており、ライフステージによって変化するのが自然です。</p>
+<table class="table-hover caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">負担者</th>
+<th style="text-align: left;">理由</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">本人の投資</td>
+<td style="text-align: left;">国家資格取得のための専門学校、奨学金での進学など。人的資本論の想定。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">本人の消費</td>
+<td style="text-align: left;">趣味の習い事など。外部性は乏しく、政府介入の根拠は弱い。</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">親の投資</td>
+<td style="text-align: left;">将来の豊かな生活のため。金銭的見返りがない場合は「所得移転」に近い。</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">親の消費</td>
+<td style="text-align: left;">親の効用（満足感）のため。ブランド校通学など。政府が支援する根拠は薄れる。</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 3.0em;">
+
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>これまでの議論を聞いて、自分の場合には、パターン①から④の中でどの要素が最も強いと考えますか、そしてのその理由は何ですか？　</p>
+<p><strong>個人&amp;グループワーク（10分）</strong> - 自分が拓殖大学で学んでいる理由は、どの要素が強いですか？ - お互いの答えを共有し違いを議論する。</p>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>あなたが大学で学ぶ理由は？</strong></p>
+<ul>
+<li>自分への投資（日本人）</li>
+<li>自分の消費（日本人）</li>
+<li>親の投資（日本人）</li>
+<li>親の消費（日本人）</li>
+<li>自分への投資（留学生）</li>
+<li>自分の消費（留学生）</li>
+<li>親の投資（留学生）</li>
+<li>親の消費（留学生）</li>
+</ul>
+<p><a href="https://app.sli.do/event/mTeiHwqYGo2U6tLYzKMWiE">Slido</a>に投票してください。</p>
+<div id="fig-QR-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-QR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A05/QR-1.png" id="fig-QR-1" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-QR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;5.3
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="企業による教育支出" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="企業による教育支出"><span class="header-section-number">5.4</span> 企業による教育支出</h2>
+<p><strong>企業 → 本人・保護者</strong></p>
+<ul>
+<li><p>一般的人的資本<br>
+企業が投資することはない<br>
+⇒ 転職されれば投資費用を回収できないから</p></li>
+<li><p>企業特殊的人的資本 企業が全額負担し、その投資を回収するために賃金を上げない<br>
+⇒ 転職されたら回収できない<br>
+（労働者は同じ給料のため転職しても影響はない）<br>
+⇒ 投資費用とその収益を労使間で分配する</p></li>
+</ul>
+<p><strong>企業 → 教育機関</strong></p>
+<ul>
+<li>産学協同研究<br>
+</li>
+<li>寄付（社会貢献・税控除）<br>
+</li>
+<li>広報<br>
+</li>
+<li>ビジネス戦略</li>
+</ul>
+</section>
+<section id="政府による教育支出" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="政府による教育支出"><span class="header-section-number">5.5</span> 政府による教育支出</h2>
+<p><strong>国・県・市区町村などによる教育支出の妥当性</strong></p>
+<p>教育は外部性を持つため、個人に教育需要の決定を委ねると社会全体にとって望ましい教育水準が達成できない可能性が高い。</p>
+<ul>
+<li>教育が個人にのみ便益があるのであれば、単純に個人の需要と費用の関係で必要な教育年数は、<span class="math inline">\(Q_1\)</span> 決まります。</li>
+</ul>
+<div id="fig-A05-3" class="quarto-float quarto-figure quarto-figure-center anchored" width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A05-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A05/A05-3.png" id="fig-A05-3" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A05-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;5.4
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>しかしながら、教育にはさまざまな外部効果が考えられます。それらをまとめて以下の赤い部分で示します。</li>
+</ul>
+<div id="fig-A05-4" class="quarto-float quarto-figure quarto-figure-center anchored" width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A05-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A05/A05-4.png" id="fig-A05-4" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A05-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;5.5
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>そして、教育の外部効果を個人の需要に上乗せすると、以下のように社会全体で望ましい教育年数は、<span class="math inline">\(Q^*\)</span> となります。</li>
+</ul>
+<div id="fig-A05-5" class="quarto-float quarto-figure quarto-figure-center anchored" width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A05-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A05/A05-5.png" id="fig-A05-5" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A05-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;5.6
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>つまり、教育には外部効果があるため、<span class="math inline">\(Q^* - Q_1\)</span> の教育年数を政府が支援することは妥当だと考えられます。</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>なぜ政府は教育に介入するのか？
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>外部性（externalities）、外部経済効果（external economy）</strong><br>
+個人が教育需要の大きさを決める場合、自分にとって必要な効用だけを考慮するため、社会全体にとって最適な水準よりも過少になる可能性がある。このため、政府が費用を肩代わりして供給を支える。</p>
+</div>
+</div>
+<section id="教育の外部性" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="教育の外部性">教育の外部性</h3>
+<p>ウォルター・マクマホン（Mcmahon, 1982）は、以下の7つを教育の外部性としてあげました。</p>
+<table class="table-hover caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 90%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">番号</th>
+<th style="text-align: left;">外部性の内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">効果的な民主主義と民主的組織の形成に貢献する</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">市場と技術変化への効果的な適応を可能とする</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: left;">犯罪率を下げ、刑罰制度の費用を減らす</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">福祉・失業保険・公共医療などの社会的費用を下げる</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: left;">資本市場の欠陥・不完全性を補完する</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: left;">地域および地方公共団体の公益事業を活性化する</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: left;">生産における補完性・相互性を有する</td>
+</tr>
+</tbody>
+</table>
+<p>これらのうち（3）（4）は定量的な計測が比較的容易であり、OECD各国において毎年報告されています。一方、（1）（2）（5）は「期待外部性」と呼ばれ、定量的な検証が難しいとされています。</p>
+</section>
+<section id="外部性の実証" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="外部性の実証">外部性の実証</h3>
+<p>マクマホンが指摘した教育の外部効果は、次々と実証されてきました。なかでも教育が失業保険給付や社会保険料にもたらす影響は定量化が可能なため、OECD各国においてほぼ毎年分析がなされています。以下では、代表的な5つの実証分野を紹介します。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p><strong>犯罪件数（犯罪率）・治安への効果</strong></p>
+<p>教育量と犯罪件数の関係を探る実証研究は少なくありません。概ね、教育は犯罪を抑制する効果があり、それによって社会費用が削減されるという結果が得られています。</p>
+<ul>
+<li>先進国・途上国の両方を対象に研究が展開されており、経済の発展度にかかわらず治安や警備に要する費用は深刻な問題であることがわかる（Lochner, 2004; Machin, Marie &amp; Vujić, 2011; Lochner &amp; Moretti, 2004）。<br>
+</li>
+<li>日本においても実証的な研究が行われており、島（研究代表・編著）（2018）は大学を卒業することによって犯罪に伴う費用を一人当たり1,538円抑制できると算出している。</li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p><strong>成人や児童・幼児死亡率への効果</strong></p>
+<p>教育と成人および幼児の死亡率との関係をめぐる研究は、幼児死亡率の高い途上国を対象とする場合が多く、とくに母親の学歴や就学年数に注目が集まっています。</p>
+<ul>
+<li>King &amp; Hill（1997）は世界的なサーベイをもとに、母親の教育が出生率・幼児死亡率・夫の死亡率を下げるなど、家族全員の寿命を延ばすことを明示した。<br>
+</li>
+<li>Gakidou et al.（2010）は1970年から2009年にわたる175カ国のデータをもとに、女性の教育が幼児死亡率に与える影響をさらに究明している。<br>
+</li>
+<li>日本では、Fujino et al.（2005）が学歴と高齢者の死亡原因との関係を研究している。</li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p><strong>健康管理への効果</strong></p>
+<p>就学経験が豊富な者ほどリスクを避ける傾向があり、食事・衛生管理、病気や事故の予防について知識を持ち、適切に対処できる傾向にあります。</p>
+<ul>
+<li>学歴が高い者ほど喫煙や飲酒の習慣が少ないことが指摘されている（Sander, 1998）。<br>
+</li>
+<li>健康管理については母親あるいは女性の教育経験が強い影響を持つことがわかっており、家族の食事や健康を管理する者の教育レベルが高いほど家族一人ひとりが病気になりにくく、公的健康保険の負担も減少する。<br>
+</li>
+<li>健康状態が良く精神的に安定すると犯罪件数も下がるため、健康への外部効果は治安にも波及する。</li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p><strong>子育て環境と子育て効果への影響</strong></p>
+<p>親の学歴と子育て環境、さらに子どもの学業・品行等との関係については、多くの研究が積み重ねられています。</p>
+<ul>
+<li>親の学歴が高いほど良い環境で子どもを育てられるとされ、多くの研究が子どもの学業成績を左右する最大の要因として母親の学歴を挙げている（Davis-Kean, 2005）。<br>
+</li>
+<li>学習を促す環境をつくり、勉強を教えるなどの行為が母親によるところが大きい状況では、母親の学歴が子どもに与える影響は極めて大きい。<br>
+</li>
+<li><strong>近隣効果</strong>：付近の住民の教育レベルが高いと、安全で安定したコミュニティが形成され、そこに住む子どもたちの学業にもプラスの影響を及ぼすとされる。</li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p><strong>消費の質と量への影響</strong></p>
+<p>教育は消費の質と量にも肯定的な影響を及ぼします。</p>
+<ul>
+<li>学歴が高い者ほど消費を抑えつつ貯蓄などをして将来に備えようとする傾向がある。<br>
+</li>
+<li>クーポン使用と教育経験との関係について、学歴が高い者ほどクーポンを有効に活用する傾向が1970年代アメリカの研究で明らかになった。<br>
+</li>
+<li>このような消費行動によって個人の生活がより安定するのみならず、無駄なゴミ削減や食品購入における健康維持にも影響する。</li>
+</ul>
+</section>
+<section id="教育への公的関与の問題" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="教育への公的関与の問題">教育への公的関与の問題</h3>
+<p>ここまで教育の経済的効果に焦点を当て、政府が教育に介入する理由とその妥当性について述べてきました。しかし、政府の教育への関与の「在り方」については、様々な論争があります。以下では、政府主導型教育を推し進めてきた4つの理由を覆そうとした議論を概観します。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p><strong>教育は経済発展をもたらすのか</strong></p>
+<p>教育量が増えることが国家経済の発展をもたらすのかという疑問は、第2章の人的資本理論の説明力を問う議論としても取り上げました。教育と経済成長の間に顕著な正の相関があることは、必ずしも因果関係の証左にはなりません。</p>
+<ul>
+<li>教育量が増えたから経済発展がもたらされたのか、経済が発展したために教育を受ける機会が増えたのか、いわゆる「鶏と卵」の関係にある。<br>
+</li>
+<li>教育が消費として捉えられる場合、経済的に豊かになると教育への支出も増加するため、教育量は増える。この観点に立つと、政府が経済発展のために教育に先行投資することの妥当性は減ずる。</li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p><strong>教育の外部性に政府の関与は必要か</strong></p>
+<p>教育に外部効果があることを認めたとしても、それを管理運営するのが政府でなければならないということは別問題です。</p>
+<ul>
+<li>例えば個人や企業が教育費用を支払い、学校教育を政府以外の組織によって運営したとしても、教育という営みが継続されるのであれば、自ずと外部効果は生まれる。<br>
+</li>
+<li>つまり、政府が資金を負担する限りは教育の外部性は保証される、という考え方が成り立つ。<br>
+</li>
+<li>ただし、民間の運営によって教育がもたらす社会的公共性（民主主義の醸成や公益事業の活性化など）が維持できるのかという疑問も根強い。</li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p><strong>学校教育は国民共通の価値形成の場か</strong></p>
+<p>学校は共通の価値形成を行う最も公的で影響力の強い現場です。参政、納税、倫理、善悪など社会参加に必要な決まり事を政府主導で作成された指導要領に基づき学びます。しかし、この観点には批判もあります。</p>
+<ul>
+<li>国家の権力と統率力が強ければ強いほど、<strong>パターナリズム（父権主義・温情主義）</strong> を通して政治的に偏った価値観が国民に浸透し得る。
+<ul>
+<li>パターナリズム：国家あるいは個人が他者の意思に反するとしても、介入・干渉あるいは支援等をすること。<br>
+</li>
+</ul></li>
+<li>国家主導で統一された価値観が個人の価値観と相いれず、多様性への敬意や寛容性を失う過程にもなり得る。<br>
+</li>
+<li>教育が個人の能力・努力によって社会的地位が定まる「メリトクラシー（能力主義）」の評価指標として機能すると、新たな格差バイアスを生み出す可能性もある。</li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p><strong>政府主導による教育機会の向上は経済的・社会的公平性をもたらしたか</strong></p>
+<p>第二次世界大戦後、教育機会の均等化を通じて経済格差を是正し、公平な社会を築くことが目指されました。確かに義務教育は世界的に拡充されましたが、それに伴って当初想定された富の分配が促されたかというと、答えは否です。</p>
+<ul>
+<li>教育を積むほど収入は伸びるものの、教育年数の少ない者との経済格差は広がる一方であり、教育はむしろ格差を拡大させる媒体となっている（橋本, 2020）。<br>
+</li>
+<li>過去半世紀、教育の機会を充足させることと経済的・社会的な公平を達成することは必ずしも同一線上にない。<br>
+</li>
+<li><strong>アファーマティブ・アクション（積極的差別撤廃措置）</strong>：弱者集団の不利な現状を歴史的経緯や社会環境を鑑みたうえで是正するための改善措置。
+<ul>
+<li>1978年パッキー判決（アメリカ連邦最高裁）：少数派枠を数で定めるクォータは違憲であるとされた。<br>
+</li>
+<li>機会均等のための施策と公平性の達成との間には、ずれや歪みが様々な場面で論争の種となっている。</li>
+</ul></li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p><strong>公共財の供給と運営の分離</strong></p>
+<p>教育費の公的支出はよいとしても、管理運営は民間や保護者・地域コミュニティで構成される組織に委ねられないか、という議論が近年中心となっています。</p>
+<ul>
+<li>政府が教育の資金源であることは正しいが、学校教育の「運営」は政府によるものである必要はなく、民間への委託がむしろ効率的ではないかという見解がある。<br>
+</li>
+<li>一方で、民間の運営に委ねることによって、教育がもたらす社会的公共性を維持できるのかという疑問も根強い。<br>
+</li>
+<li>課題は誰が教育費を負担するかではなく、それぞれがどれだけ教育費を負担するかという<strong>「程度」の問題</strong>ということになる。<br>
+</li>
+<li>数年来、世界的に教育の資金と運営は、ともに官から民へとシフトしている状況にあり、教育資金と管理運営をめぐる官と民それぞれの責任と資金拠出の「程度」を見極めていくことが今問われている。</li>
+</ul>
+<div style="margin-top: 3.0em;">
+
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>政府による教育支出について</strong></p>
+<p>先日、財務省が2040年までに私立大学を少なくとも250校（全体の約4割）削減する案を提言し、大きな波紋を呼んでいます。</p>
+<p>少子化による定員割れの深刻化や、教育水準の低下に対する懸念が背景にあります。</p>
+<p>文部科学省は「機械的な判断は避けるべき」と反発しています。</p>
+<p>この提言の主なポイントは以下の通りです。</p>
+<p><strong>提言の背景と目的</strong></p>
+<ul>
+<li>定員割れの深刻化：18歳人口の減少により、全国の私立大学の過半数（約53%）が定員割れに陥っています。<br>
+</li>
+<li>教育の質の確保：財務省は、定員を確保するために学生の学力水準が低下し、中学校レベルの基礎的な学習をやり直す授業を行っている大学があることを問題視しています。<br>
+</li>
+<li>適正規模への移行：2024年時点で624校ある私立大学を、2040年までに217〜372校規模（約14万人減）へ適正化する必要があるとしています。</li>
+</ul>
+<p><strong>議論の対立点</strong></p>
+<ul>
+<li><p>財務省の主張：<span class="marker">国税が投入されている現状</span>において、大卒としての一定の質を維持するためにも、抜本的な統廃合や定員削減が不可欠であるとしています。</p></li>
+<li><p>文科省・関係者の反発：大学は地域経済や地方の若者の進学先を支えるインフラであるため、学校数のみで機械的に削減を決めるのではなく、地域や分野のバランスを考慮すべきだという意見が強くあります。</p></li>
+</ul>
+<p><strong><a href="https://www.youtube.com/watch?v=nhx6XE7xepA">ABEMA Prime 13:00-17:51, 19:50-22:24</a></strong></p>
+<ul>
+<li>田島先生の主張：定員割れしている大学は地方に多い
+<ul>
+<li>地元を出られない人が学べなくなる<br>
+</li>
+<li>土地の文化・産業研究も衰退してしまう<br>
+</li>
+<li>地域に根付いた人材が減る<br>
+</li>
+</ul></li>
+<li>Wakkate.TV 高田ふーみん
+<ul>
+<li>税金に限りがあるので、高学歴（研究成果を出している大学）に投資して欲しい<br>
+</li>
+<li>東大・京大も研究費が足りていない</li>
+<li>定員割れしている大学に税金（補助金）を注ぎ込むのは損失である<br>
+</li>
+<li>中学・高校で学ぶような内容を、補助金が入っている大学で再度学び直すのはおかしい（税金の無駄遣い）<br>
+</li>
+<li>定員割れしている大学に補助金を出すぐらいなら、小・中学校の教員の質を上げるべき（岩田温氏）</li>
+</ul></li>
+<li>土居先生：日本の大学は卒業しやすい。アメリカの大学は難しい。大学が単位認定を厳しくし、基準に満たない学生には単位を出さなければ、大学の質は保たれる。</li>
+</ul>
+<p><strong>個人&amp;グループワーク（10分）</strong></p>
+<ul>
+<li>あなたはこれあの意見について、どのように考えますか？<br>
+</li>
+<li>どちらの意見に賛成ですか？　またその理由は何ですか？<br>
+</li>
+<li>お互いの答えを共有し違いを議論する。<br>
+</li>
+</ul>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>私立大学の削減について</strong></p>
+<p><a href="https://app.sli.do/event/mTeiHwqYGo2U6tLYzKMWiE">Slido</a>に投票してください。</p>
+<div id="fig-QR-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-QR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A05/QR-1.png" id="fig-QR-1" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-QR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;5.7
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="その他の性質" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="その他の性質"><span class="header-section-number">5.6</span> その他の性質</h2>
+<section id="公共財としての教育" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="公共財としての教育">公共財としての教育</h3>
+<p>公共財の定義：<br>
+1. 非競合性：誰かが消費しても他の人の消費を減らさない（例：公園、道路）<br>
+2. 排除不可能性：誰かの利用を拒否できない（例：国防、警察）</p>
+<p>教育の性質：<br>
+非競合性は概ね満たされるが、排除不可能性は完全には満たされない。</p>
+<ul>
+<li>準公共財（quasi public goods）<br>
+純粋な私的財とは異なるため、価格のみでその価値を評価することは難しい。</li>
+</ul>
+</section>
+<section id="価値財としての教育" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="価値財としての教育">価値財としての教育</h3>
+<p>価値財とは、政府が消費者主権に介入し、消費者の行動を矯正することで社会的に利益があると考える財やサービスのこと。</p>
+<ul>
+<li><p>消費者の情報不足や誤解により自ら最適な選択ができない場合、政府が介入して提供する。</p></li>
+<li><p>日本国憲法第26条：教育を受ける権利の保障と、保護者の教育を受けさせる義務。</p></li>
+</ul>
+<p>これらを踏まえ、教育は価値財であると考えられる。</p>
+</section>
+<section id="教育は公平性追求の手段か" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="教育は公平性追求の手段か">教育は公平性追求の手段か？</h3>
+<p>教育機会の欠如は格差に直結するため、政府が提供すべきという考えがある。</p>
+<ul>
+<li>機会の平等と結果の平等<br>
+しかし、同じ教育を受けても個人の能力差により教育効果が異なり、かえって所得格差が広がる可能性もある。<br>
+</li>
+<li>個人の潜在能力を事前に把握することは困難なため、公平性のみで教育供給を完全に正当化することは難しい。</li>
+</ul>
+</section>
+<section id="政府関与の多面性" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="政府関与の多面性">政府関与の多面性</h3>
+<p>経済学的な理屈（外部性や公共財）だけでは、政府が直接供給すべきという結論には直結しない。</p>
+<p>民間（私立学校など）による供給という選択肢もある。</p>
+<p>ただし、教育には以下の側面があることを忘れてはならない。</p>
+<ul>
+<li>政治的側面（統治）<br>
+</li>
+<li>文化的な側面（文化の伝承）<br>
+</li>
+<li>市民社会の維持</li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
