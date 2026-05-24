@@ -73,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <meta name="robots" content="noindex, nofollow">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -216,8 +245,49 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#学習目標" id="toc-学習目標" class="nav-link active" data-scroll-target="#学習目標"><span class="header-section-number">6.1</span> 学習目標</a></li>
+  <li><a href="#親による教育需要" id="toc-親による教育需要" class="nav-link" data-scroll-target="#親による教育需要"><span class="header-section-number">6.2</span> 親による教育需要</a>
+  <ul class="collapse">
+  <li><a href="#モデル1子どもの価格が固定されている場合" id="toc-モデル1子どもの価格が固定されている場合" class="nav-link" data-scroll-target="#モデル1子どもの価格が固定されている場合">モデル1：子どもの価格が固定されている場合</a></li>
+  <li><a href="#モデル2becker-lewisの量質モデル" id="toc-モデル2becker-lewisの量質モデル" class="nav-link" data-scroll-target="#モデル2becker-lewisの量質モデル">モデル2：Becker-Lewisの量—質モデル</a></li>
+  </ul></li>
+  <li><a href="#不確実性と教育需要" id="toc-不確実性と教育需要" class="nav-link" data-scroll-target="#不確実性と教育需要"><span class="header-section-number">6.3</span> 不確実性と教育需要</a>
+  <ul class="collapse">
+  <li><a href="#人的資本論とオプションバリュー" id="toc-人的資本論とオプションバリュー" class="nav-link" data-scroll-target="#人的資本論とオプションバリュー">人的資本論とオプション・バリュー</a></li>
+  <li><a href="#オプションバリューと不確実性" id="toc-オプションバリューと不確実性" class="nav-link" data-scroll-target="#オプションバリューと不確実性">オプション・バリューと不確実性</a></li>
+  <li><a href="#教育需要の自己冷却効果" id="toc-教育需要の自己冷却効果" class="nav-link" data-scroll-target="#教育需要の自己冷却効果">教育需要の自己冷却効果</a></li>
+  </ul></li>
+  <li><a href="#ドロップアウトモデル" id="toc-ドロップアウトモデル" class="nav-link" data-scroll-target="#ドロップアウトモデル"><span class="header-section-number">6.4</span> ドロップアウト・モデル</a>
+  <ul class="collapse">
+  <li><a href="#モデルの前提" id="toc-モデルの前提" class="nav-link" data-scroll-target="#モデルの前提">モデルの前提</a></li>
+  <li><a href="#不確実性の重要性" id="toc-不確実性の重要性" class="nav-link" data-scroll-target="#不確実性の重要性">不確実性の重要性</a></li>
+  <li><a href="#教育による不確実性の軽減" id="toc-教育による不確実性の軽減" class="nav-link" data-scroll-target="#教育による不確実性の軽減">教育による不確実性の軽減</a></li>
+  <li><a href="#ドロップアウトのタイミング" id="toc-ドロップアウトのタイミング" class="nav-link" data-scroll-target="#ドロップアウトのタイミング">ドロップアウトのタイミング</a></li>
+  </ul></li>
+  <li><a href="#塾補習教育に対する需要" id="toc-塾補習教育に対する需要" class="nav-link" data-scroll-target="#塾補習教育に対する需要"><span class="header-section-number">6.5</span> 塾（補習教育）に対する需要</a>
+  <ul class="collapse">
+  <li><a href="#補習教育と教育需要の不確実性" id="toc-補習教育と教育需要の不確実性" class="nav-link" data-scroll-target="#補習教育と教育需要の不確実性">補習教育と教育需要の不確実性</a></li>
+  <li><a href="#早めの塾通いはその後の塾需要を冷やす" id="toc-早めの塾通いはその後の塾需要を冷やす" class="nav-link" data-scroll-target="#早めの塾通いはその後の塾需要を冷やす">早めの塾通いはその後の塾需要を冷やす</a></li>
+  </ul></li>
+  <li><a href="#学び直しの経済学" id="toc-学び直しの経済学" class="nav-link" data-scroll-target="#学び直しの経済学"><span class="header-section-number">6.6</span> 「学び直し」の経済学</a>
+  <ul class="collapse">
+  <li><a href="#学び直しの諸形態" id="toc-学び直しの諸形態" class="nav-link" data-scroll-target="#学び直しの諸形態">「学び直し」の諸形態</a></li>
+  <li><a href="#学び直しを説明する経済学理論" id="toc-学び直しを説明する経済学理論" class="nav-link" data-scroll-target="#学び直しを説明する経済学理論">「学び直し」を説明する経済学理論</a></li>
+  <li><a href="#学び直しをめぐる世界的政策と動向" id="toc-学び直しをめぐる世界的政策と動向" class="nav-link" data-scroll-target="#学び直しをめぐる世界的政策と動向">「学び直し」をめぐる世界的政策と動向</a></li>
+  </ul></li>
+  <li><a href="#労働市場の構造的変化と学び直しのゆくえ" id="toc-労働市場の構造的変化と学び直しのゆくえ" class="nav-link" data-scroll-target="#労働市場の構造的変化と学び直しのゆくえ"><span class="header-section-number">6.7</span> 労働市場の構造的変化と「学び直し」のゆくえ</a>
+  <ul class="collapse">
+  <li><a href="#労働市場の流動化" id="toc-労働市場の流動化" class="nav-link" data-scroll-target="#労働市場の流動化">労働市場の流動化</a></li>
+  <li><a href="#学び直しのための資源情報と場所" id="toc-学び直しのための資源情報と場所" class="nav-link" data-scroll-target="#学び直しのための資源情報と場所">「学び直し」のための資源：情報と場所</a></li>
+  <li><a href="#学び直しをめぐる日本の現状" id="toc-学び直しをめぐる日本の現状" class="nav-link" data-scroll-target="#学び直しをめぐる日本の現状">「学び直し」をめぐる日本の現状</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -241,114 +311,868 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<!-- 
+
+以下の時間配分で実施
+
+30分（〜11：45）
+子どもの「量」と「質」
+・モデル1：子供の価格が固定されている場合
+　グラフ
+・モデル2：Becker-Lewisの量-質モデル
+・Activity 1（予算制約式を書いてみる）
+・トレードオフ（量—質）
+
+10分（〜11：55）
+・教育の価値と不確実性
+　人的資本論との関連
+　スクリーニングとの関連
+　自己冷却効果
+
+10分（〜12：05）
+・ドロップアウトモデル
+
+10分（〜12：15）
+・補習教育（塾）に対する需要
+・Activity 2（塾通いの自己冷却効果を振り返る）
+
+（・不確実性と大学受験（扱わない））
+
+5分（〜12：20）
+・学び直し
+　諸形態
+
+5分（〜12：30）
+・学び直し
+　理論
+
+10分（〜12：40）
+・労働市場と学び直し
+
+10分（〜12：50）
+・Activity 3（仕事）
+
+10分（〜13：00）
+・確認テスト
+-->
+<section id="学習目標" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="学習目標"><span class="header-section-number">6.1</span> 学習目標</h2>
+<ul>
+<li>子どもの「量」と「質」のトレードオフ（量—質モデル）について理解する。</li>
+<li>教育需要における不確実性の役割と、教育のオプション・バリューという概念を理解する。</li>
+<li>ドロップアウト・モデルの考え方を理解する。</li>
+<li>補習教育・大学受験における不確実性の働きを理解する。</li>
+<li>「学び直し」に関連する諸概念（生涯学習・成人学習・継続学習・リカレント学習）の違いを理解する。</li>
+<li>「学び直し」を説明する経済学理論（産業構造論・ミクロ経済理論・人的資本論）を理解する。</li>
+<li>労働市場の流動化が「学び直し」需要にどのような影響を与えるかを理解する。</li>
+</ul>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+<section id="親による教育需要" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="親による教育需要"><span class="header-section-number">6.2</span> 親による教育需要</h2>
+<p><strong>子どもの「量」と「質」</strong></p>
+<p>前節では、教育需要の決定主体を本人（子ども）として考えてきました。しかし現実には、特に子どもが幼い間は、親が教育水準を実質的に決定しています。ここでは、親が子どもの<strong>数（量）</strong>と<strong>教育水準（質）</strong>をどのように同時に決めるかを、経済モデルを使って考えていきます。</p>
+<p>日本では子どもの教育費が家計を圧迫する程度が強く、旧厚生省（現厚生労働省）の『厚生白書』（1998年版）によれば、妻が理想の数の子どもを持とうとしない理由として「子どもを育てるのにお金がかかるから」が37.0%、「子どもの教育にお金がかかるから」が33.8%に達しています（複数回答）。こうした事実は、子どもの「数」と「教育の質」の間に、親の家計を通じたトレードオフが存在することを示唆しています。</p>
+<p>以下では、まず最もシンプルな「子どもの価格が固定されている」モデルから出発し、次にBecker and Lewis（1973）が提示した「質と量が相互に影響しあう」モデルへと進み、最後に「親の利他心」を組み込んだモデルを学びます。</p>
+<section id="モデル1子どもの価格が固定されている場合" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="モデル1子どもの価格が固定されている場合">モデル1：子どもの価格が固定されている場合</h3>
+<p>まず最も基本的なモデルを考えましょう。親は自分自身の消費 <span class="math inline">\(C\)</span> と、子どもの数 <span class="math inline">\(n\)</span> から効用を得るとします。子ども1人を持つための費用（影の価格）を <span class="math inline">\(P_n\)</span> とすると、親の所得 <span class="math inline">\(I\)</span> に関する予算制約式は、</p>
+<p><span class="math display">\[C + P_n \cdot n = I\]</span></p>
+<p>となります。つまり、「自分の消費と子どもへの支出の合計が所得を超えられない」という制約です。親はこの制約のもとで、</p>
+<p><span class="math display">\[\max \; u(C) + v(n)\]</span></p>
+<p>を最大化します。ここで <span class="math inline">\(u(\cdot)\)</span> は親自身の消費から得られる効用、<span class="math inline">\(v(\cdot)\)</span> は子どもの数から得られる効用です。</p>
+<p><strong>一階条件（最適化の条件）</strong></p>
+<p>ラグランジュ法を用いると、最適解における一階条件は、</p>
+<p><span class="math display">\[u'(C) = \frac{v'(n)}{P_n}\]</span></p>
+<p>となります。</p>
+<p>これを言葉で解釈しましょう。左辺 <span class="math inline">\(u'(C)\)</span> は「自分の消費を1単位増やしたときに得られる限界効用」です。右辺 <span class="math inline">\(v'(n)/P_n\)</span> は「子どもを1人増やすことで得られる限界効用を、子供1人の費用 <span class="math inline">\(P_n\)</span> 円で割り、1円当たりの限界効用に換算したもの」です。最適な選択では、1円を自分の消費に使っても子どもに使っても、得られる効用の増分が等しくなるように配分するということです。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>一階条件の導出
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>問題の設定の確認</strong></p>
+<p>最大化問題は、</p>
+<p><span class="math display">\[\max \; u(C) + v(n) \quad \text{s.t.} \quad C + P_n \cdot n = I\]</span></p>
+<p><strong>ステップ1：ラグランジアンを作る</strong></p>
+<p>制約付き最大化を解くために、ラグランジアン <span class="math inline">\(L\)</span> を以下のように定義します。</p>
+<p><span class="math display">\[L = u(C) + v(n) + \lambda (I - C - P_n \cdot n)\]</span></p>
+<p><span class="math inline">\(\lambda\)</span> はラグランジュ乗数で、「予算が1円増えたときに効用がどれだけ増えるか（所得の限界効用）」を表します。</p>
+<p><strong>ステップ2：<span class="math inline">\(C\)</span> と <span class="math inline">\(n\)</span> それぞれで偏微分してゼロとおく</strong></p>
+<p><span class="math inline">\(C\)</span> で偏微分：</p>
+<p><span class="math display">\[\frac{\partial L}{\partial C} = u'(C) - \lambda = 0 \quad \Rightarrow \quad u'(C) = \lambda \quad \cdots (1)\]</span></p>
+<p><span class="math inline">\(n\)</span> で偏微分：</p>
+<p><span class="math display">\[\frac{\partial L}{\partial n} = v'(n) - \lambda P_n = 0 \quad \Rightarrow \quad \lambda = \frac{v'(n)}{P_n} \quad \cdots (2)\]</span></p>
+<p><strong>ステップ3：<span class="math inline">\(\lambda\)</span> を消去する</strong></p>
+<p><span class="math inline">\((1)\)</span> と <span class="math inline">\((2)\)</span> はどちらも <span class="math inline">\(\lambda\)</span> に等しいので、</p>
+<p><span class="math display">\[u'(C) = \frac{v'(n)}{P_n}\]</span></p>
+<p>が得られます。</p>
+<p><strong>経済的な意味</strong></p>
+<p>この式は「最適な配分では、最後の1円をどちらに使っても得られる効用の増加が等しい」ということを表しています。</p>
+<ul>
+<li>左辺 <span class="math inline">\(u'(C)\)</span>：消費 <span class="math inline">\(C\)</span> に1円使ったときの限界効用</li>
+<li>右辺 <span class="math inline">\(v'(n)/P_n\)</span>：子どもを1人増やすには <span class="math inline">\(P_n\)</span> 円かかるので、1円当たりに換算した限界効用</li>
+</ul>
+<p>たとえば今、<span class="math inline">\(u'(C) &gt; v'(n)/P_n\)</span> だとしましょう。これは「今の状況では、1円を自分の消費に使う方が子どもに使うより効用が高い」ということを意味します。このとき、合理的な親は子どもへの支出を少し減らして自分の消費に回すはずです。</p>
+<p>しかし消費を増やすと <span class="math inline">\(u'(C)\)</span> は<strong>下がっていきます</strong>（限界効用逓減）。子どもへの支出を減らすと <span class="math inline">\(v'(n)/P_n\)</span> は<strong>上がっていきます</strong>（子どもの数が減るから）。この調整が続き、最終的に両者が等しくなったところで調整が止まります。これが最適解です。</p>
+<p>つまりこの条件は「もうこれ以上配分を変えても効用を増やせない状態」を表しており、経済学では<strong>最適配分の一般原則</strong>として、あらゆる消費者理論・生産者理論に共通して登場します。</p>
+</div>
+</div>
+<p><strong>このモデルから導かれる含意</strong></p>
+<ul>
+<li><strong>価格効果</strong>：<span class="math inline">\(P_n\)</span> が上昇する（子どもを持つコストが高くなる）と、子どもへの需要 <span class="math inline">\(n\)</span> は減少します。これは通常の財と同じ、需要の法則です。子ども1人当たりにかかる費用が高くなれば、子どもの数を減らすのは合理的な行動と言えます。</li>
+</ul>
+<div id="fig-A06-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A06-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A06/A06-1.png" id="fig-A06-1" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A06-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;6.1
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>所得効果</strong>：所得 <span class="math inline">\(I\)</span> が増加すると、子どもが正常財であれば <span class="math inline">\(n\)</span> は増加します。ただし、現実の少子化が示すように、所得と子ども数の関係は単純ではなく、後のモデルで修正が加えられます。</li>
+</ul>
+<p>このモデルは分かりやすいですが、<strong>子どもの「質」（一人ひとりへの教育水準）が固定されている</strong>という大きな制約があります。現実には、親は子どもの数と教育の質を同時に決定しているはずです。次のモデルではこの点を改善します。</p>
+</section>
+<section id="モデル2becker-lewisの量質モデル" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="モデル2becker-lewisの量質モデル">モデル2：Becker-Lewisの量—質モデル</h3>
+<p>Becker and Lewis（1973）は、親が子どもの<strong>数 <span class="math inline">\(n\)</span>（量）</strong>と<strong>教育水準 <span class="math inline">\(q\)</span>（質）</strong>を同時に決定する状況を分析しました。このモデルの核心は、<strong>質と量の価格が互いに影響しあう</strong>という点にあります。</p>
+<p><strong>費用の構造</strong></p>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>子どもに関する費用を3種類に分けます。</p>
+<ul>
+<li><p><span class="math inline">\(P_n\)</span>：子どもの数に依存する費用（例：親の時間、基礎的な養育費）。子どもが1人増えると <span class="math inline">\(P_n\)</span> だけかかりますが、教育の質には無関係。</p></li>
+<li><p><span class="math inline">\(P_q\)</span>：子どもの質に依存するが、子どもの数に無関係な費用（例：子守する人の雇用、百科事典の購入、住む地域の選択など）。</p></li>
+<li><p><span class="math inline">\(P_c\)</span>：質と量の両方に依存する費用（例：個別指導塾、私立学校の授業料、習い事）。</p></li>
+</ul>
+<p>子ども <span class="math inline">\(n\)</span> 人全員に質 <span class="math inline">\(q\)</span> の教育を受けさせるときの予算制約式を考えてみましょう。</p>
+<p>そして、出来上がった予算制約式を <span class="math inline">\(q\)</span> 、<span class="math inline">\(n\)</span> について解き、<span class="math inline">\(q\)</span> と <span class="math inline">\(n\)</span> の関係を考えてください。</p>
+</div>
+</div>
+<div style="margin-top: 3.0em;">
+
+</div>
+<p><strong>予算制約式</strong></p>
+<p>子供の人数に応じて必要となる費用は、<span class="math inline">\(P_n \times n\)</span></p>
+<p>子供の質にのみ関係する費用は、<span class="math inline">\(P_q \times q\)</span></p>
+<p>子供の質と量（人数）の両方に関係する費用は、<span class="math inline">\(P_c \times q \times n\)</span></p>
+<p>したがって、予算制約式全体は、以下のようになります。</p>
+<p><span class="math display">\[C + P_c \cdot q \cdot n + P_n \cdot n + P_q \cdot q = I\]</span></p>
+<div style="margin-top: 3.0em;">
+
+</div>
+<p><strong>この予算制約式の重要なポイント</strong></p>
+<p>モデル1では予算制約が <span class="math inline">\(C + P_n \cdot n = I\)</span> という<strong>線形</strong>の式でした。しかしこのモデルでは、<span class="math inline">\(P_c \cdot q \cdot n\)</span> という <strong><span class="math inline">\(q\)</span> と <span class="math inline">\(n\)</span> の積の項</strong>が加わります。これが非常に重要な意味を持ちます。</p>
+<p><span class="math inline">\(q\)</span> と <span class="math inline">\(n\)</span> の積が予算制約に入るということは、子どもの数 <span class="math inline">\(n\)</span> を増やすと、質 <span class="math inline">\(q\)</span> の<strong>影の価格（実質的なコスト）が上昇</strong>することを意味します。逆に、質 <span class="math inline">\(q\)</span> を高めると、子どもの数 <span class="math inline">\(n\)</span> の影の価格が上昇します。つまり、<strong>質と量は互いの価格を押し上げあう関係</strong>にあります。</p>
+<div style="margin-top: 3.0em;">
+
+</div>
+<p><strong>数式で確認しましょう。</strong></p>
+<p>予算制約式を <span class="math inline">\(q\)</span> について解くと、</p>
+<p><span class="math display">\[q = \frac{I - P_n \cdot n - C}{P_c \cdot n + P_q}\]</span></p>
+<p>これは <span class="math inline">\(n\)</span> が大きいほど分母が大きくなるため、実現できる <span class="math inline">\(q\)</span> の水準が低下することを示しています。</p>
+<p>同様に、予算制約式を <span class="math inline">\(n\)</span> について解くと、</p>
+<p><span class="math display">\[n = \frac{I - P_q \cdot q - C}{P_c \cdot q + P_n}\]</span></p>
+<p>これは <span class="math inline">\(q\)</span> が大きいほど分母が大きくなるため、実現できる <span class="math inline">\(n\)</span> の水準が低下することを示しています。</p>
+<p>つまり、<strong>子どもの数 <span class="math inline">\(n\)</span> を増やせば質 <span class="math inline">\(q\)</span> を高めるコストが上がり、質 <span class="math inline">\(q\)</span> を高めれば子どもの数 <span class="math inline">\(n\)</span> を増やすコストが上がります</strong>。どちらを増やそうとしても、もう一方が犠牲になるという対称的なトレードオフが成立しています。</p>
+<div style="margin-top: 3.0em;">
+
+</div>
+<p><strong>なぜ「大きなトレードオフ」が生じるのか</strong></p>
+<p>モデル1では、子どもの数を増やしても教育の質の価格は変わりませんでした（線形の予算制約）。しかしモデル2では、子どもの数が増えると質の価格が高くなり、質が上がると数の価格が高くなります。<span class="marker">この相互依存関係が、予算制約を<strong>双曲線型の非線形制約</strong>にします</span>。</p>
+<p><span class="math inline">\(n\)</span> と <span class="math inline">\(q\)</span> の選択空間において、この双曲線型の制約のもとでは、<strong>一方のパラメータが少し変化しただけで、量から質へ（あるいは質から量へ）の大きなシフトが起きやすく</strong>なります。これが、少子化と教育費の高騰が同時進行するメカニズムの経済学的な説明です。子どもの教育費（<span class="math inline">\(P_c\)</span>）が上昇すると、子どもの数の実質的なコストが上がり、子ども数を大幅に減らして1人当たりの教育投資を集中させるという選択が合理的になります。</p>
 <!--
 
+**一階条件**
 
-### 投資としての側面 {.unnumbered}
+ラグランジュ法を用いると、一階条件は次の3式になります。
+
+$$u'(C) = \lambda$$
+
+$$v_n = \lambda (P_c \cdot q + P_n)$$
+
+$$v_q = \lambda (P_c \cdot n + P_q)$$
+
+ここで $\lambda$ はラグランジュ乗数（所得の限界効用）、$v_n$ は子どもの数を1単位増やしたときの限界効用、$v_q$ は教育の質を1単位高めたときの限界効用です。
+
+重要なのは、2番目と3番目の式の右辺です。
+
+* 子どもの数 $n$ を1人増やすときの実質的な価格は $(P_c \cdot q + P_n)$ であり、**現在の教育水準 $q$ が高いほど、子どもを増やすコストが高くなります**。
+* 教育の質 $q$ を1単位高めるときの実質的な価格は $(P_c \cdot n + P_q)$ であり、**現在の子ども数 $n$ が多いほど、質を高めるコストが高くなります**。
+
+この相互依存関係こそが、量—質トレードオフの本質です。
+
+-->
+<!-- 今回は扱わない
+
+### 親の利他性モデル：なぜ親は子どもに投資するのか {.unnumbered}
+
+次に、「親はなぜ子どもに教育投資をするのか」という問いに答えるモデルを考えよう。ここでは話を単純にするために、**親1人・子ども1人**の2世代モデルを扱う。きょうだい効果は捨象する。
+
+**モデルの設定**
+
+親の効用関数を、
+
+$$V_p = u(C) + \alpha \beta V_c$$
+
+と設定する。ここで、
+
+* $C$：親自身の消費
+* $V_c$：子どもの効用
+* $\alpha$：**利他性パラメータ**（$0 < \alpha \leq 1$）。$\alpha$ が大きいほど、親は子どもの幸福を強く気にかける。
+* $\beta$：**主観的時間割引因子**（$0 < \beta \leq 1$）。$\beta$ が小さいほど、将来（子どもの世代）の効用を現在よりも大きく割り引いて考える。
+
+$\alpha\beta$ をまとめて「子どもへの愛情の強さ」と解釈してよい。$\alpha\beta$ が大きい親ほど、自分の消費を犠牲にしてでも子どもに投資する動機が強い。
+
+子どもの効用は、子どもの将来所得 $W_c$ によって決まるとする。
+
+$$V_c = V_c(W_c)$$
+
+子どもの所得は、人的資本 $H$ の市場評価額によって決まる。
+
+$$W_c = R \cdot H$$
+
+ここで $R$ は人的資本の市場評価（収益率）である。そして人的資本は、親が子どもに行う教育投資 $y$ によって形成される。
+
+$$H = f(y), \quad f'(y) > 0, \quad f''(y) < 0$$
+
+$f'(y) > 0$ は「投資を増やすほど人的資本が増える」こと、$f''(y) < 0$ は「収穫逓減」すなわち「投資の効果は最初は大きいが、だんだん追加的な効果が小さくなる」ことを意味する。塾に通い始めた最初の頃は成績が大きく上がるが、すでにたくさん通っている場合はさらに増やしても成績の伸びは小さい、というイメージである。
+
+親の予算制約式は、
+
+$$C + y = W_p$$
+
+つまり「親の所得を、自分の消費と子どもへの教育投資に振り分ける」ということだ。ここでは親から子への金融資産の遺贈はなく、借入市場もないと仮定している（教育投資は家計の現在所得から賄われる）。
+
+**親の最適化問題**
+
+上記をまとめると、親は
+
+$$\max_{y} \; u(W_p - y) + \alpha\beta \; V_c(R \cdot f(y))$$
+
+を $y$ について最大化する。$C = W_p - y$ であることを使って代入した形である。
+
+**一階条件**
+
+$y$ について微分してゼロとおくと、
+
+$$-u'(W_p - y) + \alpha\beta \cdot R \cdot f'(y) \cdot V_c'(R \cdot f(y)) = 0$$
+
+整理すると、
+
+$$R \cdot f'(y) = \frac{u'(C)}{\alpha\beta \cdot V_c'(W_c)}$$
+
+この式を言葉で解釈しよう。
+
+* **左辺** $R \cdot f'(y)$：教育投資を1単位増やしたときに子どもの所得がどれだけ増えるか、すなわち**教育の（限界）収益率**である。$R$ が高い（人的資本が市場で高く評価される）ほど、また $f'(y)$ が大きい（追加投資の効果が大きい）ほど、教育の収益率は高い。
+
+* **右辺** $\dfrac{u'(C)}{\alpha\beta \cdot V_c'(W_c)}$：親が自分の消費を1単位増やすことから得られる限界効用 $u'(C)$ を、子どもの所得が1単位増えることから得られる（親にとっての）限界効用 $\alpha\beta \cdot V_c'(W_c)$ で割ったものである。これは**世代間の限界代替率**、つまり「子どもの幸福と自分の消費をどのように交換するか」を示す。
+
+最適な教育投資水準では、**教育の収益率が世代間の限界代替率に等しくなる**。収益率が代替率を上回っているときは、もっと投資を増やすべきであり、下回っているときは投資を減らして自分の消費に回すべきである。
 
 
-* 教育の不確実性  
-  消費者がリスクを嫌う（危険回避的）であれば需要は弱まるが、逆に過大な期待を抱く場合もある。  
-    - 高いお金を払ってまで教育を受けさせてもしょうがない、、、。  
-    - ウチの子どもは少々鍛えればいい線までいくのではないか？  
-* 自己冷却的な側面  
-  教育を受ける過程で自身の能力が判明し、期待が現実的になっていく。  
+### 比較静学：所得が高い家庭ほど教育投資は多いか {.unnumbered}
+
+最適な教育投資水準 $y^*$ は親の所得 $W_p$ によってどのように変化するか。これを比較静学によって調べよう。
+
+一階条件
+
+$$-u'(W_p - y^*) + \alpha\beta R f'(y^*) V_c'(Rf(y^*)) = 0$$
+
+を $W_p$ で全微分すると（陰関数定理を使う）、
+
+$$\frac{dy^*}{dW_p} = \frac{u''(W_p - y^*)}{u''(W_p - y^*) + \alpha\beta R^2 \left[f''(y^*) V_c'(Rf(y^*)) + (f'(y^*))^2 V_c''(Rf(y^*))\right]}$$
+
+分子は $u'' < 0$ より負。分母は $u'' < 0$、$f'' < 0$、$V_c'' < 0$ より、分子の $u''$ に加えてさらに負の項が加わるため、全体として分母の絶対値は分子の絶対値より大きい。
+
+したがって、
+
+$$0 < \frac{dy^*}{dW_p} < 1$$
+
+が成立する。
+
+これは何を意味するか。**所得 $W_p$ が1円増えると、教育投資 $y^*$ は0円より多く1円より少ない範囲で増加する**。つまり、所得が高い家庭ほど教育に多く投資するが、所得増加分のすべてを教育に回すわけではなく、一部は自分の消費にも使う。これは直感と合致する結果であり、教育が「正常財」であることを示している。
 
 
+### 政策の含意：現金補助と義務教育 {.unnumbered}
+
+このモデルは、教育政策の効果を考える上でも重要な示唆を与える。所得の低い家庭B（低所得）と高い家庭A（高所得）を想定し、3つのケースで政策効果を比較しよう。
+
+**ケースA：選好が類似している場合の現金補助**
+
+両家庭の利他性パラメータ $\alpha$、時間割引 $\beta$、教育の収益率 $R$ に関する見方がほぼ同じである場合、低所得家庭Bへの現金補助は、そのほとんどが教育投資 $y$ の増加に使われる。選好が同じであれば、予算制約が緩和されたとき、低所得家庭も高所得家庭と同様に教育を優先するからである。この場合、現金補助は教育格差の是正に有効である。
+
+**ケースB：選好が異なる場合の現金補助**
+
+しかし、家庭によって利他性 $\alpha$、時間割引 $\beta$、教育の収益率 $R$ に対する見方が大きく異なる場合、同じ現金補助でも教育投資への効果は保証されない。例えば、将来よりも現在を重視する（$\beta$ が小さい）家庭や、教育の収益率をあまり高く見積もらない（$R$ が低い）家庭では、補助金を受け取っても自分の消費 $C$ に多く使い、教育投資にはあまり回さない可能性がある。この場合、現金補助だけでは教育格差の是正は難しい。
+
+**ケースC：義務教育の導入**
+
+政府がすべての子どもに一定水準の教育を義務づける場合はどうか。
+
+* **私立教育や塾が存在しない場合**：義務教育によってすべての家庭の教育水準が均等化される。この場合、義務教育は格差是正に有効である。
+
+* **私立教育や塾が存在する場合**：高所得家庭Aは義務教育の水準を超えた追加的な教育（私立学校・塾）を購入できるため、教育格差が再拡大する。低所得家庭Bは義務教育の水準にとどまる一方、高所得家庭Aはさらに上乗せできるからである。
+
+この「義務教育＋私立・塾」という組み合わせは、日本の現実を正確に描写している。公立学校の授業料が無償でも、塾・習い事・私立学校への支出で教育格差が生じるのは、このメカニズムによる。
+
+**政策への教訓**
+
+以上の分析から、教育格差を縮小するためには、単純な現金補助や義務教育だけでは不十分な場合があることがわかる。家庭の選好の異質性（利他性・時間割引・収益率への見方の違い）や、私的教育市場の存在を考慮した上で政策を設計する必要がある。これは、教育政策の効果を評価する際に、**親と子どもの行動への影響を明示的に考慮しなければならない**ことを示している。
+
+<div style="margin-top: 3.0em;"></div>
+
+-->
+</section>
+</section>
+<section id="不確実性と教育需要" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="不確実性と教育需要"><span class="header-section-number">6.3</span> 不確実性と教育需要</h2>
+<p>これまでの議論では、能力や教育成果をめぐる不確実性については明示的に扱ってきませんでした。しかし、教育の収益率は事後的にはわかるものの、個別のケースではなはだ不確実なものです。</p>
+<p>「教育需要は、教育成果や能力をめぐる不確実性があるからこそ存在する」という、やや逆説的な命題がこの節のテーマです。</p>
+<div style="margin-top: 3.0em;">
+
+</div>
+<p><strong>教育のオプション・バリュー（option value）</strong></p>
+<ul>
+<li>教育を受けなければ確実に低い賃金しか得られないが、受けることによって能力が高まる可能性があります。</li>
+<li>この「受けなければ効果はないが、受けることによって能力が高まる可能性がある」という意味での教育の価値を、<strong>教育のオプション・バリュー</strong>と呼びます。</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>オプション・バリューとは
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>「オプション」とは、ある行動をとる<strong>権利</strong>のことです。金融の世界では、株などを将来一定の価格で買う権利（コール・オプション）などが知られていますが、教育経済学では「教育を受けることで将来の可能性を広げる権利」という意味で使われます。</p>
+<p>教育を受けなければ、将来の賃金や可能性はほぼ確定してしまいます。しかし教育を受けることで、「もしかしたら高い能力が開花するかもしれない」という<strong>上振れの可能性</strong>が生まれます。この「受けてみなければわからないが、受けることで得られるかもしれない追加的な価値」がオプション・バリューです。</p>
+<p>簡単に言えば、<strong>「やってみる価値」</strong> のことです。不確実性が高いほど、この「やってみる価値」は大きくなります。</p>
+</div>
+</div>
+<section id="人的資本論とオプションバリュー" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="人的資本論とオプションバリュー">人的資本論とオプション・バリュー</h3>
+<p>人的資本論の立場から説明した教育のオプション・バリューは次のように整理できます。</p>
+<ul>
+<li>「大学教育を受けて能力があがるかどうかわからないが、受けないと能力があがらないのなら受けるべきだ」というのが、人的資本論から見たオプション・バリューです。</li>
+</ul>
+<p><span class="math inline">\(h\)</span> を教育の成果の最大値とすると、教育を受けた場合の期待所得は <span class="math inline">\(w + \dfrac{h}{2}\)</span>、受けなかった場合は <span class="math inline">\(w\)</span> となります。</p>
+<p>費用を <span class="math inline">\(c\)</span>（<span class="math inline">\(0 &lt; c &lt; h\)</span>）とすれば、<span class="math inline">\(\dfrac{h}{2} - c\)</span> をネットのオプション・バリューと解釈できます。</p>
+</section>
+<section id="オプションバリューと不確実性" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="オプションバリューと不確実性">オプション・バリューと不確実性</h3>
+<p>教育のオプション・バリューを設定したとき、教育需要にとって不確実性は決定的に重要となります。</p>
+<ul>
+<li><p>人々が自分にとって教育がどこまで成果をあげるかまったくわからない場合、教育のオプション・バリュー <span class="math inline">\(\dfrac{h}{2}\)</span> がコスト <span class="math inline">\(c\)</span> を上回る限り、すべての人が教育を需要します。（やってみないと分からないからです。）</p></li>
+<li><p>それとはまったく対照的に、すべての人が自分が教育を受けたときの成果を完全に正確に予測できるとすれば、教育を受ける人は全体のうち <span class="math inline">\(\dfrac{h-c}{h}\)</span> にとどまります。（自分で利益がだ得ると分かっている人だけ教育を需要します。）</p></li>
+<li><p><strong>不確実性が高いほど教育需要は高くなる</strong>ことが、この単純な計算からも明らかです。</p></li>
+</ul>
+<p>また、人々がリスク回避的であるほど、教育需要は抑制されます。</p>
+<ul>
+<li><p>リスク回避的な場合、教育を受けた場合の期待効用には<strong>リスク・プレミアム</strong> <span class="math inline">\(\pi\)</span> が加わり、すべての人が教育を需要するのは <span class="math inline">\(c &lt; \dfrac{h}{2} - \pi\)</span> が満たされる場合に限定されます。</p></li>
+<li><p>人々がリスク回避的であるほど教育需要が抑制されるという含意は、それゆえに政府の教育への関与が正当化されるという面もあります。</p></li>
+</ul>
+<!--
+
+### 教育のスクリーニング機能とオプション・バリュー {.unnumbered}
+
+人的資本論とは異なり、能力は教育によってまったく影響を受けないと想定しても、教育に人々の能力を選別するというスクリーニング機能がそなわっていると仮定すれば、同様のオプション・バリューが発生します。  
+
+大学入試を例にとると、
+
+* 人々の能力が 0 から $h$ の範囲で一様分布し、大学に進学するためには $\theta$ 以上の能力が必要な試験に合格しなければならないとします（$0 \leq \theta \leq h$）。
+* 大学入試を受けない場合の賃金は $h/2$、入試を受けた場合の期待賃金は $\theta/2$ を上回ります。
+* したがって全員が大学入試を受けることになり、大学教育のオプション・バリューは $(h - \theta)/2$ となります。
+* 特に $\theta = 0$、つまり誰でも大学に無試験で入学できる場合は、オプション・バリューは人的資本論の場合の $h/2$ に等しくなります。
+
+-->
+</section>
+<section id="教育需要の自己冷却効果" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="教育需要の自己冷却効果">教育需要の自己冷却効果</h3>
+<p>教育には、不確実性が高いほど教育需要が高まる一方で、教育によって不確実性が軽減されると教育需要が冷却されていくという、<strong>自己冷却効果</strong>（self-cooling effect）があります。</p>
+<!--
+
+$$E_t = E(v_t), \quad E'(\cdot) > 0$$
+$$v_t = v\!\left(\int_0^t E_\tau d\tau\right), \quad v'(\cdot) < 0$$
+
+1番目の式は教育需要がオプション・バリューの増加関数であることを示しています。2番目の式は、教育を重ねると能力に関する不確実性が低下し、オプション・バリューが低下することを示しています。これを線形で与えると、
+
+$$E_t = (\alpha_0 + \alpha v_0)\exp(-\alpha\beta t)$$
+
+となり、時間が経つにつれて教育に対する需要が減少していくことが明らかです。
+
+-->
+<ul>
+<li>自分の能力に見極めをつけた人は、いつか教育を需要しなくなります。<br>
+</li>
+<li>その1つの姿が教育を受けることを途中でやめてしまう<strong>ドロップアウト</strong>です。<br>
+</li>
+<li>また、多くの人はある時点で学校を「卒業」し、実社会に出て行きます。<br>
+</li>
+<li>つまり、多くの人にとって、教育需要は有限です。</li>
+</ul>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+</section>
+<section id="ドロップアウトモデル" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="ドロップアウトモデル"><span class="header-section-number">6.4</span> ドロップアウト・モデル</h2>
+<p>不確実性が教育需要を決定し、そして教育が不確実性を引き下げ、教育需要を冷却していく状況を、より直感的に理解しやすいモデルで説明します。</p>
+<section id="モデルの前提" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="モデルの前提">モデルの前提</h3>
+<p>子どもたちが生まれながらにして「できる子」と「できない子」という2種類のグループで構成されていると仮定します。両者の比率をそれぞれ <span class="math inline">\(p\)</span>、<span class="math inline">\(1 - p\)</span> とします（<span class="math inline">\(0 &lt; p &lt; 1\)</span>）。</p>
+<ul>
+<li><strong>できる子</strong>：教育を受けることではじめて能力が発揮され、そのとき1だけの賃金が得られます。教育を受けなければ能力は埋もれたまま、賃金はゼロ。</li>
+<li><strong>できない子</strong>：教育を受けてもその効果はなく、どちらにしても賃金はゼロ。</li>
+<li>子どもがどちらであるかは、本人も親も事前には知りません。</li>
+<li>教育にかかる費用は、できる子・できない子に共通で単位当たり <span class="math inline">\(c\)</span>（<span class="math inline">\(&gt; 0\)</span>）。</li>
+</ul>
+</section>
+<section id="不確実性の重要性" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="不確実性の重要性">不確実性の重要性</h3>
+<p>まず、できる子とできない子がそれぞれ自分の能力を完全に知っている場合を考えると、</p>
+<ul>
+<li>できる子は教育を受け、できない子は受けません。</li>
+<li>教育需要の大きさは、できる子の比率 <span class="math inline">\(p\)</span> にとどまります。</li>
+</ul>
+<p>一方、<strong>能力の不確実性が存在する状況では</strong>、子どもは自分の能力を知らないから、教育を受けることで得られる期待賃金を、</p>
+<p><span class="math display">\[p \cdot 1 + (1-p) \cdot 0 = p\]</span></p>
+<p>と予想します。教育を受けなければゼロの賃金しか得られないので、この <span class="math inline">\(p\)</span> がオプション・バリューとなります。コストが <span class="math inline">\(c\)</span> なので、</p>
+<p><span class="math display">\[p &gt; c \quad \cdots (*)\]</span></p>
+<p>であれば全員が教育を需要します（教育需要 <span class="math inline">\(= 1\)</span>）。</p>
+<p><strong>能力の不確実性は教育需要の源泉です。</strong></p>
+</section>
+<section id="教育による不確実性の軽減" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="教育による不確実性の軽減">教育による不確実性の軽減</h3>
+<p>モデルをより現実的にすると、教育には子どもの能力を見いだすという効果があります。</p>
+<p>教育期間を <span class="math inline">\(E\)</span>（<span class="math inline">\(0 \leq E \leq 1\)</span>）で表し、「自分の能力を正しく判断する確率」をこの教育期間の増加関数とし、できる子・できない子それぞれについて <span class="math inline">\(\phi(E)\)</span>、<span class="math inline">\(\varphi(E)\)</span> と表記すると、</p>
+<p><span class="math display">\[\phi'(E) &gt; 0, \quad \phi(0) = p, \quad \phi(1) = 1\]</span> <span class="math display">\[\varphi'(E) &gt; 0, \quad \varphi(0) = 1-p, \quad \varphi(1) = 1\]</span></p>
+<p>と想定します。教育を受ける前は、自分の能力を正しく判断する確率は社会全体の能力分布に対応したものとなり、教育を完了すると自分の能力は完全に正確に判断されます。</p>
+<ul>
+<li>できる子は、教育を受け続けることによって自分ができる子であることを徐々に認識するようになるため、教育を受け続けるインセンティブが強まります。</li>
+<li>できない子は、教育を受け続けると自分のできの悪さが次第にわかってくるので、教育を続けても意味がないという思いが高まってきます。</li>
+</ul>
+</section>
+<section id="ドロップアウトのタイミング" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="ドロップアウトのタイミング">ドロップアウトのタイミング</h3>
+<p>できない子がドロップアウトするタイミングは、以下の条件で決まります。</p>
+<p><span class="math inline">\(E\)</span> だけ教育期間が経過したとき、できない子が教育を受け続けるためには、</p>
+<p><span class="math display">\[\frac{1 - \varphi(E)}{1 - E} &gt; c \quad \cdots (4)\]</span></p>
+<p>がつねに成り立っていなければなりません。この不等式の左辺は、できない子が時間当たりで評価した、教育を受け続けることのオプション・バリューです。</p>
+<ul>
+<li><span class="math inline">\(f(E) = \dfrac{1 - \varphi(E)}{1 - E}\)</span> とすると、<span class="math inline">\(f(0) = p &gt; c\)</span>、<span class="math inline">\(\displaystyle\lim_{E \to 1} f(E) = \varphi'(1)\)</span> となります。</li>
+<li><span class="math inline">\(f(E)\)</span> が <span class="math inline">\(E\)</span> の減少関数であれば、ある時点 <span class="math inline">\(E^*\)</span> でできない子はドロップアウトします。</li>
+<li>教育のコストが低いほど、またできる子の比率 <span class="math inline">\(p\)</span> が高いほど、できない子が教育を受け続ける期間 <span class="math inline">\(E^*\)</span> は長くなります。</li>
+</ul>
+<p><span class="math display">\[E^* = \frac{p - c}{\gamma - p}\]</span></p>
+<p>（<span class="math inline">\(\varphi(E)\)</span> を2次関数として設定した場合の解。<span class="math inline">\(\gamma\)</span> は適当な定数。）</p>
+<p>つまり、簡単に言い換えてみると、できる子の比率 <span class="math inline">\(p\)</span> が高いほど、できない子自身も（不確実性があるので）「自分もできるのではないか」と考え、教育を受け続ける期間 <span class="math inline">\(E^*\)</span> は長くなり、当然ながら、コストが低いほど、教育を受け続けることの負担が小さいので、オプション・バリューがわずかでも残っている限り続ける方が得になり、教育期間は長くなります。</p>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+</section>
+<section id="塾補習教育に対する需要" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="塾補習教育に対する需要"><span class="header-section-number">6.5</span> 塾（補習教育）に対する需要</h2>
+<p>日本では、幼児・小学校段階から塾や家庭教師など、補習教育に対する需要が根強いです。ここでいう補習教育とは、ピアノや習字など一般的な教養・趣味のための教育ではなく、塾や家庭教師、通信教育などを指します。</p>
+<section id="補習教育と教育需要の不確実性" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="補習教育と教育需要の不確実性">補習教育と教育需要の不確実性</h3>
+<p>補習教育への需要が根強い理由は、上述の「オプション・バリュー」と「不確実性」によって説明できます。</p>
+<ul>
+<li><p>小学生レベルでは、子どもの能力に関する情報の不確実性がまだ十分に残っているため、塾への需要が高くなります。</p></li>
+<li><p>少子化によって受験競争が緩和されたり、親の所得が伸び悩んでいることから、補習教育費はむしろ伸び悩んでいる面があります。</p></li>
+<li><p>しかし、都心部を中心に夜遅くまで子どもが塾に通う光景はまだ残っており、中学校に行くと高校受験があるために多くの子どもが塾に通っています。</p></li>
+</ul>
+</section>
+<section id="早めの塾通いはその後の塾需要を冷やす" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="早めの塾通いはその後の塾需要を冷やす">早めの塾通いはその後の塾需要を冷やす</h3>
+<p>総務省『家計調査年報』（2000年）のデータを用いた分析（小塩, 2003）では、都道府県所在地別に補習教育費を幼児・小学生レベル、中学生レベル、高校生レベルに分けて調べており、補習教育費比率はそれぞれ 3.1%、5.2%、3.0% となっています。</p>
+<ul>
+<li><strong>幼児・小学生レベルで塾通いが熱心な地域ほど、中学生レベルに進むと塾通いの需要があまり高まらない</strong>という傾向が確認されます。</li>
+<li>つまり、早めの塾通いはその後の塾需要を冷やします。これは、教育を受けさせるほど子どもの能力に対する不確実性が薄れ、したがって教育需要が後退するという自己冷却効果と整合的です。</li>
+<li>同様に、中学生レベルから高校生レベルにかけても、大まかな負の相関が確認できます。高校生になるとかなり子どもの能力がはっきりしてくるので、補習教育に対する需要はさらに冷却することになります。</li>
+</ul>
+<p>ただし、この実証結果は2000年時点の1時点データに基づく分析であり、現時点で同様の手法による追試研究は確認されていません。自己冷却効果という理論的メカニズム自体は教育経済学において現在も参照されていますが、上記の実証的な傾向が現在の日本においても成立するかどうかは留意が必要です。</p>
+<!--
+
+### 供給者誘発需要としての教育需要 {.unnumbered}
+
+供給者によって誘発される需要を、一般に**供給者誘発需要**（supplier-induced demand）と呼びます。代表的な例は**医師誘発需要**です。
+
+* 医師が多い地域ほど、医師間の競争が激しくなって1人当たり医療費が低下するというのが、教科書的な市場メカニズムから想定される帰結ですが、実際にはその逆となっていることが多いです。
+* 医療サービスの内容や成果に関して、一般の消費者はその中身をよく知らないので、手厚い（したがって高価格の）医療サービスほど効果が高まると思い込みます。こうした「情報の非対称性」があるからこそ、医師は需要を誘発することができます。
+
+教育需要にも、供給者が誘発する面が少なからずあります。
+
+* 「塾に通わないと私立中学校には合格できない」として子どもを塾に通わせることは、まさしく需要の誘発です。
+* しかし、塾の教育需要と医師誘発需要との間には質的な違いがあります。塾の経営者の方が親や子どもより一方的に情報面で優位に立っているわけではなく、**教育の成果は誰にとっても不確実です**。しかも、何度もテストを受けていくと子どもの能力は誰の目にも共通に明らかになっていきます。
+* つまり、塾に対する需要は、誘発された需要であったとしても、**つねにみずからを冷却するという性格**を持ちます。だからこそ、その性格を熟知している塾の経営者は、塾通いのオプション・バリューを維持する努力を怠らないのです。
+
+-->
+<div style="margin-top: 3.0em;">
+
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>個人&amp;グループワーク（10分）</strong></p>
+<p><strong>塾通いの自己冷却効果を振り返る</strong></p>
+<ul>
+<li><p>自分自身の塾・習い事の経験（または他の経験）を題材に、取り組んでいくうちに自分の限界が分かり、辞めたことはありますか？（自己冷却効果が働いた？）</p></li>
+<li><p>「私ならきっとできる」と信じ、頑張って継続していることがあれば、その理由を考えてみてください。それは、オプション・バリューと不確実性という言葉で説明できますか？</p></li>
+</ul>
+</div>
+</div>
+<!-- ここは扱わない
+
+## 不確実性と大学受験
+
+### 大学格差の存在理由 {.unnumbered}
+
+日本の大学は偏差値によってランク付けされているが、他の国でも一流大学とそうでない大学が存在する。大学間に格差が存在することにはそれなりの理由がある。
+
+* 前節のモデルで確認したように、能力が 0 から $h$ まで一様に分布し、大学に進学するためには $\theta$ 以上の能力が必要であるというモデルを想定すると、大学教育のオプション・バリューは $(h - \theta)/2$ となる。
+* 合格ラインを同一にすれば、大学間で志願者の奪い合いが繰り広げられ、授業料の値下げ競争を余儀なくされる。しかし、合格ラインが異なると、それぞれの大学が独占的な位置を占めることになり、値下げ競争に巻き込まれる危険性が低くなる。
+* **オプション・バリューが残っている限り、合格ラインの異なる大学が次々と誕生することになる**。少子化が進んで18歳人口が減少しているのに、大学や学部・学科の新設が毎年続いている理由の1つはこれであろう。
 
 
+### 偏差値の役割 {.unnumbered}
+
+小学校から高校に至るまでの教育課程のなかで、子どもたちは多くの試験を受け、自分の能力を客観的に知るようになる。「偏差値」はそれを具体的に数値化したものである。
+
+* 大学受験段階では、能力をめぐる不確実性は実際にはかなりの程度低下しているものと考えられる。
+* 偏差値によって大学受験段階ですでに能力の不確実性がある程度軽減されている状況では、各大学は**輪切り**にされた受験者層を対象として、独占的な地位を確保することができる。
+* 偏差値は「事前選抜」（pre-selection）の役割を果たしており、合格ラインが異なる大学が同時に入試を行っても、ある程度の志願者・入学者を確保することができる。
+
+<div style="margin-top: 3.0em;"></div>
+
+-->
+</section>
+</section>
+<section id="学び直しの経済学" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="学び直しの経済学"><span class="header-section-number">6.6</span> 「学び直し」の経済学</h2>
+<p>ここまで、教育需要が不確実性から生まれ、教育によって不確実性が軽減されると自己冷却が起きることを見てきました。しかし、社会に出た後も、産業構造の変化・技術革新・転職といった新たな不確実性が生じます。これが「社会人の学び直し」需要を生み出すメカニズムです。以下では、「学び直し」をめぐる概念・理論・政策・現状を整理します。</p>
+<section id="学び直しの諸形態" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="学び直しの諸形態">「学び直し」の諸形態</h3>
+<p>「学び直し」は現代高等教育の重要課題です。一般的に「社会人の学び直し」を指しますが、その定義は一定ではありません。従来は、かつて学んだことあるいは学ぶべきだったことを今一度勉強し直すという補習的な学習と受け止められていました。しかし、2010年代初頭から日本の産官学が奨励している「学び直し」は、学ぶという「行為」をやり直すあるいは繰り返すことであり、学ぶ内容も発展的に更新されていくことを想定しています。</p>
+<p>「学び直し」には、「生涯学習」「成人学習」「継続学習」「リカレント学習」など複数の類似した概念と実践があり、これらはすべて欧米から伝えられました。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<section id="生涯学習" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="生涯学習">生涯学習</h4>
+<p><strong>生涯学習</strong>は、Lifelong learning に対応します。人が生涯にわたって学習を続けることです。フランスの教育思想家ポール・ラングラン（Paul Lengrand）がユネスコ（UNESCO）の成人教育長を務めた間、1965年に出版された「エデュカシオン・ペルマナント（Éducation permanente）」で提唱した概念です。</p>
+<ul>
+<li>日本では、1981年の中央教育審議会答申「生涯教育について」のなかで、生涯教育は人々が「自己の充実・啓発や生活の向上のため（…）自発的意思に基づいて行うことを基本とするものであり、必要に応じ、自己に適した手段・方法は、これを自ら選んで、生涯を通じて行うもの」と記されました。</li>
+<li>1986年の臨時教育審議会の答申では「生涯学習体系への移行」が教育改革として提言され、それ以後学ぶ側の視点に立った「生涯学習」という用語が主流となりました。</li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="成人学習" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="成人学習">成人学習</h4>
+<p><strong>成人学習</strong>は Adult learning に対応します。この概念はアメリカの教育学者マルカム・ノールズ（Malcolm S. Knowles）が提唱した成人教育学を意味する<strong>アンドラゴジー</strong>（Andragogy）からはじまりました。</p>
+<ul>
+<li>ノールズは、子どもを対象とする<strong>ペダゴジー</strong>（Pedagogy：子どもへの指導法）から区別し、自律性が高く職業や暮らしに近接する成人による学習の概念を広めました。</li>
+<li>教えて育てるという教員視点から、自ら学び習うという<strong>学習者視点</strong>への転換でした。</li>
+<li>アメリカでは非伝統的学生（Nontraditional students）と定義され、伝統的学生（高校卒業後すぐ就学し、就労せず、両親保護者の財政的支援を受ける学生）と対比されます。</li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="継続学習" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="継続学習">継続学習</h4>
+<p><strong>継続学習</strong>は Continuous/Continuing learning です。高校卒業後のすべての学習活動や課程・教育プログラムが対象となり、多岐にわたります。</p>
+<ul>
+<li>伝統的大学教育の「Extension」として位置づけられることが多く、「延長的」あるいは「付加的」という表現には複雑な意味合いもあります。</li>
+<li>有力大学では特に、継続教育と伝統的大学教育との間に明確な線引きがされています。</li>
+<li>アメリカでは <strong>Back to school</strong> という表現があり、一度就職した者が大学等教育機関に戻って学び直す場合にも使われます。</li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="リカレント学習" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="リカレント学習">リカレント学習</h4>
+<p><strong>リカレント学習</strong>（Recurrent learning）は成人が生涯、継続して、大学等教育機関で学びを重ねるという意味で、「学び直し」に最も対応する概念であり実践でしょう。</p>
+<ul>
+<li>スウェーデンの経済学者ゴスタ・レーン（Gösta Rehn）が提唱し、1970年代にはOECDが推進する生涯教育の一形態となりました。</li>
+<li>就労してからも、生涯にわたって教育と他の諸活動（労働・余暇など）を交互に行うといった概念です。</li>
+<li>「リカレント」は<strong>「縦の循環」と「横の循環」</strong>を含意している点が特徴的です。縦の循環は時間の流れに沿って人生を構成するイベントに学びを盛り込んで循環させること、横の循環は就労と教育の場を往来する循環をなすことを指します。</li>
+<li>日本でも大学の社会人入学制度や科目履修生制度が設置されているのは、リカレント学習の受け皿を整備している現れでしょう。</li>
+</ul>
+</section>
+</section>
+<section id="学び直しを説明する経済学理論" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="学び直しを説明する経済学理論">「学び直し」を説明する経済学理論</h3>
+<p>「学び直し」を説明する経済学の理論には、（1）産業構造論、（2）ミクロ経済理論、（3）人的資本論があります。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<section id="産業構造論" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="産業構造論">産業構造論</h4>
+<p>産業構造論は新しい「知」と「技術」を習得することの妥当性を説明します。技術進歩は産業構造を大きく変え、とりわけ1970年代の電算機器やE-mailの登場、1980年代のフラッシュメモリーや携帯電話の登場、1990年代のインターネットの普及は私たちの生活と働き方に大きな変化をもたらしました。特に学び直しを必要とさせたのは次の三つです。</p>
+<ul>
+<li><strong>経済のサービス化</strong>：商業・運輸通信業・金融業・公務・飲食業などの伝統的なサービス産業が生産のシェアを拡大し、次いで教育・情報・レジャー・医療などの分野で新たなサービスが生まれました。</li>
+<li><strong>ITの普及</strong>：情報技術の発展によって多くの情報を自由に入手できるようになり、入手した情報は新たな技術を生み出します。</li>
+<li><strong>グローバル化と「知識基盤経済・社会」</strong>：知と技術は国境を越えて自由にそして瞬く間に移転し循環します。知識も技術も次々と更新され、今日の知識や技術は明日には過去のものになる可能性があります。</li>
+</ul>
+<p>これらの変化によって、人的資本から得られる付加価値は常に更新されなくてはならなくなりました。こうして、日々更新される「知」と「技術」に対応できる継続的な学びが求められるようになりました。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="ミクロ経済理論" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="ミクロ経済理論">ミクロ経済理論</h4>
+<p>ミクロ経済理論は、新しい「知」と「技術」を習得することの意味と妥当性を市場のメカニズムの観点から説明します。</p>
+<ul>
+<li>市場経済において情報が完全に共有されていれば、生産性と賃金は連動します。特定の職業への需要と供給の変化が、教育や訓練をどのように変えるかを考えてみましょう。</li>
+</ul>
+<div id="fig-A06-2" class="quarto-float quarto-figure quarto-figure-center anchored" width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A06-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A06/A06-2.png" id="fig-A06-2" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A06-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;6.2
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>例えば情報産業が盛んになりプログラマーの需要が増えると、需要曲線が右斜め上へ押し上げられ <span class="math inline">\(D_1\)</span> から <span class="math inline">\(D_2\)</span> へとシフトします。プログラマーの賃金と就労者数は <span class="math inline">\(W_1\)</span>、<span class="math inline">\(N_1\)</span> から <span class="math inline">\(W_2\)</span>、<span class="math inline">\(N_2\)</span> へと変わり、賃金が上がりプログラマーの就労者も増えます。</li>
+</ul>
+<div id="fig-A06-3" class="quarto-float quarto-figure quarto-figure-center anchored" width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A06-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A06/A06-3.png" id="fig-A06-3" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A06-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;6.3
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>このような労働市場での需給と報酬額が表出すると、それらの情報は教育や訓練を受けようとするインセンティブとなります。</li>
+<li>教育市場は労働市場と連動することが想定され、連動の結果として、プログラマーの人数・賃金・教育量・教育費用等が定まります。換言すると、市場は教育とその効果を測る「物差し」として機能します。</li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="人的資本論" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="人的資本論">人的資本論</h4>
+<p>人的資本論は市場と連動する人的資本の価値形成を説明します。継続して学ぶことが経済市場でどのような意味を持つのかを実証する際に、理論的な枠組みとなります。</p>
+<p>学び直しは、学ぶ本人はもとより、学んだ者が属する社会に対してもプラスの効果をもたらします。学んだ個人への効果に関する研究では、人的資本論は以下を説明します。</p>
+<ul>
+<li><strong>教育経験と所得との関係</strong>：第2章・第3章で扱った、人的資本論を用いて教育経験と所得との関係を明らかにする理論的枠組みと実証結果。</li>
+<li><strong>一定の年齢まで賃金が上昇する理由</strong>：第5章で扱った、生産性と賃金との関係および特定の雇用契約が雇用の連続性と学習・訓練にどのような影響を与えるかについての考察。</li>
+<li><strong>卒後の学習・訓練経験を規定する要因</strong>：学び直しという観点から更に検討が必要な領域。就職した者の訓練機会は、性別・年齢・企業の属性（産業・企業規模など）の影響を受けますが、人的資本論では教育経験に特に着目します。</li>
+</ul>
+<p>ミンサー（Jacob Mincer）は就学教育経験と就職後の訓練及び獲得賃金との関係を考察しました。就学年数が長い者ほど卒業後に訓練を受ける傾向にあることを示し、大学卒業者と高校卒業者の賃金格差の50%までが訓練の量によって説明されうるとし、就学経験が後々の賃金に長く影響を与えることを論じました。<strong>「学びが学びを生む」</strong>ことによって賃金の上昇が実現すると論じたのが、ミンサーとマルコット（Dave E. Marcotte）でした。</p>
+</section>
+</section>
+<section id="学び直しをめぐる世界的政策と動向" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="学び直しをめぐる世界的政策と動向">「学び直し」をめぐる世界的政策と動向</h3>
+<p>継続的学びの重要性が国際的に認知されたのは、1970年代にOECDがリカレント教育の概念を取り上げ、戦略的に生涯教育を促進しようと関係各国に呼び掛けた影響が大きいです。その後欧州の経済主要国とアメリカを中心に生涯教育・成人教育・継続教育・リカレント教育等々名称は異なるものの、生涯にわたって学び続けるという政策と実践が推進されました。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<section id="ケルン憲章1999年" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="ケルン憲章1999年">ケルン憲章（1999年）</h4>
+<p>日本を含む他の経済主要国にも拡大したきっかけとなったのは、1999年にケルンで開催された主要8カ国サミットで締結されたケルン憲章「生涯学習の目的と希望」（G8 Cologne Charter: Aims and Ambitions for Lifelong Learning）です。</p>
+<p>同憲章の基本原則では、生涯学習への投資について政府・民間・個人によるコミットメントが必要であるとしています。</p>
+<ul>
+<li><strong>政府</strong>による、あらゆるレベルでの教育及び訓練の向上のための投資</li>
+<li><strong>民間セクター</strong>による、既存及び将来の労働者への訓練</li>
+<li><strong>個人</strong>による、自己の能力及び職務経験の開発</li>
+</ul>
+<p>また、人々への投資の見返りは、雇用・経済成長・社会的地域的不平等の縮小などのかたちで表れることを示唆しています。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>ケルン憲章の三原則（抜粋邦訳）</strong></p>
+<p>第一に、知的才能に恵まれた人や経済的に恵まれた人だけでなく、すべての人々が学習と訓練へのアクセスを持つべきであり、基礎教育は無料であるべきこと。</p>
+<p>第二に、すべての人々が、義務教育期間だけでなく、生涯を通じて学習を継続することを奨励また可能とすべきこと。</p>
+<p>第三に、開発途上国は包括的で近代的かつ効率的な教育制度を確立するための援助を受けるべきであること。</p>
+</div>
+</div>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="日本での政策動向" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="日本での政策動向">日本での政策動向</h4>
+<p>日本では「学び直し」は2006年頃より、政府の経済・社会政策あるいは方針として明確にその必要性が打ち出されてきました。</p>
+<ul>
+<li><p><strong>2006年</strong>：「経済財政運営と構造改革に関する基本方針2006」では「大学等における実践的な教育コースの開設等の支援、再就職に資する学習機会を提供する仕組みの構築等、社会人の学び直しを可能とする取組を進める」こととしました。</p></li>
+<li><p><strong>2008年</strong>：文部科学省中央教育審議会の答申「学び直し」において、国民一人一人が生涯にわたって主体的に多様な選択を行いながら人生を設計していくことができるよう、いつでも「学び直し」や新たな学びへの挑戦が可能な環境整備を行うことが重要と述べました。この初期の段階では「学び直し」の推進が「再チャレンジ」の支援として位置づけられており、補習的学習の意味合いが強かったです。</p></li>
+<li><p><strong>2013年以降</strong>：「学び直し」は知識や技能を高度化する、継続的かつ循環的な方策として取り上げられていきます。「大学等における社会人の学び直し機能を強化する」として複層的な効果が指摘されるようになりました。</p></li>
+<li><p><strong>2017年</strong>：骨太の方針において「リカレント教育」について具体的に言及されました。雇用吸収力や労働生産性の高い職業への転職・再就職を支援することが、国全体の労働参加率や生産性の向上につながると位置づけられました。</p></li>
+<li><p><strong>2019年</strong>：「経済財政運営と改革の基本方針2019」では、社会人・女性・高齢者等の多様なニーズに対応して大学や専修学校等のリカレント教育を拡大する方向が示されました。</p></li>
+</ul>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+</section>
+</section>
+<section id="労働市場の構造的変化と学び直しのゆくえ" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="労働市場の構造的変化と学び直しのゆくえ"><span class="header-section-number">6.7</span> 労働市場の構造的変化と「学び直し」のゆくえ</h2>
+<p>学び直しを求める背景には、産業構造・人的資本論・ミクロ経済理論等が説明する力学に加えて、日本特有の現代的課題があります。転職・復職・起業等労働市場の流動化を支える仕組みと、大学等教育機関の学び直しに対応する体制がその核心です。</p>
+<section id="労働市場の流動化" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="労働市場の流動化">労働市場の流動化</h3>
+<p>長期的な傾向を見ると明らかに日本の転職率は男女ともに上昇しています。</p>
+<ul>
+<li><p>1959年に2.3%であった転職率（総数）は2017年には5.0%と2倍以上に増えました。女性の転職率の上昇が特に著しく、1959年の1.9%から2017年には6.2%に上昇しています。</p></li>
+<li><p>転職の増加は企業内訓練の在り方を変えます。転職の可能性が高まると、企業は社員の教育や訓練の費用を負担しにくくなります（ゲイリー・ベッカーの技能と賃金と雇用期間のモデルを参照）。</p></li>
+<li><p>2020年代より日本で盛んに議論されるようになった、「メンバー型雇用」から「ジョブ型雇用」への転換は、まさにこの流れのなかで起こっています。</p></li>
+<li><p>2019年4月には経団連と国公私立大学のトップが、「従来の新卒一括採用・終身雇用制度の限界が顕在化し、学生にも『就社』ではなく『就職』の意識が必要」と共同宣言で明言しています。</p></li>
+</ul>
+</section>
+<section id="学び直しのための資源情報と場所" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="学び直しのための資源情報と場所">「学び直し」のための資源：情報と場所</h3>
+<p>産業構造の変化、技術革新、多様な人材ニーズは、企業側に柔軟な雇用制度と採用体制を求め、労働者には絶えず間無い学びと、市場のニーズに応じて職場を変える柔軟性を求めます。仕事を変える際に必要なのは、仕事が途絶えたときにも生活を維持させ得る資金と次の仕事を得るための<strong>情報</strong>です。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<section id="職業情報ポータル" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="職業情報ポータル">職業情報ポータル</h4>
+<p>転職が盛んな欧米各国では、政府も民間も職業の展望や職業別に求められる技能や知識に関する情報提供を盛んに行っています。代表的な情報提供ポータルとして以下が挙げられます。</p>
+<ul>
+<li><p>アメリカ合衆国労働省が主宰する <strong><a href="https://www.bls.gov/ooh/">Occupational Outlook</a></strong>（職業展望）</p></li>
+<li><p>イギリスのキャリアサービスが提供する <strong>Job Profiles</strong>（職業プロファイル）</p></li>
+<li><p>ドイツ連邦雇用庁が主宰する <strong>BerufeNet: BERUFENET</strong>（専門情報ネット）</p></li>
+<li><p>フランス雇用局が提供する <strong>ROME</strong>（職業雇用実用リスト）</p></li>
+</ul>
+<p>日本においても経済界が学生に対して「就社」ではなく「就職」の意識を求めていることを鑑みると、今後は「会社情報」に加えて「職業レヴェル」の情報の重要性が増すでしょう。2020年の春に厚生労働省は日本版 <strong><a href="https://shigoto.mhlw.go.jp/User/">O-NET</a></strong> を設置した点に特に注目されたいです。</p>
+<p>O-NETには各職業及び職種の仕事内容に加え、必要な技能・知識・能力とこれらを習得するためにどのような教育や訓練を受ければ良いのかが示されており、更に賃金や公募等の情報へとつながり、就職のための分野別総合支援サイトの構築を目指しています。</p>
+</section>
+</section>
+<section id="学び直しをめぐる日本の現状" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="学び直しをめぐる日本の現状">「学び直し」をめぐる日本の現状</h3>
+<p>学び直しの場として、大学・大学院・専門学校などの教育専門機関の役割が期待されています。しかし、他の先進諸国と比べて日本では高等教育で学ぶ成人の就学者は極めて少ないです。</p>
+<ul>
+<li><p>25歳以上で大学（学士課程）に在籍している者の割合は、最も高い国はスウェーデンで31.94%、日本は0.58%です。</p></li>
+<li><p>日本では「伝統的学生」が圧倒的な割合を占めており、一旦就職したら大学で学び直す者はほとんどいません。</p></li>
+<li><p>長く続いた日本の長期雇用の慣行では、訓練は主に職場で行われていました。企業特殊型訓練をはじめとする職場内訓練と年功賃金・継続雇用つまり転職の低さは日本型雇用の最大の特徴でした。</p></li>
+</ul>
+<p>東京大学大学院教育学研究科の調査（2010）では、修士課程に学ぶことに関心があると答えた者は33.7%、機会があれば修了したいと答えた者は14.8%でした。しかし、なぜ大学で学ばないのかを就学への関心が最も高かった修士課程を対象に尋ねたところ、<strong>「勤務時間が長くて十分な時間がない」ことと「費用が高すぎる」こと</strong>が最大の障害要因として挙げられました。つまり<strong>時間とお金の問題</strong>が最も大きな阻害要因であることがわかります。</p>
+<div style="margin-top: 3.0em;">
+
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>日本の20年後に新しくできている（授業が増えた）職業はどのような職業がありそうですか？</p>
+<p><strong>個人&amp;グループワーク（10分）</strong> - 日本（世界）の20年後を想像し、新しくできた（需要が増えた）職業は？ - お互いの答えを共有し違いを議論する。</p>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>20年後の職業は？</strong></p>
+<p><a href="https://app.sli.do/event/kAsANy3BSmqRUGLbDXSjuq">Slido</a>に投票してください。</p>
+<div id="fig-QR" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-QR-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A06/A06-QR.png" id="fig-QR" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-QR-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;6.4
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<!--
+
+### 大学ができること {.unnumbered}
+
+上記の調査で、学び直しを阻害する大学等の要因として、就労者の要求に適合した教育課程が無いことが選択肢にありました。大学等教育機関が学び直しのために何ができるかを考えるなら、まず既存の課程・プログラム・科目の具体的情報を社会に対して公開・発信することでしょう。
+
+* これによって学習希望者は、特定の課程やプログラムで何が学べるかを具体的に知ることができ、その情報は学びへのインセンティブとなります。
+* そして学んだ後は、何を学び何ができるようになったかを雇用主に示すことができるために雇用可能性を高めることが期待できます。
+* 確かに就労者や企業などの求めに応じることによって大学で学ぶ成人が増えることは好ましいことです。職場で可視的に生産性を上げる専門的技能を向上させることは個々人の雇用可能性を向上させることからリカレント学習の大きな目的でもあります。
+* 一方で、歴史・哲学・文化への造詣に基づく知的な思考力や表現能力、地球規模の視野で人間や社会を考え多面的な観点から物事を提え判断するちから、社会規範意識や倫理性、芸術や自然への理解など、教養性の高い学びを繰り返すことも同等に尊重されています。大学のすべての提供科目が学び直しの対象なのです。
 
 
-## 教育と労働市場のミスマッチ：教育過剰
+### 「何を教えるか」から「何ができるか」への転換 {.unnumbered}
 
-### 教育過剰（Overeducation）とは {.unnumbered}
-実際に達成した学歴（A）が、仕事で求められる学歴（R）よりも高い状態（A > R）を指す。
-* マッチング：A = R
-* 教育過小：A < R
+「欧州高等教育圏」の設立を目指す「ボローニャ・プロセス」では、大学教育強化の主要手段として **Learning outcomes**（学習成果）を定めそれへの到達を目指してカリキュラムや教育内容を組み立てることが奨励されました。
 
-### 教育過剰が起こるメカニズム {.unnumbered}
-* 労働市場で大
+* ここでいうアウトカムとは、教育の成果としての学業成績の向上・卒業学生数の増加や卒業後の進路の確定、更には雇用や所得の上昇であり、学生や卒業生にもたらされる学習の効果を検証しつつ大学教育を改善しようとするアプローチです。
+* 教育の現場において、「何をどのように教えるか」が評価の対象となるのではなく、学習者が「何を学習し、何ができるようになったか」に観点が転じました。
+* 「何」に相当する技能の説明については、国際的に展開された例として **SCANS**（Secretary's Commission on Achieving Necessary Skills：必要な技能を獲得するための労働省長官委員会、アメリカ1991年）や **DeSeCo**（Definition and Selection of Competencies、OECD 1997年〜2003年）が知られています。
+* 日本でも経済産業省が2006年に「社会人基礎力」を定め、文部科学省中央教育審議会が2008年に「学士力」を定義しました。
 
+このような「学生が身に付けた能力・付加価値の見える化」は、労働市場の流動化に伴う転職・急速な技術革新や長寿化に伴う学び直し、特にリカレント教育の求めと連動します。**「何ができるか」の可視化が流動性を高める**のは、可視化によって学習の達成度を確認しながら単位の互換性を確保することができるからです。
 
+例えば欧州ではボローニャ・プロセスの一環として、履修したすべての科目についてディプロマ・サプリメントという学習内容の評述書を大学から学生に付与しなければなりません。これをもって学生は自身が学んだ内容を携えて大学や国を移動します。ディプロマ・サプリメントに記された情報は単位互換の根拠資料になります。
 
-
-
-
-
-### 親による教育需要（2）子供の数が内生の場合
-小塩P.98 から、この部分は大5回目の講義では扱わなかった。
-（この第6回の教育需要の方に回した。）
-
-
-
-### 教育需要が有限である理由 {.unnumbered}
-1. 流動性制約：自由に借入ができない、あるいは手元資金の不足により投資が制限される状況。
-2. 収穫逓減性：投資を増やすほど、追加投入に対する成果の増加率が低下していく現象。
-
-
-## 授業の目的および到達目標
-
-本講義は、経済学の基礎的な考え方や分析手法を用いて、教育に係る諸問題、これまでに実施されてきた教育政策、教育の役割や効果について考察を深めることを目的とする。
-
-さらに、教育行政に係るデータを読み解き、その分析方法や因果的な考え方についても解説する。
-
-その際、日本のデータを基にこれまで行われてきた研究を紹介し、日本の教育政策について経済学的な見方を習得できるようにする。
-
-本講義を通して、教育経済学の基本的な考え方を理解し、それを用いて日本で行われている教育政策について自分の言葉で平易に説明できるようになることを到達目標とする。
-
-## 授業計画
-
-### 講義前半：基礎理論と世代間連鎖 {.unnumbered}
-* 第1回：概要説明
-* 第2回：教育投資の基礎理論（1）
-* 第3回：教育投資の基礎理論（2）
-* 第4回：教育投資の基礎理論（3）
-* 第5回：教育投資の基礎理論（4）
-* 第6回：教育と世代間移転
-    * 日本における世代間連鎖の現状、大衆教育社会、世代間連鎖モデルの紹介。
-* 第7回：中間レポート発表・討論
-
-### 講義後半：実証分析と政策評価 {.unnumbered}
-* 第8回：教育の効果に係る経済学的実証分析
-* 第9回：教育政策の経済学的評価（1）
-* 第10回：教育政策の経済学的評価（2）
-* 第11回：教育政策の経済学的評価（3）
-* 第12回：教育政策実証分析紹介
-* 第13回：期末レポートについて
-
-## 中間レポートについて
-
-講義前半の山場として、中間レポートを課します。
-
-### 提出方法と期限 {.unnumbered}
-* 指定のワードフォーマットに解答を記入し、Blackboardから提出。
-* ファイル名には必ず氏名を記入すること。
-* 提出期限：5月26日（月）13:50（第7回授業の2日前）。
-* 配点：各設問で十分な議論がなされていれば10点。
-
-### 課題内容 {.unnumbered}
-1. 教育と所得の正の相関について、人的資本理論とシグナリング理論を用いた説明と含意の違いを述べよ。
-2. 日本における教育と所得に関する実証研究論文を一つ探し、要約せよ。
-3. 人的資本論の立場からの「シグナリングがすべてなら学校を閉鎖すればいい」という極論に対し、シグナリング理論の立場から反論せよ。
-
-## 教育と世代間移転
-
-### 属性原理と業績原理 {.unnumbered}
-* 属性原理：親の所得や学歴、生まれ持った社会的背景によって地位が決まること。
-* 業績原理：本人の努力、学力、獲得した学位などの実績によって地位が決まること。
-
-### 社会移動（Social Mobility） {.unnumbered}
-親の階層（出発階層）と子供の階層（達成階層）の関係。
-* 再生産：親と同じ階層に留まること。
-* 社会移動：親とは異なる階層へ移行すること（上昇移動・下降移動）。
-
-## 所得の世代間連鎖
-
-### 世代間所得弾力性 {.unnumbered}
+* 「何を学んだかの可視化」は学びを系統立てて組み立てていくことを可能とし、学び直しを容易にし、正課高等教育を終えていない者も技能を身に付けやすくなり、それを就職に活用できるなどの効果を有します。
+* 「何を学んだか」の記録が残ることによって、大学を修了できなかった者は就職後も大学に戻りやすくなり、科目の重複履修を避けるなどの効用もあります。
+* 学習成果の見える化の学び直しへの効用は特に高いと思われます。大学での学習から就職、学び直しを経てより条件の良い職場への転職というように上位へのモビリティーを目指す者にとって、「何を学んだか」の可視化は良質かつ速度の速いモビリティーをもたらします。
 
 -->
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
