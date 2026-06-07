@@ -73,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <meta name="robots" content="noindex, nofollow">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -216,8 +245,68 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#学習目標" id="toc-学習目標" class="nav-link active" data-scroll-target="#学習目標"><span class="header-section-number">8.1</span> 学習目標</a></li>
+  <li><a href="#なぜ国によって経済成長率は違うのか" id="toc-なぜ国によって経済成長率は違うのか" class="nav-link" data-scroll-target="#なぜ国によって経済成長率は違うのか"><span class="header-section-number">8.2</span> 1. なぜ国によって経済成長率は違うのか</a>
+  <ul class="collapse">
+  <li><a href="#経済成長を考える出発点" id="toc-経済成長を考える出発点" class="nav-link" data-scroll-target="#経済成長を考える出発点">経済成長を考える出発点</a></li>
+  <li><a href="#新古典派成長理論の基本的な考え方" id="toc-新古典派成長理論の基本的な考え方" class="nav-link" data-scroll-target="#新古典派成長理論の基本的な考え方">新古典派成長理論の基本的な考え方</a></li>
+  <li><a href="#収束性コンバージェンスという予言" id="toc-収束性コンバージェンスという予言" class="nav-link" data-scroll-target="#収束性コンバージェンスという予言">収束性（コンバージェンス）という予言</a></li>
+  <li><a href="#収束性は現実に確認できるか" id="toc-収束性は現実に確認できるか" class="nav-link" data-scroll-target="#収束性は現実に確認できるか">収束性は現実に確認できるか？</a></li>
+  </ul></li>
+  <li><a href="#人的資本と経済成長" id="toc-人的資本と経済成長" class="nav-link" data-scroll-target="#人的資本と経済成長"><span class="header-section-number">8.3</span> 2. 人的資本と経済成長</a>
+  <ul class="collapse">
+  <li><a href="#新古典派成長理論に人的資本を組み込む" id="toc-新古典派成長理論に人的資本を組み込む" class="nav-link" data-scroll-target="#新古典派成長理論に人的資本を組み込む">新古典派成長理論に人的資本を組み込む</a></li>
+  <li><a href="#mankiw-romer-and-weil1992の実証" id="toc-mankiw-romer-and-weil1992の実証" class="nav-link" data-scroll-target="#mankiw-romer-and-weil1992の実証">Mankiw, Romer and Weil（1992）の実証</a></li>
+  </ul></li>
+  <li><a href="#内生的成長理論なぜ格差は縮まらないのか" id="toc-内生的成長理論なぜ格差は縮まらないのか" class="nav-link" data-scroll-target="#内生的成長理論なぜ格差は縮まらないのか"><span class="header-section-number">8.4</span> 3. 内生的成長理論：なぜ格差は縮まらないのか</a>
+  <ul class="collapse">
+  <li><a href="#新古典派成長理論の限界と内生的成長理論" id="toc-新古典派成長理論の限界と内生的成長理論" class="nav-link" data-scroll-target="#新古典派成長理論の限界と内生的成長理論">新古典派成長理論の限界と内生的成長理論</a></li>
+  <li><a href="#akモデル最もシンプルな内生的成長理論" id="toc-akモデル最もシンプルな内生的成長理論" class="nav-link" data-scroll-target="#akモデル最もシンプルな内生的成長理論">AKモデル：最もシンプルな内生的成長理論</a></li>
+  <li><a href="#人的資本と内生的成長理論lucasモデル" id="toc-人的資本と内生的成長理論lucasモデル" class="nav-link" data-scroll-target="#人的資本と内生的成長理論lucasモデル">人的資本と内生的成長理論：Lucasモデル</a></li>
+  <li><a href="#学習効果と経済成長romerモデル" id="toc-学習効果と経済成長romerモデル" class="nav-link" data-scroll-target="#学習効果と経済成長romerモデル">学習効果と経済成長：Romerモデル</a></li>
+  </ul></li>
+  <li><a href="#成長会計教育はどれだけ経済成長に貢献してきたか" id="toc-成長会計教育はどれだけ経済成長に貢献してきたか" class="nav-link" data-scroll-target="#成長会計教育はどれだけ経済成長に貢献してきたか"><span class="header-section-number">8.5</span> 4. 成長会計：教育はどれだけ経済成長に貢献してきたか</a>
+  <ul class="collapse">
+  <li><a href="#残差の謎から始まった" id="toc-残差の謎から始まった" class="nav-link" data-scroll-target="#残差の謎から始まった">「残差」の謎から始まった</a></li>
+  <li><a href="#schultz1961とdenison1962の分析" id="toc-schultz1961とdenison1962の分析" class="nav-link" data-scroll-target="#schultz1961とdenison1962の分析">Schultz（1961）とDenison（1962）の分析</a></li>
+  <li><a href="#成長会計アプローチの限界" id="toc-成長会計アプローチの限界" class="nav-link" data-scroll-target="#成長会計アプローチの限界">成長会計アプローチの限界</a></li>
+  </ul></li>
+  <li><a href="#教育の量と質実証研究が示すもの" id="toc-教育の量と質実証研究が示すもの" class="nav-link" data-scroll-target="#教育の量と質実証研究が示すもの"><span class="header-section-number">8.6</span> 5. 教育の「量」と「質」：実証研究が示すもの</a>
+  <ul class="collapse">
+  <li><a href="#就学年数量の研究" id="toc-就学年数量の研究" class="nav-link" data-scroll-target="#就学年数量の研究">就学年数（量）の研究</a></li>
+  <li><a href="#量の研究に対する懐疑的見解" id="toc-量の研究に対する懐疑的見解" class="nav-link" data-scroll-target="#量の研究に対する懐疑的見解">「量」の研究に対する懐疑的見解</a></li>
+  <li><a href="#質へのシフト知識資本knowledge-capital" id="toc-質へのシフト知識資本knowledge-capital" class="nav-link" data-scroll-target="#質へのシフト知識資本knowledge-capital">「質」へのシフト：知識資本（knowledge capital）</a></li>
+  <li><a href="#hanushek-kimko2000質の重要性の発見" id="toc-hanushek-kimko2000質の重要性の発見" class="nav-link" data-scroll-target="#hanushek-kimko2000質の重要性の発見">Hanushek &amp; Kimko（2000）：質の重要性の発見</a></li>
+  <li><a href="#hanushek-woessmann2015a知識資本の国" id="toc-hanushek-woessmann2015a知識資本の国" class="nav-link" data-scroll-target="#hanushek-woessmann2015a知識資本の国">Hanushek &amp; Woessmann（2015a）：「知識資本の国」</a></li>
+  <li><a href="#量vs質論争carnoyの批判的見解" id="toc-量vs質論争carnoyの批判的見解" class="nav-link" data-scroll-target="#量vs質論争carnoyの批判的見解">「量vs質」論争：Carnoyの批判的見解</a></li>
+  <li><a href="#アカデミアにおけるコンセンサスと論争" id="toc-アカデミアにおけるコンセンサスと論争" class="nav-link" data-scroll-target="#アカデミアにおけるコンセンサスと論争">アカデミアにおけるコンセンサスと論争</a></li>
+  </ul></li>
+  <li><a href="#因果関係はあるか認知能力は本当に成長をもたらすのか" id="toc-因果関係はあるか認知能力は本当に成長をもたらすのか" class="nav-link" data-scroll-target="#因果関係はあるか認知能力は本当に成長をもたらすのか"><span class="header-section-number">8.7</span> 6. 因果関係はあるか：認知能力は本当に成長をもたらすのか</a>
+  <ul class="collapse">
+  <li><a href="#因果推論の難しさ" id="toc-因果推論の難しさ" class="nav-link" data-scroll-target="#因果推論の難しさ">因果推論の難しさ</a></li>
+  <li><a href="#つの因果性検証アプローチ" id="toc-つの因果性検証アプローチ" class="nav-link" data-scroll-target="#つの因果性検証アプローチ">4つの因果性検証アプローチ</a></li>
+  <li><a href="#教育の質と経済制度の相互作用" id="toc-教育の質と経済制度の相互作用" class="nav-link" data-scroll-target="#教育の質と経済制度の相互作用">教育の質と経済制度の相互作用</a></li>
+  </ul></li>
+  <li><a href="#教育改革の経済的インパクトのシミュレーション" id="toc-教育改革の経済的インパクトのシミュレーション" class="nav-link" data-scroll-target="#教育改革の経済的インパクトのシミュレーション"><span class="header-section-number">8.8</span> 7. 教育改革の経済的インパクトのシミュレーション</a>
+  <ul class="collapse">
+  <li><a href="#シミュレーションの意義" id="toc-シミュレーションの意義" class="nav-link" data-scroll-target="#シミュレーションの意義">シミュレーションの意義</a></li>
+  <li><a href="#つのシナリオの試算結果" id="toc-つのシナリオの試算結果" class="nav-link" data-scroll-target="#つのシナリオの試算結果">3つのシナリオの試算結果</a></li>
+  </ul></li>
+  <li><a href="#教育の外部性と政府の役割" id="toc-教育の外部性と政府の役割" class="nav-link" data-scroll-target="#教育の外部性と政府の役割"><span class="header-section-number">8.9</span> 8. 教育の外部性と政府の役割</a>
+  <ul class="collapse">
+  <li><a href="#教育に外部性があるとはどういうことか" id="toc-教育に外部性があるとはどういうことか" class="nav-link" data-scroll-target="#教育に外部性があるとはどういうことか">教育に外部性があるとはどういうことか</a></li>
+  <li><a href="#外部性が政府介入を正当化する仕組み" id="toc-外部性が政府介入を正当化する仕組み" class="nav-link" data-scroll-target="#外部性が政府介入を正当化する仕組み">外部性が政府介入を正当化する仕組み</a></li>
+  <li><a href="#外部性内生的成長政府の役割のまとめ" id="toc-外部性内生的成長政府の役割のまとめ" class="nav-link" data-scroll-target="#外部性内生的成長政府の役割のまとめ">外部性・内生的成長・政府の役割のまとめ</a></li>
+  </ul></li>
+  <li><a href="#まとめ" id="toc-まとめ" class="nav-link" data-scroll-target="#まとめ"><span class="header-section-number">8.10</span> まとめ</a></li>
+  <li><a href="#参考文献" id="toc-参考文献" class="nav-link" data-scroll-target="#参考文献"><span class="header-section-number">8.11</span> 参考文献</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -241,68 +330,1085 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!--
+<section id="学習目標" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="学習目標"><span class="header-section-number">8.1</span> 学習目標</h2>
+<ul>
+<li>新古典派成長理論における収束性の考え方と、その限界を理解する</li>
+<li>人的資本が経済成長モデルにどのように組み込まれるかを理解する</li>
+<li>内生的成長理論の直感的な意味を理解する</li>
+<li>成長会計の考え方（Schultz・Denison）を理解する</li>
+<li>教育の「量」と「質」が経済成長に与える効果の違いについて、実証研究の知見を理解する</li>
+<li>教育の外部性と政府の役割について理解する</li>
+</ul>
+<div style="margin-top: 3.0em;">
 
-## 授業の目的および到達目標
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>なぜ、国によって経済成長率が違うのでしょうか？</strong></p>
+<p>以下の問いについて考えてみましょう。</p>
+<p><strong>個人ワーク（5分）</strong></p>
+<ul>
+<li>国によって経済成長率が異なるのはなぜか、思いつく理由をできるだけ多く挙げてみましょう。</li>
+<li>「教育水準」は経済成長に影響すると思いますか？するとすれば、どのような仕組みで影響するでしょうか？</li>
+</ul>
+<p><strong>ペアワーク（5分）</strong></p>
+<ul>
+<li>お互いの意見を共有し、議論しましょう。</li>
+</ul>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>考え方の整理</strong></p>
+<p>経済成長率の差異をもたらすと考えられる要因は多岐にわたります。</p>
+<ul>
+<li>物的資本（機械・設備・インフラ）の蓄積量</li>
+<li>労働力の量（人口・労働参加率）</li>
+<li>技術水準・イノベーション</li>
+<li>制度の質（法の支配・財産権・腐敗の少なさ）</li>
+<li>貿易の開放性</li>
+<li><strong>教育水準・人的資本の質</strong></li>
+</ul>
+<p>この授業では特に「教育」に焦点を当て、これが経済成長にどのような経路で影響するかを学びます。</p>
+</div>
+</div>
+</div>
+<div style="margin-top: 3.0em;">
 
-本講義は、経済学の基礎的な考え方や分析手法を用いて、教育に係る諸問題、これまでに実施されてきた教育政策、教育の役割や効果について考察を深めることを目的とする。
+</div>
+</section>
+<section id="なぜ国によって経済成長率は違うのか" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="なぜ国によって経済成長率は違うのか"><span class="header-section-number">8.2</span> 1. なぜ国によって経済成長率は違うのか</h2>
+<section id="経済成長を考える出発点" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="経済成長を考える出発点">経済成長を考える出発点</h3>
+<p>教育は、経済成長に対してどのような影響を及ぼすでしょうか。教育水準が高まるほど労働生産性が高まり、経済成長のペースが速くなるというのが通常の考え方です。その考え方の前提にあるのは、これまでの授業で学んできた人的資本論の発想です。一方、教育がシグナリング機能を発揮するだけなら、教育と経済成長は基本的には無関係となります。</p>
+<p>これまでの実証分析を概観すると、Barro（1991）、Levin and Revelt（1992）、Barro and Sala-i-Martin（1995）をはじめとして、推計の開始時点の就学率や平均的な就学年数と、その後の経済成長率との間には正の相関が見られることが多くの実証分析によって確認されています。</p>
+<p>しかし、この正の相関は、教育から経済成長への因果関係を必ずしも示すものではありません。教育が経済成長にまったく影響を及ぼさないと考えるのも不自然ですが、そのメカニズムはどのように説明できるのでしょうか。本節ではまず、経済成長に関する最もオーソドックスな理論から出発しましょう。</p>
+<p><em>（出典：小塩 第6章 冒頭、pp.165–166）</em></p>
+<div style="margin-top: 2.0em;">
 
-さらに、教育行政に係るデータを読み解き、その分析方法や因果的な考え方についても解説する。
+</div>
+</section>
+<section id="新古典派成長理論の基本的な考え方" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="新古典派成長理論の基本的な考え方">新古典派成長理論の基本的な考え方</h3>
+<p>最初に、Solow（1956）らによって打ち立てられた<strong>新古典派成長理論</strong>の考え方を確認しましょう。</p>
+<p>新古典派成長理論の最も基本的なモデルでは、資本ストック <span class="math inline">\(K\)</span> と労働力 <span class="math inline">\(L\)</span> という2つの生産要素が想定されるとともに、貯蓄率 <span class="math inline">\(s\)</span>、人口（労働力）の増加率 <span class="math inline">\(n\)</span> は外生的に与えられます。このモデルでは、資本ストックは物的資本、あるいは非人的資本（non-human capital）であるとみなされ、人的資本は登場しません。労働力は、あくまでもフロー・ベースのインプットとして生産に寄与すると想定されています。</p>
+<p>ここで、コブ＝ダグラス型の生産関数を仮定し、<span class="math inline">\(t\)</span> 時点における所得（生産量）<span class="math inline">\(Y\)</span> を、</p>
+<p><span class="math display">\[Y_t = AK_t^\alpha L_t^{1-\alpha}, \quad 0 &lt; \alpha &lt; 1 \tag{1}\]</span></p>
+<p>として表現しましょう。<span class="math inline">\(A\)</span> は正の定数、<span class="math inline">\(\alpha\)</span> は資本分配率を表しています。この生産関数では、生産が資本ストックと労働力に関して収穫一定となっています。</p>
+<p>この式において重要な性質は、<strong>収穫逓減</strong>です。資本ストック <span class="math inline">\(K\)</span> が増えれば生産量は増えますが、その増え方は次第に小さくなります。机の上の電卓を10台から20台に増やしても、1台から2台に増やしたときほど生産性は上がらない、というイメージです。</p>
+<p><em>（出典：小塩 第6章 第1節「新古典派成長理論の考え方」、pp.166–167）</em></p>
+<div style="margin-top: 2.0em;">
 
-その際、日本のデータを基にこれまで行われてきた研究を紹介し、日本の教育政策について経済学的な見方を習得できるようにする。
+</div>
+</section>
+<section id="収束性コンバージェンスという予言" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="収束性コンバージェンスという予言">収束性（コンバージェンス）という予言</h3>
+<p>新古典派成長理論から、非常に重要な予言が導かれます。それが<strong>収束性（convergence）</strong>です。</p>
+<p>1人当たり資本ストックが小さい（つまり現在は貧しい）国ほど、資本の限界生産性が高いため、投資リターンが高く、経済成長率が速くなります。逆に、すでに豊かな国では資本が十分に蓄積されているため、追加的な投資の効果が小さく、成長率は遅くなります。</p>
+<p>「大雑把な言い方をすれば、1人当たり所得の水準から見て貧しい（豊かな）国ほど、1人当たりの所得が早く（遅く）増加することになり、経済格差は縮小に向かう。」（小塩 第6章 p.168）</p>
+<p>つまり、時間さえかければすべての国の1人当たり所得は同じ水準（定常解）に収束するというのが、新古典派成長理論の予言です。</p>
+<p><em>（出典：小塩 第6章 第1節、pp.167–170）</em></p>
+<div style="margin-top: 2.0em;">
 
-本講義を通して、教育経済学の基本的な考え方を理解し、それを用いて日本で行われている教育政策について自分の言葉で平易に説明できるようになることを到達目標とする。
+</div>
+</section>
+<section id="収束性は現実に確認できるか" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="収束性は現実に確認できるか">収束性は現実に確認できるか？</h3>
+<p>ところが、そうした収束傾向は、実際には確認できないことがすでに多くの経済学者によって指摘されています。Barro（1991）の研究では、1960年時点における1人当たりGDPと、その後の25年間における1人当たりGDP成長率の間には有意な相関は見られませんでした（サンプルは98カ国）。</p>
+<p>このように、通常の新古典派成長理論では現実が説明できないという大変困ったことになります。このパズルの解き方としては、2つのアプローチが考えられます。</p>
+<p><strong>第1のアプローチ</strong>は、新古典派成長理論はとりあえず想定するものの、成長率格差を説明する要因を、当初の所得水準の違い以外から探し出すことです。<strong>人的資本がそこで登場します。</strong></p>
+<p><strong>第2のアプローチ</strong>は、新古典派成長理論の考え方自体を否定し、まったく新たな発想で成長率の非収束性を説明する理論を組み立てることです。この考え方が<strong>内生的成長理論</strong>と呼ばれるものです。</p>
+<p><em>（出典：小塩 第6章 第1節、pp.170–171）</em></p>
+<div style="margin-top: 3.0em;">
 
-## 授業計画（変更後）
+</div>
+</section>
+</section>
+<section id="人的資本と経済成長" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="人的資本と経済成長"><span class="header-section-number">8.3</span> 2. 人的資本と経済成長</h2>
+<section id="新古典派成長理論に人的資本を組み込む" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="新古典派成長理論に人的資本を組み込む">新古典派成長理論に人的資本を組み込む</h3>
+<p>第1のアプローチとして、生産関数に人的資本 <span class="math inline">\(H\)</span> を明示的に加えることで、成長率格差を説明しようとする試みがあります。</p>
+<p>新古典派の枠組みを維持しつつ、物的資本や労働だけでなく人的資本も考慮した拡張型生産関数を、</p>
+<p><span class="math display">\[Y_t = AK_t^\alpha H_t^\beta L_t^{1-\alpha-\beta}, \quad 0 &lt; \alpha, \beta, \quad \alpha + \beta &lt; 1 \tag{7}\]</span></p>
+<p>と置いてみましょう。<span class="math inline">\(\alpha + \beta &lt; 1\)</span> だから、この生産関数は物的資本および人的資本に関して収穫逓減となっていることに注意してください。</p>
+<p>このモデルでも同様に動学メカニズムを分析することができます。<span class="math inline">\(\alpha + \beta &lt; 1\)</span> だから、<span class="math inline">\(k\)</span>、<span class="math inline">\(h\)</span>（1人当たり物的資本・人的資本）、<span class="math inline">\(y\)</span> の定常解が存在することになり、その値が各国の長期的な1人当たり所得水準を決めます。</p>
+<p>重要な含意は、<strong>物的資本や人的資本の蓄積ペースが各国で異なっていることが、経済格差がなかなか縮小しない理由である</strong>ということです。この解釈に基づけば、新古典派成長理論は「<strong>条件付き収束性（conditional convergence）</strong>」という性格を持っているといえます。つまり、同じ定常解を持つ国々の間では収束が見られるが、定常解が異なれば収束しない、ということです。</p>
+<p><em>（出典：小塩 第6章 第2節「新古典派成長理論と人的資本」、pp.171–173）</em></p>
+<div style="margin-top: 2.0em;">
 
-### 講義前半：基礎理論と実証の系譜 {.unnumbered}
-* 第1回：概要説明
-* 第2回〜第5回：教育投資の基礎理論
-* 第6回：教育と世代間移転
-* 第7回：中間レポート発表・討論
-* 第8回：教育の効果に係る経済学的実証分析
-    * 世界・国内における教育経済学実証研究の系譜と紹介。
-    * 教育生産関数。政策評価手法の基礎、相関分析の紹介。
+</div>
+</section>
+<section id="mankiw-romer-and-weil1992の実証" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="mankiw-romer-and-weil1992の実証">Mankiw, Romer and Weil（1992）の実証</h3>
+<p>こうした理論的な枠組みを実際に実証分析に乗せたのが、Mankiw, Romer and Weil（1992）です。彼らの論文では、式（8）の考え方に基づいたクロスセクションの回帰分析が行われています。1960年と1985年の間で1人当たりGDPの対数値がどれだけ変化したかを被説明変数とするとともに、貯蓄率、教育投資率（労働力人口のうち中等教育を受けた者の比率をその代理変数としている）や人口増加率（技術進歩率と資本減耗率を付加）、そして1960年の1人当たりGDPを説明変数とする回帰分析を行うと、理論モデルにかなり整合的な結果が得られることが示されています。</p>
+<p>この分析は、教育を含む人的資本の蓄積が経済成長に実際に貢献していることを、データで裏付ける初期の重要な試みでした。</p>
+<p>また、Carnoyが紹介するように、Mankiw et al.（1992）は「効率単位の労働（efficiency units of labor）」という概念を導入し、技術進歩が労働生産性を高めるという効果を明示的にモデルに組み込みました。教育を含む人的資本は、この効率単位の高さを規定する重要な要因とみなされています。</p>
+<p><em>（出典：小塩 第6章 第2節、pp.172–174；Carnoy 第9章 第9.3節、pp.122–126）</em></p>
+<div style="margin-top: 3.0em;">
 
-### 講義後半：最新研究と政策評価 {.unnumbered}
-* 第9回〜第11回：最近の教育経済学の分野で行われている研究紹介。
-* 第12回：日本における教育政策について行われた実証研究の紹介。
-* 第13回：期末レポートについて
+</div>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>第2回・第7回との接続
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>人的資本を成長モデルに組み込むという発想は、第2回で学んだ<strong>人的資本理論</strong>（Becker・Schultz・Mincer）の延長線上にあります。個人レベルでは「教育を受けると賃金が上がる」という議論でしたが、マクロ経済レベルでは「国全体の教育水準が高まると、経済成長率が高まる」という議論になります。</p>
+<p>また、第7回で学んだ<strong>技能形成と内生的成長理論の「Learning by doing」</strong>（Arrow 1962）とも接続しています。個人の職場での学習が積み重なることで社会全体の知識・技術ストックが蓄積され、それが経済成長に反映されるという考え方は、まさに第3節で紹介する内生的成長理論の核心です。</p>
+</div>
+</div>
+<div style="margin-top: 3.0em;">
 
-## 中間レポートの採点結果について
+</div>
+</section>
+</section>
+<section id="内生的成長理論なぜ格差は縮まらないのか" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="内生的成長理論なぜ格差は縮まらないのか"><span class="header-section-number">8.4</span> 3. 内生的成長理論：なぜ格差は縮まらないのか</h2>
+<section id="新古典派成長理論の限界と内生的成長理論" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="新古典派成長理論の限界と内生的成長理論">新古典派成長理論の限界と内生的成長理論</h3>
+<p>前節では、新古典派成長理論の考え方を紹介するとともに、その考え方からすれば縮小するはずの経済格差が縮小しない事実をどのように解釈するかという問題を取り上げました。しかし、新古典派成長理論はもともと収束性という特徴を持っているので、経済格差の問題を議論する場合にはやや無理が出てきます。</p>
+<p>むしろ、収束性を想定しないモデルをはじめから打ち立てた方が、経済格差が持続するという現実をよく説明できるのではないかという発想も出てきます。新古典派成長理論の収束性の最も基本的な要因は、生産関数が資本ストック（物的・人的のいずれ対しても）に関して収穫逓減であるという想定でした。その想定を取り外し、広い意味での資本ストックが永続的な経済成長をもたらすことを示した成長理論が<strong>内生的成長理論（endogenous growth theory）</strong>です。</p>
+<p><em>（出典：小塩 第6章 第3節「内生的成長理論の考え方」、p.174）</em></p>
+<div style="margin-top: 2.0em;">
 
-Blackboard上で採点を反映しました。採点に疑問がある方は本日中に相談に来てください。
+</div>
+</section>
+<section id="akモデル最もシンプルな内生的成長理論" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="akモデル最もシンプルな内生的成長理論">AKモデル：最もシンプルな内生的成長理論</h3>
+<p>内生的成長理論には様々なバリエーションがありますが、なかでも Rebelo（1991）の「<strong>AKモデル</strong>」は最も簡潔で、しかも、経済格差の持続性を直接的に説明してくれます。</p>
+<p>いま、生産関数が資本ストックに関して収穫一定であると想定し、</p>
+<p><span class="math display">\[Y_t = AK_t \tag{9}\]</span></p>
+<p>と置いてみましょう。ここで、<span class="math inline">\(A\)</span> は正の定数であり、<span class="math inline">\(K\)</span> は資本ストックですが、この資本ストックは物的資本だけでなく、人的資本や知識、金融資本などあらゆる種類の資本ストックを含む広い概念のものです。教育や研究体制なども、そこに含まれます。</p>
+<p>資本蓄積のメカニズムが式（9）のように与えられると、1人当たり資本ストックは <span class="math inline">\(As - n\)</span> という一定の速度で蓄積されます。つまり、<strong>1人当たり資本ストックは特定の値に収束することなく、同じペースで拡大または縮小を続けることになります。</strong></p>
+<p>クロスセクションで見ると、たとえ <span class="math inline">\(A\)</span>、<span class="math inline">\(s\)</span>、<span class="math inline">\(n\)</span> という3つのパラメータが同じであっても、当初の資本ストック（したがって当初の所得）が他より低い国は、いつまで経っても相対的に貧しい国にとどまります（図6-3を参照）。逆に、それらのパラメータが異なると、資本ストックや経済の成長率が相対的に低い国は、いつまでも低成長国にとどまることになります。この<strong>非収束性</strong>は、現実の世界経済の動きと整合的です。</p>
+<p>AKモデルは非常にシンプルですが、重要な含意を持っています。AKモデルの世界では、教育や研究開発投資によって広義の資本ストック <span class="math inline">\(K\)</span> を増やすことが、永続的な経済成長を生み出します。つまり、<strong>教育への投資は経済成長に対して持続的なプラス効果をもたらしうる</strong>のです。</p>
+<p><em>（出典：小塩 第6章 第3節、pp.174–175）</em></p>
+<div style="margin-top: 2.0em;">
 
-### 提出遅延による減点規定 {.unnumbered}
-* 5月26日 13:50以降：10％減点
-* 5月27日提出：30％減点
-* 5月28日 13:50までの提出：50％減点
-* それ以降の遅延：得点を加算しない（0点）
+</div>
+</section>
+<section id="人的資本と内生的成長理論lucasモデル" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="人的資本と内生的成長理論lucasモデル">人的資本と内生的成長理論：Lucasモデル</h3>
+<p>AKモデルでは、人的資本の蓄積メカニズムが明示的に捉えられているわけではありません。内生的成長理論の中には、人的資本の蓄積メカニズムを明示的に捉えたものもあります。その代表的な例の1つが、Lucas（1988）のモデルです。</p>
+<p>Lucas は、家計が自分の生活時間を労働と人的資本の形成にどのように振り分け、また、所得のうちどれだけを貯蓄に回せば、家計の将来に向けての効用が最大化されるかという問題を取り上げ、しかも教育（人的資本）の外部性を踏まえて人的資本や経済成長のメカニズムを検討しています。</p>
+<p>Lucasモデルを極めて簡略化すると、以下のように整理できます。物的資本と人的資本をともに考慮した生産関数は、</p>
+<p><span class="math display">\[Y_t = AK_t^\alpha H_t^{1-\alpha}, \quad 0 &lt; \alpha &lt; 1\]</span></p>
+<p>として表現されます。そして、人的資本については、毎年 <span class="math inline">\(g_h \times 100\%\)</span> だけ蓄積されていくと考えてみましょう。このモデルは新古典派成長理論の最も基本的なモデルのうち、労働力 <span class="math inline">\(L\)</span> を人的資本 <span class="math inline">\(H\)</span> に、人口増加率 <span class="math inline">\(n\)</span> を人的資本の蓄積率 <span class="math inline">\(g_h\)</span> に置き換えたものと読み替えてよいでしょう。</p>
+<p>したがって、このモデルは新古典派成長理論の場合と同じロジックで収束し、定常状態における経済成長率は<strong>人的資本の蓄積率 <span class="math inline">\(g_h\)</span> に一致します。</strong>つまり、<strong>長期的な経済成長率は、人的資本（教育）をどれくらいの速さで蓄積していくかによって決まる</strong>のです。</p>
+<p>各国の経済成長率が各国で異なる人的資本の蓄積率によって規定されることになるため、AKモデルと同様に国別に見た1人当たりの所得格差は縮小せずに持続することが、このモデルでも基本的に成立しています。人的資本の蓄積率こそが、その格差を生み出す原因になっています。</p>
+<p><em>（出典：小塩 第6章 第3節、pp.175–177）</em></p>
+<div style="margin-top: 2.0em;">
 
-今後の課題も、授業の翌週月曜日17:00が締め切りです。授業を受けた日のうちに提出することを強く推奨します。
+</div>
+</section>
+<section id="学習効果と経済成長romerモデル" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="学習効果と経済成長romerモデル">学習効果と経済成長：Romerモデル</h3>
+<p>内生的成長理論にはほかにも様々な類型があります。特に興味深いのが、生産活動における<strong>学習効果（learning-by-doing）</strong>が外部経済効果と組み合わさることによって経済成長に大きな影響を与えるという考え方です。この考え方は、Arrow（1962）の「学習」（learning-by-doing）モデルを嚆矢とするものですが、経済成長のメカニズムとして厳密にモデル化したのは Romer（1986）です。</p>
+<p>Romer は、（新古典派成長理論が想定するように）各企業の生産関数が資本ストックと労働力に関して収穫一定であったとしても、社会全体では、各企業が培ってきた生産技術やノウハウ——それを「知識」と総称しましょう——が伝播し、それが各企業の生産にプラスに機能するという、「マーシャル的外部経済」を想定します。そして、その知識は、企業の生産活動や経験を通じて習得されるものとされます。つまり、<strong>知識を生み出す学習効果とそれが生産を促進する外部性を組み合わせることにより、経済成長の内生的なメカニズムを考えるわけです。</strong></p>
+<p>モデルを数式で確認しましょう。各企業 <span class="math inline">\(i\)</span> の生産関数は、</p>
+<p><span class="math display">\[Y_i = AK_i^\alpha L_i^{1-\alpha} G_t\]</span></p>
+<p>と表されます。ここで <span class="math inline">\(G_t\)</span> は社会全体で共有される<strong>知識ストック</strong>であり、個々の企業はこれを所与（自分のものではない外部からの恩恵）として受け取ります。そして知識は、これまでの1人当たり資本ストックの蓄積によって決まると仮定します。</p>
+<p><span class="math display">\[G_t = k_t^\eta\]</span></p>
+<p>ここで <span class="math inline">\(\eta &gt; 0\)</span> は、1人当たり資本ストックが1%増加したときに知識が何%高まるかを示す弾力性です。これを代入すると、社会全体の生産関数は、</p>
+<p><span class="math display">\[Y_t = AK_t^\alpha L_t^{1-\alpha} k_t^\eta\]</span></p>
+<p>となります。<span class="math inline">\(\alpha + \eta &lt; 1\)</span> のときは新古典派成長理論と同じ収束性が成立し、<span class="math inline">\(\alpha + \eta = 1\)</span> のときはAKモデルと同じ構造になり、<span class="math inline">\(\alpha + \eta &gt; 1\)</span> のときは経済が指数的に拡大し続けます。</p>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>知識 <span class="math inline">\(G\)</span> がなぜ外部性なのか
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>個々の企業は <span class="math inline">\(G_t\)</span>（社会全体の知識ストック）を自分の力で制御できません。ある企業が生産活動を通じて新しい知識を生み出すと、それは社会全体に伝播し、他の企業の生産性も高まります。この「意図せず他者の生産性を高める」という効果が外部性です。</p>
+<p>したがって、各企業は自分の投資（<span class="math inline">\(K_i\)</span>）の収益率しか考慮せず、社会全体の知識蓄積（<span class="math inline">\(G_t\)</span> の増加）への貢献を投資判断に含めません。これが市場に任せると社会的に最適な水準より投資・知識蓄積が少なくなる理由であり、政府の介入（教育補助・研究開発支援など）を正当化する根拠の一つとなります。</p>
+</div>
+</div>
+<p>Romer のモデルは、生産活動における学習効果が外部経済効果と組み合わさることによって経済成長に大きな影響を与え、しかも経済格差を拡大する可能性を潜在的に持っていることを示唆するものです。</p>
+<p>このモデルからの重要な含意は、教育が単に個人の生産性を高めるにとどまらず、<strong>知識の普及・技術革新を加速させる社会全体への波及効果（外部性）</strong>を持つということです。より教育水準が高い労働力は、科学的な発見の速度を高め、新しい技術を生産プロセスに採用・実装する能力を高めます。これが内生的成長の源泉となります。</p>
+<p><em>（出典：小塩 第6章 第3節、pp.177–179；Carnoy 第9章 第9.3節、pp.122–123）</em></p>
+<div style="margin-top: 2.0em;">
 
-## 教育経済学の実証研究の変遷
+</div>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>3つの成長理論の整理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="table-hover caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 29%">
+<col style="width: 23%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">モデル</th>
+<th style="text-align: center;">収束性</th>
+<th style="text-align: left;">人的資本の扱い</th>
+<th style="text-align: left;">長期成長率の決まり方</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">新古典派成長理論（Solow）</td>
+<td style="text-align: center;">あり</td>
+<td style="text-align: left;">なし（労働は量のみ）</td>
+<td style="text-align: left;">外生的（技術進歩率）</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">拡張Solowモデル（Mankiw et al.）</td>
+<td style="text-align: center;">条件付きあり</td>
+<td style="text-align: left;">生産要素として追加</td>
+<td style="text-align: left;">外生的（技術進歩率）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AKモデル（Rebelo）</td>
+<td style="text-align: center;">なし</td>
+<td style="text-align: left;">広義の資本に含む</td>
+<td style="text-align: left;">内生的（貯蓄率・資本生産性）</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lucasモデル</td>
+<td style="text-align: center;">なし（一定成長）</td>
+<td style="text-align: left;">蓄積メカニズムを明示</td>
+<td style="text-align: left;">内生的（人的資本蓄積率 <span class="math inline">\(g_h\)</span>）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Romerモデル</td>
+<td style="text-align: center;">条件による</td>
+<td style="text-align: left;">知識外部性として</td>
+<td style="text-align: left;">内生的（学習効果×外部性）</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div style="margin-top: 3.0em;">
 
-教育経済学は、理論の提示から因果推論の精緻化、そして大規模データを用いた政策評価へと発展してきました。
+</div>
+</section>
+</section>
+<section id="成長会計教育はどれだけ経済成長に貢献してきたか" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="成長会計教育はどれだけ経済成長に貢献してきたか"><span class="header-section-number">8.5</span> 4. 成長会計：教育はどれだけ経済成長に貢献してきたか</h2>
+<section id="残差の謎から始まった" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="残差の謎から始まった">「残差」の謎から始まった</h3>
+<p>経済学において教育と経済成長の関係を実証的に分析しようとした最初期の試みは、<strong>成長会計（growth accounting）</strong>と呼ばれるアプローチです。</p>
+<p>第二次世界大戦後、冷戦の深刻化とともに経済成長の源泉を解明しようとする研究が盛んになりました。当時の経済学者たちは、従来の投入要素——すなわち労働時間の増加と物的資本ストックの増加——によってコブ＝ダグラス型生産関数から予測される成長率を計算しました。ところが、先進国の経済成長のうち、こうした従来型の投入要素では約50%しか説明できないことが判明しました。残りの50%は「技術変化」という名のブラックボックスに帰せられていました。</p>
+<p>そこで、経済学者たちは労働の「質」の変化——つまり、教育水準の向上——を測定することに取り組みました。Schultz（1963）の言葉を借りれば、「観察された成長を観察された従来型の生産要素の増加によって説明することはできなかった。最もよい手がかりは、教育の量が急速に増加しているが、それが人間の努力の生産性に対してどのような効果を持っているのかを見ることだ」ということです。</p>
+<p><em>（出典：Carnoy 第9章 第9.2節、pp.119–120）</em></p>
+<div style="margin-top: 2.0em;">
 
-### 1960s–1970s：投資価値の定量化 {.unnumbered}
-* Becker (1964)『Human Capital』：教育投資と賃金成果の実証的基盤を確立。
-* Mincer (1974)：教育年数と労働所得の関係を定式化（ミンサー型賃金関数）。
+</div>
+</section>
+<section id="schultz1961とdenison1962の分析" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="schultz1961とdenison1962の分析">Schultz（1961）とDenison（1962）の分析</h3>
+<p><strong>Theodore Schultz（1961）</strong>と<strong>Edward Denison（1962；Denison &amp; Poullier, 1967）</strong>は、教育が経済成長に果たす貢献を推計した最初の試みを行いました。</p>
+<p>彼らが用いたコブ＝ダグラス型生産関数の対数線形形式は、</p>
+<p><span class="math display">\[\log Y = A + \alpha L + \beta K \tag{9.1}\]</span></p>
+<p>という形式です。ここで、<span class="math inline">\(Y\)</span> は財とサービスの総産出量、<span class="math inline">\(L\)</span> は労働投入量（年間の総労働時間数）、<span class="math inline">\(K\)</span> は資本投入量（機械・設備・建物の価値を資本の平均価格で割ったもの）、<span class="math inline">\(A\)</span> は全要素生産性、<span class="math inline">\(\alpha\)</span> と <span class="math inline">\(\beta\)</span> はそれぞれ労働と資本の産出弾力性です。完全競争のもとでは <span class="math inline">\(\alpha + \beta = 1\)</span> であり、<span class="math inline">\(\alpha\)</span> と <span class="math inline">\(\beta\)</span> は国民総産出に占める賃金と資本収益の分配率を示します。</p>
+<p>両辺を微分することで、産出の成長率を以下のように表せます。</p>
+<p><span class="math display">\[(dY/Y)_t = \alpha (dL)_t + \beta (dK)_t \tag{9.2}\]</span></p>
+<p>ここで、労働投入の質的成分 <span class="math inline">\(Q_L\)</span> を考慮すると、</p>
+<p><span class="math display">\[\alpha [d(L \times Q_L)] = \alpha [dL \times Q_L + dQ_L \times L] \tag{9.3}\]</span></p>
+<p>となります。つまり、労働の成長への貢献は2つの成分に分けられます。第1は、労働時間の増加 × 平均的な就学水準という項です。第2は、労働の質の向上（<span class="math inline">\(Q_L\)</span> の変化）という項です。</p>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>式（9.2）から式（9.3）への変形：積の微分法則
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>なぜ式(9.2)の <span class="math inline">\(\alpha(dL)\)</span> が式(9.3)の <span class="math inline">\(\alpha[dL \times Q_L + dQ_L \times L]\)</span> になるのか？</strong></p>
+<p>式(9.2)の労働項 <span class="math inline">\(\alpha(dL)\)</span> では、労働 <span class="math inline">\(L\)</span> を「量（人数・時間）」としてのみ扱っています。しかしSchultzとDenisonは、「労働投入は量だけでなく<strong>質</strong>によっても異なる」と考え、労働投入を</p>
+<p><span class="math display">\[L \;\longrightarrow\; L \times Q_L\]</span></p>
+<p>と置き換えました。<span class="math inline">\(Q_L\)</span> は労働の質（例：平均就学年数）を表す指標です。</p>
+<p>これを式(9.2)の労働項に代入すると、</p>
+<p><span class="math display">\[\alpha(dL) \;\longrightarrow\; \alpha\bigl[d(L \times Q_L)\bigr]\]</span></p>
+<p>ここで、<span class="math inline">\(L\)</span> も <span class="math inline">\(Q_L\)</span> も<strong>時間とともに変化する変数</strong>ですので、積の微分法則（product rule）を適用します。</p>
+<p><span class="math display">\[d(L \times Q_L) = dL \times Q_L + L \times dQ_L\]</span></p>
+<p>これは、<span class="math inline">\(f \cdot g\)</span> の微分が <span class="math inline">\(f'g + fg'\)</span> になるのと同じ考え方です。両辺に <span class="math inline">\(\alpha\)</span> をかけると、</p>
+<p><span class="math display">\[\alpha\bigl[d(L \times Q_L)\bigr] = \alpha\bigl[dL \times Q_L + dQ_L \times L\bigr]\]</span></p>
+<p>これが式(9.3)です。</p>
+<p><strong>2つの項の経済的な意味</strong></p>
+<p><span class="math display">\[\underbrace{\alpha \cdot dL \times Q_L}_{\text{第1項：量の効果}} + \underbrace{\alpha \cdot dQ_L \times L}_{\text{第2項：質の効果}}\]</span></p>
+<ul>
+<li><strong>第1項</strong>：労働者数・時間が増えたことによる成長への貢献。既存の質 <span class="math inline">\(Q_L\)</span> を保ったまま量が増える。</li>
+<li><strong>第2項</strong>：労働の質が上がったことによる成長への貢献。人数は変わらず、1人ひとりの就学水準 <span class="math inline">\(Q_L\)</span> が上昇する。</li>
+</ul>
+<p><strong>具体例で確認：</strong> 労働者が100人（<span class="math inline">\(L = 100\)</span>）、平均就学年数が10年（<span class="math inline">\(Q_L = 10\)</span>）のとき、</p>
+<ul>
+<li>労働者が5人増えた（<span class="math inline">\(dL = 5\)</span>）→ 第1項：<span class="math inline">\(5 \times 10 = 50\)</span></li>
+<li>平均就学年数が1年延びた（<span class="math inline">\(dQ_L = 1\)</span>）→ 第2項：<span class="math inline">\(100 \times 1 = 100\)</span></li>
+</ul>
+<p>第2項（質の効果）の方が大きいことがわかります。SchultzとDenisonが注目したのはこの第2項であり、教育水準の向上（<span class="math inline">\(dQ_L\)</span>）が労働者全体 <span class="math inline">\(L\)</span> に掛け算で波及するため、経済成長への貢献が生まれるという考え方です。</p>
+</div>
+</div>
+<div style="margin-top: 2.0em;">
 
-### 1980s–1990s：収益率の国際比較 {.unnumbered}
-* Psacharopoulos (1985, 1994)：途上国では初等教育の収益率が特に高いことを指摘。
+</div>
+<p><strong>Schultzの推計結果：</strong> 就学年数の増加（1年間の通学日数の増加を調整済み）は、1909年の6.01年から1957年の10.45年に増加し、この増加が同期間における米国の計測された成長のほぼ<strong>約1/5（20%）</strong>を説明することを示しました。</p>
+<p><strong>Denisonの推計結果：</strong> 労働力における就学の量は年率2%強増加しており、1929年から1957年の米国経済成長の<strong>約21%</strong>が教育の増加によって説明できるとしました。また、1950〜1962年の西ヨーロッパ9カ国についても分析を行い、教育投資の増加の成長への貢献は国によって大きく異なることを示しました。</p>
+<p><em>（出典：Carnoy 第9章 第9.2節、pp.119–122）</em></p>
+<div style="margin-top: 2.0em;">
 
-### 1990s–2000s：因果推論の導入 {.unnumbered}
-* Angrist & Krueger (1991)：誕生月を操作変数として用い、教育の因果効果を推定。
-* Ashenfelter & Krueger (1994)：双子データを用いて遺伝や家庭環境の影響（家族固定効果）を排除。
+</div>
+</section>
+<section id="成長会計アプローチの限界" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="成長会計アプローチの限界">成長会計アプローチの限界</h3>
+<p>ShultzとDenisonによる成長会計アプローチは歴史的に重要でしたが、その方法論には重要な限界があります。</p>
+<p>最大の問題は、<strong>因果関係の仮定が前提とされている点</strong>です。このアプローチは、就学への総投資の増加と産出の増加との間に「因果性」があるという論争的な仮定に基づいていました。Schultzの場合は収益率全体を、Denisonの場合は収益率の60%を、就学そのものの直接的効果に帰していました。</p>
+<p>しかし現実には、収益率の相当部分は、そこで学んだことではなく、社会階層・初期能力、さらには性別・人種・民族による差別に起因するかもしれません。Schultzが同じ仮定をDenisonと同様に置いていたとすれば、教育の成長への貢献は1929〜1957年期間で10%、1909〜1929年期間で5%にとどまった可能性があります。</p>
+<p>逆に、Schultz と Denison は、教育投資の増加の外部性（それが用いる計算での収益率を引き上げることになる）を過小評価していたかもしれません。</p>
+<p>こうした限界を踏まえつつ、以降の研究はよりクロスカントリーな比較を通じて、教育と経済成長の関係をより精緻に分析しようとしてきました。</p>
+<p><em>（出典：Carnoy 第9章 第9.2節、pp.121–122）</em></p>
+<div style="margin-top: 3.0em;">
 
-### 2000s–：RCTと介入研究 {.unnumbered}
-* Kremer (2001)：教科書配布や寄生虫除去薬の効果をランダム化比較試験（RCT）で測定。
-* Duf
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>成長会計の考え方を整理しよう</strong></p>
+<p><strong>個人ワーク（5分）</strong></p>
+<p>上で説明した成長会計の考え方をもとに、以下の問いを考えてみましょう。</p>
+<ol type="1">
+<li><p>従来の生産要素（労働・資本の量）だけでは成長の約半分しか説明できなかったのはなぜでしょうか？「残差」には何が含まれると思いますか？</p></li>
+<li><p>Schultz や Denison のアプローチには「因果性の仮定問題」があるとされています。どのような問題でしょうか？（ヒント：第2回の「能力バイアス」「セレクション・バイアス」と同じ問題が国家レベルで起きていると考えてください。）</p></li>
+</ol>
+<p><strong>ペアワーク（3分）</strong></p>
+<p>お互いの答えを共有しましょう。</p>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>解答例</strong></p>
+<p><strong>問1：「残差」には何が含まれるか</strong></p>
+<p>従来の生産要素（労働の量・資本の量）だけでは成長の約半分しか説明できなかった理由は、<strong>経済成長には「量」以外の要因が大きく貢献しているから</strong>です。</p>
+<p>「残差」に含まれると考えられるものとしては、以下が挙げられます。</p>
+<ul>
+<li><p><strong>教育・訓練による労働の質の向上</strong><br>
+同じ人数・時間でも、教育を受けた労働者の方が高い生産性を発揮します。Schultzらが注目したのはまさにこの点です。</p></li>
+<li><p><strong>技術進歩・イノベーション</strong><br>
+新しい機械・生産方法・ICTなど、同じ投入量でもより多くを生産できるようにする技術革新です。Solowはこれを「全要素生産性（TFP）」と呼びました。</p></li>
+<li><p><strong>制度・組織の改善</strong><br>
+法の支配・財産権の保護・市場制度の整備など、経済活動の効率を高める制度的要因です。</p></li>
+<li><p><strong>規模の経済・知識の外部性</strong><br>
+EUの形成（Denisonが指摘）のように、市場規模が拡大することで生産効率が上がる効果や、Romerが示した知識の波及効果などです。</p></li>
+</ul>
+<div style="margin-top: 2.0em;">
 
--->
+</div>
+<p><strong>問2：「因果性の仮定問題」とはどのような問題か</strong></p>
+<p>Schultz・Denisonのアプローチの核心的な問題は、<strong>「教育投資の増加が成長をもたらした」という因果関係を、相関関係から直接仮定してしまっている点</strong>です。これは国家レベルで起きる「能力バイアス」・「セレクション・バイアス」に相当します。</p>
+<p><strong>個人レベルとの対応関係</strong></p>
+<table class="table-hover caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">個人レベル（第2回）</th>
+<th style="text-align: left;">国家レベル（今回）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">能力の高い人ほど大学に進学し、かつ高賃金を得る → 「教育の効果」を過大推計</td>
+<td style="text-align: left;">もともと経済が豊かな国ほど教育投資でき、かつ成長も速い → 「教育の効果」を過大推計</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">セレクション：進学を選ぶ人はもともと有利な属性を持つ</td>
+<td style="text-align: left;">セレクション：教育水準が高い国はもともと制度・インフラが充実している</td>
+</tr>
+</tbody>
+</table>
+<p>「教育を受けた人が多い国ほど成長率が高い」という相関を観察したとき、次の2つの解釈が成り立ちます。</p>
+<ul>
+<li><strong>解釈A</strong>（Schultzらの仮定）：教育 → 生産性向上 → 経済成長</li>
+<li><strong>解釈B</strong>（逆因果）：もともと豊かな国・成長している国 → 教育投資の余裕がある → 就学年数が増える</li>
+</ul>
+<p>後者の可能性を排除しない限り、「教育が成長をもたらした」とは言えません。さらに、収益率の一部は「学校で学んだこと」ではなく、<strong>社会階層・生まれながらの能力・性別・人種・民族的差別</strong>などに起因する可能性もあります。</p>
+<p>つまり、Schultz・Denisonは「収益率の増加 ＝ 教育の直接効果」と仮定しましたが、現実には収益率には教育以外の要因（もともとの経済力・制度・能力差など）も混入しており、教育の純粋な効果を取り出せていないという問題があります。これを解決しようとしたのが、後の操作変数法・因果推論の発展につながります（本章第6節参照）。</p>
+</div>
+</div>
+</div>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+</section>
+<section id="教育の量と質実証研究が示すもの" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="教育の量と質実証研究が示すもの"><span class="header-section-number">8.6</span> 5. 教育の「量」と「質」：実証研究が示すもの</h2>
+<section id="就学年数量の研究" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="就学年数量の研究">就学年数（量）の研究</h3>
+<p>1980年代後半以降、長期にわたる国際的な経済産出・教育・投資データが利用可能になり、クロスカントリー分析が大幅に発展しました。この流れの中で、成長モデルも典型的な国内の成長会計モデルから、国際比較分析へとシフトしました。</p>
+<p>就学の量（就学年数）を用いた主要な実証研究として、<strong>Barro（1991, 2001）、Mankiw et al.（1992）</strong>などがあります。これらの研究では、GDPの1人当たり成長率の数十年にわたる平均年率を、就学の何らかの指標に回帰させる手法をとっています。</p>
+<p>使用された教育指標としては、識字率、初等・中等教育の総就学率・純就学率、25歳以上成人の平均就学年数の初年度値、中等教育以上の男性比率などが挙げられます。これらの研究は、教育の平均水準と成長率の間に概ね有意な正の相関を見出しており、また、就学年数よりもテストスコアの方が成長との相関がより強いことも示しています。</p>
+<p>以下の図（Hanushek &amp; Woessmann（2015a））が示すように、就学年数と経済成長の間には基本的な正の相関が存在します。この基本的な関係式は、就学の1年増加が0.58%ポイント高い長期成長率と関連していることを示しています。</p>
+<div id="fig-A08-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A08-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A08/A08-1.png" id="fig-A08-1" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A08-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;8.1
+</figcaption>
+</figure>
+</div>
+<p><em>（出典：Carnoy 第9章 第9.3節、pp.123–126；Bradley 第14章、pp.171–173）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="量の研究に対する懐疑的見解" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="量の研究に対する懐疑的見解">「量」の研究に対する懐疑的見解</h3>
+<p>しかし、就学年数を教育の代理指標として用いることに対して、重要な批判的見解も存在します。</p>
+<p><strong>Bils &amp; Klenow（2000）</strong>は逆因果関係の問題を指摘しました。クロスカントリーの相関において逆の因果関係が走っている可能性、つまり経済成長が進むほど就学へのさらなる投資がなされるという可能性を示唆しています。</p>
+<p><strong>Pritchett（2001）</strong>は、単純な成長モデルの妥当性に疑問を提示しました。特に、就学年数に測定誤差が大きいこと、また発展途上国では高等教育を受けた人材の多くが公共部門に雇用され、比較的高い賃金を受けているが、必ずしも労働効率の向上に大きく貢献しているわけではない、という点を指摘しています。</p>
+<p><strong>Krueger &amp; Lindahl（2001）</strong>は、教育の水準（ある時点での就学年数の高さ）と変化量（就学年数がどれだけ増えたか）の両方が、10〜20年という長いスパンで見ると1人当たり成長率に正の効果を持つことを見出しました。 しかし、ここに落とし穴があります。1960年の1人当たり物的資本ストックの変化（つまり、その国がどれだけ機械・設備への投資を増やしたか）を説明変数に加えると、教育の効果の推計値が大きく変わってしまいます。教育の水準・変化量の効果は依然として正の値を示すものの、資本の分配率（GDPに占める資本収益の割合）を歴史的に「典型的な」水準である0.35に固定しない限り、ゼロとの統計的な有意差がなくなります。 つまり、物的資本と教育は互いに関連が深く（例：豊かな国ほど設備投資も教育投資も多い）、両方を同時に分析すると、教育だけの純粋な効果を切り出すことが難しくなるということです。この問題は、測定誤差・内生性とともに、クロスカントリー成長回帰が抱える根本的な課題の一つです。</p>
+<p><em>（出典：Carnoy 第9章 第9.3節、pp.124–126；Bradley 第14章、pp.172–173）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="質へのシフト知識資本knowledge-capital" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="質へのシフト知識資本knowledge-capital">「質」へのシフト：知識資本（knowledge capital）</h3>
+<p>こうした「量」の研究の限界に対して、<strong>教育の「質」</strong>——学習された認知能力の水準——を測定することの重要性が次第に認識されるようになりました。</p>
+<p>ガーナやペルーの平均的な生徒は、フィンランドや韓国の平均的な生徒と就学の1年から同じ量の知識を身に付けるわけではありません。就学年数を用いたクロスカントリー成長分析では、これらの生徒が同等であると仮定していますが、これは明らかに問題のある仮定です。</p>
+<p>1960年代中頃から、IEA（国際教育到達度評価学会）やOECDはTIMSS、PISAなどの国際テスト——数学や科学などの認知能力に関する生徒のパフォーマンスのテスト——を実施してきました。こうした認知能力の測定値を成長分析に組み込むことで、教育の経済発展への役割の評価が劇的に変わります。</p>
+<p>Carnoyが紹介するように、この議論には教育の「量」と「質」のどちらを増やすべきかという、政策的に重要な対立軸が含まれています。</p>
+<p><em>（出典：Carnoy 第9章 第9.4節、pp.126–128；Bradley 第14章、pp.173–174）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="hanushek-kimko2000質の重要性の発見" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="hanushek-kimko2000質の重要性の発見">Hanushek &amp; Kimko（2000）：質の重要性の発見</h3>
+<p>教育の質と経済成長の関係に関する初期の重要な研究として、<strong>Hanushek &amp; Kimko（2000）</strong>があります。</p>
+<p>彼らは1991年までの国際的な学力達成度テストのデータを用いて教育の質の指標を構築し、1960〜90年の経済成長に対する教育の質の影響が、就学の量の関連性をはるかに大きく上回ることを、統計的にも経済的にも有意な形で見出しました。</p>
+<p>具体的には、PISA2000の数学で47テストスコアポイント（測定基準として使用されているOECD全国平均の1標準偏差に相当）高いテストパフォーマンスが、40年間にわたる平均年率成長において<strong>1パーセントポイント高い成長率</strong>と関連していることが示されました。</p>
+<p>さらに重要なのは、教育の質を付け加えることによって、GDPの1人当たり成長率の分散を、初期所得と就学年数だけで含むモデルでの<strong>33%から73%へと大幅に引き上げた</strong>ことです。一方、テストスコアを含めると、就学年数と成長の関連性は大幅に低下し、ほぼ無意味になります。</p>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>「33%から73%」と「就学年数が無意味になる」の意味
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>この2つの結果は、一見別々の話のように見えますが、セットで理解することが重要です。</p>
+<p><strong>前半（33%→73%）：モデル全体の説明力の話</strong></p>
+<p>「初期所得＋就学年数」だけのモデルに、テストスコア（教育の質）を追加すると、成長率の分散をより多く説明できるようになります。つまり<strong>質を加えることで、モデル全体がより現実をうまく説明できるようになった</strong>ということです。</p>
+<p><strong>後半（就学年数が無意味になる）：各変数の個別の効果の話</strong></p>
+<p>テストスコアを同時に含めると、就学年数の係数がゼロに近くなります。これは、<strong>就学年数は単独では成長に影響しているように見えたが、実はテストスコアと相関していたから有意に見えていただけ</strong>だということを意味します。</p>
+<p>なぜそうなるかというと、就学年数が長い国ほどテストスコアも高い傾向（正の相関）があるからです。</p>
+<p><span class="math display">\[\text{就学年数が長い} \;\rightarrow\; \text{テストスコアが高い} \;\rightarrow\; \text{成長率が高い}\]</span></p>
+<p>つまり就学年数は、<strong>テストスコア（質）を通じて間接的に成長に貢献していた</strong>に過ぎず、テストスコアを直接コントロールすると、就学年数自体の効果は消えてしまうのです。</p>
+<p><strong>テストスコアはプロキシ（代理変数）</strong></p>
+<p>テストスコアは教育の質のプロキシ（代理変数）として使われています。ただしHanushek &amp; Kimkoはさらに踏み込んで、テストスコアは「学校教育の質」だけでなく、<strong>家庭・社会全体の認知能力の水準</strong>（知識資本）を反映するものだと主張しています。学校だけでなく家庭・塾・社会環境などを含めた、その国全体の「認知能力を育てる力」の総体を測っているという位置づけです。</p>
+<p><strong>まとめ</strong></p>
+<table class="table-hover caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">33%→73%</td>
+<td style="text-align: left;">質（テストスコア）を加えると<strong>モデル全体</strong>の説明力が大幅に上がった</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">就学年数が無意味に</td>
+<td style="text-align: left;">質をコントロールすると<strong>就学年数自体</strong>には効果がなかった（質を通じた間接効果だった）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">テストスコアの役割</td>
+<td style="text-align: left;">教育の質のプロキシ、さらには社会全体の知識資本の代理指標</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><em>（出典：Carnoy 第9章 第9.4節、pp.126–127；Bradley 第14章、pp.173–174）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="hanushek-woessmann2015a知識資本の国" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="hanushek-woessmann2015a知識資本の国">Hanushek &amp; Woessmann（2015a）：「知識資本の国」</h3>
+<p>最新の包括的な証拠は、<strong>Hanushek &amp; Woessmann（2015a）</strong>にまとめられています。</p>
+<p>この研究では、1965年から2003年の間の12回の試験機会からの36の国際的な学力達成度テストに基づく、各国の認知能力の総体——<strong>知識資本（knowledge capital）</strong>——の一貫した指標を構築しています。この「知識資本」の測定値は、学校だけでなく、家庭や学校外でも発達する総合的な認知能力を示しており、学校、家庭、その他のいずれで技能が発達したかにかかわらず、すべてが含まれます。</p>
+<p><strong>主要な結果：</strong> 初期GDPと就学年数をコントロールした後で（Hanushek &amp; Woessmann 2015a）、知識資本の測定値は1960〜2000年のGDP1人当たりの実質成長率に対して、高度に統計的に有意な正の効果を持ちます（図14.2参照）。この単純な特定化によれば、OECD全国平均のPISAで1標準偏差高いテストパフォーマンスを持つ国は、40年間にわたる年率成長率が<strong>2パーセントポイント高い</strong>です。</p>
+<p>さらに、<strong>教育の質を含むモデルでは、就学年数と成長の関連性はゼロに近くなります</strong>。これは、就学年数が成長に正の関連性を持つのは、認知能力と相関があるからに過ぎず、年数そのものに成長促進の効果があるわけではないことを示唆しています。</p>
+<div id="fig-A08-2" class="quarto-float quarto-figure quarto-figure-center anchored" width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A08-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A08/A08-2.png" id="fig-A08-2" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A08-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;8.2
+</figcaption>
+</figure>
+</div>
+<p>この結果はOECDサンプルと非OECDサンプルで比較した場合でも顕著に類似しており、低所得国では高所得国よりも教育の質の効果が統計的に有意に大きいです。また、教育の質と成長の間の正の関係は、5つの世界地域内の変動を考慮しても有意であり、単に地域間の経済格差を反映しているわけではありません。</p>
+<p><em>（出典：Bradley 第14章、pp.173–176；Carnoy 第9章 第9.4節、pp.126–127）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="量vs質論争carnoyの批判的見解" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="量vs質論争carnoyの批判的見解">「量vs質」論争：Carnoyの批判的見解</h3>
+<p>Hanushek &amp; Woessmannの「質重視」の主張に対して、<strong>Carnoy（2023）</strong>は重要な批判的視点を提示しています。</p>
+<p><strong>Breton（2011）の批判：</strong> Hanushek &amp; Woessmannが成長を測定した期間（1960〜2000年）と、教育の「質」を測定した時点（多くが1990年代以降のテストスコア）に不一致があるという問題を指摘しています。Bretonが就学年数と認知能力の両方が経済成長に与える効果を再推計すると、「量」の方が「質」よりも成長との関係が強いという結果が得られます。</p>
+<p><strong>「量を増やすことでも認知能力は上昇する」という反論：</strong> Carnoyは、ブラジルや米国の事例を示しながら、中学・高校段階で就学年数を増やすことで、数学の認知能力が0.2〜0.3 SD向上することを示しています。就学年数の増加自体が認知スキルを高める重要な経路であり、「量」と「質」の二分法は偽りのものである可能性があります。</p>
+<p><strong>低中所得国がアクセス拡大を優先する政治経済学的理由：</strong> ほとんどの国の政府は、主に質の向上に集中するために高いレベルの教育へのアクセスを増加させる速度を落とそうとすれば、その正当性を危うくするでしょう。つまり、低・中所得国が質の向上よりも就学年数の増加を優先する傾向があるのは、政治的に支持されやすいからです。また、教育の質を向上させることは、相当なリソース、大きな政治的意志、そして長期にわたる卓越した行政的技術を必要とします。</p>
+<p><em>（出典：Carnoy 第9章 第9.5節、pp.129–132）</em></p>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+<section id="アカデミアにおけるコンセンサスと論争" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="アカデミアにおけるコンセンサスと論争">アカデミアにおけるコンセンサスと論争</h3>
+<p>「質か量か」という問いは、一見すると決着がついているように見えますが、アカデミアでは現在も論争が続いています。ここで立ち止まって、研究者間の立場の違いを整理しておきましょう。</p>
+<p><strong>現在の大まかなコンセンサス</strong></p>
+<p>一般的にアカデミアでは、Hanushek &amp; Woessmannの「質重視」の立場の方が現在は優勢です。テストスコア（質）を加えると説明力が大きく上がり、テストスコアの方が就学年数より成長との関連が強いという結果は、多くの研究・地域・時期で繰り返し確認されています。</p>
+<p><strong>しかし、根本的な識別問題が残っている</strong></p>
+<p>Carnoyが指摘するように、質と量は互いに強く相関しています。就学年数が長い国ほどテストスコアも高い傾向があるため、回帰分析で両方を同時に含めると、<strong>どちらが本当に経済成長に効いているかを識別することが難しくなります</strong>。これは計量経済学でいう多重共線性（multicollinearity）に近い問題です。</p>
+<p>さらに、就学年数を増やすこと自体がテストスコアを引き上げるという経路（量 → 質 → 成長）が存在するなら、「量は無意味」とは言い切れません。Carnoyとブラジル・米国の事例がそれを示しています。</p>
+<p><strong>研究者による立場の違い</strong></p>
+<table class="table-hover caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">研究者</th>
+<th style="text-align: left;">立場</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Hanushek &amp; Woessmann</td>
+<td style="text-align: left;">質（テストスコア）が決定的に重要。量はほぼ無意味</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Carnoy・Breton</td>
+<td style="text-align: left;">量も質も重要。識別が困難であり、量→質という経路もある</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Krueger &amp; Lindahl</td>
+<td style="text-align: left;">物的資本を統制すると両方の効果が不安定になる。測定誤差が深刻</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pritchett</td>
+<td style="text-align: left;">途上国では就学年数を増やしても成長しない事例が多く、制度の問題が大きい</td>
+</tr>
+</tbody>
+</table>
+<p><strong>公正な整理</strong></p>
+<p>「質か量か」に対するアカデミアの現時点での答えは、以下のようにまとめられます。</p>
+<ul>
+<li>質の方が重要という証拠の方が強い</li>
+<li>しかし、量を完全に否定する証拠もない</li>
+<li>両者の識別は計量的に難しい</li>
+<li>特に途上国では量（アクセス）の拡大も依然として重要</li>
+</ul>
+<p><span class="marker">Carnoyの批判は少数派ですが、重要な方法論的問題を突いており、完全に否定されているわけではありません。「テストスコアを上げれば成長する」という単純な政策的結論を引き出す前に、こうした論争の存在を念頭に置くことが大切です。</span></p>
+<div style="margin-top: 3.0em;">
+
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>PISAスコアと経済成長について考えよう</strong></p>
+<p><strong>個人ワーク（5分）</strong></p>
+<p>Hanushek &amp; Woessmann（2015a）によると、国際テストスコアが1標準偏差高い国は、年率で2%ポイント高い成長率を示す傾向があります。</p>
+<ol type="1">
+<li><p>「日本はPISAスコアが高いため、経済成長も速い」という議論は成立するでしょうか？どんな点に注意が必要ですか？（ヒント：相関関係と因果関係の違い）</p></li>
+<li><p>テストスコアを高めることを目標に設定することには、どのような利点と問題点があるでしょうか？</p></li>
+</ol>
+<p><strong>ペアワーク（5分）</strong></p>
+<p>お互いの考えを共有しましょう。</p>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>考え方の整理</strong></p>
+<p>「日本はPISAスコアが高いから成長も速い」という解釈には複数の問題があります。</p>
+<ul>
+<li>PISAスコアと成長率の間には<strong>相関関係</strong>はあっても<strong>因果関係</strong>が明確ではない（逆因果の可能性）</li>
+<li>日本の場合、PISAスコアは高いが1990年代以降の経済成長は低迷しており、「高テストスコア = 高成長率」という単純な図式は当てはまらない</li>
+<li>成長率には教育以外の多くの要因（制度の質・人口動態・物的資本・技術革新など）が影響する</li>
+<li>テストスコアを目標化（数値目標化）すると、「テスト対策」が優先され、真の認知能力や問題解決力の育成が後回しになる可能性がある</li>
+</ul>
+<p>重要なのは、「テストスコア自体を上げること」ではなく、「それが測定しようとしている認知能力の実質的な向上」を目指すことです。</p>
+</div>
+</div>
+</div>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+</section>
+<section id="因果関係はあるか認知能力は本当に成長をもたらすのか" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="因果関係はあるか認知能力は本当に成長をもたらすのか"><span class="header-section-number">8.7</span> 6. 因果関係はあるか：認知能力は本当に成長をもたらすのか</h2>
+<section id="因果推論の難しさ" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="因果推論の難しさ">因果推論の難しさ</h3>
+<p>これまでの議論は、認知能力（テストスコア）と経済成長の間の強い相関関係を示してきました。しかし、この相関関係は因果的なものとして解釈すべきでしょうか。つまり、テスト成績が上がれば、本当に成長率は上がるのでしょうか。</p>
+<p>この問いは、政策的に極めて重要です。もし因果関係がないとすれば、テストスコアの向上を目指す教育政策は成長を促進しないことになります。逆に、因果関係が存在するとすれば、教育の質の向上は経済成長の直接的な政策手段となります。</p>
+<p>認知能力と成長の相関関係に対する主な懸念として、次のことが考えられます。良い経済環境を持つ国は良い学校システムも持つ傾向があり、それらの国が経済的な基本要因によってより速く成長するために、高いテスト成績を持っていることを意味するかもしれません（逆因果関係）。つまり、テストスコアは単に経済の他の重要な側面を反映しているだけで、成長の原動力ではないかもしれないのです。</p>
+<p><em>（出典：Bradley 第14章、pp.176–177）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="つの因果性検証アプローチ" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="つの因果性検証アプローチ">4つの因果性検証アプローチ</h3>
+<p>Hanushek &amp; Woessmann（2012a）は、認知能力の違いが経済成長の有意な違いをもたらすという因果的解釈を支持する一連の因果性テストの証拠を提示しています。最も頻繁に指摘される問題点が結果に影響していないことを確認するためのものです。</p>
+<p><strong>第1のアプローチ：時間軸の分離</strong></p>
+<p>逆因果関係の最も明白な懸念は、分析が1960年から2000年の期間の成長率を、おおよそ同じ期間のテストスコアに関連付けているという事実に起因します。これに直接対処するため、1985年以降の成長期間に対して1984年までに実施されたテストのスコアの効果を推計しました。50カ国のサンプルで利用可能なこの分析では、テストスコアは厳密に成長期間より前のものとなり、増加した成長がテストスコアを高めていた可能性は排除されます。この分析は、初期のテストスコアが将来の成長率に対して、上に表示した効果のほぼ2倍の正の効果を示しています。</p>
+<p><strong>第2のアプローチ：操作変数法</strong></p>
+<p>逆因果関係が問題でないとしても、別の懸念が残ります。それは、<strong>文化という隠れた要因</strong>が、テストスコアと経済成長の両方を同時に引き上げている可能性です。</p>
+<p>例えば「勤勉さ・学習を重視する文化」を持つ国では、</p>
+<p><span class="math display">\[\text{文化（勤勉さ）} \rightarrow \text{テストスコアが高い}\]</span> <span class="math display">\[\text{文化（勤勉さ）} \rightarrow \text{経済成長も速い}\]</span></p>
+<p>という2つの経路が同時に存在しうます。この場合、テストスコアと成長の間に相関が観察されても、それは文化という第三の要因が両方を同時に引き上げているだけであり、テストスコアが成長を「引き起こした」とは言えません。これは計量経済学でいう<strong>交絡因子（confounding factor）</strong>の問題です。</p>
+<p>この問題に対処するため、国際的なテストスコアの違いが<strong>学校制度の制度的特性</strong>から生じる変動に注目し、操作変数法による成長関係の推計が行われました。操作変数として使用されたのは以下の4つです。</p>
+<table class="table-hover caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">操作変数</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">終了試験（exit exams）</td>
+<td style="text-align: left;">卒業時に全国統一試験があるかどうか</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">学校の自律性（autonomy）</td>
+<td style="text-align: left;">学校が独自にカリキュラム・人事を決められるか</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">相対的な教員給与</td>
+<td style="text-align: left;">他職種と比べた教員の賃金水準</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">私立学校教育の割合</td>
+<td style="text-align: left;">私立学校に通う生徒の比率</td>
+</tr>
+</tbody>
+</table>
+<p>これらが操作変数として使える理由は、操作変数の2つの条件を満たすからです。<strong>第1の条件</strong>として、終了試験がある国では生徒が真剣に勉強するためスコアが上がる、教員給与が高い国では優秀な人材が教職に就くためスコアが上がる、といった形で、これらの制度的特性はテストスコアと相関します。<strong>第2の条件</strong>として、終了試験の有無や教員給与の水準は、文化や勤勉さとは直接関係なく、あくまで学校制度の設計の問題です。したがって、これらが経済成長に影響するとすれば、それはテストスコア（認知能力）を高めることを通じた間接的な経路に限られます。</p>
+<p><span class="math display">\[\text{学校制度の特性} \;\rightarrow\; \text{テストスコア} \;\rightarrow\; \text{経済成長}\]</span></p>
+<p>この操作変数法によっても本質的に同じ結果が得られたことは、「文化が両方を引き上げているだけ」という批判を退け、<span class="marker">テストスコア→成長という因果関係がより信頼できることを示しています。</span>認知能力の因果的解釈と、学校政策が直接的な経済収益を持ちうるという結論の両方が支持されます。</p>
+<p><strong>第3のアプローチ：米国内の移民データ</strong></p>
+<p>高い認知能力と強い経済成長の関係が因果的でないかもしれないことについての、さらなる懸念があります。それは、<strong>より良い経済環境を持つ国が、高い学力と高い成長率の両方を持つ</strong>という可能性です。つまり、テストスコアが高いのは教育の質が高いからではなく、単にその国が豊かだからかもしれません。</p>
+<p>この問題に対処するために、<strong>単一の労働市場（米国）の中で移民同士を比較する</strong>というアプローチがとられました。具体的には、以下の2グループを比較しています。</p>
+<ul>
+<li><strong>グループA</strong>：本国（例：メキシコ）で教育を受けてから米国に移住した移民</li>
+<li><strong>グループB</strong>：同じ出身国だが、米国で教育を受けた移民</li>
+</ul>
+<p>この2グループは同じ米国の労働市場で働いているため、米国の制度・法律・経済環境はグループ間で共通しており、排除することができます。また、出身国（例：メキシコ）の文化・勤勉さも両グループに共通しているため、これも排除できます。残る違いは<strong>「本国の学校教育の質」</strong>だけです。</p>
+<p><span class="math display">\[\text{本国の教育の質} \;\rightarrow\; \text{認知能力} \;\rightarrow\; \text{米国での賃金}\]</span></p>
+<p>分析の結果、<strong>本国で教育を受けたグループAの方が高い賃金を得ている</strong>ことが確認されました。これは、本国の教育が高い認知能力を育て、それが米国の労働市場でも評価されていることを意味します。したがって、テストスコアが単に出身国の文化的要因や経済的要因を反映しているだけという可能性は排除され、<span class="marker">テストスコアは認知能力そのものを測定しているという解釈が支持されます。</span></p>
+<p>なお、本国で教育を受けてから移住した人はそもそも能力が高いから移住できたという<strong>選抜バイアス</strong>の可能性も残ります。しかし同じ出身国の移民同士を比べることで、この問題はある程度コントロールされています。</p>
+<p><strong>第4のアプローチ：国内時系列変化</strong></p>
+<p>最後に、半世紀以上にわたって異なる時点でテストに参加してきた国については、<strong>時間の経過に伴うテストスコアの変化が成長率の変化にどう関係するか</strong>を観察することができます。</p>
+<p>これは実質的に、<strong>国固定効果（country fixed effects）を入れたパネルデータ分析</strong>と同じ発想です。「テストスコアの水準が高い国ほど成長が速い」という国同士の比較ではなく、「テストスコアが上がった時期に、その国の成長率も上がったか」という<strong>各国をそれ自身と比較する</strong>分析です。数式で表すと、</p>
+<p><span class="math display">\[\Delta \text{成長率}_{\text{国}i} = \beta \cdot \Delta \text{テストスコア}_{\text{国}i} + \epsilon\]</span></p>
+<p>という形で、各国について変化量同士を関連付けています。これにより、各国に固有の時間を通じて変わらない要因——文化・地理・歴史的な制度——は自動的に差し引かれ、排除することができます。</p>
+<p>例えば日本について言えば、「日本はもともとテストスコアが高く成長も速い国だ」という国固有の特性は固定効果として除去され、「日本のテストスコアがさらに上がった時期に、成長率も上がったか」という変化だけを分析することになります。</p>
+<p>ただし、この分析にはOECD12カ国のみで可能という<strong>重要な限界</strong>があります。長期にわたって複数時点のテストデータが存在する国が少ないため、サンプルが小さく、結果の一般化には注意が必要です。それでも、<span class="marker">テストスコアの時間的な変化は成長率の時間的な変化と非常に密接に関連しており</span>、テストスコア→成長という因果関係をさらに支持する証拠となっています。</p>
+<p>これらすべてのアプローチを総合すると、認知能力の違いが経済成長の有意な違いをもたらすという証拠は、概ね一貫して存在します。</p>
+<p><em>（出典：Bradley 第14章、pp.176–178）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="教育の質と経済制度の相互作用" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="教育の質と経済制度の相互作用">教育の質と経済制度の相互作用</h3>
+<p>教育の質が高まれば、それだけで経済成長が速くなるのでしょうか。実はそう単純ではありません。<strong>教育の効果は、その国の経済制度の質によって大きく変わります。</strong></p>
+<p>直感的に考えてみましょう。高い認知能力を持つ人材がいたとして、その能力がどこに向かうかは制度次第です。</p>
+<ul>
+<li><strong>制度が整っている国</strong>：優秀な人材が企業を起こしたり、技術革新に取り組んだりと、生産的な活動に能力が向かう</li>
+<li><strong>制度が整っていない国</strong>：優秀な人材が汚職・コネを使ったレント・シーキング（不正な利益の獲得）や、規制の抜け穴を探すことに能力が向かう</li>
+</ul>
+<p>後者の場合、教育水準が高くても経済成長にはつながらず、場合によってはマイナスの効果をもたらすこともあります。<strong>どれだけ優秀な人材がいても、その能力を生産的に活かせる制度がなければ意味がない</strong>ということです。</p>
+<p><strong>実証的な証拠</strong></p>
+<p>Hanushek &amp; Woessmannは、<strong>貿易の開放性</strong>（その国がどれだけ国際貿易に開かれているか）を制度の質の指標として使い、教育の質との相互作用を分析しました。結果は以下の通りです。</p>
+<table class="table-hover caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">経済の開放性</th>
+<th style="text-align: center;">テストスコアの成長への効果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">閉鎖的な経済</td>
+<td style="text-align: center;">0.9 SD</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">開かれた経済</td>
+<td style="text-align: center;">2.5 SD</td>
+</tr>
+</tbody>
+</table>
+<p>つまり、<strong>貿易に開かれた経済のもとでは、教育の質の効果が約3倍近く大きくなります。</strong> 開かれた経済では、企業が国際競争にさらされるため、優秀な人材を生産的に活用する強いインセンティブが生まれます。一方、閉鎖的な経済では競争圧力が弱く、能力が非生産的な活動に流れやすくなります。</p>
+<p><span class="marker">教育への投資と、それを活かせる制度の整備は、セットで考える必要があります。</span>優れた教育制度を持ちながら経済成長が伸び悩む国があるとすれば、制度環境の問題が一因かもしれません。</p>
+<p><em>（出典：Bradley 第14章、pp.177–178）</em></p>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+</section>
+<section id="教育改革の経済的インパクトのシミュレーション" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="教育改革の経済的インパクトのシミュレーション"><span class="header-section-number">8.8</span> 7. 教育改革の経済的インパクトのシミュレーション</h2>
+<section id="シミュレーションの意義" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="シミュレーションの意義">シミュレーションの意義</h3>
+<p>これまでの実証研究が示す知識資本と経済成長の関係を用いて、<strong>教育改革の経済的インパクトを将来にわたって試算する</strong>という試みがあります。</p>
+<p>Hanushek &amp; Woessmann（2015b）は、国ごとの現状のアクセスレベルと質の水準を出発点として、質の改善とアクセスの拡大がそれぞれ、あるいは組み合わせると将来のGDPをどれほど高めるかを試算しています。</p>
+<p>彼らは「基礎的スキル（basic skills）」を定義する際、PISAテストのレベル1をOECDが現代経済において生産的に参加するために必要なスキルとして定義しています。</p>
+<p><em>（出典：Bradley 第14章、pp.178–180）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="つのシナリオの試算結果" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="つのシナリオの試算結果">3つのシナリオの試算結果</h3>
+<p>以下の3つのシナリオで、各国グループの将来GDPへの影響が試算されています。</p>
+<table class="table-hover caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">シナリオ</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">① 質の向上（アクセス現状維持）</td>
+<td style="text-align: left;">現在在学している全生徒を、基礎的スキル水準まで引き上げる</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">② アクセスの拡大（質の現状維持）</td>
+<td style="text-align: left;">下位中等教育への全児童のアクセスを現在の質レベルで確保する</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">③ 質とアクセスの同時改善</td>
+<td style="text-align: left;">①と②を同時に実現する</td>
+</tr>
+</tbody>
+</table>
+<p><strong>試算結果（今後80年間の累積的な平均GDP増加率）</strong></p>
+<table class="table-hover caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">国グループ</th>
+<th style="text-align: center;">①質の向上</th>
+<th style="text-align: center;">②アクセス拡大</th>
+<th style="text-align: center;">③両方同時</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">低中所得国（ガーナ・ホンジュラス等）</td>
+<td style="text-align: center;">+13%</td>
+<td style="text-align: center;">+4.4%</td>
+<td style="text-align: center;">+28%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">上位中所得国（アルゼンチン・南アフリカ等）</td>
+<td style="text-align: center;">+16%</td>
+<td style="text-align: center;">わずか</td>
+<td style="text-align: center;">+25%程度</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">高所得非OECD（香港・リトアニア等）</td>
+<td style="text-align: center;">+数%</td>
+<td style="text-align: center;">ほぼゼロ</td>
+<td style="text-align: center;">―</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">高所得OECD</td>
+<td style="text-align: center;">+3%</td>
+<td style="text-align: center;">ほぼゼロ</td>
+<td style="text-align: center;">―</td>
+</tr>
+</tbody>
+</table>
+<p>これらの試算結果は、教育の質の向上が経済的価値において非常に高く評価されていることを示しています。全アクセスは明らかに価値がありますが、その価値は質の向上を通じて見られるものよりも大幅に小さいです。</p>
+<div id="fig-A08-3" class="quarto-float quarto-figure quarto-figure-center anchored" width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A08-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A08/A08-3.png" id="fig-A08-3" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-A08-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;8.3
+</figcaption>
+</figure>
+</div>
+<p><em>（出典：Bradley 第14章、pp.178–180）</em></p>
+<div style="margin-top: 3.0em;">
+
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>あなたが教育政策担当者なら？</strong></p>
+<p>以下のシミュレーション結果を踏まえて考えてみましょう。</p>
+<p><strong>個人ワーク（5分）</strong></p>
+<p>仮に、あなたが低中所得国の教育政策担当者であるとします。</p>
+<ul>
+<li><strong>選択肢A</strong>：まず全ての子どもに学校へのアクセスを確保する（②アクセス拡大優先）</li>
+<li><strong>選択肢B</strong>：まず学習の質（テストスコア）の引き上げに集中する（①質の向上優先）</li>
+</ul>
+<p>シミュレーションによれば、②より①の経済効果の方が大きいとされています。しかし、政治的・社会的な観点からはどのような違いがあるでしょうか？どちらの選択が現実的か議論してみましょう。</p>
+<p><strong>ペアワーク（5分）</strong></p>
+<ul>
+<li>お互いの答えを共有し、根拠を議論しましょう。</li>
+</ul>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>考え方の整理</strong></p>
+<p><strong>アクセス拡大優先の理由：</strong></p>
+<ul>
+<li>就学率を上げることは可視的・測定可能であり、政治的なアカウンタビリティを示しやすい</li>
+<li>低所得層・農村部・女性への就学機会の提供は、公平性・人権の観点からも正当性が高い</li>
+<li>まず学校に来させなければ、質の向上も始まらない（質とアクセスの補完性）</li>
+<li>Carnoyが指摘するように、就学年数を増やすこと自体が認知能力を高める効果がある</li>
+</ul>
+<p><strong>質の向上優先の理由：</strong></p>
+<ul>
+<li>Hanushek &amp; Woessmannのシミュレーションでは、経済的インパクトは質の向上の方が大きい</li>
+<li>「学校に来ているが何も学んでいない」状態が生まれると、教育への信頼が失われる</li>
+<li>教員の質・カリキュラム・評価制度といった「質」の基盤なしにアクセスを拡大しても効果は限定的</li>
+</ul>
+<p><strong>現実的な政策アプローチ：</strong> 多くの国は、アクセス拡大と質の向上を段階的に進めます。低所得国では、まずアクセスを確保しながら、資源の許す範囲で質の改善を進めることが一般的です。最終的には③の「両者同時」が最大の経済効果をもたらすというシミュレーション結果は示唆的です。</p>
+</div>
+</div>
+</div>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+</section>
+<section id="教育の外部性と政府の役割" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="教育の外部性と政府の役割"><span class="header-section-number">8.9</span> 8. 教育の外部性と政府の役割</h2>
+<section id="教育に外部性があるとはどういうことか" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="教育に外部性があるとはどういうことか">教育に外部性があるとはどういうことか</h3>
+<p>これまで見てきたように、教育は個人の生産性と賃金を高めるだけでなく、社会全体の経済成長にも貢献します。この、教育を受けた本人以外（社会全体）にも便益が及ぶ性質を<strong>外部性（externality）</strong>と呼びます。</p>
+<p>第5回の授業でも確認したように、ウォルター・マクマホン（McMahon, 1982）は教育の外部性として、民主主義の形成・犯罪率低下・健康管理への効果・子育て環境の改善など、多岐にわたる社会的便益を指摘しています。</p>
+<p>内生的成長理論の観点からは、さらに重要な外部性が加わります。それが、本節で詳しく取り上げる<strong>知識・技術の外部性</strong>です。より教育水準の高い労働力は、科学的発見の速度を高め、新技術の採用・実装能力を高め、他の労働者の生産性にもプラスの影響を与えます（Carnoy 第9.1節）。これがRomerモデルの「マーシャル的外部経済」にほかなりません。</p>
+<p><em>（出典：小塩 第6章 第5節「教育の外部性と政府の役割」、pp.185–189；Carnoy 第9章 第9.1節、pp.118–119）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="外部性が政府介入を正当化する仕組み" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="外部性が政府介入を正当化する仕組み">外部性が政府介入を正当化する仕組み</h3>
+<p>教育に外部性がある場合、個人に教育需要の大きさを委ねると、社会全体にとって望ましい教育水準が達成できない可能性があります。なぜなら、個人は自分が受け取れる便益（私的収益）だけを考慮して教育を需要するため、社会全体が享受できる便益（社会的収益）を過小評価してしまうからです。</p>
+<p>Lucas（1988）モデルの枠組みでは、この問題は次のように定式化されます。社会全体における1人当たり人的資本を <span class="math inline">\(h_a\)</span> と表現し、社会全体の1人当たり物的資本の蓄積メカニズムに外部性の大きさを示す <span class="math inline">\(\gamma\)</span>（ガンマ）が加わる形でモデルが修正されます。</p>
+<p>このモデルの定常状態を分析すると、<strong>社会的に最適な人的資本の成長率 <span class="math inline">\(g_h^*\)</span> は、個人が教育の外部性を所与として行動した場合の成長率 <span class="math inline">\(g_h\)</span> よりも必ず高くなります。</strong></p>
+<p><span class="math display">\[g_h^* &gt; g_h \quad (\sigma &gt; 1 \text{ の場合})\]</span></p>
+<p>これは、個人が自主的に教育を受ける場合よりも、政府は個人に強制的に教育を受けさせなければならないことを意味します。<strong>義務教育の経済学的根拠の1つは、ここにあります。</strong>もちろん、教育の外部性が存在しなければ（<span class="math inline">\(\gamma\)</span> がゼロであれば）、政府による教育への介入は不要となります。</p>
+<p>また、教育にかける時間 <span class="math inline">\(\theta\)</span> は、人的資本の効率性 <span class="math inline">\(\phi\)</span> が高まると増加します。これは、人的資本の生産性が高まると、より多くの時間を教育に費やすべきだということを意味します。</p>
+<p><em>（出典：小塩 第6章 第5節、pp.185–189）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="外部性内生的成長政府の役割のまとめ" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="外部性内生的成長政府の役割のまとめ">外部性・内生的成長・政府の役割のまとめ</h3>
+<p>内生的成長理論によると、各国の経済格差は縮小せずに持続することが無理なく説明できるほか、教育の外部性の存在をモデルに組み入れると、政府が教育や人的資本の蓄積に積極的に介入することも正当化されます。</p>
+<p>ただし、本章における教育の捉え方は、基本的に人的資本論に基づくものです。そのため、教育に対する評価は、効率性の観点によるものに限定されています。次回の授業では、効率性だけではなく公平性にも注目して、教育の経済的効果を検討します。</p>
+<p>教育の量的拡大（アクセスの向上）と質的向上（認知能力の向上）のいずれも、経済成長に貢献しますが、その効果の大きさと持続性は異なります。Hanushek &amp; Woessmannの分析は、教育の質——学校の学習から生まれる認知能力——が経済発展に対して強力な経済的効果を持ち、労働力の知識資本が経済成長に強く影響されることを示しています。</p>
+<p>しかしCarnoyが指摘するように、低・中所得国においてはアクセスの拡大も認知能力向上に貢献し、政治的・社会的に不可欠な政策目標です。重要なのは、「学校にいる時間ではなく、そこで何を学んだか」という視点を持ちつつ、アクセスと質の両方を高めていく取り組みです。</p>
+<p><em>（出典：小塩 第6章 第5節・第6節、pp.185–191；Carnoy 第9章 第9.5節、pp.129–132；Bradley 第14章 Summary、p.180）</em></p>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+</section>
+<section id="まとめ" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="まとめ"><span class="header-section-number">8.10</span> まとめ</h2>
+<p>本章では、教育や人的資本の蓄積が経済成長にどのような影響を及ぼすかを検討してきました。主要な論点を整理します。</p>
+<p><strong>理論的フレームワーク</strong></p>
+<p>新古典派成長理論は人的資本の蓄積を考慮せず、収束性を予言するが、現実には収束は確認されません。これを説明する2つのアプローチとして、拡張Solowモデル（条件付き収束性）と内生的成長理論（非収束性）があります。内生的成長理論（AKモデル・Lucasモデル・Romerモデル）によると、人的資本の蓄積こそが長期的な経済成長の源泉であり、各国の成長率格差を生み出す要因です。</p>
+<p><strong>実証的な知見</strong></p>
+<p>成長会計（Schultz・Denison）は、教育が米国経済成長の約1/5〜1/4を説明することを示しましたが、因果性の仮定には限界があります。就学年数（量）と成長の正の相関は広く確認されてきましたが、逆因果・測定誤差・内生性の問題を抱えています。教育の質（認知能力・テストスコア）は量よりも強く成長と関連しており、テストスコアを含めると就学年数の効果はほぼ消えます（Hanushek &amp; Woessmann）。しかし、量を増やすことでも認知能力は向上するという反論もあります（Carnoy・Breton）。</p>
+<p><strong>政策的含意</strong></p>
+<p>教育の外部性の存在は、政府が教育に積極的に介入することを経済学的に正当化します。教育改革シミュレーションでは、質の向上はアクセス拡大よりも大きな経済効果をもたらしますが、低中所得国でアクセスの拡大が優先される政治経済学的理由もあります。教育の質と経済制度は相互補完的であり、開かれた経済のもとでは教育の質の効果が特に大きくなります。</p>
+<div style="margin-top: 3.0em;">
+
+</div>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>本章で使用した文献
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>本章の内容は以下の3つの資料に基づいています。</p>
+<ul>
+<li><p><strong>小塩隆士『概説教育経済学』第6章「教育と経済成長」</strong>（日本評論社）<br>
+新古典派成長理論から内生的成長理論まで、数式を用いた体系的な理論解説。特に第1〜3節の理論的フレームワークと、第5節の教育外部性・政府の役割の記述。</p></li>
+<li><p><strong>Martin Carnoy, <em>International Encyclopedia of Education (3rd ed.)</em> Chapter 9「Education and Economic Growth」</strong><br>
+成長会計（Schultz・Denison）から量vs質の論争まで、批判的な視点を含む包括的な実証サーベイ。特に第9.2節の成長会計、第9.3節のクロスカントリー分析、第9.4〜9.5節の質vs量論争と政策含意。</p></li>
+<li><p><strong>Eric A. Hanushek &amp; Ludger Woessmann, <em>The Economics of Education (2nd ed.)</em> Chapter 14「Education, knowledge capital, and economic growth」</strong><br>
+知識資本（国際テストスコア）と経済成長の関係に関する実証研究の包括的サーベイ。特に因果性検証の4アプローチ（pp.176–178）と教育改革シミュレーション（pp.178–180）の記述。</p></li>
+</ul>
+</div>
+</div>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+<section id="参考文献" class="level2" data-number="8.11">
+<h2 data-number="8.11" class="anchored" data-anchor-id="参考文献"><span class="header-section-number">8.11</span> 参考文献</h2>
+<ul>
+<li>Arrow, K. J. (1962). The economic implications of learning by doing. <em>Review of Economic Studies</em>, 29(3), 155–173.</li>
+<li>Barro, R. J. (1991). Economic growth in a cross section of countries. <em>Quarterly Journal of Economics</em>, 106(2), 407–443.</li>
+<li>Barro, R. J. (2001). Human capital and growth. <em>American Economic Review</em>, 91(2), 12–17.</li>
+<li>Barro, R. J., &amp; Sala-i-Martin, X. (1992). Convergence. <em>Journal of Political Economy</em>, 100(2), 223–251.</li>
+<li>Bils, M., &amp; Klenow, P. J. (2000). Does schooling cause growth? <em>American Economic Review</em>, 90(5), 1160–1183.</li>
+<li>Breton, T. R. (2011). The quality vs.&nbsp;the quantity of schooling. <em>Journal of Development Economics</em>, 95(2), 175–185.</li>
+<li>Denison, E. F. (1962). <em>The sources of economic growth in the United States</em>. Committee for Economic Development.</li>
+<li>Denison, E. F., &amp; Poullier, J. P. (1967). <em>Why growth rates differ: Postwar experience in nine western countries</em>. Brookings Institution.</li>
+<li>Hanushek, E. A., &amp; Kimko, D. D. (2000). Schooling, labor force quality, and the growth of nations. <em>American Economic Review</em>, 90(5), 1184–1208.</li>
+<li>Hanushek, E. A., &amp; Woessmann, L. (2008). The role of cognitive skills in economic development. <em>Journal of Economic Literature</em>, 46(3), 607–668.</li>
+<li>Hanushek, E. A., &amp; Woessmann, L. (2012a). Do better schools lead to more growth? Cognitive skills, economic outcomes, and causation. <em>Journal of Economic Growth</em>, 17(4), 267–321.</li>
+<li>Hanushek, E. A., &amp; Woessmann, L. (2015a). <em>The knowledge capital of nations: Education and the economics of growth</em>. MIT Press.</li>
+<li>Hanushek, E. A., &amp; Woessmann, L. (2015b). <em>Universal basic skills: What countries stand to gain</em>. OECD.</li>
+<li>Krueger, A. B., &amp; Lindahl, M. (2001). Education for growth: Why and for whom? <em>Journal of Economic Literature</em>, 39(4), 1101–1136.</li>
+<li>Lucas, R. E., Jr.&nbsp;(1988). On the mechanics of economic development. <em>Journal of Monetary Economics</em>, 22(1), 3–42.</li>
+<li>Mankiw, N. G., Romer, D., &amp; Weil, D. (1992). A contribution to the empirics of economic growth. <em>Quarterly Journal of Economics</em>, 107(2), 407–437.</li>
+<li>Pritchett, L. (2001). Where has all the education gone? <em>World Bank Economic Review</em>, 15(3), 367–391.</li>
+<li>Rebelo, S. (1991). Long-run policy analysis and long-run growth. <em>Journal of Political Economy</em>, 99(3), 500–521.</li>
+<li>Romer, P. M. (1986). Increasing returns and long-run growth. <em>Journal of Political Economy</em>, 94(5), 1002–1037.</li>
+<li>Schultz, T. W. (1961). Investment in human capital. <em>American Economic Review</em>, 51(1), 1–17.</li>
+<li>Solow, R. M. (1956). A contribution to the theory of economic growth. <em>Quarterly Journal of Economics</em>, 70(1), 65–94.</li>
+<li>小塩隆士（2003）『概説教育経済学』日本評論社</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
