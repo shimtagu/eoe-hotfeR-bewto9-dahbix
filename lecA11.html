@@ -73,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <meta name="robots" content="noindex, nofollow">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -216,8 +245,59 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#学習目標" id="toc-学習目標" class="nav-link active" data-scroll-target="#学習目標"><span class="header-section-number">11.1</span> 学習目標</a></li>
+  <li><a href="#教育の国際化とは何か現状と歴史" id="toc-教育の国際化とは何か現状と歴史" class="nav-link" data-scroll-target="#教育の国際化とは何か現状と歴史"><span class="header-section-number">11.2</span> 1. 教育の国際化とは何か——現状と歴史</a>
+  <ul class="collapse">
+  <li><a href="#教育の国際化をかたちづくるもの" id="toc-教育の国際化をかたちづくるもの" class="nav-link" data-scroll-target="#教育の国際化をかたちづくるもの">教育の国際化をかたちづくるもの</a></li>
+  <li><a href="#世界の外国人学生数の推移" id="toc-世界の外国人学生数の推移" class="nav-link" data-scroll-target="#世界の外国人学生数の推移">世界の外国人学生数の推移</a></li>
+  <li><a href="#virtual-mobilityとmoocsの台頭" id="toc-virtual-mobilityとmoocsの台頭" class="nav-link" data-scroll-target="#virtual-mobilityとmoocsの台頭">Virtual mobilityとMOOCsの台頭</a></li>
+  <li><a href="#日本の状況" id="toc-日本の状況" class="nav-link" data-scroll-target="#日本の状況">日本の状況</a></li>
+  <li><a href="#なぜ留学するのか歴史と動機" id="toc-なぜ留学するのか歴史と動機" class="nav-link" data-scroll-target="#なぜ留学するのか歴史と動機">なぜ留学するのか——歴史と動機</a></li>
+  </ul></li>
+  <li><a href="#留学人材移動の経済学理論と実証" id="toc-留学人材移動の経済学理論と実証" class="nav-link" data-scroll-target="#留学人材移動の経済学理論と実証"><span class="header-section-number">11.3</span> 2. 留学・人材移動の経済学——理論と実証</a>
+  <ul class="collapse">
+  <li><a href="#留学の経済効果を説明する理論" id="toc-留学の経済効果を説明する理論" class="nav-link" data-scroll-target="#留学の経済効果を説明する理論">留学の経済効果を説明する理論</a></li>
+  <li><a href="#規模の経済論" id="toc-規模の経済論" class="nav-link" data-scroll-target="#規模の経済論">規模の経済論</a></li>
+  <li><a href="#人的資本論" id="toc-人的資本論" class="nav-link" data-scroll-target="#人的資本論">人的資本論</a></li>
+  <li><a href="#シグナリング理論" id="toc-シグナリング理論" class="nav-link" data-scroll-target="#シグナリング理論">シグナリング理論</a></li>
+  <li><a href="#自己選択仮説とロイモデル" id="toc-自己選択仮説とロイモデル" class="nav-link" data-scroll-target="#自己選択仮説とロイモデル">自己選択仮説とロイモデル</a></li>
+  <li><a href="#留学の経済効果実証" id="toc-留学の経済効果実証" class="nav-link" data-scroll-target="#留学の経済効果実証">留学の経済効果——実証</a></li>
+  <li><a href="#留学の効果の実証性3つの問題" id="toc-留学の効果の実証性3つの問題" class="nav-link" data-scroll-target="#留学の効果の実証性3つの問題">留学の効果の実証性——3つの問題</a></li>
+  </ul></li>
+  <li><a href="#国際学力調査pisaをどう読むか" id="toc-国際学力調査pisaをどう読むか" class="nav-link" data-scroll-target="#国際学力調査pisaをどう読むか"><span class="header-section-number">11.4</span> 3. 国際学力調査——PISAをどう読むか</a>
+  <ul class="collapse">
+  <li><a href="#世界で行われている国際学力比較調査" id="toc-世界で行われている国際学力比較調査" class="nav-link" data-scroll-target="#世界で行われている国際学力比較調査">世界で行われている国際学力比較調査</a></li>
+  <li><a href="#pisaとは何か" id="toc-pisaとは何か" class="nav-link" data-scroll-target="#pisaとは何か">PISAとは何か</a></li>
+  <li><a href="#pisa成績と経済成長の関係" id="toc-pisa成績と経済成長の関係" class="nav-link" data-scroll-target="#pisa成績と経済成長の関係">PISA成績と経済成長の関係</a></li>
+  <li><a href="#pisaショックという政策現象" id="toc-pisaショックという政策現象" class="nav-link" data-scroll-target="#pisaショックという政策現象">「PISAショック」という政策現象</a></li>
+  <li><a href="#pisaの限界と批判" id="toc-pisaの限界と批判" class="nav-link" data-scroll-target="#pisaの限界と批判">PISAの限界と批判</a></li>
+  </ul></li>
+  <li><a href="#頭脳流出か頭脳循環か" id="toc-頭脳流出か頭脳循環か" class="nav-link" data-scroll-target="#頭脳流出か頭脳循環か"><span class="header-section-number">11.5</span> 4. 頭脳流出か、頭脳循環か</a>
+  <ul class="collapse">
+  <li><a href="#brain-drain-vs-brain-circulation" id="toc-brain-drain-vs-brain-circulation" class="nav-link" data-scroll-target="#brain-drain-vs-brain-circulation">Brain Drain vs Brain Circulation</a></li>
+  <li><a href="#高技能移民の規模と分布実証データ" id="toc-高技能移民の規模と分布実証データ" class="nav-link" data-scroll-target="#高技能移民の規模と分布実証データ">高技能移民の規模と分布——実証データ</a></li>
+  <li><a href="#頭脳流出は本当に損失か理論の三世代" id="toc-頭脳流出は本当に損失か理論の三世代" class="nav-link" data-scroll-target="#頭脳流出は本当に損失か理論の三世代">頭脳流出は本当に「損失」か——理論の三世代</a></li>
+  <li><a href="#頭脳循環のメカニズム4つのチャネル" id="toc-頭脳循環のメカニズム4つのチャネル" class="nav-link" data-scroll-target="#頭脳循環のメカニズム4つのチャネル">頭脳循環のメカニズム——4つのチャネル</a></li>
+  <li><a href="#ケーススタディアフリカの医療人材流出" id="toc-ケーススタディアフリカの医療人材流出" class="nav-link" data-scroll-target="#ケーススタディアフリカの医療人材流出">ケーススタディ：アフリカの医療人材流出</a></li>
+  <li><a href="#投資国と回収国の乖離シミュレーション" id="toc-投資国と回収国の乖離シミュレーション" class="nav-link" data-scroll-target="#投資国と回収国の乖離シミュレーション">投資国と回収国の乖離——シミュレーション</a></li>
+  <li><a href="#日本の状況と内向き志向" id="toc-日本の状況と内向き志向" class="nav-link" data-scroll-target="#日本の状況と内向き志向">日本の状況と「内向き志向」</a></li>
+  </ul></li>
+  <li><a href="#日本の教育の国際化政策" id="toc-日本の教育の国際化政策" class="nav-link" data-scroll-target="#日本の教育の国際化政策"><span class="header-section-number">11.6</span> 5. 日本の教育の国際化政策</a>
+  <ul class="collapse">
+  <li><a href="#スーパーグローバル大学と国際化政策" id="toc-スーパーグローバル大学と国際化政策" class="nav-link" data-scroll-target="#スーパーグローバル大学と国際化政策">スーパーグローバル大学と国際化政策</a></li>
+  <li><a href="#高等教育費の公私負担と国際比較" id="toc-高等教育費の公私負担と国際比較" class="nav-link" data-scroll-target="#高等教育費の公私負担と国際比較">高等教育費の公私負担と国際比較</a></li>
+  <li><a href="#所得連動返還型奨学金日本版iclの試み" id="toc-所得連動返還型奨学金日本版iclの試み" class="nav-link" data-scroll-target="#所得連動返還型奨学金日本版iclの試み">所得連動返還型奨学金——日本版ICLの試み</a></li>
+  <li><a href="#バグワティ税と国際的な仕組み" id="toc-バグワティ税と国際的な仕組み" class="nav-link" data-scroll-target="#バグワティ税と国際的な仕組み">バグワティ税と国際的な仕組み</a></li>
+  </ul></li>
+  <li><a href="#まとめ" id="toc-まとめ" class="nav-link" data-scroll-target="#まとめ"><span class="header-section-number">11.7</span> まとめ</a></li>
+  <li><a href="#参考文献" id="toc-参考文献" class="nav-link" data-scroll-target="#参考文献"><span class="header-section-number">11.8</span> 参考文献</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -242,116 +322,1498 @@ ul.task-list li input[type="checkbox"] {
 
 
 <!--
+以下の時間配分で実施
 
-## slide-1
-### 教育経済学
-第 11 回 2025 年 6 月 25 日
-拓殖大学 政経学部
+15分（〜11：30）
+・教育の国際化の現状
+　- 世界の外国人学生数の推移
+　- 日本の外国人・日本人留学生の推移
+　- Virtual mobilityとMOOCsの台頭
+・なぜ留学するのか（歴史と動機）
+・Activity 1（留学に期待することは何か）
 
-## slide-2
-### 授業の目的および到達目標
-本講義は、経済学の基礎的な考え方や分析手法を用いて、教育に係る諸問題、これまでに実施されてきた教育政策、教育の役割や効果について考察を深めることを目的とする。
-さらに、教育行政に係るデータを読み解き、その分析方法や因果的な考え方についても解説する。
-その際、日本のデータを基にこれまで行われてきた研究を紹介し、日本の教育政策について経済学的な見方を習得できるようにする。
-本講義を通して、教育経済学の基本的な考え方を理解し、それを用いて日本で行われている教育政策について自分の言葉で平易に説明できるようになることを到達目標とする。
+25分（〜11：55）
+・留学・人材移動の経済学——理論と実証
+　- 規模の経済論・人的資本論・シグナリング・ロイモデル
+　- 留学の経済効果：年収・職位プレミアム
+　- 実証上の3つの問題（批判的視点）
 
-## slide-3
-### 授業計画（ 2 ）変更
-第 8 回：教育の効果に係る経済学的実証分析
-第 9 回：教育政策の経済学的評価（ 1 ）ピア効果
-第 10 回：教育政策の経済学的評価（ 2 ）非認知能力
-第 11 回：教育政策の経済学的評価（ 3 ）非認知能力をどのように伸ばすか？
-第 12 回：教育政策実証分析紹介
-第 13 回：期末レポートについて
+25分（〜12：20）
+・国際学力調査——PISAをどう読むか
+　- PISAとは何か
+　- PISA成績と経済成長
+　- PISAショック：ドイツとフィンランド
+　- PISAの限界と批判
+・Activity 2（PISAスコアをどう読むか）
 
-## slide-4
-### 課題の提出について
-授業の次の週の月曜日 17:00 を締め切りとする。
-これまでは提出が遅れた分は得点を半分で計算していたが、今後は得点を加算しない（ 0 点）とする。
-遅延分も提出は可能だが、授業への取り組み点（ 20% ）には加算されない。
-それほど難しい課題ではないため、授業を受けた日のうちに解答することを勧める。
+25分（〜12：45）
+・頭脳流出か、頭脳循環か
+　- Brain Drain vs Brain Circulation
+　- 投資国と回収国の乖離：シミュレーション
+　- 日本の状況と「内向き志向」
 
-## slide-5
-### 非認知能力の定義（復習）
-認知能力
-知能、学力。何らかの課題に懸命に取り組み、限られた時間の中で物事を正確に処理する心理的な機能。
-
-非認知能力
-思考や感情や行動について個々人がもつパターンのようなもの。意欲、長期的な計画を実行する能力、社会的・感情的制御能力など。
-近年、賃金や昇格など労働市場での成果との関係が指摘され、経済学分野でも分析が増加している。
-
-## slide-6
-### 言葉のもつニュアンス（小塩 2021）
-能力：生まれながらの要因の大きさが意識される
-スキル：教育による変化の可能性、訓練で習得できるもの
-特性：心理学的な個人差、比較的安定したパターン
-
-非認知能力は認知的な側面を含んでおり、必ずしも明確な区別はできない。
-開放性は知能指数と関連し、勤勉性は学業成績と関連している。
-
-## slide-7
-### 代表的な非認知能力の指標
-誠実性：課題にしっかりと取り組むパーソナリティ
-グリット：困難な目標への情熱と粘り強さ
-自己制御：目標達成に向けて自分を律する力
-好奇心：新たな知識や経験を探求する原動力
-批判的思考：情報を適切に読み解き活用する思考力
-自尊感情：自分自身を価値ある存在だと思う心
-レジリエンス：逆境をしなやかに生き延びる力
-
-## slide-8
-### 非認知能力を測る試み
-日本における 小さな池の大魚効果 で用いられた自制心の尺度：
-授業で必要なものを忘れた、他の子のじゃまをした、乱暴なことを言った、机が散らかっていた、口答えをしたなどの頻度。
-
-自己効力感の尺度：
-難しい問題も理解できると思う、試験でよい成績が取れると思う、授業で教わったことを使いこなせると思うなどの主観。
-
-## slide-9
-### 非認知能力と労働市場（ Heckman et al. 2006 ）
-非認知能力が 30 歳時点の収入に与える影響を分析。
-学歴選択、賃金決定、就業維持、リスク行動において、非認知能力が認知能力と同等の効果を持つことを示した。
-特に女性や、大卒以外の男性において非認知能力の影響が大きい。
-
-## slide-10
-### 介入による能力の変容：音楽と文化
-Hille & Schupp ( 2015 )
-8 歳以前に音楽を学び始めた青少年は、学業成績が標準偏差の 1/6 高い。
-音楽レッスンを受けている子どもはより勤勉で開放的である。
-
-Bowen et al. ( 2014 )
-美術館への校外学習により、批判的思考力や歴史への共感が高まる。
-Almlund et al. ( 2024 )
-児童の好奇心を刺激する教育介入により、理科の学力テストが向上し、その効果は 3 年後も継続する。
-
-## slide-11
-### 学校の先生は非認知能力を伸ばせるか
-Jackson ( 2018 )
-テストスコアを伸ばすのが得意な教員と、非認知アウトカム（出席率や卒業率）を伸ばすのが得意な教員は必ずしも一致しない。
-非認知スキルを伸ばす教員に教わった生徒は、大学進学率や高校卒業率が有意に高くなる。
-
-## slide-12
-### 実証論文を読み解くポイント
-過去の研究レビュー：既知と未知の境界を整理する。
-データの特徴：識別戦略との整合性を確認する。
-内生性バイアスと識別戦略：どのようなバイアスを想定し、どうコントロールしたか。
-新規性：その研究で新たに分かったことは何か。
-要約：問題意識と結論を簡潔にまとめる。
-
-## slide-13
-### 本日の課題
-1. 本研究で述べられているリサーチギャップは何か。
-2. 小学校のデータのみで分析している理由は何か。
-3. 外的妥当性の例として挙げられている具体例。
-4. 認知能力のスコア作成方法。
-5. 本研究で扱っている非認知能力は何か。
-6. 社会経済的地位（ SES ）の変数として何が使われているか。
-7. 認知能力と非認知能力、どちらの方が教員の影響が大きいと結論づけているか。
-
-
+15分（〜13：00）
+・日本の教育の国際化政策
+　- スーパーグローバル大学
+　- 所得連動返還型奨学金・ICL
+・まとめ
+・確認テスト
 -->
+<section id="学習目標" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="学習目標"><span class="header-section-number">11.1</span> 学習目標</h2>
+<ul>
+<li>教育の国際化の現状を、世界・日本のデータを通じて把握する。</li>
+<li>留学の経済効果を説明する理論（人的資本論・シグナリング・自己選択仮説）を理解する。</li>
+<li>国際学力調査（PISA）の意味・限界・政策的影響を批判的に理解する。</li>
+<li>頭脳流出（Brain Drain）と頭脳循環（Brain Circulation）の論争を整理し、送り出し国・受け入れ国双方にとっての教育投資の意味を考える。</li>
+<li>日本の教育国際化政策（スーパーグローバル大学・所得連動返還型奨学金等）の内容と課題を理解する。</li>
+</ul>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+<section id="教育の国際化とは何か現状と歴史" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="教育の国際化とは何か現状と歴史"><span class="header-section-number">11.2</span> 1. 教育の国際化とは何か——現状と歴史</h2>
+<section id="教育の国際化をかたちづくるもの" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="教育の国際化をかたちづくるもの">教育の国際化をかたちづくるもの</h3>
+<p>1990年代になると教育の国際化が急速に進んだ。「教育の国際化」をかたちづくる事象は多岐にわたるが、留学は教育国際化の最大の表れといえよう。国外での就学経験を有する者ほど海外で就労する機会を得やすく、そのうちの多くが高技能移民となり移動先に実質的な経済効果をもたらす。教育＋留学は私的・社会的効果を伴い、留学した者にのみならず、周辺社会にも恩恵をもたらし得る。</p>
+<p>「教育の国際化」は学生や研究者が「物理的」に国家間を移動することに留まらない。遠隔通信を用いたオンライン教育は地域間の垣根が低く、知識や情報の移動を即座に可能とする。本章ではまず、高等教育をめぐる学生移動に焦点をあてて、教育国際化の現状と推移、その背後にある要因を検討する。</p>
+<p><em>（出典：松塚 第11章 冒頭、p.275）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="世界の外国人学生数の推移" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="世界の外国人学生数の推移">世界の外国人学生数の推移</h3>
+<p>自国外で学ぶ大学生はこの20年強の間に急速に増加した。世界全体では1998年から2008年までの間に70.3%、2008年から2018年までに67.7%増加している。数の規模で見ると、東アジア・太平洋地域からの送り出しが直近の2018年で1,522,949人と世界の3割近くを占めている。</p>
+<div id="fig-A11-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A11-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A11/A11-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-A11-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;11.1: 世界の外国人学生：送り出し地域別
+</figcaption>
+</figure>
+</div>
+<p>受け入れ側から見ると、高所得国が一貫して多い。2008年には高所得国が62.3%のシェアを占めていたが、2018年には60.0%へとやや低下し、その分を中所得国・上位中所得国が埋めている。学生移動は地域間でますます活発になるとともに、移動の在り方も多様になっていることがわかる。</p>
+<div id="fig-A11-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A11-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A11/A11-2.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-A11-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;11.2: 世界の外国人学生：受け入れ国所得別
+</figcaption>
+</figure>
+</div>
+<p><em>（出典：松塚 第11章 第1節 1-1、pp.276–278）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="virtual-mobilityとmoocsの台頭" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="virtual-mobilityとmoocsの台頭">Virtual mobilityとMOOCsの台頭</h3>
+<p>オンラインで他国の大学のプログラムを受講する形態は、<strong>ヴァーチャル・モビリティー（Virtual mobility）</strong>と称される。MOOCsなどによって高質の高等教育が実現し、その延長として学位の授与も可能となれば、オンライン教育は今後一層発展することが予測される。物理的な地域間移動が伴うこれまでの「留学」に比べて、渡航や居住地の移動に伴う費用も不要なために、これまで経済的負担の理由から留学できなかった者も国外の教育を受けて学位を取得することが可能になる。</p>
+<p>オンライン教育の発展は4段階で移行したといわれる。まず、1990年代インターネットの登場によって「遠隔教育」がはじまり、2000年から2007年にかけて学習管理システム（LMS）の登場によりオンライン学習が充実し、2008年から2012年にかけてMOOCsの登場と発展が見られ、それ以後、オンラインで学ぶ大学在籍者数は伝統的大学在籍者数の増加ペースを上回る段階にある。</p>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>MOOCsとは——大規模公開オンライン講座
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>MOOC（Massive Open Online Course）</strong>とは、インターネットを通じて誰もが無料または低コストで受講できる大規模公開オンライン講座のことである。2012年はMOOCの「元年」とも呼ばれ、CourseraやedXが設立され、スタンフォード大学・MITなどトップ大学が相次いで参加したことで急速に普及した。</p>
+<p><strong>主要なMOOCプラットフォーム</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>プラットフォーム</th>
+<th>設立年</th>
+<th>特徴</th>
+<th>主な提供元</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://www.coursera.org/">Coursera</a></td>
+<td>2012</td>
+<td>学位・証明書プログラム充実</td>
+<td>スタンフォード大、ミシガン大、Google等</td>
+</tr>
+<tr class="even">
+<td><a href="https://www.edx.org/">edX</a></td>
+<td>2012</td>
+<td>MITとハーバードが創設</td>
+<td>MIT、ハーバード大、東京大学等</td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.futurelearn.com/">FutureLearn</a></td>
+<td>2013</td>
+<td>英国中心・修士課程も提供</td>
+<td>ロンドン大学、マンチェスター大等</td>
+</tr>
+<tr class="even">
+<td><a href="https://www.udemy.com/">Udemy</a></td>
+<td>2010</td>
+<td>職業・実務スキルに強い</td>
+<td>個人講師・企業</td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.khanacademy.org/">Khan Academy</a></td>
+<td>2008</td>
+<td>無料・K-12教育中心</td>
+<td>非営利</td>
+</tr>
+</tbody>
+</table>
+<p><strong>大学院レベルのオンラインコース例</strong></p>
+<p>現在では、世界トップ大学が大学院レベルの講義をオンラインで公開しており、物理的な渡航なしに高度な教育を受けることが可能になっている。以下はその代表例である。</p>
+<ul>
+<li><p><strong>スタンフォード大学 Online</strong> <a href="https://online.stanford.edu/">https://online.stanford.edu/</a><br>
+機械学習・教育学・ビジネス分野で多数のコースを提供。著名なAndrew Ngの機械学習コースはCourseraで世界数百万人が受講している。</p></li>
+<li><p><strong>MIT OpenCourseWare</strong> <a href="https://ocw.mit.edu/">https://ocw.mit.edu/</a><br>
+学部・大学院レベルの講義ノート・動画を無料公開。経済学・工学・理学の講義が充実。</p></li>
+<li><p><strong>東京大学 UTokyo OpenCourseWare</strong> <a href="https://ocw.u-tokyo.ac.jp/">https://ocw.u-tokyo.ac.jp/</a><br>
+東大の講義をオンラインで公開。日本語コンテンツも豊富。</p></li>
+<li><p><strong>edX MicroMasters プログラム</strong> <a href="https://www.edx.org/bachelors/micromasters">https://www.edx.org/bachelors/micromasters</a><br>
+MITやコロンビア大学などの大学院科目を履修・修了証を取得できるプログラム。一部は実際の大学院入学時に単位として認められる。</p></li>
+</ul>
+<p>MOOCsは留学費用（渡航・生活費）なしに世界最高水準の教育にアクセスできる点で、教育の民主化に大きく貢献している。一方で、修了率の低さ（多くは5〜15%程度）や、対面コミュニケーションの欠如、雇用市場での認知度の問題（証明書の有効性）など、課題も指摘されている。</p>
+</div>
+</div>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p><span class="marker">物理的な留学とヴァーチャル・モビリティーは対立するものではなく、両者の長所を組み合わせることで、より多くの人に質の高い教育機会を提供できる可能性がある。</span></p>
+<p><em>（出典：松塚 第11章 第1節 1-1、pp.278–280）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="日本の状況" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="日本の状況">日本の状況</h3>
+<p><strong>外国人留学生の受け入れ</strong></p>
+<p>日本政府は外国人留学生の増加を目指し、「留学生受け入れ10万人計画（1983年）」、「留学生30万人計画（2008年）」を推進してきた。2008年のリーマンショックや2011年の東日本大震災の影響もあり、コンスタントに上昇の一途を辿ったとはいえないものの、1989年度に31,251人であった留学生総数は、2019年度には312,214人と30年間でほぼ10倍に増加している。近年の留学生数の上昇は概ね私費留学生数の増加によるものであることがわかる。</p>
+<div id="fig-A11-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A11-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A11/A11-3.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-A11-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;11.3: 外国人留学生数の推移
+</figcaption>
+</figure>
+</div>
+<p><strong>日本人留学生の送り出し</strong></p>
+<p>日本人留学生数の推移を見ると、大学間協定に基づく留学者数は2003年度の15,564人から2018年度の70,541人へと約4.5倍増加している。2013年6月に閣議決定された「日本再興戦略〜JAPAN is BACK」では、2020年までに大学生の海外留学者数を12万人にするという目標が掲げられ、2014年には留学促進キャンペーンである「トビタテ！留学JAPAN」がスタートした。</p>
+<div id="fig-A11-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A11-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A11/A11-4.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-A11-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;11.4: 日本人留学生数の推移
+</figcaption>
+</figure>
+</div>
+<p>また、留学先進国の欧米各国は、留学から就労への移行を<strong>二段階移民（Two-Step Migration）</strong>と称し、高度人材獲得の戦略として位置づけてきたが、日本もその段階に入ったといえよう。</p>
+<p><em>（出典：松塚 第11章 第1節 1-2、pp.280–282）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="なぜ留学するのか歴史と動機" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="なぜ留学するのか歴史と動機">なぜ留学するのか——歴史と動機</h3>
+<p>学生や研究者が他の国や地域で学ぶために移動することは現代にはじまったわけではない。古くはヨーロッパの中世に遡る。ヨーロッパで初めての大学であるボローニャ大学が設立された頃、大学を中心に学者や学生が大学をめぐる<strong>ペレグリナチオ・アカデミカ（Peregrinatio academica）</strong>が見られた。15世紀にはヨーロッパの20%以上の学生が複数の大学で学んだとされる（Irrgang, 2002）。</p>
+<p>現代の留学動機については、Hobsons（2015）が世界210カ国45,543人の学生を対象に行った意識調査の結果が参考になる。</p>
+<div id="fig-A11-5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A11-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A11/A11-5.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-A11-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;11.5: 留学で期待すること（Hobsons 2015）
+</figcaption>
+</figure>
+</div>
+<p>最も多くの回答者が重要だと思っているのは、1）将来の収入の可能性を高めること、2）卒業時に仕事を得ること、であった。3番以降は「教員との触れ合い」「他の学生との交流」「異文化との出会い」など、現地に行くことによって可能となることであり、物理的に移動する留学体験が重要であることが確認できる。</p>
+<p>また、留学先の大学を決めるときに重要な検討対象は、「専攻学部のランキング」「卒業時の就職率」「大学のランキング」「物価」「卒業時の初任給」となっており、留学も高等教育も「消費」というより、将来的リターンを期待した<strong>「投資」</strong>として選択されている傾向が強くなっているように捉えられる。これは第5章で学んだ「投資としての教育」の議論と直結する。</p>
+<p><span class="marker">留学の動機は「知への渇望」に基づく一方で、異国で学ぶことにより他言語を習得し、異文化を知り、また職を得ることが容易になるなどの実利的側面も中世から存在していた（Eliasson, 1992）。</span></p>
+<p><em>（出典：松塚 第11章 第1節 1-3、pp.282–285）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>留学に期待することは何か</strong></p>
+<p><strong>個人ワーク（3分）</strong></p>
+<p>あなたが留学するとしたら、最も重視することは何ですか？Hobsons調査の10項目を参考に、自分なりのランキングを考えてください。</p>
+<ol type="1">
+<li>将来の収入の可能性を高めること</li>
+<li>卒業時に仕事を得ること</li>
+<li>担当教員と差し向かいで触れ合えること</li>
+<li>他の学生と個人的なコネクションをつくること</li>
+<li>他の国や文化から来た人々と会うこと</li>
+<li>他の町や国での生活を経験すること</li>
+<li>グループレクチャー</li>
+<li>ソーシャルライフ</li>
+<li>特定社会への参加</li>
+<li>実家から遠ざかる</li>
+</ol>
+<p><strong>ペアワーク（3分）</strong></p>
+<ul>
+<li>お互いのランキングを共有しましょう。</li>
+<li>「経済的な理由」と「経験的な理由」、どちらが大きいですか？</li>
+</ul>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>考え方の整理</strong></p>
+<p>Hobsons（2015）の調査では、「将来の収入」と「卒業時の就職」が最上位でした。これは留学が「投資」として捉えられていることを示しています。</p>
+<p>一方で、3番以降はすべて「現地に行かないとできないこと」です。MOOCsやオンライン教育でも学位は取れるかもしれませんが、「他の学生との個人的なつながり」「異文化との出会い」「現地での生活経験」は、物理的に移動する留学だからこそ得られる価値です。</p>
+<p><strong>教育経済学の視点</strong></p>
+<p>留学を「消費」と見るか「投資」と見るかによって、留学政策の方向性が変わります。 - 「投資」として見るなら：収益率の高い留学先・プログラムを選ぶべき - 「消費」として見るなら：経験の質・多様性が重要 - 現実には両者が絡み合っており、第5章の議論（投資と消費の両面性）がここでも当てはまります。</p>
+</div>
+</div>
+</div>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+</section>
+<section id="留学人材移動の経済学理論と実証" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="留学人材移動の経済学理論と実証"><span class="header-section-number">11.3</span> 2. 留学・人材移動の経済学——理論と実証</h2>
+<section id="留学の経済効果を説明する理論" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="留学の経済効果を説明する理論">留学の経済効果を説明する理論</h3>
+<p>教育経済学では教育の国際化に伴う学生の移動とその社会的経済的効果を、規模の経済論、人的資本論、シグナリング理論、自己選択仮説などを用いて説明し、どのような教育経験や技能を有する者が、なぜ、どこに移動し、その結果はどのような教育的、経済的、そして社会的な意味をなすかを検討する。</p>
+<p><em>（出典：松塚 第11章 第2節 2-1、p.285）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="規模の経済論" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="規模の経済論">規模の経済論</h3>
+<p>規模の経済論は国家や機関が留学を促進するためにどのように予算を振り当て、その効果を見極めつつ、適正な投入価格を設定するかを定める際に有効である。教育予算のなかから、留学にどの程度の公的あるいは私的資源を投入することによってどのようなアウトプットが誰あるいは何処にどのくらいもたらされるかを考察する。</p>
+<p><em>（出典：松塚 第11章 第2節 2-1-1、pp.285–286）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="人的資本論" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="人的資本論">人的資本論</h3>
+<p>人的資本論は留学という経験が資本として個々人にいかにして蓄積されいかなる経済効果を発現するのかを説明する（第2章参照）。留学をすることによって、留学しなかった場合には獲得できなかったであろう能力や技能が養われた効果を検討し得る。分野専門知識、外国語での会話や読み書きなどの言語能力、多様な背景や習慣を有する人々と円滑に対話したり説得したりする異文化間能力の向上などが挙げられよう。</p>
+<p>これらは留学を経験することによって「付加価値」として蓄積され、その結果として就職力を高めたり就職後の賃金を高めたりすると考えられる。より高い所得が得られれば、納税額が上がるだろうし、就職力が高まれば失業保険を受給する機会も減るだろうから、社会厚生への貢献度も上がる。</p>
+<p><em>（出典：松塚 第11章 第2節 2-1-2、p.286）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="シグナリング理論" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="シグナリング理論">シグナリング理論</h3>
+<p>留学は第4章で説明した教育のシグナリングと同様の効果を有する（第4章参照）。どこの国のどの大学のどの学部に留学して何の学位を得たのか、という情報がシグナルとなる点も国内外同様である。留学を経た者は仕事を探す「ジョブ・サーチ」の機会も多様であろう。留学先でも母国でも、あるいは世界的なジョブ・マーケットの場で仕事を見つける機会が増える。そうすると情報の非対称性は国内だけで行われる就職活動よりも一層深刻となり、採用する側の経歴や資格情報への依存度が高くなる。留学という経験が相当なシグナル力を持つのであれば、留学経験者はより望ましい就職を得て、彼らの生涯賃金も高まると考えられる。</p>
+<p><em>（出典：松塚 第11章 第2節 2-1-3、pp.286–287）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="自己選択仮説とロイモデル" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="自己選択仮説とロイモデル">自己選択仮説とロイモデル</h3>
+<p>自己選択仮説では、「留学」という経験を留学する本人の選択あるいは意思決定によって行われるものと仮定する。</p>
+<p>自己選択を経済学的に理論化したのは、<strong>アンドリュー・ロイ（Andrew Roy）</strong>である。彼は1951年に <em>Oxford Economic Papers</em> で発表した論文のなかで、漁師と猟師の職業選択を例に、自己選択により職業を決定するメカニズムと、両者の技能分散が彼らの収益に与える影響を論じた（Roy, 1951）。「ロイモデル」として知られるこの理論的展開は後に、ジョージ・ボルハス（George J. Borjas）によって、移民の技能あるいは教育経験と移動選択との関係及び移動がもたらす経済効果の分析に応用された（Borjas, 1987）。</p>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>ロイモデルの原型——漁師と猟師の職業選択
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>ロイ（1951）が提示した思考実験は、きわめてシンプルながら本質を突いている。ある村に漁業と狩猟の2つの職業があり、各人は自分の技能と報酬を比較して、どちらに就くかを選択するとする。</p>
+<p><strong>前提：各人には「漁の腕」と「狩りの腕」の2つの技能がある</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>個人</th>
+<th>漁の技能（魚獲量）</th>
+<th>狩りの技能（獲物量）</th>
+<th>選択職業</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Aさん</td>
+<td>高い（100kg/日）</td>
+<td>低い（20kg/日）</td>
+<td>漁師</td>
+</tr>
+<tr class="even">
+<td>Bさん</td>
+<td>低い（30kg/日）</td>
+<td>高い（80kg/日）</td>
+<td>猟師</td>
+</tr>
+<tr class="odd">
+<td>Cさん</td>
+<td>中程度（60kg/日）</td>
+<td>中程度（55kg/日）</td>
+<td>漁師（比較優位）</td>
+</tr>
+</tbody>
+</table>
+<p>各人は「どちらの職業でより多く稼げるか」を基準に職業を選ぶ。この<strong>自己選択（self-selection）</strong>の結果として、漁師集団には「漁の腕が相対的に高い人」が、猟師集団には「狩りの腕が相対的に高い人」が集まる。</p>
+<p><strong>ロイモデルの核心：技能の分散が選択に与える影響</strong></p>
+<p>ここで重要なのは、「2つの技能の間の相関」と「それぞれの技能の社会的評価（報酬率）」である。</p>
+<ul>
+<li>もし漁師と猟師の報酬格差が大きい（高技能者ほど大きく稼げる）職業があれば、その職業には「最も腕のいい人」が集まる——<strong>ポジティブ・セレクション</strong></li>
+<li>逆に、低技能者でもそれなりに稼げる職業があれば、様々な技能の人が集まる——<strong>ネガティブ・セレクション</strong></li>
+</ul>
+<p><strong>移民への応用（Borjas, 1987）</strong></p>
+<p>ボルハスはロイモデルを国際移民に応用した。移民を「あたかも別の職業を選ぶように、居住する国を選択する個人」と捉えると：</p>
+<ul>
+<li><strong>ポジティブ・セレクション</strong>：受け入れ国の方が技能への報酬が高い場合、高技能な人ほど移住する（アメリカへの移民の多くはこれ）</li>
+<li><strong>ネガティブ・セレクション</strong>：受け入れ国の所得格差が送り出し国より小さい場合、低技能な人の方が相対的に移住から得るものが大きく、低技能移民が多くなる</li>
+</ul>
+<p>この理論は、「どんな人が留学・移住を選ぶのか」という問いに答える際の根本的な枠組みを提供している。</p>
+</div>
+</div>
+<p>図表11-6は縦軸を賃金、横軸を教育量あるいはそれに付随して獲得されるスキルを有する人口の密度関数（0〜1）としている。α地域とβ地域があるとし、δ(S)_βがδ(S)_αよりも上に位置するということは、地域αに居りS_αに相当するスキルを有する個人は、地域βに移動することにより、より高い賃金を得ることを表す。</p>
+<div id="fig-A11-6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A11-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A11/A11-6.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-A11-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;11.6: 教育量と賃金と可動性（ロイモデル）
+</figcaption>
+</figure>
+</div>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>図表11-6の読み方——途上国と先進国の間の人材移動
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>仮想国Aと仮想国Bで考えてみる</strong></p>
+<p>ここでは、α地域を<strong>途上国A</strong>（例：インド）、β地域を<strong>先進国B</strong>（例：アメリカ）として具体的に考えてみよう。</p>
+<p>横軸は「教育年数あるいは技能水準」を示す。0に近い左端が低技能・低学歴、1に近い右端が高技能・高学歴の人口分布を表す。縦軸はそれぞれの国で得られる賃金である。</p>
+<p><strong>国Aと国Bの賃金関数の比較</strong></p>
+<ul>
+<li>国A（途上国・インド）の賃金関数 δ(S)_A：全体的に低く、高技能者でも得られる賃金の上昇は緩やか</li>
+<li>国B（先進国・アメリカ）の賃金関数 δ(S)_B：全体的に高く、かつ技能が上がるほど賃金上昇が急峻（傾きが急）</li>
+</ul>
+<p>このとき、技能水準が <strong>S*</strong> を超える高技能者（右端の層）にとって、δ(S)_B &gt; δ(S)_A となり、アメリカに移動することで<strong>より高い賃金</strong>が得られる。つまり、高度に教育を受けたエンジニアや研究者ほどアメリカへの移動誘因が高くなる——これが<strong>頭脳流出（Brain Drain）</strong>のメカニズムである。</p>
+<p><strong>図から読み取れる重要な含意</strong></p>
+<ol type="1">
+<li><p><strong>傾きの差が移動の選別性を決める</strong>：先進国Bの賃金関数の傾きが途上国Aより急であるほど（高技能者ほど報酬格差が大きい）、移住するのは高技能者に偏る。これはロイモデルの<strong>ポジティブ・セレクション</strong>に対応する。</p></li>
+<li><p><strong>移動のしきい値 S* が存在する</strong>：S* より低い技能水準の人にとっては国Aにいた方が相対的に有利（あるいは移住コストが便益を上回る）ため、移住しない。移住するのは右側のすそ野の人たちに限られる。</p></li>
+<li><p><strong>送り出し国への影響</strong>：高技能者が流出すると、国Aの平均技能水準が低下する。これは技術採用能力や生産性の低下を通じて、国全体の経済成長に負の影響を与える可能性がある。</p></li>
+<li><p><strong>スキル・プレミアムの拡大</strong>：先進国Bでは高技能移民の供給増加により、長期的にはスキル・プレミアム（高技能者と低技能者の賃金格差）が変化し得る。</p></li>
+</ol>
+<p>インドのIT技術者がシリコンバレーに流出した現象は、まさにこの図で説明される典型例である。後の「4. 頭脳流出か頭脳循環か」のセクションでは、この流出が長期的に送り出し国インドにとっても便益をもたらした（頭脳循環）という実証例を学ぶ。</p>
+</div>
+</div>
+<p><span class="marker">教育に対する効果の傾斜が急であるほど、高度人材の移動を招き、また送り出し側と受け入れ側におけるスキル偏差が拡大することはそれほど意識されているとはいえない。しかしながらこのことは国際化のなかで高等教育財政を考えるときに重要な意味を持つ。</span></p>
+<p><em>（出典：松塚 第11章 第2節 2-1-4、pp.287–290）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="留学の経済効果実証" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="留学の経済効果実証">留学の経済効果——実証</h3>
+<p>1980年代終盤よりEU（欧州連合）加盟国間の交流協力計画である<strong>エラスムス計画（ERASMUS）</strong>が走り出した後は、留学を中心とする交流事業の効果を測定する調査や研究が盛んに行われた。</p>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>エラスムス計画（ERASMUS）とは
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>ERASMUS</strong>（European Region Action Scheme for the Mobility of University Students）は、1987年にECが開始したヨーロッパで最大規模の高等教育交流プログラムである。名称は中世の学者ペレグリナチオ・アカデミカを象徴するデジデリウス・エラスムス（Desiderius Erasmus）に由来する。</p>
+<p><strong>規模と実績</strong></p>
+<ul>
+<li><strong>参加国</strong>：EU加盟国27か国に加え、北マケドニア・アイスランド・ノルウェー・トルコ・リヒテンシュタインなど合計33か国以上</li>
+<li><strong>累計参加者</strong>：1987年から2023年の間に約1,300万人以上の学生・教員が参加</li>
+<li><strong>年間予算</strong>：現行プログラム「Erasmus+（2021–2027）」では総額265億ユーロ（約4兆円）</li>
+</ul>
+<p><strong>主な支援内容</strong></p>
+<ul>
+<li>参加学生への<strong>奨学金の支給</strong>：月額150〜300ユーロ程度（留学先・送り出し国によって異なる）</li>
+<li>留学期間：<strong>3か月〜12か月</strong>（修士課程は最大24か月）</li>
+<li>単位の相互認定：<strong>ECTS（欧州単位互換制度）</strong>により、留学先で取得した単位が原籍大学でも認定される</li>
+<li>参加可能な活動：学生の海外留学のほか、教職員の研修・交流、職業訓練（VET）、青年交流も対象</li>
+</ul>
+<p><strong>プログラムの変遷</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>期間</th>
+<th>プログラム名</th>
+<th>特徴</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1987–1994</td>
+<td>ERASMUS</td>
+<td>EU加盟国間の大学交流開始</td>
+</tr>
+<tr class="even">
+<td>1994–2006</td>
+<td>Socrates/ERASMUS</td>
+<td>対象を初等・中等教育にも拡大</td>
+</tr>
+<tr class="odd">
+<td>2007–2013</td>
+<td>Lifelong Learning Programme</td>
+<td>職業訓練・成人教育も統合</td>
+</tr>
+<tr class="even">
+<td>2014–2020</td>
+<td>Erasmus+</td>
+<td>スポーツ・青年活動も包含</td>
+</tr>
+<tr class="odd">
+<td>2021–2027</td>
+<td>Erasmus+（第2期）</td>
+<td>デジタル化・グリーン移行を重点課題に追加</td>
+</tr>
+</tbody>
+</table>
+<p><strong>経済学的意義</strong></p>
+<p>エラスムス計画は、第5章で学んだ「公共財としての教育投資」の具体例でもある。EUが公的資金で学生移動を支援することで、「投資は送り出し国が行い、便益は受け入れ国が享受する」という頭脳流出問題を域内で緩和しつつ、欧州全体の人的資本の底上げを図る設計となっている。</p>
+</div>
+</div>
+<p>その多くが、一定期間以上の留学を経験した者は経験しなかった者よりも就職後の賃金や収入が高く、エンプロイアビリティー（雇用され得る能力）も高い、つまりより確実に仕事を獲得し続ける傾向にあることを指摘している。また、留学を経験した者ほど海外で就労する傾向にあることが明らかになっている。このことは、留学による経済効果が国や地域を越えてもたらされることを意味する。</p>
+<p>日本においても、横田（研究代表）（2016）による大規模調査「グローバル人材育成と留学の長期的インパクトに関する国際比較研究」（科学研究費補助金 基盤研究（A）課題番号 25245078）の結果が蓄積されている。</p>
+<p><strong>年収への影響</strong></p>
+<p>「あなたの現在の収入をお答えください」との問いへの答えを、学士留学経験者、学部単位取得・その他留学経験者、国内大学卒業者を男女別に示すと以下のようになる。いずれの場合においても、留学を経験した者の収入は経験していない者の収入より高いことが示されている。</p>
+<div id="fig-A11-7" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A11-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A11/A11-7.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-A11-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;11.7: 留学経験者と非経験者の年収
+</figcaption>
+</figure>
+</div>
+<p>例えば、学士号を取得した男性の平均年収は645万円であるのに対して、留学を経験しなかった男性の平均収入は575.7万円と示されている。大学院課程では、留学プレミアムは一層高くなる傾向が見られる。文系であれば、修士・博士留学の場合で805.7万円、留学しなかった場合だと514.6万円となっている。</p>
+<p><strong>職位への影響</strong></p>
+<p>留学した者ほど管理職になっている場合が多いことが示されている。例えば学士留学者における管理職比率は男性で44.5%、留学を経験しなかった者の管理職比率は30.6%である。</p>
+<div id="fig-A11-8" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A11-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A11/A11-8.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-A11-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;11.8: 留学経験者と非経験者の職位
+</figcaption>
+</figure>
+</div>
+<p><em>（出典：松塚 第11章 第3節 3-1、pp.291–294）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="留学の効果の実証性3つの問題" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="留学の効果の実証性3つの問題">留学の効果の実証性——3つの問題</h3>
+<p>留学が収入やキャリアの向上をもたらしたという因果関係は確定的ではない。以下では留学の効果の実証性をめぐる三つの問題について触れておきたい。</p>
+<p><strong>① サンプルセレクションの問題</strong></p>
+<p>留学経験者はもともと家庭の社会経済的階層が高く両親の学歴が高い傾向にある。意欲的な者、異文化への関心や好奇心が旺盛な者、上昇志向の高い者、社交的な者などは客観的定量化が困難な個々人の性格や質性であるが、留学という行為に確かに作用しそうである。詰まるところ、「留学した者は留学していない者にはなれないし、留学していない者は留学した者にはなれない」というジレンマと向き合わなくてはならない。</p>
+<p><strong>② データの信頼性と有効性</strong></p>
+<p>留学経験やその後のキャリア開発に影響を与える要因は多岐にわたり、また複雑に絡み合っており、個別的効果を正確に検証することが極めて困難である。留学を経験する年、期間、国や地域、機関、課程、取得学位、学部・研究科や分野、経済的支援の有無などは多種多様で多岐に及び、並びをつけて分析することはできない。</p>
+<p><strong>③ Tracking（追跡性）の問題</strong></p>
+<p>移動経験、就労経験ともに長期にわたって個々人をトラッキングすることは困難であり、データを収集できたとしても、信頼性の高い分析は簡単ではない。それでもなお、留学の効果研究は世界的に盛んになる一方である。これは留学に多額の私的・公的資源が投入され、これからもその額は増加するだろうからである。</p>
+<p><span class="marker">留学の効果研究は「相関は明確だが因果は難しい」という、教育経済学全般に共通する問題を内包している。だからこそ、この分野での厳密な実証研究が今後の教育経済学の重要な課題となっている。</span></p>
+<p><em>（出典：松塚 第11章 第3節 3-2、pp.295–297）</em></p>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+</section>
+<section id="国際学力調査pisaをどう読むか" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="国際学力調査pisaをどう読むか"><span class="header-section-number">11.4</span> 3. 国際学力調査——PISAをどう読むか</h2>
+<div class="my-note callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>このセクションについて
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div style="margin-top: 2.0em;">
+
+</div>
+<section id="世界で行われている国際学力比較調査" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="世界で行われている国際学力比較調査">世界で行われている国際学力比較調査</h3>
+<p>PISAを学ぶ前に、世界にはどのような国際的な学力比較調査が存在するかを概観しておこう。PISAはその中でも最もよく知られた調査だが、目的・対象・実施主体はそれぞれ異なる。</p>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>主な国際学力比較調査一覧
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>グローバルな調査</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>調査名</th>
+<th>実施主体</th>
+<th>対象</th>
+<th>調査内容</th>
+<th>周期</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>PISA</strong></td>
+<td>OECD</td>
+<td>15歳（高1相当）</td>
+<td>読解・数学・科学リテラシー</td>
+<td>3年</td>
+</tr>
+<tr class="even">
+<td><strong>TIMSS</strong></td>
+<td>IEA</td>
+<td>小4・中2</td>
+<td>算数/数学・理科の習得度</td>
+<td>4年</td>
+</tr>
+<tr class="odd">
+<td><strong>PIRLS</strong></td>
+<td>IEA</td>
+<td>小4</td>
+<td>読解力</td>
+<td>5年</td>
+</tr>
+<tr class="even">
+<td><strong>TALIS</strong></td>
+<td>OECD</td>
+<td>教員・校長</td>
+<td>教員の指導環境・研修・職場環境</td>
+<td>5年</td>
+</tr>
+<tr class="odd">
+<td><strong>PIAAC</strong></td>
+<td>OECD</td>
+<td>成人（16–65歳）</td>
+<td>読解・数的処理・ITスキル</td>
+<td>不定期</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TIMSS</strong>（Trends in International Mathematics and Science Study）はIEA（国際教育到達度評価学会）が1995年から4年ごとに実施。PISAが「リテラシー（活用力）」を測るのに対し、TIMSSは「習得度（カリキュラムベース）」を重視する。2023年調査には65か国・地域が参加。</p>
+<p><strong>PIRLS</strong>（Progress in International Reading Literacy Study）は小学4年生の読解力を測る調査。IEAが2001年から5年ごとに実施。2021年は57か国・地域が参加。</p>
+<p><strong>TALIS</strong>（Teaching and Learning International Survey）はOECDが2008年から5年ごとに実施する教員調査。生徒の学力ではなく、<strong>教員の指導実践・職業的成長・職場環境</strong>を調査する点でユニークである。日本の教員の「自己効力感の低さ」や「長時間労働」がTALIS調査で明らかになり、政策議論を呼んだ。</p>
+<p><strong>PIAAC</strong>（Programme for the International Assessment of Adult Competencies）はOECDの成人スキル調査。「学力」ではなく職業生活に必要なリテラシーを成人対象に測定する。</p>
+<hr>
+<p><strong>地域別の調査</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>調査名</th>
+<th>地域</th>
+<th>対象・内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>SACMEQ</strong></td>
+<td>アフリカ南部・東部（15か国）</td>
+<td>小6の読解・数学。UNESCOが支援</td>
+</tr>
+<tr class="even">
+<td><strong>PASEC</strong></td>
+<td>フランス語圏アフリカ（15か国）</td>
+<td>小2・小6の算数・フランス語</td>
+</tr>
+<tr class="odd">
+<td><strong>LLECE/TERCE</strong></td>
+<td>ラテンアメリカ（約15か国）</td>
+<td>小3・小6の算数・理科・読解。UNESCOラテンアメリカ地域事務所が実施</td>
+</tr>
+<tr class="even">
+<td><strong>SEAMEO</strong></td>
+<td>東南アジア</td>
+<td>各国の教育質調査。SEAQLSなどの地域調査</td>
+</tr>
+<tr class="odd">
+<td><strong>EGRA/EGMA</strong></td>
+<td>途上国（世界規模）</td>
+<td>初期読解・算数の早期学習評価。USAIDが支援</td>
+</tr>
+</tbody>
+</table>
+<p><strong>SACMEQ</strong>（Southern and Eastern Africa Consortium for Monitoring Educational Quality）は、アフリカ南東部15か国の小学6年生を対象に読解・算数を調査する地域調査である。田口ゼミでも扱ったパプアニューギニアのような太平洋・南アジア地域には、<strong>PILNA</strong>（Pacific Islands Literacy and Numeracy Assessment）といった地域固有の調査も存在する。</p>
+<hr>
+<p><strong>各調査の比較</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>視点</th>
+<th>PISA</th>
+<th>TIMSS</th>
+<th>TALIS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>測定の焦点</td>
+<td>リテラシー（活用力）</td>
+<td>習得度（知識量）</td>
+<td>教員・学校環境</td>
+</tr>
+<tr class="even">
+<td>対象</td>
+<td>15歳</td>
+<td>小4・中2</td>
+<td>教員・校長</td>
+</tr>
+<tr class="odd">
+<td>実施主体</td>
+<td>OECD</td>
+<td>IEA</td>
+<td>OECD</td>
+</tr>
+<tr class="even">
+<td>政策への影響</td>
+<td>非常に大きい</td>
+<td>大きい</td>
+<td>中程度</td>
+</tr>
+</tbody>
+</table>
+<p>出典：OECD <a href="https://www.oecd.org/education/">https://www.oecd.org/education/</a>、IEA <a href="https://www.iea.nl/">https://www.iea.nl/</a></p>
+</div>
+</div>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="pisaとは何か" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="pisaとは何か">PISAとは何か</h3>
+<p><strong>PISA（Programme for International Student Assessment）</strong>は、OECDが2000年から3年ごとに実施している国際学力調査である。義務教育修了段階（15歳）の生徒が、知識や技能を実生活の様々な場面で直面する課題にどの程度活用できるかを測定することを目的としている。</p>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>PISAの基本情報
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>実施主体</strong>：OECD（経済協力開発機構）</li>
+<li><strong>調査対象</strong>：15歳の生徒（日本では高校1年生相当）</li>
+<li><strong>調査分野</strong>：読解力・数学的リテラシー・科学的リテラシーの3分野。毎回1分野を「主要分野」として詳細調査</li>
+<li><strong>参加国・地域数</strong>：2022年調査で81カ国・地域</li>
+<li><strong>調査周期</strong>：3年ごと（2018年→2022年→2025年…）</li>
+<li><strong>特徴</strong>：「知識の量」よりも「知識を使いこなす力（リテラシー）」を測る</li>
+</ul>
+<p>出典：OECD PISA公式サイト <a href="https://www.oecd.org/pisa/">https://www.oecd.org/pisa/</a></p>
+</div>
+</div>
+<div style="margin-top: 2.0em;">
+
+</div>
+<p>PISAスコアは平均500点、標準偏差100点になるよう設計されており（2000年基準）、国際比較が可能な共通尺度として機能している。</p>
+<p><strong>日本のPISAの結果（2022年）</strong></p>
+<p>2022年PISA（2023年公表）において、日本は数学的リテラシー1位（536点）、科学的リテラシー2位（547点）、読解力3位（516点）といずれも上位に位置した。これはコロナ禍後の結果であり、日本の教育水準の底堅さを示すものとして注目された。</p>
+<div id="fig-A11-9" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A11-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A11/A11-9.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-A11-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;11.9: PISA2022 数学的リテラシー国際比較
+</figcaption>
+</figure>
+</div>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="pisa成績と経済成長の関係" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="pisa成績と経済成長の関係">PISA成績と経済成長の関係</h3>
+<p>PISAは単なる学力ランキングではない。その最大の意義は、「教育の質」が経済成長にどの程度影響するかを国際比較で実証できる点にある。</p>
+<p><strong>Hanushek &amp; Woessmannの実証研究</strong></p>
+<p>スタンフォード大学のEric Hanushek とミュンヘン大学のLudger Woessmannは、国際学力調査のスコアと長期経済成長率の関係を精力的に研究してきた。彼らの主要な知見は以下の通りである。</p>
+<ul>
+<li>教育年数（就学年数）よりも、<strong>教育の質（学力スコア）</strong>の方が経済成長との相関が強い（Hanushek &amp; Woessmann, 2008）</li>
+<li>国際学力調査のスコアが1標準偏差（約100点）高い国は、長期的に年率約2%ポイント高いGDP成長率を達成する傾向がある</li>
+<li>教育の質を高めることは、長期的な国家の経済的競争力に直結する</li>
+</ul>
+<p>この実証結果は、第8章「教育と経済成長」で学んだ知識資本（Knowledge Capital）モデルとも整合的である。PISAスコアは、その国の「人的資本の質」を測る国際的な指標として機能しているのである。</p>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Hanushek &amp; Woessmannの主要論文
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Hanushek, E. A. &amp; Woessmann, L. (2008) The Role of Cognitive Skills in Economic Development. <em>Journal of Economic Literature</em>, 46(3), pp.607–668.</li>
+<li>Hanushek, E. A. &amp; Woessmann, L. (2015) <em>The Knowledge Capital of Nations: Education and the Economics of Growth</em>. MIT Press.</li>
+</ul>
+</div>
+</div>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="pisaショックという政策現象" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="pisaショックという政策現象">「PISAショック」という政策現象</h3>
+<p>PISAの結果が「ショック」として社会に波及した典型的な事例として、ドイツとフィンランドの経験が挙げられる。</p>
+<p><strong>ドイツのPISAショック</strong></p>
+<p>2001年に公表された第1回PISA（2000年調査）の結果は、ドイツ社会に大きな衝撃を与えた。ドイツは数学21位、読解力21位（OECD内）と、教育大国としての自負があったにもかかわらず平均以下の成績であったことが判明した。特に衝撃的だったのは、「移民の子ども」と「ドイツ生まれの子ども」の学力格差が際立って大きかったことである。</p>
+<p>この「PISAショック（PISA-Schock）」を契機として、ドイツでは以下のような大規模な教育改革が進められた。</p>
+<ul>
+<li>全日制学校（Ganztagsschule）の拡充：それまでのドイツは半日制が中心だったが、学習時間の確保と家庭環境の補完を目的として全日制に移行</li>
+<li>幼児教育の強化：就学前教育への公的投資を大幅に拡充</li>
+<li>移民の子どもへのドイツ語教育強化</li>
+<li>PISA後の各州の学力調査導入と教育データ整備</li>
+</ul>
+<p>その後、ドイツのPISAスコアは2000年代を通じて改善傾向を示した。</p>
+<p><strong>フィンランドの「PISA神話」</strong></p>
+<p>一方、第1回PISAで読解力1位を獲得したフィンランドは、一躍「教育改革の模範」として世界中から注目された。「なぜフィンランドは強いのか」という問いへの答えとして、以下のような特徴が注目された。</p>
+<ul>
+<li><strong>教員の質の高さ</strong>：教員は修士号取得が必須で、倍率の高い選抜を経た「エリート職」</li>
+<li><strong>少ない宿題・テスト</strong>：競争より協調を重視し、標準化テストが少ない</li>
+<li><strong>教員への大きな裁量</strong>：カリキュラムを教員が自律的に設計できる</li>
+<li><strong>社会経済的背景による学力格差の小ささ</strong>：家庭の所得・親の学歴が成績に与える影響がOECD諸国の中で最も小さい水準</li>
+</ul>
+<p>しかし2010年代以降、フィンランドのPISAスコアは低下傾向を示しており、「フィンランド神話」の再考を促す声もある。</p>
+<p><strong>日本のPISAショック——「ゆとり教育」論争</strong></p>
+<p>日本もまた、PISAの結果が教育政策の大転換を引き起こした国の一つである。</p>
+<p>2003年に公表された第2回PISA（2003年調査）の結果において、日本の読解力は前回（2000年）の8位から14位に急落した。さらに数学も1位から6位に後退した。この結果は、ちょうど「ゆとり教育」（2002年から完全実施）が始まった時期と重なっており、「PISAショック」として大きく報道された。</p>
+<p>「ゆとり教育」とは、1977年の指導要領改訂から続く、詰め込み教育への反省として「考える力・生きる力」の育成を重視し、授業時間数や学習内容を削減した方針である。しかし2003年のPISA結果を受けて「学力低下を招いた」との批判が高まり、文部科学省は2008年の指導要領改訂で授業時間数の増加・学習内容の復活（「脱ゆとり」）へと方向転換した。</p>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>日本のPISA推移と教育政策の変化
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>調査年</th>
+<th>読解力</th>
+<th>数学</th>
+<th>科学</th>
+<th>主な出来事</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2000</td>
+<td>8位（522点）</td>
+<td>1位（557点）</td>
+<td>2位（550点）</td>
+<td>基準年</td>
+</tr>
+<tr class="even">
+<td>2003</td>
+<td>14位（498点）</td>
+<td>6位（534点）</td>
+<td>2位（548点）</td>
+<td>「PISAショック」報道</td>
+</tr>
+<tr class="odd">
+<td>2006</td>
+<td>15位（498点）</td>
+<td>10位（523点）</td>
+<td>6位（531点）</td>
+<td>ゆとり批判が最高潮に</td>
+</tr>
+<tr class="even">
+<td>2009</td>
+<td>8位（520点）</td>
+<td>9位（529点）</td>
+<td>5位（539点）</td>
+<td>「脱ゆとり」政策転換後</td>
+</tr>
+<tr class="odd">
+<td>2018</td>
+<td>15位（504点）</td>
+<td>6位（527点）</td>
+<td>5位（529点）</td>
+<td>PISA2018（読解力再低下）</td>
+</tr>
+<tr class="even">
+<td>2022</td>
+<td>3位（516点）</td>
+<td>1位（536点）</td>
+<td>2位（547点）</td>
+<td>コロナ禍後に急回復</td>
+</tr>
+</tbody>
+</table>
+<p>2018年調査では再び読解力が15位に低下し、今度は「CBT（コンピュータ型テスト）への対応不足」が原因として指摘された。2022年調査で日本は全3分野でトップ3に返り咲いたが、これをもって「教育が改善した」と単純に結論づけることには慎重であるべきだろう（後述「PISAの限界と批判」参照）。</p>
+<p><strong>「PISAショック」が引き起こした政策連鎖</strong></p>
+<ul>
+<li>2004年：「全国的な学力調査の実施」を文部科学省が検討開始</li>
+<li>2007年：「全国学力・学習状況調査」を43年ぶりに復活（小6・中3対象）</li>
+<li>2008年：新学習指導要領告示。小・中学校の授業時間数を増加、「脱ゆとり」を明示</li>
+<li>2020年：新学習指導要領で「主体的・対話的で深い学び（アクティブ・ラーニング）」を重視</li>
+</ul>
+<p>「PISAスコアが下がった→ゆとり教育が原因→学習内容を戻す」という政策連鎖は、ドイツのPISAショックと同様、スコアの変化が大規模な教育政策変更のトリガーとなった典型例である。一方で、「PISA対策教育が広まり、本来の教育目標から外れている」という批判も根強い。</p>
+</div>
+</div>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>PISAショックに関する参考情報
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>ドイツのPISAショックについては、Prenzel et al.&nbsp;(2004) <em>PISA 2003: Ergebnisse des zweiten internationalen Vergleichs</em> が詳しい。</li>
+<li>フィンランドの教育については、Sahlberg, P. (2011) <em>Finnish Lessons: What Can the World Learn from Educational Change in Finland?</em> Teachers College Press が邦訳（吉田文・高木啓・本間啓・青木佐穂子訳『フィンランドの教育はなぜ世界一なのか』関西学院大学出版会、2013年）とともに広く読まれている。</li>
+</ul>
+</div>
+</div>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="pisaの限界と批判" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="pisaの限界と批判">PISAの限界と批判</h3>
+<p>PISAは強力な政策ツールである一方、いくつかの重要な批判・限界も指摘されている。</p>
+<p><strong>① 測れないものの存在</strong></p>
+<p>PISAが測定するのは「認知的スキル」（読解・数学・科学）に限定されており、創造性・協調性・道徳性・市民性といった「非認知的スキル」は測定されない。第9章「社会階層」や第10章「ジェンダー」で見たように、非認知スキルが人生の成果に与える影響は大きい。PISAスコアが高い国が「優れた教育をしている」とは必ずしも言えない。</p>
+<p><strong>② サンプルの問題と参加国バイアス</strong></p>
+<p>PISAに参加するかどうかは各国・地域の任意であり、参加国は必ずしもランダムではない。また、中国はフルの国家単位ではなく「北京・上海・江蘇・浙江」などの地域単位で参加しており、単純な国際比較には注意が必要である。</p>
+<p><strong>③ 「PISA対策」教育の歪み</strong></p>
+<p>PISAショックの後、多くの国でPISA型の問題形式に特化した「PISA対策」教育が広まった。これが本来の教育目標から外れた「テスト対策」を促進しているという批判がある。</p>
+<p><strong>④ 相関と因果の問題</strong></p>
+<p>PISAスコアと経済成長の間に相関があることはHanushek &amp; Woessmannが実証しているが、「PISAスコアを上げれば経済成長する」という因果関係が成立するかどうかは別問題である。教育の質・経済成長・社会制度は相互に絡み合っており、単純な因果推定は難しい。</p>
+<p><span class="marker">PISAは「教育の質を国際的に比較する貴重なツール」であると同時に、「順位の一人歩き」や「PISA対策教育」といった副作用も生む。データを読む側がその意味と限界を理解したうえで活用することが重要である。</span></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>PISAスコアをどう読むか</strong></p>
+<p><strong>個人ワーク（3分）</strong></p>
+<p>以下の問いについて考えてください。</p>
+<ul>
+<li>「日本のPISAスコアが下がった」というニュースを聞いたとき、どのような政策対応が適切だと思いますか？</li>
+<li>逆に、「PISAスコアを上げるための教育改革」にはどのようなリスクがあると思いますか？</li>
+</ul>
+<p><strong>グループワーク（3分）</strong></p>
+<ul>
+<li>「PISAスコアの高さ＝良い教育」と言えるでしょうか？</li>
+<li>PISAが測れていないものは何だと思いますか？</li>
+</ul>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>考え方の整理</strong></p>
+<p><strong>PISAスコアが下がったときのリスク</strong></p>
+<p>ドイツの「PISAショック」のように、スコアの低下が大規模改革のきっかけになることがあります。しかし、過度な反応は「PISA対策教育」を生み出し、本来の教育目標からの乖離を招くリスクがあります。</p>
+<p><strong>PISAが測れていないもの</strong></p>
+<ul>
+<li>創造性・芸術的感性</li>
+<li>道徳性・市民性</li>
+<li>協調性・コミュニケーション能力</li>
+<li>非認知スキル全般（忍耐力・自己効力感等）</li>
+</ul>
+<p>これらは第9章「社会階層」や第10章「ジェンダー」で見てきた研究が重視する能力群でもあります。</p>
+<p><strong>教育経済学の視点</strong></p>
+<p>Hanushek &amp; Woessmannの研究はPISAスコアと経済成長の「相関」を示していますが、「PISAスコアを上げれば経済成長する」という因果関係の証明には至っていません。政策評価においては、相関と因果の区別が常に重要です（第1章参照）。</p>
+</div>
+</div>
+</div>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+</section>
+<section id="頭脳流出か頭脳循環か" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="頭脳流出か頭脳循環か"><span class="header-section-number">11.5</span> 4. 頭脳流出か、頭脳循環か</h2>
+<section id="brain-drain-vs-brain-circulation" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="brain-drain-vs-brain-circulation">Brain Drain vs Brain Circulation</h3>
+<p>留学や人材移動をめぐる政策的議論の中心にあるのが、<strong>頭脳流出（Brain Drain）</strong>と<strong>頭脳循環（Brain Circulation）</strong>の論争である。</p>
+<p><strong>頭脳流出（Brain Drain）</strong>とは、高い教育を受けた人材が、より賃金・労働環境が良い国へ移住し、送り出し国の人的資本ストックが低下する現象である。特に途上国から先進国への一方向的な移動として問題視されてきた。</p>
+<p><strong>頭脳循環（Brain Circulation）</strong>とは、人材が国際的に移動する中で、技術・知識・ネットワークが双方向に流通し、長期的には送り出し国にも恩恵がもたらされるという考え方である。2010年頃よりOECDのエコノミストを中心に主張されるようになった。</p>
+<p>Matsuzuka &amp; Gérard（2021）は、2008年から2017年にかけての高等教育における学生の国際移動と、受け入れ国及び送り出し国の経済、雇用、教育、社会要因との関係を分析した。結果、留学生が向かう国は、（1）経済力が強く、（2）所得格差が大きく、（3）教育研究の質が高く、（4）政府による高等教育への財政支出が多い傾向が有意に強いことがわかった。</p>
+<p>自己選択仮説を適用すると、高度技能者の割合が多くなると技能に応じた効用が一層高くなり、更なる高度技能者の誘致が可能となる。これは教育レベルが高い者ほど（自由選択に基づく）地域間の可動性が高くなることを示唆している。</p>
+<p><em>（出典：松塚 第11章 第2節・第12章 第1節、pp.290, 301–303）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="高技能移民の規模と分布実証データ" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="高技能移民の規模と分布実証データ">高技能移民の規模と分布——実証データ</h3>
+<p>頭脳流出の議論を深める前に、まず高技能移民の世界的な規模と分布を確認しよう。Docquier &amp; Rapoport（2012）は40年分の経済学研究を包括的にサーベイし、この分野の「決定版」として広く引用されている。</p>
+<p>1960年から2005年にかけて国際移民総数は7,500万人から1億9,000万人へと増加したが、世界人口に占める移民比率はほぼ横ばいで2.5%から2.9%への微増にとどまった。一方で高所得国への<strong>高技能移民</strong>（大学卒業以上）は1990年代だけで70%増加しており、通常の低技能移民（同30%増）を大幅に上回るペースで増加している。</p>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>高技能移民の国別データ（2000年、OECD向け移民）
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>大学卒以上の高技能移民の絶対数が多い主な途上国（2000年時点）は次の通りである。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>国名</th>
+<th>高技能移民数</th>
+<th>高技能移住率</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>フィリピン</td>
+<td>111万人</td>
+<td>9.8%</td>
+</tr>
+<tr class="even">
+<td>インド</td>
+<td>104万人</td>
+<td>4.3%</td>
+</tr>
+<tr class="odd">
+<td>メキシコ</td>
+<td>95万人</td>
+<td>15.5%（注）</td>
+</tr>
+<tr class="even">
+<td>中国</td>
+<td>78万人</td>
+<td>3.8%</td>
+</tr>
+<tr class="odd">
+<td>韓国</td>
+<td>61万人</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>ベトナム</td>
+<td>51万人</td>
+<td>27.0%</td>
+</tr>
+<tr class="odd">
+<td>日本</td>
+<td>28万人</td>
+<td>1.2%</td>
+</tr>
+</tbody>
+</table>
+<p>（注：メキシコは主にアメリカとの地理的近接性による。高技能移住率は「国内高技能者人口＋海外在住高技能者数」に対する海外在住者の比率）</p>
+<p>より深刻なのは「移住<strong>率</strong>」の高い国々である。グアイアナ（83%）・ハイチ（83%）・ジャマイカ（43%）・シエラレオネ（49%）など、高技能者の大半がすでに海外にいる国も存在する。中規模国では途上国であるほど移住率が高い傾向があり、最も深刻なのはカリブ海・サブサハラアフリカ・太平洋島嶼国の小国群である。</p>
+<p>日本（1.2%）の移住率は低水準で、同様に中国（3.8%）・インド（4.3%）など人口大国も率は相対的に低い。しかし絶対数では上位に位置しており、受け入れ国（主にアメリカ）にとっての存在感は大きい。</p>
+<p>図（Docquier &amp; Rapoport, 2012, Table 1）によれば、OECDへの移民全体の高技能者割合は1990年の29.9%から2000年の35.0%へと上昇しており、移民が着実に「高技能化」していることが確認できる。</p>
+</div>
+</div>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="頭脳流出は本当に損失か理論の三世代" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="頭脳流出は本当に損失か理論の三世代">頭脳流出は本当に「損失」か——理論の三世代</h3>
+<p>頭脳流出に関する経済学の議論は、Docquier &amp; Rapoport（2012）によれば3つの「波」に整理できる。</p>
+<p><strong>第1波（1960年代後半）：中立・便益論</strong></p>
+<p>Grubel &amp; Scott（1966）らの初期研究は、高技能移民は「資産や送金を故郷に残す」「知識という国際公共財に貢献する」として、頭脳流出の影響はおおむね中立的と結論付けた。</p>
+<p><strong>第2波（1970年代）：悲観論——バグワティの登場</strong></p>
+<p>バグワティ（Bhagwati &amp; Hamada, 1974）らは、労働市場の硬直性・情報の非対称性・財政的外部性を取り入れたモデルで、頭脳流出が途上国に深刻な損害を与えると主張した。経済力の強い国が人的資本を吸収することで国際格差が拡大するという立場から、「<strong>バグワティ税（Bhagwati tax）</strong>」が提唱された。</p>
+<p><strong>第3波（1990年代後半〜現在）：条件付き楽観論——Brain Gainの可能性</strong></p>
+<p>最も新しい第3波は、「一定の条件下では頭脳流出がむしろ送り出し国の人的資本形成を促進しうる」という<strong>脳力獲得（Brain Gain）</strong>の可能性を提示した。Mountford（1997）・Beine, Docquier &amp; Rapoport（2001, 2008）などの研究は、移住の見込みが教育投資への誘因を高め、移住しなかった者も含めた<strong>国全体の教育水準を引き上げる</strong>メカニズムを示した。</p>
+<p>Beine et al.（2008）は127か国のデータを用いた実証分析で、高技能移住率が高いほど人的資本形成への正の誘因効果があることを確認した。ただし、高技能移住率が非常に高い国（たとえばカリブ海の小国）では流出効果が誘因効果を上回り、ネットで人的資本が低下する「敗者」となるケースも多いことを示している。</p>
+<p><span class="marker">頭脳流出の評価は「悲観論→中立論→条件付き楽観論」へと進化してきた。重要なのは、その影響が国の規模・発展段階・高技能移住率・制度環境によって大きく異なるという点である。インドや中国のような大国は「勝者」になりやすく、小国・アフリカ諸国は「敗者」になりやすい傾向がある。</span></p>
+<p><em>（出典：Docquier &amp; Rapoport (2012), pp.682–683, 701–703）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="頭脳循環のメカニズム4つのチャネル" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="頭脳循環のメカニズム4つのチャネル">頭脳循環のメカニズム——4つのチャネル</h3>
+<p>第3波の研究が明らかにした「頭脳流出が便益をもたらしうる」メカニズムは、主に以下の4つのチャネルに整理できる（Docquier &amp; Rapoport, 2012, Section 4）。</p>
+<p><strong>① 送金（Remittances）</strong></p>
+<p>高技能移民は低技能移民に比べて、条件付きで送金額が大きい傾向がある。Bollard et al.（2011）の14か国マイクロデータ調査によれば、大学卒の移民は年間平均約1,000ドルを母国に送金するのに対し、大学卒業未満の移民は約750ドルと、高技能者の方が多く送金している。この送金は家族の教育投資や信用制約の緩和を通じて、母国の人的資本形成に貢献しうる。</p>
+<p><strong>② 一時的移住・帰還移住（Return Migration）</strong></p>
+<p>移民が帰国する際、海外で蓄積した知識・技能・人脈を持ち帰ることで、技術移転の担い手となる。台湾の新竹科学工業区（Hsinchu Science Park）では、シリコンバレー帰りの技術者が多くの企業を起業・牽引したことが記録されている（Luo &amp; Wang, 2002）。</p>
+<p><strong>③ 人的資本形成への誘因効果（Human Capital Formation Incentive）</strong></p>
+<p>「将来移住できるかもしれない」という期待そのものが、母国での教育投資を促進する。フィジー（インド系フィジー人）やカーボベルデ、トンガ・パプアニューギニアのトップ高校生を追跡した研究（Gibson &amp; McKenzie, 2011）では、将来の移住を想定して理科・英語などの科目を追加履修するケースが多数確認された。</p>
+<p><strong>④ ディアスポラ・ネットワーク効果（Diaspora Network Effects）</strong></p>
+<p>海外に在住する高技能移民のネットワーク（ディアスポラ）は、送り出し国との貿易・直接投資・技術移転を促進する。Kerr（2008）はアメリカの特許データを使い、各エスニックグループのディアスポラが母国への知識移転をもたらしていることを実証した。さらにDocquier et al.（2011）は、高技能移民の比率が高い国は長期的に民主主義指標が改善する傾向があることも示している。</p>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>ケーススタディ：インドのIT産業と頭脳循環
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>インドの頭脳流出の規模</strong></p>
+<p>2000年時点で、インドの高技能移民数は約104万人と途上国の中でフィリピンに次ぐ第2位だった。特にH-1Bビザ（専門職向け）保有者の大部分がインド人で占められ、シリコンバレーのスタートアップ企業の約15%はインド人が主要創業者であったとされる（Wadhwa et al., 2007）。</p>
+<p><strong>かつての「批判」から「称賛」へ</strong></p>
+<p>1990年代まで、インド国内でIT技術者の海外流出は「国家への裏切り」として批判されることもあった。しかし2000年代以降、インドのIT産業（インフォシス・ウィプロ・TCSなど）の急成長を経て、ディアスポラの貢献が広く認識されるようになった。</p>
+<p><strong>頭脳循環の4つの作用経路</strong></p>
+<p>Kapur（2010）・Docquier &amp; Rapoport（2012）が整理したインドの事例は、頭脳循環の典型例として次の4経路が作用した。</p>
+<ol type="1">
+<li><p><strong>取引コストの削減</strong>：シリコンバレーのインド人マネジャーが「インド人労働力の質」を海外企業に証明し、インドへのITアウトソーシング需要を創出した（Y2K問題対応がその契機となった）</p></li>
+<li><p><strong>知識・技術の拡散</strong>：ドットコムバブル崩壊（2000年）後に帰国したエンジニアが、海外で習得した技術・経営手法をインドに持ち帰った</p></li>
+<li><p><strong>制度・ネットワークの構築</strong>：NASSCOM（インド・ソフトウェア・サービス産業協会）にはシリコンバレー帰りの人材が中心的役割を担い、ベンチャーキャピタル規制の緩和を政府に働きかけた</p></li>
+<li><p><strong>H-1Bビザ戦略への転換</strong>：インドのIT企業自身がH-1BビザによるアメリカへのIT人材派遣を積極活用し、「流出」を「輸出」と再定義した</p></li>
+</ol>
+<p>この事例は、頭脳流出が「敗者に終わるか」「勝者に転化するか」は、国の政策・制度・産業基盤・ディアスポラの性格によって大きく左右されることを示している。</p>
+</div>
+</div>
+<p><em>（出典：Docquier &amp; Rapoport (2012), pp.707–718）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="ケーススタディアフリカの医療人材流出" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="ケーススタディアフリカの医療人材流出">ケーススタディ：アフリカの医療人材流出</h3>
+<p>頭脳流出が「敗者」をもたらす典型例として、アフリカの医療人材流出（Medical Brain Drain）が挙げられる。</p>
+<p>サブサハラアフリカでは医療従事者の平均移住率が20%を超えており、他地域（南アジア13%未満、他地域10%未満）と比べて際立って高い（Docquier &amp; Rapoport, 2012, Section 5.1）。特にガーナ・ケニア・ウガンダ・ルワンダなどでは、高い医師移住率と劣悪な公衆衛生状況が重なっている。</p>
+<p>Bhargava &amp; Docquier（2008）の分析は、医師移住率の倍増がHIVによる成人死亡率を約20%押し上げる関連性を示している。ただし、アフリカの医療人材流出を止めたとしても、医療インフラ・医薬品・看護師など補完的投入が不足していれば健康アウトカムへの改善効果は限定的であることも同研究は指摘する。</p>
+<p>アフリカの事例とインドのIT事例を比較すると、頭脳流出の帰結を左右する要因が浮かび上がる。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>比較軸</th>
+<th>インドIT産業</th>
+<th>アフリカ医療</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>高技能移住率</td>
+<td>中程度（4.3%）</td>
+<td>高い（20%超）</td>
+</tr>
+<tr class="even">
+<td>ディアスポラ規模</td>
+<td>大きい・組織化されている</td>
+<td>相対的に小さい</td>
+</tr>
+<tr class="odd">
+<td>帰還移住の可能性</td>
+<td>高い（経済成長が誘因）</td>
+<td>低い</td>
+</tr>
+<tr class="even">
+<td>受け入れ国の代替効果</td>
+<td>IT技術移転が国内に波及</td>
+<td>医療サービスは現地需要</td>
+</tr>
+<tr class="odd">
+<td>結果</td>
+<td>頭脳循環に転化</td>
+<td>頭脳流出のまま</td>
+</tr>
+</tbody>
+</table>
+<p><span class="marker">頭脳流出が「脳力獲得（Brain Gain）」や「頭脳循環（Brain Circulation）」に転化するかどうかは、自動的なプロセスではない。適切な政策設計——送り出し国の教育補助・帰還移住の誘因・ディアスポラ・ネットワークの活用——が不可欠である。</span></p>
+<p><em>（出典：Docquier &amp; Rapoport (2012), pp.712–715）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="投資国と回収国の乖離シミュレーション" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="投資国と回収国の乖離シミュレーション">投資国と回収国の乖離——シミュレーション</h3>
+<p>国を越えて移動する者の教育費は誰が払うのか。留学などの移動によって勉学の地を外国に置く場合、授業料等学費の他に渡航費や住宅費など追加の費用がかかる。その費用に対するリターンが、いつ、どこでもたらされるかが定かでは無いとき、その費用は誰が支払うことが合理的なのか、という問題が生じる。</p>
+<p>Gérard &amp; Üebelmesser（2015）は、海外留学に伴い送り出し国が費用を支払う場合を <strong>Origin country principle</strong>、受け入れ国が費用を支払う場合を <strong>Host country principle</strong> と定義している。以下では Origin country principle の場合、つまり「日本が費用を負担して学生をアメリカに留学させ、そのまま就職した場合」の社会的損失をシミュレーションする。</p>
+<p><strong>図表12-1「高等教育を修了した男子の公的費用と便益（単位：USドル）」</strong>によれば、日本の高等教育の便益計は153,800ドル（≒16,149,000円）、内部収益率は10%である。</p>
+<p>アメリカで博士課程修了後に当地に留まり生産活動を継続した場合の日本にとっての社会的便益損失額は、</p>
+<p><span class="math display">\[\delta W^j = 0.25 \times 16{,}149{,}000 + 17{,}964{,}262 + 23{,}785{,}262 + 1{,}176{,}000 \approx 46{,}962{,}774\]</span></p>
+<p>となり、<strong>一人当たりおおよそ4,700万円の社会的損失</strong>が発生することとなる。</p>
+<div id="fig-A11-10" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A11-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A11/A11-10.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-A11-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;11.10: 高等教育を修了した男子の公的費用と便益
+</figcaption>
+</figure>
+</div>
+<p>もちろん課程修了後に帰国する者もいるだろうし、留学を経た者には付加価値が加算されることを想定する場合、損失金額は更に大きくなる。各国及び地域は両方向で学びの機会を安定させ、受益と損失のバランスを維持しつつ継続性のある教育機会を備えなくてはならない。</p>
+<p><em>（出典：松塚 第12章 第1節 1-3・1-4、pp.303–308）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="日本の状況と内向き志向" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="日本の状況と内向き志向">日本の状況と「内向き志向」</h3>
+<p>日本では2000年代以降、日本人学生の「内向き志向」が問題として議論されてきた。その背景は複合的である。</p>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>「内向き志向」の背景
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>経済的要因</strong></p>
+<ul>
+<li>日本の高等教育費の家計負担の重さ（OECD最下位クラス）</li>
+<li>留学費用の私費負担増大</li>
+<li>就職活動のスケジュールと留学時期の衝突</li>
+</ul>
+<p><strong>就職市場の構造的問題</strong></p>
+<ul>
+<li>「新卒一括採用」という日本独特の慣行：留学により就職活動の「空白」が生じやすい</li>
+<li>企業の語学力・国際経験への評価が実質的には低い場合がある</li>
+<li>帰国後のキャリア継続性への不安</li>
+</ul>
+<p><strong>意識・文化的要因</strong></p>
+<ul>
+<li>「出る杭は打たれる」文化</li>
+<li>日本語という強固な言語環境（日本語だけでほぼ完結する社会・経済圏の存在）</li>
+<li>留学に対するリスク認識の高さ</li>
+</ul>
+<p><strong>政策的対応</strong></p>
+<p>こうした状況への対応として、「スーパーグローバル大学」政策（2014年〜）、「トビタテ！留学JAPAN」（2014年〜）、「グローバル人材育成推進事業」（2012年〜）などが実施されてきた。</p>
+<p>参考：文部科学省「日本人の海外留学状況」<a href="https://www.mext.go.jp/a_menu/koutou/ryugaku/">https://www.mext.go.jp/a_menu/koutou/ryugaku/</a></p>
+</div>
+</div>
+<p>一方で、「内向き志向」という言説自体への反論もある。図表11-4で見たように、日本人留学生数は2010年代を通じて増加し続けており、「内向き化」の実態については慎重な評価が必要である。問題の本質は「数」ではなく、費用負担の構造・就職市場の慣行・支援体制の整備にあるという見方もある。</p>
+<p><span class="marker">日本人学生の留学意欲を阻んでいるのは「意識の問題」だけではなく、高い私費負担・就職構造・情報不足といった「構造的な問題」が大きい。政策はこれらの構造的障壁を除去することに焦点を当てるべきである。</span></p>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+</section>
+<section id="日本の教育の国際化政策" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="日本の教育の国際化政策"><span class="header-section-number">11.6</span> 5. 日本の教育の国際化政策</h2>
+<section id="スーパーグローバル大学と国際化政策" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="スーパーグローバル大学と国際化政策">スーパーグローバル大学と国際化政策</h3>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>日本の大学国際化政策の概要
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>スーパーグローバル大学（SGU）創成支援事業（2014年〜）</strong></p>
+<p>文部科学省が2014年に開始した事業で、「世界レベルの教育研究を行うトップ型（タイプA：13大学）」と「グローバル化を牽引する牽引型（タイプB：24大学）」の計37大学を選定し、重点支援を行った（2023年度終了）。主な施策内容は以下の通り。</p>
+<ul>
+<li>英語授業の大幅拡充・英語のみで卒業できるプログラム設置</li>
+<li>外国人教員・研究者の積極採用</li>
+<li>海外大学との学位共同プログラム（ジョイント・ディグリー）</li>
+<li>国際共同研究の推進</li>
+<li>キャンパスの国際化（国際寮・多文化共生プログラム等）</li>
+</ul>
+<p><strong>評価と課題</strong></p>
+<p>SGU事業の成果として、英語授業数・外国人教員数・海外からの学生数は増加した。一方で、「スーパーグローバル大学」と「それ以外の大学」の格差拡大、「グローバル化のための国際化」か「実質的な国際化」かという議論、英語重視による日本語・日本文化研究の軽視といった批判もある。</p>
+<p>参考：文部科学省「スーパーグローバル大学創成支援事業」 <a href="https://www.mext.go.jp/a_menu/koutou/kaikaku/sekaitenkai/">https://www.mext.go.jp/a_menu/koutou/kaikaku/sekaitenkai/</a></p>
+</div>
+</div>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="高等教育費の公私負担と国際比較" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="高等教育費の公私負担と国際比較">高等教育費の公私負担と国際比較</h3>
+<p>大学教育に対する私費負担が増加しているのは世界的傾向であるが、日本にとってこの問題はかねてから深刻であった。高等教育費は1990年代まで急速に上昇し、その後は少子化の影響もあり横這いである。政府と家計負担に分けると、1984年を境に家計負担額が政府負担額を上回り、その後私費負担額のみが上昇を続けている。</p>
+<div id="fig-A11-11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A11-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A11/A11-11.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-A11-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;11.11: 高等教育費の政府と家計の負担額の推移
+</figcaption>
+</figure>
+</div>
+<p>もとより日本はGDPにおける教育予算の割合が他のOECD諸国に比較して際立って低い。OECDによる <em>Education at a Glance</em>（図表でみる教育2020年版）によると、2017年の初等教育から高等教育の公的支出が国内総生産（GDP）に占める割合は、日本は2.9%であった。この値は、比較可能な38カ国中最下位から2番目である。OECD諸国の平均は4.1%である。</p>
+<div id="fig-A11-12" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-A11-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/A11/A11-12.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-A11-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;11.12: 高等教育（Tertiary）の費用負担比率：公・私・国際比較
+</figcaption>
+</figure>
+</div>
+<p>日本の公的支出の占める割合はおよそ30%で、他は家計負担か国際機関が負担している。</p>
+<p><em>（出典：松塚 第12章 第2節 2-1-2、pp.311–312）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="所得連動返還型奨学金日本版iclの試み" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="所得連動返還型奨学金日本版iclの試み">所得連動返還型奨学金——日本版ICLの試み</h3>
+<p>国際化が進むなかで、「今持たぬ者」への教育機会の提供と、投資からリターンにつながるまでの時差の問題を解決できる制度として注目されているのが<strong>所得連動返済型学資ローン（Income Contingent Loan: ICL）</strong>である。</p>
+<p>ICLでは、財源を基金化して学生がその基金から学費のほか大学生活に必要な諸費用を借り入れる。そして返済は学生や家族の財政状況や将来の期待所得ではなく、<strong>卒業後の実際所得に応じて累進的に課される</strong>。大学を卒業した後もあらかじめ設定された規定の所得を上回らない場合は支払い義務が無い。所得が低ければ返済額も少なく、上がれば返済額が増える。</p>
+<p><strong>日本の所得連動返還型奨学金制度（2017年〜）</strong></p>
+<p>日本では日本学生支援機構が2017年度から「所得連動返還型奨学金制度」を開始した。主な要件は以下の通りである。</p>
+<ul>
+<li>対象：第一種奨学金採用者（大学院を除く）</li>
+<li>家計支持者の所得要件：給与所得のみの世帯で年間収入金額（税込）が300万円以下</li>
+<li>返還額：毎年の課税対象所得の9%を乗じた値（2017年時点）</li>
+<li>返還猶予：年収300万円以下の場合、申請可能（通算10年）</li>
+<li>無制限猶予：災害・傷病・生活保護受給中等の場合</li>
+</ul>
+<p><strong>制度の意義と課題</strong></p>
+<p>小林（2017）はメリットとして、返済の基準が所得のみで明確であることと返還の負担が大幅に軽減されたことを挙げる。一方、デメリットとして、高所得を期待する層の返済額が高額になる設計のためにこれらの層が同制度を選択しなくなる「逆選択」が発生する一方で、制度を選択する者は返済の猶予を見込んで「閾値」つまり返済対象となる所得に到達しないように働こうとする「モラルハザード」が発生し得ることを指摘している。</p>
+<p>小塩（2020）は、同制度を「人生前半の社会保障の重要な仕組み」となり得るとしつつも、現設計では日本版所得連動返還型奨学金制度の再分配効果は限定的であり低所得層の教育支援策として多くを期待できないとしている。</p>
+<p><em>（出典：松塚 第12章 第3節 3-1・3-2、pp.316–323）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+</section>
+<section id="バグワティ税と国際的な仕組み" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="バグワティ税と国際的な仕組み">バグワティ税と国際的な仕組み</h3>
+<p>高度人材の移住に伴う国家間の利益と損失とを相互に補完する手段として提唱されたのが<strong>バグワティ税（Bhagwati tax）</strong>である（Bhagwati, 1976）。経済力の強い国に留学しそこに留まり就労した場合、当該高技能者の収入への一部課税額を送り出し国に支払うことによって国家間の経済力格差の拡大を抑えようとする仕組みである。</p>
+<p>Barr（2001）は、Income contingent loan は卒業生が就労する国の税務当局で回収可能であり、回収後にローンを提供した国に送金すれば良いと主張する。ローンを回収する国際的な協力体制を敷いても良いし、世銀等が徴収を請け負うのも可能であろうという（p.234）。国際機関を巻き込んだ世界的視野に立った国家間協調は必然といえよう。</p>
+<p><em>（出典：松塚 第12章 第3節 3-1-3、pp.319–320）</em></p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div class="mondai callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>日本の教育国際化政策をどう評価するか</strong></p>
+<p><strong>個人ワーク（3分）</strong></p>
+<p>以下の2つの問いについて考えてください。</p>
+<ul>
+<li>「スーパーグローバル大学」政策は、日本の大学の国際化に貢献したと思いますか？</li>
+<li>「所得連動返還型奨学金」は、留学の機会格差を縮小する手段として有効だと思いますか？</li>
+</ul>
+<p><strong>グループワーク（5分）</strong></p>
+<ul>
+<li>日本の教育国際化政策において、最も重要な課題は何だと思いますか？</li>
+<li>「4,700万円の社会的損失」というシミュレーション結果を踏まえると、日本政府は留学支援政策をどのように設計すべきでしょうか？</li>
+</ul>
+</div>
+</div>
+<div class="kotae callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>考え方の整理</strong></p>
+<p><strong>スーパーグローバル大学の評価</strong></p>
+<p>成果面では、英語授業数・外国人教員数・国際共同研究は確実に増加しました。一方で、指定校とそれ以外の格差拡大、「数値目標」達成のための形式的な国際化という批判もあります。評価の難しさは、「国際化」の定義と指標によって結果が変わる点にあります。</p>
+<p><strong>所得連動返還型奨学金の評価</strong></p>
+<p>理念的には「今持たぬ者」への機会提供として正当化できます。しかし現実には、所得が低い期間の返還猶予は機能しているものの、再分配効果が限定的であることが指摘されています。留学への適用は現状では限られており、留学費用（渡航・生活費等）をカバーする制度設計への拡張が課題です。</p>
+<p><strong>「4,700万円の損失」をどう考えるか</strong></p>
+<p>この数値はあくまでシミュレーションです。しかし留学支援政策を設計するうえで、「送り出し国の費用負担」と「受け入れ国の便益享受」の乖離という問題は無視できません。一方で、帰国者の存在・送金・ネットワーク効果を通じた「頭脳循環」の便益も考慮する必要があります。</p>
+</div>
+</div>
+</div>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+</section>
+<section id="まとめ" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="まとめ"><span class="header-section-number">11.7</span> まとめ</h2>
+<p>本章では、教育の国際化を、現状把握・理論・国際比較・頭脳流出論争・政策という流れで検討してきた。主要な論点を整理する。</p>
+<p><strong>現状と歴史</strong></p>
+<p>世界の外国人学生数は1998年から2018年の20年間でほぼ3倍に増加し、東アジア・太平洋地域が最大の送り出し地域となっている。日本でも外国人留学生が2019年度に312,214人に達する一方、日本人留学生も増加傾向にある。Virtual mobilityとMOOCsの台頭により、「留学」の概念自体が変容しつつある。留学の動機は「知への渇望」と「投資としての合理的期待」の両面を持ち、第5章の「投資・消費としての教育」の議論がここでも当てはまる。</p>
+<p><strong>理論と実証</strong></p>
+<p>留学の経済効果は規模の経済論・人的資本論・シグナリング理論・ロイモデルによって説明される。横田（2016）の日本における大規模調査は、留学経験者の年収・管理職比率が非経験者より高いことを示している。ただし、サンプルセレクション・データ信頼性・追跡性という実証上の3つの問題から、留学効果の因果的推定は困難であり、この点は教育経済学全般の課題でもある。</p>
+<p><strong>PISA——国際学力比較の光と影</strong></p>
+<p>PISAはHanushek &amp; Woessmannが示すように経済成長と強い相関を持つが、その測定範囲は認知的スキルに限られる。ドイツのPISAショックは大規模改革を促したが、「PISA対策教育」という副作用も生んだ。フィンランドは教員の質・少ない標準化テスト・小さな家庭環境格差によってPISA上位を維持してきたが、近年は低下傾向にある。PISAは有力なツールであるが、順位の一人歩きには注意が必要である。</p>
+<p><strong>頭脳流出か、頭脳循環か</strong></p>
+<p>高度技能者が経済力の強い受け入れ国に集中する傾向があり、日本で教育費を負担してアメリカで就労した場合の一人当たり社会的損失は約4,700万円と試算される。Docquier &amp; Rapoport（2012）は40年の研究をサーベイし、高技能移民は1990年代だけで70%増加しており、移民の「高技能化」が顕著であることを示した。送金・帰還移住・教育投資誘因・ディアスポラ・ネットワークという4つのチャネルを通じて、長期的には送り出し国にも便益がもたらされる「頭脳循環」の可能性がある。インドのIT産業はその典型例であるが、アフリカの医療人材流出のように流出が固定化するケースも多い。「脳力獲得（Brain Gain）」に転化するかどうかは国の規模・発展段階・政策次第であり、送り出し国・受け入れ国双方にとっての教育投資の意味を再考する必要がある。</p>
+<p><strong>日本の政策</strong></p>
+<p>日本の高等教育費の家計負担は、GDPに占める公的支出が2.9%（OECD最下位クラス）に示されるように、OECD最下位クラスである。スーパーグローバル大学政策は国際化指標の改善をもたらしたが、格差拡大や形式的国際化という批判もある。所得連動返還型奨学金（2017年〜）は機会均等に向けた制度的前進だが、再分配効果は現状では限定的であり、留学への適用拡大が今後の課題である。バグワティ税・国際ICLといった国際連携を前提とした仕組みの設計が、今後の教育経済学の重要な研究・政策課題となっている。</p>
+<div style="margin-top: 3.0em;">
+
+</div>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>本章で使用した文献
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>本章の内容は以下の資料に基づいています。</p>
+<ul>
+<li><p><strong>松塚ゆかり（編）第11章「教育の国際化」（pp.275–300）</strong><br>
+世界・日本の外国人学生数推移、Virtual mobilityとMOOCsの台頭、ペレグリナチオ・アカデミカ、Hobsons（2015）調査、規模の経済論・人的資本論・シグナリング・ロイモデル（図表11-6）、エラスムス計画、横田（2016）大規模調査（年収・職位プレミアム）、実証上の3つの問題。</p></li>
+<li><p><strong>松塚ゆかり（編）第12章「これからの教育経済学——まとめにかえて」（pp.301–327）</strong><br>
+投資国と回収国の乖離、図表12-1（公的費用と便益）、δW^j ≈ 4,700万円のシミュレーション、図表12-4・12-5（高等教育費の公私負担比率）、所得連動返還型奨学金（ICL）の機会均等化への作用・所得再分配効果・日本版制度の概要、バグワティ税。</p></li>
+<li><p><strong>Docquier, F. &amp; Rapoport, H. (2012) “Globalization, Brain Drain, and Development.” <em>Journal of Economic Literature</em>, 50(3), pp.681–730.</strong><br>
+頭脳流出研究の40年をサーベイした決定版論文。高技能移民の規模・分布・Brain Gainメカニズム・送金・ディアスポラ効果・インドITおよびアフリカ医療の事例研究。</p></li>
+<li><p><strong>Hanushek, E. A. &amp; Woessmann, L. (2008) “The Role of Cognitive Skills in Economic Development.” <em>Journal of Economic Literature</em>, 46(3), pp.607–668.</strong><br>
+PISA成績と経済成長の実証分析。</p></li>
+<li><p><strong>Hanushek, E. A. &amp; Woessmann, L. (2015) <em>The Knowledge Capital of Nations: Education and the Economics of Growth</em>. MIT Press.</strong><br>
+知識資本モデルの包括的論述。</p></li>
+<li><p><strong>OECD PISA公式サイト</strong> <a href="https://www.oecd.org/pisa/">https://www.oecd.org/pisa/</a><br>
+PISAの基本情報・各年結果。</p></li>
+<li><p><strong>文部科学省「スーパーグローバル大学創成支援事業」</strong><br>
+<a href="https://www.mext.go.jp/a_menu/koutou/kaikaku/sekaitenkai/">https://www.mext.go.jp/a_menu/koutou/kaikaku/sekaitenkai/</a></p></li>
+<li><p><strong>文部科学省「日本人の海外留学状況」</strong><br>
+<a href="https://www.mext.go.jp/a_menu/koutou/ryugaku/">https://www.mext.go.jp/a_menu/koutou/ryugaku/</a></p></li>
+</ul>
+</div>
+</div>
+<div style="margin-top: 3.0em;">
+
+</div>
+</section>
+<section id="参考文献" class="level2" data-number="11.8">
+<h2 data-number="11.8" class="anchored" data-anchor-id="参考文献"><span class="header-section-number">11.8</span> 参考文献</h2>
+<ul>
+<li>Barr, N. (2001) <em>The Welfare State as Piggy Bank: Information, Risk, Uncertainty, and the Role of the State</em>. London and New York: Oxford University Press.</li>
+<li>Barr, N. (2004) Higher Education Funding. <em>Oxford Review of Economic Policy</em>, 20(2), pp.264–283.</li>
+<li>Barr, N. &amp; Crawford, I. (1998) Funding Higher Education in an Age of Expansion. <em>Education Economics</em>, 6(1), pp.45–70.</li>
+<li>Bhagwati, J. N. (1976) Taxing the Brain Drain. <em>Challenge</em>, 19(3), pp.34–38.</li>
+<li>Borjas, G. J. (1987) Self-Selection and the Earnings of Immigrants. <em>American Economic Review</em>, 77, pp.531–553.</li>
+<li>Docquier, F. &amp; Rapoport, H. (2012) Globalization, Brain Drain, and Development. <em>Journal of Economic Literature</em>, 50(3), pp.681–730.</li>
+<li>Eliasson, P. (1992) 600 Years of Travelling Students. <em>Sciences &amp; Technology Studies</em>, 5(2), pp.29–42.</li>
+<li>Gérard, M. &amp; Üebelmesser, S. (2015) Financing Higher Education When Students and Graduates are Internationally Mobile. <em>Proceedings: Annual Conference on Taxation and Minutes of the Annual Meeting of the National Tax Association</em>, 108, pp.1–40.</li>
+<li>Hanushek, E. A. &amp; Woessmann, L. (2008) The Role of Cognitive Skills in Economic Development. <em>Journal of Economic Literature</em>, 46(3), pp.607–668.</li>
+<li>Hanushek, E. A. &amp; Woessmann, L. (2015) <em>The Knowledge Capital of Nations: Education and the Economics of Growth</em>. MIT Press.</li>
+<li>Irrgang, S. (2002) <em>Peregrinatio Academica: Wanderungen und Karrieren von Gelehrten der Universitäten Rostock, Greifswald, Trier und Mainz im 15 Jahrhundert</em>. Stuttgart: Franz Steiner Verlag.</li>
+<li>Johnstone, D. B. &amp; Marcucci, P. (2010) <em>Financing Higher Education Worldwide: Who Pays? Who should Pay?</em> New York: Johns Hopkins University Press.</li>
+<li>Matsuzuka, Y. &amp; Gérard, M. (2021) Student Mobility and Social Welfare: An Empirical and Theoretical Inquiry into the Social Impact of Skilled Migration. <em>Hitotsubashi Journal of Social Sciences</em>, 53, pp.19–36.</li>
+<li>Miyagiwa, K. (1991) Scale Economies in Education and the Brain Drain Problem. <em>International Economic Review</em>, 32(3), pp.743–759.</li>
+<li>Roy, A. (1951) Some Thoughts on the Distribution of Earnings. <em>Oxford Economic Papers</em>, 3(2), pp.135–146.</li>
+<li>Sjaastad, L. (1962) The Costs and Returns of Human Migration. <em>Journal of Political Economy</em>, 70(5), pp.80–93.</li>
+<li>UNESCO, UNICEF &amp; the World Bank (2020) <em>What Have We Learnt? Overview of Findings from a Survey of Ministries of Education on National Responses to COVID-19</em>. Paris, New York, Washington D.C.: UNESCO, UNICEF, World Bank.</li>
+<li>小塩隆士（2020）「所得連動返還型奨学金制度：意義と課題」『社会保障研究』第5巻3号、pp.313–324.</li>
+<li>小林雅之（2017）「新所得連動型奨学金返還制度の創設」『生活福祉研究』第93巻、pp.29–41.</li>
+<li>佐藤由利子（2021）『日本の留学生政策の評価　増補新装版——人材養成、友好促進、経済効果の視点から』東信堂.</li>
+<li>松塚ゆかり（編著）（2022）『現代の教育経済学』ミネルヴァ書房.</li>
+<li>横田雅弘（研究代表者）（2016）『グローバル人材育成と留学の長期的なインパクトに関する調査』留学インパクト科研　サマリーレポート、2013〜2015年度 科学研究費補助金（基盤研究（A）課題番号 25245078）.</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
